@@ -9,7 +9,7 @@ namespace Player {
             this._player = FindObjectOfType<Mover>();
         }
 
-        void LateUpdate() {
+        void Update() {
             this.transform.position = this._player.transform.position;
         }
     }
