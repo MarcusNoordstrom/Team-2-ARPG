@@ -28,12 +28,11 @@ public class TestAttack : MonoBehaviour
     //A way to do it without Coroutine
     private void OnCollisionEnter(Collision other) {
         timer--;
-        if (timer <= 0 && other.gameObject.CompareTag("Player")) {
-            Debug.Log("B");
-            targetHealth = other.gameObject.GetComponent<Health>();
-            targetHealth.TakeDamage(damage);
-            timer = initTimer;
-        }
+        if (!(timer <= 0) || !other.gameObject.CompareTag("Player")) return;
+        Debug.Log("B");
+        targetHealth = other.gameObject.GetComponent<Health>();
+        targetHealth.TakeDamage(damage);
+        timer = initTimer;
     }
 
     // private void OnTriggerEnter(Collider other){
