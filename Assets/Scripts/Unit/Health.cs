@@ -9,6 +9,9 @@ namespace Unit{
         public Slider healthSlider;
         public GameObject damageUIPrefab;
         public Transform parent;
+
+        public bool IsDead => isDead;
+        
         public void TakeDamage(int damage){ 
             health = Mathf.Max(0, health - damage);
             var damageUI = Instantiate(damageUIPrefab, Camera.main.WorldToScreenPoint(transform.position) + new Vector3(0,50),
