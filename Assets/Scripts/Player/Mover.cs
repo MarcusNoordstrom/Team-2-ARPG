@@ -4,13 +4,9 @@ using UnityEngine.AI;
 
 namespace Player {
     public class Mover : MonoBehaviour {
-        public float speed = 10;
+        public float speed = 500;
 
-        public GameObject partToRotate;
         Rigidbody _rigidbody;
-
-        Vector3 _direction;
-        float _counter = 0;
 
         void Start() {
             this._rigidbody = GetComponent<Rigidbody>();
