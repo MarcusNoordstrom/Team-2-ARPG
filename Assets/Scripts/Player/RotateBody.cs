@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Player {
     public class RotateBody : MonoBehaviour {
-        void Update() {
+        void LateUpdate() {
             Rotation();
         }
 
