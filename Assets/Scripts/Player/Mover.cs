@@ -7,7 +7,6 @@ namespace Player {
         public float speed = 500;
 
         Rigidbody _rigidbody;
-
         void Start() {
             this._rigidbody = GetComponent<Rigidbody>();
         }
@@ -32,15 +31,19 @@ namespace Player {
         void RotateTowardsMouse() {
             var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-
-            if (Physics.Raycast(ray, out var hit)) {
-                var dir = hit.point - this.transform.position;
-                var lookRotation = Quaternion.LookRotation(dir);
-
-                Debug.DrawRay(this.transform.position, dir, Color.blue);
-                var rotation = lookRotation.eulerAngles;
-                this.transform.rotation = Quaternion.Euler(0f, rotation.y, 0f);
+            if (Physics.Raycast(ray, out var hitCollider, 10, LayerMask.GetMask("Player"))) {
+                return;
             }
+            
+            if (!Physics.Raycast(ray, out var hit)) return;
+
+
+            var dir = hit.point - this.transform.position;
+            var lookRotation = Quaternion.LookRotation(dir);
+
+            Debug.DrawRay(this.transform.position, dir, Color.blue);
+            var rotation = lookRotation.eulerAngles;
+            this.transform.rotation = Quaternion.Euler(0f, rotation.y, 0f);
         }
     }
 }
