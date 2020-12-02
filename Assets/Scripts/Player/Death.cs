@@ -1,21 +1,18 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using GameStates;
-using Player;
+using Unit;
 
 public class Death : MonoBehaviour {
+    public int health;
     
-    public int healthTest;
-
     //TODO: Rename and refactor according to Health Script later and fix-up.
     public void Die(int health) {
-        State.CurrentState = health <= 0 ? State.GameStates.Dead : State.GameStates.Alive;
+        State.CheckState = health <= 0 ? State.GameStates.Dead : State.GameStates.Alive;
     }
 
+    //TODO: Refactor later as above ^^
     private void Update() {
-        Die(healthTest);
-        if (Input.GetKeyDown(KeyCode.Z)) {
-            healthTest--;
-        }
+        // Die(Mathf.RoundToInt(GetComponent<Health>().healthSlider.value));
+        Die(health);
     }
 }
