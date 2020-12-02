@@ -36,7 +36,7 @@ namespace Player {
             var mousePosition = Camera.main.ScreenPointToRay(Input.mousePosition);
 
             //this.partToRotate.transform.rotation = Quaternion.Slerp(this.partToRotate.transform.rotation, Quaternion.Euler(mousePosition.direction), 1f);
-            this.partToRotate.transform.rotation = Quaternion.LookRotation(Vector3.up * mousePosition.direction.y, Vector3.up);
+            this.partToRotate.transform.localRotation = Quaternion.RotateTowards(Vector3.up * mousePosition.direction.y, Vector3.up);
             print(mousePosition.direction);
         }
     }
