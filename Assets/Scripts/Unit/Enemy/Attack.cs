@@ -14,7 +14,7 @@ namespace Unit.Enemy{
         //TODO: Change TakeDamage to startAttack that can deal dmg ex bullet or range of melee weapon.
         private IEnumerator Attacking(){
             while (true){
-                yield return new WaitForSeconds(0.1f);
+                yield return new WaitForSeconds(0.5f);//Check what works best between 0.1f and 1f!
                 if ((Time.time - timer) > speed){
                     targetHealth.TakeDamage(damage);//Change this!
                     timer = Time.time;
