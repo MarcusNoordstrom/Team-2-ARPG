@@ -5,8 +5,11 @@ namespace Unit{
     public class Health : MonoBehaviour{
         private int maxHealth = 100;//ScriptableObject: setup method or awake?
         private int health;
-        public bool isDead;//Change to an event that the units component uses!
+        private bool isDead;//Change to an event that the units component uses!
         public Slider healthSlider;
+        
+        public int CurrentHealth => health;
+        public bool IsDead => isDead;
         
         public void TakeDamage(int damage){ 
             health = Mathf.Max(0, health - damage);
@@ -17,7 +20,6 @@ namespace Unit{
         }
         void Awake(){
             health = maxHealth;
-            //TODO: 
         }
     }
 }
