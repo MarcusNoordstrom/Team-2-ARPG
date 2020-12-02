@@ -9,14 +9,14 @@ namespace Player {
         public GameObject partToRotate;
         Rigidbody _rigidbody;
 
+        Vector3 _direction;
+        float _counter = 0;
 
         void Start() {
             this._rigidbody = GetComponent<Rigidbody>();
         }
 
         void Update() {
-            Rotation();
-
             Movement(KeyCode.W, Vector3.forward);
             Movement(KeyCode.S, Vector3.back);
             Movement(KeyCode.D, Vector3.right);
@@ -30,14 +30,6 @@ namespace Player {
             else {
                 this._rigidbody.velocity = Vector3.zero;
             }
-        }
-
-        void Rotation() {
-            var mousePosition = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-            //this.partToRotate.transform.rotation = Quaternion.Slerp(this.partToRotate.transform.rotation, Quaternion.Euler(mousePosition.direction), 1f);
-            this.partToRotate.transform.localRotation = Quaternion.RotateTowards(Vector3.up * mousePosition.direction.y, Vector3.up);
-            print(mousePosition.direction);
         }
     }
 }
