@@ -6,20 +6,10 @@ namespace GameStates {
     
         public enum GameStates {
             Alive,
+            Paused,
             Dead
         };
         
-        public static GameStates CurrentState;
-        
-        private static void StateSwitch() {
-            switch (CurrentState) {
-                case GameStates.Alive:
-                    break;
-                case GameStates.Dead:
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
-        }
+        public static GameStates CheckState;
     }
 }
