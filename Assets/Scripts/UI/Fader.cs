@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
+using Core;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace Core {
+namespace UI {
     public class Fader : MonoBehaviour {
         static CanvasGroup _canvasGroup;
 
@@ -12,6 +12,7 @@ namespace Core {
 
             CanvasEnabler();
             DontDestroyOnLoad(this.gameObject);
+            DontDestroyOnLoad(this.transform.parent.gameObject);
         }
 
         void Update() {
@@ -20,9 +21,14 @@ namespace Core {
             }
         }
 
+        public void LoadShit() {
+            StartCoroutine(Fading());
+        }
         IEnumerator Fading() {
             yield return FadeIn();
             yield return SceneManager.LoadSceneAsync(FindObjectOfType<SceneLoader>().sceneToLoad);
+            //Todo Game Designers wants a loading screen, how long should the waiting time be? Also needs to stop movement during the wait period
+            yield return new WaitForSeconds(5f);
             yield return FadeOut();
         }
 

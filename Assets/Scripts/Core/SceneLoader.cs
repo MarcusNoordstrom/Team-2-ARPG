@@ -8,14 +8,15 @@ namespace Core {
     public class SceneLoader : MonoBehaviour {
         public string sceneToLoad;
 
-        IEnumerator LoadScene() {
-            yield return Fader.FadeIn();
-            yield return SceneManager.LoadSceneAsync(sceneToLoad);
+        public GameObject popup;
+
+        void Start() {
+            this.popup.SetActive(false);
         }
 
         void OnTriggerEnter(Collider other) {
             if ((1 << other.gameObject.layer) != LayerMask.GetMask("Player")) return;
-            StartCoroutine(LoadScene());
+            this.popup.SetActive(true);
         }
 
         void OnTriggerExit(Collider other) {
