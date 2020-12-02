@@ -3,28 +3,26 @@ using UnityEngine.UI;
 
 namespace Unit{
     public class Health : MonoBehaviour{
-        private int maxHealth = 100;//ScriptableObject: setup method or awake?
-        private int health;
-        public bool isDead;//Change to an event that the units component uses!
-        public Slider healthSlider;
-        public GameObject damageUIPrefab;
-        public Transform parent;
-
-        public bool IsDead => isDead;
+        [SerializeField]private Slider healthSlider;
+        [SerializeField]private GameObject damageUIPrefab;
+        [SerializeField]private Transform parent;
+        private int _maxHealth = 100;//ScriptableObject: setup method or awake?
+        private int _health;
+        private bool _isDead;//Change to an event that the units component uses!
+        public bool IsDead => _isDead;
         
         public void TakeDamage(int damage){ 
-            health = Mathf.Max(0, health - damage);
-            var damageUI = Instantiate(damageUIPrefab, Camera.main.WorldToScreenPoint(transform.position) + new Vector3(0,50),
-                Quaternion.identity, parent);
+            _health = Mathf.Max(0, _health - damage);
+            var damageUI = Instantiate(damageUIPrefab, parent.position,
+                parent.rotation, parent);
             damageUI.GetComponent<DamageUI>().SetUp(damage);
-            if (health == 0){
-                isDead = true;
+            if (_health == 0){
+                _isDead = true;
             }
-            healthSlider.value = health;
+            healthSlider.value = _health;
         }
-        void Awake(){
-            health = maxHealth;
-            //TODO: 
+        private void Awake(){
+            _health = _maxHealth;
         }
     }
 }
