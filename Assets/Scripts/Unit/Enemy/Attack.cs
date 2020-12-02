@@ -1,33 +1,38 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Unit.Enemy{
     public class Attack : MonoBehaviour{
-        public int attackDamage = 10; //Changed to weapon scriptableObject
-        public float DPS = 1f;
+        public int damage = 10; //Part of weaponSO
+        public float speed = 5f;//Part of weaponSO
+        public float range = 10;//Part of weaponSO
         private Health targetHealth;
-
-        //TODO fix coroutine!
-        private IEnumerable Attacking(){
-            float timer = Time.time;
+        private IEnumerator attacking;
+        private float timer;
+        
+        //TODO: Change TakeDamage to startAttack that can deal dmg ex bullet or range of melee weapon.
+        private IEnumerator Attacking(){
             while (true){
-                if ((timer + DPS) >= Time.time){
-                    targetHealth.TakeDamage(attackDamage);
+                yield return new WaitForSeconds(0.1f);
+                if ((Time.time - timer) > speed){
+                    targetHealth.TakeDamage(damage);//Change this!
                     timer = Time.time;
                 }
             }
-            yield return null;
         }
             private void OnTriggerEnter(Collider other){
             if (other.gameObject.layer == LayerMask.NameToLayer("Player")){
                 targetHealth = other.gameObject.GetComponent<Health>();
-                StartCoroutine("Attacking");
-                //other.GetComponent<Health>().TakeDamage(attackDamage);
+                if (attacking != null)
+                    StopCoroutine(attacking);
+                attacking = Attacking();
+                StartCoroutine((attacking));
             }
         }
         private void OnTriggerExit(Collider other){
             if (other.gameObject.layer == LayerMask.NameToLayer("Player")){
-                StopCoroutine("Attacking");
+                StopCoroutine(attacking);
                 targetHealth = null;
             }
         }
