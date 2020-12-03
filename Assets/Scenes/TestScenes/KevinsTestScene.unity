@@ -1047,9 +1047,44 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e0e47c4e25e84e4bac8b48a11e1e2cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1761942325
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1761942326}
+  m_Layer: 0
+  m_Name: WeaponStartPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1761942326
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1761942325}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1775644564}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1 &1775644558 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 252846312419200673, guid: 7d21f5794f1c0fa45922aeb3374df1a5, type: 3}
+  m_PrefabInstance: {fileID: 252846312835621167}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1775644564 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 252846312419200700, guid: 7d21f5794f1c0fa45922aeb3374df1a5, type: 3}
   m_PrefabInstance: {fileID: 252846312835621167}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &1775644565
@@ -1084,20 +1119,7 @@ MonoBehaviour:
   deathEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!135 &1775644566
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1775644558}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 5
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1775644567
+--- !u!114 &1775644566
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1111,6 +1133,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 10
   speed: 2
+  projectileSpawnPoint: {fileID: 1761942326}
+  projectilePrefab: {fileID: 5418528933250074970, guid: 6a766590865850146a795af7da31f83c, type: 3}
 --- !u!114 &1775644568
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1394,6 +1418,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 10
   speed: 2
+  projectileSpawnPoint: {fileID: 0}
+  projectilePrefab: {fileID: 0}
 --- !u!114 &1821554065
 MonoBehaviour:
   m_ObjectHideFlags: 0
