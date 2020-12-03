@@ -17,7 +17,8 @@ namespace Unit.Enemy {
         private Mover target;
         private State state;
         private float targetRange;
-
+        private int ticks;
+        const int ticksPerUpdate = 15;
 
         private void Awake() {
             pathfindingMovement = GetComponent<NavMeshAgent>();
@@ -28,14 +29,19 @@ namespace Unit.Enemy {
             target = FindObjectOfType<Mover>();
             startingPosition = transform.position;
             roamPosition = GetRoamingPosition();
-            
+            ticks = Random.Range(0, ticksPerUpdate);
         }
 
         public static Vector3 GetRandomDir() {
             return new Vector3(Random.Range(-1f, 1f), 0, UnityEngine.Random.Range(-1f, 1f)).normalized;
         }
 
+
         private void FixedUpdate() {
+            ticks++;
+            if (this.ticks < ticksPerUpdate)
+                return;
+            this.ticks -= ticksPerUpdate;
             switch (state) {
                 default:
                 case State.Roaming:
@@ -78,9 +84,10 @@ namespace Unit.Enemy {
         }
 
         private void FindTarget() {
-            targetRange = 7f;
+            targetRange = 9f;
             if (Vector3.Distance(transform.position, target.transform.position) < targetRange) {
-                state = State.ChaseTarget;
+                if (GetComponent<SpotTarget>().IsVisible(target.gameObject))
+                    state = State.ChaseTarget;
             }
         }
 
