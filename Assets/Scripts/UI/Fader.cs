@@ -15,24 +15,7 @@ namespace UI {
             DontDestroyOnLoad(this.transform.parent.gameObject);
         }
 
-        void Update() {
-            if (Input.GetKeyDown(KeyCode.E)) {
-                StartCoroutine(Fading());
-            }
-        }
-
-        public void LoadShit() {
-            StartCoroutine(Fading());
-        }
-        IEnumerator Fading() {
-            yield return FadeIn();
-            yield return SceneManager.LoadSceneAsync(FindObjectOfType<SceneLoader>().sceneToLoad);
-            //Todo Game Designers wants a loading screen, how long should the waiting time be? Also needs to stop movement during the wait period
-            yield return new WaitForSeconds(5f);
-            yield return FadeOut();
-        }
-
-        IEnumerator FadeOut() {
+        public IEnumerator FadeOut() {
             var alpha = 1f;
 
             while (alpha > 0) {
@@ -43,7 +26,7 @@ namespace UI {
             }
         }
 
-        static public IEnumerator FadeIn() {
+        public IEnumerator FadeIn() {
             var alpha = 0f;
 
             while (alpha < 1) {
