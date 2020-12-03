@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using Player;
 using UI;
 using UnityEngine;
@@ -24,9 +23,11 @@ namespace Core {
             this.toolTipText.text = this.toolTip;
         }
 
-        void OnTriggerEnter(Collider other) {
+        void OnTriggerStay(Collider other) {
+            if (!Mover.HasClickedOnPortal) return;
             if ((1 << other.gameObject.layer) != LayerMask.GetMask("Player")) return;
             StartCoroutine(Transition());
+            Mover.HasClickedOnPortal = false;
         }
 
         IEnumerator Transition() {
@@ -36,7 +37,6 @@ namespace Core {
             UpdatePlayerPosition(GetPortal());
             //Todo Game Designers wants a loading screen, how long should the waiting time be? Also needs to stop movement during the wait period
             //yield return new WaitForSeconds(5f);
-            yield return this._fader.FadeOut();
             Destroy(this.gameObject);
         }
 

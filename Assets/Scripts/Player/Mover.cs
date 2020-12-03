@@ -1,5 +1,4 @@
-﻿using System;
-using Core;
+﻿using Core;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -28,10 +27,15 @@ namespace Player {
                     Movement(hit.point);
                 }
             }
+            
+            if (Input.GetMouseButtonUp(0) && hit.collider.GetComponent<Portal>() == null) {
+                HasClickedOnPortal = false;
+            }
 
             if (Input.GetMouseButtonDown(0) && hit.collider.GetComponent<Portal>() != null) {
                 HasClickedOnPortal = true;
             }
+            
         }
 
         void Movement(Vector3 destination) {
