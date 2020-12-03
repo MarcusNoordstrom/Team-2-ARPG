@@ -1,4 +1,5 @@
 ﻿using GameStates;
+using Player;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -8,7 +9,8 @@ namespace MainMenu {
         public GameObject mainMenu;
         public GameObject settingsMenu;
         public Text playBtnTxt;
-
+        StateLogic stateHandler => FindObjectOfType<StateLogic>();
+        
         private void Awake() {
             settingsMenu.SetActive(false);
 
@@ -28,13 +30,11 @@ namespace MainMenu {
         public void Play() {
             if (playBtnTxt.text == "Resume") {
                 StateLogic.GameIsPaused = false;
-                FindObjectOfType<StateLogic>().checkStateEvent?.Invoke();
+                //StateLogic.ChangeState(State.GameStates.Alive);
             }
             else {
                 //TODO: LOAD FIRST LEVEL HERE
                 //SceneManager.LoadScene("First Level");
-                StateLogic.GameIsPaused = false;
-                FindObjectOfType<StateLogic>().checkStateEvent?.Invoke();
             }
         }
         

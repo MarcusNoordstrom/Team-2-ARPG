@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 namespace GameStates {
@@ -8,6 +9,7 @@ namespace GameStates {
             Paused,
             Dead
         };
+
         public static GameStates CheckState;
     }
 }

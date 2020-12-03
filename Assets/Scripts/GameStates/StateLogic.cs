@@ -1,28 +1,26 @@
-﻿using System;
-using Player;
+﻿using Player;
 using Unit;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 /*If we are outside of the namespace ADD:
  Using GameStates*/
 
 namespace GameStates {
-    [Serializable] public class CheckStateEvent : UnityEvent{}
     public class StateLogic : MonoBehaviour {
-        [SerializeField] public CheckStateEvent checkStateEvent;
-        
         [SerializeField] private GameObject deathMenu;
-
         private GameObject Player => FindObjectOfType<Mover>().gameObject;
-        
+        private Mover Mover => Player.GetComponent<Mover>();
         private bool IsDead => Player.GetComponent<Health>().IsDead;
 
         public static bool GameIsPaused;
 
-        //SWITCH TO APPROPRIATE STATE
-        public void CheckState() {
+        public static void CheckState() {
+            StateLogic logic = FindObjectOfType<StateLogic>();
+            logic.ChangeState();
+        }
+        
+        private void ChangeState() {
             State.CheckState = IsDead ? State.GameStates.Dead : State.GameStates.Alive;
 
             State.CheckState = GameIsPaused ? State.GameStates.Paused : State.GameStates.Alive;
@@ -46,7 +44,7 @@ namespace GameStates {
         private void Alive() {
             Debug.Log("Entered State: ALIVE");
             Time.timeScale = 1f;
-            GetComponent<Mover>().enabled = true; //Enables Player Input
+            Mover.enabled = true; //Enables Player Input
             
             //Unloads Death Menu
             if (deathMenu.activeInHierarchy) {
@@ -55,7 +53,7 @@ namespace GameStates {
             }
             
             //Unloads Pause Menu
-            if (SceneManager.sceneCount <= 1) return;
+            if (SceneManager.sceneCount < 1) return;
             Debug.Log("CAME BACK FROM PAUSE STATE");
             SceneManager.UnloadSceneAsync(0);
             Time.timeScale = 1f;
@@ -63,23 +61,20 @@ namespace GameStates {
         
         private void Dead() {
             Debug.Log("Entered State: DEAD");
-            GetComponent<Mover>().enabled = false; //Disables Player Input
+            Mover.enabled = false; //Disables Player Input
             deathMenu.gameObject.SetActive(true); //Enables DeathMenu(UI)
         }
         
         void Pause() {
             Debug.Log("Entered State: PAUSED");
-            SceneManager.LoadScene(0, LoadSceneMode.Additive);
-            Time.timeScale = 0f;
-        }
-
-        private void Update() {
-            //Check if we should pause the game.
-            if (Input.GetKeyDown(KeyCode.Escape)) {
-                Debug.Log("GAS");
-                GameIsPaused = true;
-                checkStateEvent?.Invoke();
+            if (SceneManager.sceneCount == 1) {
+                SceneManager.LoadScene(0, LoadSceneMode.Additive);
             }
+            else {
+                GameIsPaused = false;
+                CheckState();
+            }
+            Time.timeScale = 1f;
         }
     }
 }
