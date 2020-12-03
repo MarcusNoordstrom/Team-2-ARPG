@@ -2,29 +2,31 @@
 using Player;
 using Unit;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 /*If we are outside of the namespace ADD:
  Using GameStates*/
 
 namespace GameStates {
+    [Serializable] public class CheckStateEvent : UnityEvent{}
     public class StateLogic : MonoBehaviour {
+        [SerializeField] public CheckStateEvent checkStateEvent;
+        
         [SerializeField] private GameObject deathMenu;
-        private bool IsDead => GetComponent<Health>().IsDead;
-        public static bool GameIsPaused = false;
 
-        //Now we can check what state we are in and do something
-        private void CurrentState() {
-            if (IsDead)
-                State.CheckState = State.GameStates.Dead;
-            if (Input.GetKeyDown(KeyCode.Escape)) {
-                if (GameIsPaused) {
-                    Resume();
-                }
-                else {
-                    Pause();
-                }
-            }
+        private GameObject Player => FindObjectOfType<Mover>().gameObject;
+        
+        private bool IsDead => Player.GetComponent<Health>().IsDead;
+
+        public static bool GameIsPaused;
+
+        //SWITCH TO APPROPRIATE STATE
+        public void CheckState() {
+            State.CheckState = IsDead ? State.GameStates.Dead : State.GameStates.Alive;
+
+            State.CheckState = GameIsPaused ? State.GameStates.Paused : State.GameStates.Alive;
+
             switch (State.CheckState) {
                 case State.GameStates.Alive: {
                     Alive();
@@ -42,51 +44,42 @@ namespace GameStates {
         }
 
         private void Alive() {
-            //TODO: Add logic for when Alive
-            if (Input.GetKeyDown(KeyCode.L))
-                State.CheckState = State.GameStates.Dead;
-            Debug.Log("ALIVE");
+            Debug.Log("Entered State: ALIVE");
             Time.timeScale = 1f;
             GetComponent<Mover>().enabled = true; //Enables Player Input
-            deathMenu.gameObject.SetActive(false);
+            
+            //Unloads Death Menu
+            if (deathMenu.activeInHierarchy) {
+                Debug.Log("CAME BACK FROM DEATH STATE");
+                deathMenu.gameObject.SetActive(false);
+            }
+            
+            //Unloads Pause Menu
+            if (SceneManager.sceneCount <= 1) return;
+            Debug.Log("CAME BACK FROM PAUSE STATE");
+            SceneManager.UnloadSceneAsync(0);
+            Time.timeScale = 1f;
         }
         
         private void Dead() {
-            //TODO: Add logic for Death & refactor later
+            Debug.Log("Entered State: DEAD");
             GetComponent<Mover>().enabled = false; //Disables Player Input
             deathMenu.gameObject.SetActive(true); //Enables DeathMenu(UI)
         }
-
-        public void Resume() {
-            SceneManager.UnloadSceneAsync(0);
-            Time.timeScale = 1f;
-            GameIsPaused = false;
-            State.CheckState = State.GameStates.Alive;
-        }
-
+        
         void Pause() {
+            Debug.Log("Entered State: PAUSED");
             SceneManager.LoadScene(0, LoadSceneMode.Additive);
             Time.timeScale = 0f;
-            GameIsPaused = true;
-            State.CheckState = State.GameStates.Paused;
-
         }
-        private void FixedUpdate() {
-            //TODO: Move to Event or other means later when we have more structure on code.
-            CurrentState();
+
+        private void Update() {
+            //Check if we should pause the game.
+            if (Input.GetKeyDown(KeyCode.Escape)) {
+                Debug.Log("GAS");
+                GameIsPaused = true;
+                checkStateEvent?.Invoke();
+            }
         }
     }
 }
-
-
-//This is how you change state to "Alive"
-// public void AliveState() {
-//     State.CurrentState = State.GameStates.Alive;
-// }
-        
-//This is how you change state to "Dead"
-// public void DeadState() {
-//     if (IsDead()) {
-//         State.CurrentState = State.GameStates.Dead;
-//     }
-// }
