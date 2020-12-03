@@ -2,14 +2,15 @@
 
 namespace Unit{
     public class CanvasFollowCamera : MonoBehaviour{
-        private Transform _cameraTransform;
+        private Transform cameraTransform;
+
         private void Awake(){
-            _cameraTransform = Camera.main.transform;
-            transform.rotation = _cameraTransform.rotation;
+            this.cameraTransform = Camera.main.transform;
+            transform.rotation = this.cameraTransform.rotation;
         }
+
         private void FixedUpdate(){
-            transform.rotation = _cameraTransform.rotation;
+            transform.rotation = this.cameraTransform.rotation;
         }
     }
 }
-
