@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections;
-using Core;
+﻿using System.Collections;
 using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.SceneManagement;
 
 namespace UI {
     public class Fader : MonoBehaviour {
@@ -11,22 +7,18 @@ namespace UI {
 
         void Start() {
             _canvasGroup = GetComponent<CanvasGroup>();
-
             CanvasEnabler();
-            // DontDestroyOnLoad(this.gameObject);
-            // DontDestroyOnLoad(this.transform.parent.gameObject);
         }
 
-        // public IEnumerator FadeOut() {
-        //     var alpha = 1f;
-        //
-        //     while (alpha > 0) {
-        //         alpha -= Time.deltaTime;
-        //         _canvasGroup.alpha = alpha;
-        //         print(alpha);
-        //         yield return null;
-        //     }
-        // }
+        public IEnumerator FadeOut() {
+            var alpha = 1f;
+        
+            while (alpha > 0) {
+                alpha -= Time.deltaTime;
+                _canvasGroup.alpha = alpha;
+                yield return null;
+            }
+        }
 
         public IEnumerator FadeIn() {
             var alpha = 0f;
@@ -39,7 +31,7 @@ namespace UI {
             }
         }
 
-        void CanvasEnabler() {
+        static void CanvasEnabler() {
             _canvasGroup.alpha = 0;
             _canvasGroup.interactable = false;
             _canvasGroup.blocksRaycasts = false;

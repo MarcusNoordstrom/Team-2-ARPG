@@ -7,7 +7,6 @@ namespace Player {
         NavMeshAgent _navMeshAgent;
 
         void Start() {
-            //DontDestroyOnLoad(this.gameObject);
             this._navMeshAgent = GetComponent<NavMeshAgent>();
         }
 
@@ -18,26 +17,15 @@ namespace Player {
         public static bool HasClickedOnPortal { get; set; }
 
         void ShouldMovetoMouse() {
-            RaycastHit hit;
-
-            var hasHit = Physics.Raycast(GetMouseRay(), out hit);
-
+            var hasHit = Physics.Raycast(GetMouseRay(), out var hit);
             if (Input.GetMouseButton(0)) {
                 if (hasHit) {
                     Movement(hit.point);
                 }
             }
-            
-            if (Input.GetMouseButtonUp(0) && hit.collider.GetComponent<Portal>() == null) {
-                HasClickedOnPortal = false;
-            }
 
-            if (Input.GetMouseButtonDown(0) && hit.collider.GetComponent<Portal>() != null) {
-                HasClickedOnPortal = true;
-            }
-            
+            ClickedPortal(hit);
         }
-
         void Movement(Vector3 destination) {
             this._navMeshAgent.destination = destination;
         }
@@ -45,6 +33,13 @@ namespace Player {
         static Ray GetMouseRay() {
             var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             return ray;
+        }
+
+        static void ClickedPortal(RaycastHit hit) {
+            if (Input.GetMouseButtonUp(0) && hit.collider.GetComponent<Portal>() == null)
+                HasClickedOnPortal = false;
+            if (Input.GetMouseButtonDown(0) && hit.collider.GetComponent<Portal>() != null)
+                HasClickedOnPortal = true;
         }
     }
 }
