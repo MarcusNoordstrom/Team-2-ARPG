@@ -1,29 +1,36 @@
-﻿using UnityEngine;
-using UnityEngine.UI;
+﻿using System;
+using UnityEngine;
+using UnityEngine.Events;
 
 namespace Unit{
+    [Serializable] public class FloatEvent : UnityEvent<float>{ }
+
+    [Serializable] public class BoolEvent : UnityEvent{ }
+
     public class Health : MonoBehaviour{
-        [SerializeField]private Slider healthSlider;
-        [SerializeField]private GameObject damageUIPrefab;
-        [SerializeField]private Transform parent;
-        private int _maxHealth = 100;//ScriptableObject: setup method or awake?
-        private int _health;
-        private bool _isDead;//Change to an event that the units component uses!
-        public bool IsDead => _isDead;
-        
-        public void TakeDamage(int damage){ 
-            _health = Mathf.Max(0, _health - damage);
-            var damageUI = Instantiate(damageUIPrefab, parent.position,
-                parent.rotation, parent);
-            damageUI.GetComponent<DamageUI>().SetUp(damage);
-            if (_health == 0){
-                _isDead = true;
-            }
-            healthSlider.value = _health;
-        }
+        [SerializeField] private GameObject damageUIPrefab;
+        [SerializeField] private Transform parent;
+        [SerializeField] private FloatEvent takingDamageEvent;
+        [SerializeField] private BoolEvent deathEvent;
+        private int health;
+        private readonly int maxHealth = 100; //ScriptableObject: setup method or awake?
+        public bool IsDead{ get; private set; }
+
         private void Awake(){
-            _health = _maxHealth;
+            this.health = this.maxHealth;
         }
+        public void TakeDamage(int damage){
+            this.health -= damage;
+            var damageUI = Instantiate(this.damageUIPrefab, this.parent.position,
+                this.parent.rotation, this.parent);
+            damageUI.GetComponent<DamageUI>().SetUp(damage);
+            if (this.health <= 0){
+                IsDead = true;
+                this.deathEvent?.Invoke();
+            }
+
+            this.takingDamageEvent?.Invoke(this.health);
+        }
+        
     }
 }
-
