@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Player;
+using UnityEngine;
 using UnityEngine.AI;
 using Random = UnityEngine.Random;
 
@@ -13,7 +14,7 @@ namespace Unit.Enemy {
         private Vector3 startingPosition;
         private Vector3 roamPosition;
         private NavMeshAgent pathfindingMovement;
-        public Transform target;
+        private Mover target;
         private State state;
         private float targetRange;
 
@@ -24,9 +25,10 @@ namespace Unit.Enemy {
         }
 
         private void Start() {
+            target = FindObjectOfType<Mover>();
             startingPosition = transform.position;
             roamPosition = GetRoamingPosition();
-            // pathfindingMovement.SetDestination(target.position);
+            
         }
 
         public static Vector3 GetRandomDir() {
@@ -48,14 +50,14 @@ namespace Unit.Enemy {
                     break;
                 case State.ChaseTarget:
 
-                    pathfindingMovement.SetDestination(target.position);
+                    pathfindingMovement.SetDestination(target.transform.position);
                     var attackRange = 5f;
-                    if (Vector3.Distance(transform.position, target.position) < attackRange) {
+                    if (Vector3.Distance(transform.position, target.transform.position) < attackRange) {
                         pathfindingMovement.isStopped = true;
                     } else pathfindingMovement.isStopped = false;
 
                     float stopChaseDistance = 15f;
-                    if (Vector3.Distance(transform.position, target.position) > stopChaseDistance) {
+                    if (Vector3.Distance(transform.position, target.transform.position) > stopChaseDistance) {
                         state = State.GoingBackToStart;
                     }
 
@@ -77,7 +79,7 @@ namespace Unit.Enemy {
 
         private void FindTarget() {
             targetRange = 7f;
-            if (Vector3.Distance(transform.position, target.position) < targetRange) {
+            if (Vector3.Distance(transform.position, target.transform.position) < targetRange) {
                 state = State.ChaseTarget;
             }
         }
