@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using Core;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
 namespace UI {
@@ -42,5 +44,6 @@ namespace UI {
             _canvasGroup.interactable = false;
             _canvasGroup.blocksRaycasts = false;
         }
+
     }
 }

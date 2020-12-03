@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-namespace Unit{
+namespace Unit.Enemy{
     public class Attack : MonoBehaviour{
         [SerializeField] private int damage = 10; //Part of weaponSO
         [SerializeField] private float speed = 2f; //Part of weaponSO
@@ -9,6 +9,7 @@ namespace Unit{
         private IEnumerator attacking;
         private Health targetHealth;
         private float timer;
+        
 
         private void Awake(){
             this.timer = -this.speed;
