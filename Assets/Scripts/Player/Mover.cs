@@ -1,4 +1,5 @@
 ﻿using System;
+using Core;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -12,18 +13,24 @@ namespace Player {
         }
 
         void Update() {
-            if (Input.GetMouseButton(0)) {
-                ShouldMovetoMouse();
-            }
+            ShouldMovetoMouse();
         }
+
+        public static bool HasClickedOnPortal { get; set; }
 
         void ShouldMovetoMouse() {
             RaycastHit hit;
 
             var hasHit = Physics.Raycast(GetMouseRay(), out hit);
 
-            if (hasHit) {
-                Movement(hit.point);
+            if (Input.GetMouseButton(0)) {
+                if (hasHit) {
+                    Movement(hit.point);
+                }
+            }
+
+            if (Input.GetMouseButtonDown(0) && hit.collider.GetComponent<Portal>() != null) {
+                HasClickedOnPortal = true;
             }
         }
 
