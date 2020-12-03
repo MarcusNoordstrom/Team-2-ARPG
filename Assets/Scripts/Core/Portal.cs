@@ -10,33 +10,22 @@ namespace Core {
     public class Portal : MonoBehaviour {
         public string sceneToLoad;
         public SpawnPoint spawnPoint;
-        Fader _fader;
-
         public Text toolTipText;
         public string toolTip;
-
-        void Start() {
-            this._fader = FindObjectOfType<Fader>();
-        }
 
         void OnEnable() {
             this.toolTipText.text = this.toolTip;
         }
 
-        void OnTriggerStay(Collider other) {
-            if (!Mover.HasClickedOnPortal) return;
-            if ((1 << other.gameObject.layer) != LayerMask.GetMask("Player")) return;
-            StartCoroutine(Transition());
-            Mover.HasClickedOnPortal = false;
-        }
-
         IEnumerator Transition() {
             DontDestroyOnLoad(this.gameObject);
-            yield return this._fader.FadeIn();
+            var fader = FindObjectOfType<Fader>();
+            yield return fader.FadeIn();
             yield return SceneManager.LoadSceneAsync(FindObjectOfType<Portal>().sceneToLoad);
             UpdatePlayerPosition(GetPortal());
             //Todo Game Designers wants a loading screen, how long should the waiting time be? Also needs to stop movement during the wait period
             //yield return new WaitForSeconds(5f);
+            yield return fader.FadeOut();
             Destroy(this.gameObject);
         }
 
@@ -63,6 +52,13 @@ namespace Core {
 
         void OnMouseExit() {
             this.toolTipText.enabled = false;
+        }
+
+        void OnTriggerStay(Collider other) {
+            if (!Mover.HasClickedOnPortal) return;
+            if ((1 << other.gameObject.layer) != LayerMask.GetMask("Player")) return;
+            StartCoroutine(Transition());
+            Mover.HasClickedOnPortal = false;
         }
     }
 }
