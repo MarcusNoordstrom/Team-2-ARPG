@@ -25,7 +25,7 @@ namespace Core {
         }
 
         void OnTriggerEnter(Collider other) {
-            if ((1 << other.gameObject.layer) != LayerMask.GetMask("Player")) return;
+            if (!Mover.HasClickedOnPortal && (1 << other.gameObject.layer) != LayerMask.GetMask("Player")) return;
             StartCoroutine(Transition());
         }
 
