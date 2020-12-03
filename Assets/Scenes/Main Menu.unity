@@ -379,6 +379,7 @@ MonoBehaviour:
   mainMenu: {fileID: 92304599}
   settingsMenu: {fileID: 1007836980}
   playBtnTxt: {fileID: 2045387339}
+  mainMenuCamera: {fileID: 489195683}
 --- !u!114 &333059556
 MonoBehaviour:
   m_ObjectHideFlags: 0

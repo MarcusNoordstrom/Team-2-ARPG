@@ -17,10 +17,14 @@ namespace GameStates {
 
         public static void CheckState() {
             StateLogic logic = FindObjectOfType<StateLogic>();
-            logic.ChangeState();
+            logic.ChangeStateInternal();
+        }
+
+        public static void ChangeStateTo(State.GameStates stateToChangeTo) {
+            State.CheckState = stateToChangeTo;
         }
         
-        private void ChangeState() {
+        private void ChangeStateInternal() {
             State.CheckState = IsDead ? State.GameStates.Dead : State.GameStates.Alive;
 
             State.CheckState = GameIsPaused ? State.GameStates.Paused : State.GameStates.Alive;

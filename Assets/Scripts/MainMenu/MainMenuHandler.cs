@@ -10,11 +10,16 @@ namespace MainMenu {
         public GameObject settingsMenu;
         public Text playBtnTxt;
         StateLogic stateHandler => FindObjectOfType<StateLogic>();
+        public Camera mainMenuCamera;
+        public AudioListener mainMenuAudioListener => mainMenuCamera.GetComponent<AudioListener>();
         
         private void Awake() {
             settingsMenu.SetActive(false);
 
             playBtnTxt.text = SceneManager.sceneCount <= 1 ? "Play" : "Resume";
+            if (playBtnTxt.text != "Resume") return;
+            Destroy(mainMenuAudioListener);
+            Destroy(mainMenuCamera);
         }
 
         public void ShowMainMenu() {
