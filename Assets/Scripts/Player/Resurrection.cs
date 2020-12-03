@@ -4,6 +4,7 @@ using UnityEngine.AI;
 namespace Player {
     public class Resurrection : MonoBehaviour {
         NavMeshAgent _navMeshAgent;
+        public Transform checkPoint;
         
         void Start() {
             _navMeshAgent = FindObjectOfType<Mover>().GetComponent<NavMeshAgent>();
@@ -18,6 +19,12 @@ namespace Player {
 
         public void ResurrectAtCorpse() {
             _navMeshAgent.Warp(_navMeshAgent.transform.position * 2f);
+            DisableComponent(true);
+            _navMeshAgent.isStopped = false;
+        }
+
+        public void ResurrectAtCheckpoint() {
+            _navMeshAgent.Warp(checkPoint.position);
             DisableComponent(true);
             _navMeshAgent.isStopped = false;
         }
