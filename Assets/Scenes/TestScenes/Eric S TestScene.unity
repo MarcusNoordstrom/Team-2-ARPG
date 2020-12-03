@@ -303,10 +303,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 363265102}
+  - component: {fileID: 363265098}
   - component: {fileID: 363265101}
   - component: {fileID: 363265100}
   - component: {fileID: 363265099}
-  - component: {fileID: 363265098}
   m_Layer: 0
   m_Name: Portal 2
   m_TagString: Untagged
@@ -504,6 +504,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1463246354561791373, guid: dc73fb310c717444d9eef33e8901ff94, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1463246355963918486, guid: dc73fb310c717444d9eef33e8901ff94, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1463246355963918486, guid: dc73fb310c717444d9eef33e8901ff94, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1463246355963918486, guid: dc73fb310c717444d9eef33e8901ff94, type: 3}
+      propertyPath: m_Color.r
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -1342,10 +1354,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1342830337}
+  - component: {fileID: 1342830333}
   - component: {fileID: 1342830336}
   - component: {fileID: 1342830335}
   - component: {fileID: 1342830334}
-  - component: {fileID: 1342830333}
   m_Layer: 0
   m_Name: Portal
   m_TagString: Untagged
