@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 778968363971883318}
   - component: {fileID: 778968363971883319}
-  - component: {fileID: 3628784750001907070}
   - component: {fileID: 778968363971883317}
   - component: {fileID: 778968363971883316}
   - component: {fileID: 778968363971883323}
@@ -48,20 +47,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f63e2af6429bef146ae73b6fdf7aba11, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 500
-  partToRotate: {fileID: 0}
---- !u!114 &3628784750001907070
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 778968363971883320}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 229b9d05131e408c93200d5db0bd49f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!33 &778968363971883317

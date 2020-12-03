@@ -1,8 +1,6 @@
-﻿using System;
-using Core;
+﻿using Core;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngineInternal;
 
 namespace Player {
     public class Mover : MonoBehaviour {
