@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 using Random = UnityEngine.Random;
+using System.Collections;
 
 namespace Unit.Enemy {
     public class AI : MonoBehaviour {
@@ -20,6 +21,9 @@ namespace Unit.Enemy {
         private int ticks;
         const int ticksPerUpdate = 15;
 
+
+        private IEnumerator rotateTowardsTarget;
+        private float distance;
         private void Awake() {
             pathfindingMovement = GetComponent<NavMeshAgent>();
             state = State.Roaming;
@@ -42,6 +46,9 @@ namespace Unit.Enemy {
             if (this.ticks < ticksPerUpdate)
                 return;
             this.ticks -= ticksPerUpdate;
+
+            //this.distance = Vector3.Distance(this.transform.position, this.target.transform.position);
+            
             switch (state) {
                 default:
                 case State.Roaming:
@@ -55,18 +62,34 @@ namespace Unit.Enemy {
                     FindTarget();
                     break;
                 case State.ChaseTarget:
-
+                    if (!GetComponent<VisibilityCheck>().IsVisible(target.gameObject)){
+                        state = State.GoingBackToStart;
+                        break;
+                    }
+                        
                     pathfindingMovement.SetDestination(target.transform.position);
-                    var attackRange = 5f;
+                    var attackRange = 10f;
                     if (Vector3.Distance(transform.position, target.transform.position) < attackRange) {
                         pathfindingMovement.isStopped = true;
-                    } else pathfindingMovement.isStopped = false;
+                        if (this.rotateTowardsTarget == null){
+                            rotateTowardsTarget = RotateTowardTarget();
+                        }
+                        StopCoroutine(this.rotateTowardsTarget);
+                        StartCoroutine(this.rotateTowardsTarget);
+                        
+                        GetComponent<Attack>().Range(this.target.gameObject);
+                    }
+                    else{
+                        pathfindingMovement.isStopped = false;
+                        
+                        StopCoroutine(this.rotateTowardsTarget);
+                    }
 
                     float stopChaseDistance = 15f;
                     if (Vector3.Distance(transform.position, target.transform.position) > stopChaseDistance) {
                         state = State.GoingBackToStart;
                     }
-
+                    
                     break;
                 case State.GoingBackToStart:
                     pathfindingMovement.SetDestination(startingPosition);
@@ -79,14 +102,22 @@ namespace Unit.Enemy {
             }
         }
 
+        private IEnumerator RotateTowardTarget(){
+            while (true){
+                yield return new WaitForFixedUpdate();
+            Quaternion lookRotation = Quaternion.LookRotation((target.transform.position - transform.position).normalized);
+            transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, 10f * Time.deltaTime);
+            }
+        }
+
         private Vector3 GetRoamingPosition() {
             return startingPosition + GetRandomDir() * Random.Range(3f, 10f);
         }
 
         private void FindTarget() {
-            targetRange = 9f;
+            targetRange = 10f;
             if (Vector3.Distance(transform.position, target.transform.position) < targetRange) {
-                if (GetComponent<SpotTarget>().IsVisible(target.gameObject))
+                if (GetComponent<VisibilityCheck>().IsVisible(target.gameObject))
                     state = State.ChaseTarget;
             }
         }
