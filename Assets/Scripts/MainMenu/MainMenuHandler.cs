@@ -27,10 +27,14 @@ namespace MainMenu {
 
         public void Play() {
             if (playBtnTxt.text == "Resume") {
-                State.CheckState = State.GameStates.Alive;
+                StateLogic.GameIsPaused = false;
+                FindObjectOfType<StateLogic>().checkStateEvent?.Invoke();
             }
             else {
                 //TODO: LOAD FIRST LEVEL HERE
+                //SceneManager.LoadScene("First Level");
+                StateLogic.GameIsPaused = false;
+                FindObjectOfType<StateLogic>().checkStateEvent?.Invoke();
             }
         }
         
