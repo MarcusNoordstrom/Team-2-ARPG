@@ -43,9 +43,12 @@ namespace GameStates {
 
         private void Alive() {
             //TODO: Add logic for when Alive
+            if (Input.GetKeyDown(KeyCode.L))
+                State.CheckState = State.GameStates.Dead;
             Debug.Log("ALIVE");
             Time.timeScale = 1f;
             GetComponent<Mover>().enabled = true; //Enables Player Input
+            deathMenu.gameObject.SetActive(false);
         }
         
         private void Dead() {
