@@ -9,21 +9,22 @@ using UnityEngine.SceneManagement;
 
 namespace GameStates {
     public class StateLogic : MonoBehaviour {
+        [SerializeField] private GameObject deathMenu;
         private bool IsDead => GetComponent<Health>().IsDead;
+        public static bool GameIsPaused = false;
 
         //Now we can check what state we are in and do something
         private void CurrentState() {
             if (IsDead)
                 State.CheckState = State.GameStates.Dead;
-
-            if (Input.GetKeyDown(KeyCode.Escape) && State.CheckState != State.GameStates.Paused) {
-                State.CheckState = State.GameStates.Paused;
+            if (Input.GetKeyDown(KeyCode.Escape)) {
+                if (GameIsPaused) {
+                    Resume();
+                }
+                else {
+                    Pause();
+                }
             }
-            else if (Input.GetKeyDown(KeyCode.Escape) && State.CheckState == State.GameStates.Paused) {
-                
-                State.CheckState = State.GameStates.Alive;
-            }
-            
             switch (State.CheckState) {
                 case State.GameStates.Alive: {
                     Alive();
@@ -34,7 +35,7 @@ namespace GameStates {
                     break;
                 }
                 case State.GameStates.Paused: {
-                    Paused();
+                    Pause();
                     break;
                 }
             }
@@ -50,15 +51,23 @@ namespace GameStates {
         private void Dead() {
             //TODO: Add logic for Death & refactor later
             GetComponent<Mover>().enabled = false; //Disables Player Input
-        }
-        
-        private void Paused() {
-            //TODO: Add logic for pause.
-            //TODO: Player can still ROTATE when timescale is 0f fix this (Later)!
-            SceneManager.LoadScene(0, LoadSceneMode.Additive);
-            Time.timeScale = 0f;
+            deathMenu.gameObject.SetActive(true); //Enables DeathMenu(UI)
         }
 
+        public void Resume() {
+            SceneManager.UnloadSceneAsync(0);
+            Time.timeScale = 1f;
+            GameIsPaused = false;
+            State.CheckState = State.GameStates.Alive;
+        }
+
+        void Pause() {
+            SceneManager.LoadScene(0, LoadSceneMode.Additive);
+            Time.timeScale = 0f;
+            GameIsPaused = true;
+            State.CheckState = State.GameStates.Paused;
+
+        }
         private void FixedUpdate() {
             //TODO: Move to Event or other means later when we have more structure on code.
             CurrentState();
