@@ -17,16 +17,16 @@ namespace UI {
             // DontDestroyOnLoad(this.transform.parent.gameObject);
         }
 
-        public IEnumerator FadeOut() {
-            var alpha = 1f;
-
-            while (alpha > 0) {
-                alpha -= Time.deltaTime;
-                _canvasGroup.alpha = alpha;
-                print(alpha);
-                yield return null;
-            }
-        }
+        // public IEnumerator FadeOut() {
+        //     var alpha = 1f;
+        //
+        //     while (alpha > 0) {
+        //         alpha -= Time.deltaTime;
+        //         _canvasGroup.alpha = alpha;
+        //         print(alpha);
+        //         yield return null;
+        //     }
+        // }
 
         public IEnumerator FadeIn() {
             var alpha = 0f;
