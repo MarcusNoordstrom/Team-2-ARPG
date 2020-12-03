@@ -1,9 +1,11 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using Player;
 using UI;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 namespace Core {
     public class Portal : MonoBehaviour {
@@ -11,8 +13,15 @@ namespace Core {
         public SpawnPoint spawnPoint;
         Fader _fader;
 
+        public Text toolTipText;
+        public string toolTip;
+
         void Start() {
             this._fader = FindObjectOfType<Fader>();
+        }
+
+        void OnEnable() {
+            this.toolTipText.text = this.toolTip;
         }
 
         void OnTriggerEnter(Collider other) {
@@ -38,12 +47,22 @@ namespace Core {
 
         Portal GetPortal() {
             foreach (var portal in FindObjectsOfType<Portal>()) {
-                if(portal == this) continue;
+                if (portal == this) continue;
                 if (portal.spawnPoint != this.spawnPoint) continue;
                 return portal;
             }
 
             return null;
+        }
+
+        void OnMouseOver() {
+            this.toolTipText.enabled = true;
+            var yAxis = GetComponent<BoxCollider>().bounds.size.y;
+            this.toolTipText.transform.position = new Vector3(this.transform.position.x, this.transform.position.y + yAxis, this.transform.position.z);
+        }
+
+        void OnMouseExit() {
+            this.toolTipText.enabled = false;
         }
     }
 }
