@@ -7,6 +7,7 @@ namespace Player {
         NavMeshAgent _navMeshAgent;
 
         void Start() {
+            //DontDestroyOnLoad(this.gameObject);
             this._navMeshAgent = GetComponent<NavMeshAgent>();
         }
 

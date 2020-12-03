@@ -11,8 +11,8 @@ namespace UI {
             _canvasGroup = GetComponent<CanvasGroup>();
 
             CanvasEnabler();
-            DontDestroyOnLoad(this.gameObject);
-            DontDestroyOnLoad(this.transform.parent.gameObject);
+            // DontDestroyOnLoad(this.gameObject);
+            // DontDestroyOnLoad(this.transform.parent.gameObject);
         }
 
         public IEnumerator FadeOut() {
@@ -21,7 +21,7 @@ namespace UI {
             while (alpha > 0) {
                 alpha -= Time.deltaTime;
                 _canvasGroup.alpha = alpha;
-
+                print(alpha);
                 yield return null;
             }
         }
@@ -32,7 +32,7 @@ namespace UI {
             while (alpha < 1) {
                 alpha += Time.deltaTime;
                 _canvasGroup.alpha = alpha;
-
+                
                 yield return null;
             }
         }
