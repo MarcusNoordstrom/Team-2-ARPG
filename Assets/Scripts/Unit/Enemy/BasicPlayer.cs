@@ -1,4 +1,7 @@
-﻿namespace Unit.Enemy {
+﻿using UnityEngine;
+
+namespace Unit {
+    [CreateAssetMenu]
     public class BasicPlayer : BasicUnit {
     }
 }

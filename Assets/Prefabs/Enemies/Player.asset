@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5f6d76df27c56d428e6f7af351b05da, type: 3}
-  m_Name: LightSaber
+  m_Script: {fileID: 11500000, guid: 7b597350d01a4a23b1d82f4edcaf36aa, type: 3}
+  m_Name: Player
   m_EditorClassIdentifier: 
-  baseDamage: 20
-  attackSpeed: 1
-  range: 2
+  maxHealth: 0
+  moveSpeed: 0
+  mainWeapon: {fileID: 0}

@@ -5,10 +5,7 @@ namespace Unit {
     public class Attack : MonoBehaviour {
         public Weapon weapon;
 
-        //[SerializeField] private float speed = 2f; //Part of weaponSO
-        //[SerializeField]public float range = 10;//Part of weaponSO
         float _attackTimer;
-
         bool _canAttack;
 
         Bullet _bulletPrefab;
@@ -18,8 +15,8 @@ namespace Unit {
         bool CanAttack => Time.time - this._attackTimer > this.weapon.attackSpeed;
 
 
-        void Start() {
-            this._health = GetComponent<Health>();
+        public void ChangeWeapon(Weapon weapon) {
+            this.weapon = weapon;
             if (this.weapon is RangeWeapon rangeWeapon) {
                 this._bulletPrefab = rangeWeapon.bulletPrefab;
             }
@@ -29,7 +26,7 @@ namespace Unit {
             if (!this._canAttack) return;
 
             if (!this.CanAttack) return;
-            
+
             this._attackTimer = Time.time;
             if (this.weapon is RangeWeapon) {
                 SpawnBullet();
@@ -44,6 +41,7 @@ namespace Unit {
             //if(!this.CanAttack) return;
             if (this._canAttack) return;
             this._target = target;
+            this._health = target.GetComponent<Health>();
             this._canAttack = true;
         }
 

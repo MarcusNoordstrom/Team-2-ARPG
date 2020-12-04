@@ -2,55 +2,48 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-namespace Unit.Enemy {
+namespace Unit {
     [RequireComponent(typeof(VisibilityCheck), typeof(LookAtTarget), typeof(Attack))]
     [RequireComponent(typeof(NavMeshAgent), typeof(Health))]
     public class EnemyController : MonoBehaviour {
-        //Rename class to EnemyController?
-        private enum State {
-            Roaming,
-            ChaseTarget,
-            GoingBackToStart
+        const int TicksPerUpdate = 15;
+
+        [SerializeField] BasicEnemy basicEnemy;
+        State _state;
+        Attack _attack;
+        LookAtTarget _lookAtTarget;
+        NavMeshAgent _navmeshAgent;
+        Vector3 _roamPosition;
+        Vector3 _startingPosition;
+        PlayerController _target;
+        int _ticks;
+        VisibilityCheck _visibilityCheck;
+
+        void Awake() {
+            this._navmeshAgent = GetComponent<NavMeshAgent>();
+            this._state = State.Roaming;
+            this._lookAtTarget = GetComponent<LookAtTarget>();
+            this._attack = GetComponent<Attack>();
+            this._visibilityCheck = GetComponent<VisibilityCheck>();
+            SetupEnemy();
+            this._attack.ChangeWeapon(this.basicEnemy.mainWeapon);
         }
 
-        private const int TicksPerUpdate = 15;
-        [SerializeField] private State state;
-        [SerializeField] private float targetRange = 10; //Part of the EnemySO
-        [SerializeField] private float stopChaseDistance = 15f; //Part of the EnemySO
-        [SerializeField] private float attackRange = 10f; //Part of weaponSO
-        private Attack attack;
-        private float distance;
-        private LookAtTarget lookAtTarget;
-        private NavMeshAgent navhmesh;
-        private Vector3 roamPosition;
-        private Vector3 startingPosition;
-        private PlayerController target;
-        private int ticks;
-        private VisibilityCheck visibilityCheck;
-
-        private void Awake() {
-            this.navhmesh = GetComponent<NavMeshAgent>();
-            this.state = State.Roaming;
-            this.lookAtTarget = GetComponent<LookAtTarget>();
-            this.attack = GetComponent<Attack>();
-            this.visibilityCheck = GetComponent<VisibilityCheck>();
+        void Start() {
+            this._target = FindObjectOfType<PlayerController>();
+            this._lookAtTarget.Setup(this._target.transform);
+            this._startingPosition = this.transform.position;
+            this._roamPosition = GetRoamingPosition();
+            this._ticks = Random.Range(0, TicksPerUpdate);
         }
 
-        private void Start() {
-            this.target = FindObjectOfType<PlayerController>();
-            this.lookAtTarget.Setup(this.target.transform);
-            this.startingPosition = transform.position;
-            this.roamPosition = GetRoamingPosition();
-            this.ticks = Random.Range(0, TicksPerUpdate);
-        }
-
-        private void FixedUpdate() {
-            this.ticks++;
-            if (this.ticks < TicksPerUpdate)
+        void FixedUpdate() {
+            this._ticks++;
+            if (this._ticks < TicksPerUpdate)
                 return;
-            this.ticks -= TicksPerUpdate;
+            this._ticks -= TicksPerUpdate;
 
-            switch (this.state) {
+            switch (this._state) {
                 case State.Roaming:
                     RoamToNewPosition();
                     break;
@@ -64,70 +57,81 @@ namespace Unit.Enemy {
             }
         }
 
-        private void GoingBackToStart() {
-            this.navhmesh.SetDestination(this.startingPosition);
-            if (Vector3.Distance(transform.position, this.startingPosition) < 1f) {
-                this.state = State.Roaming;
+        void OnDrawGizmosSelected() {
+            Gizmos.color = Color.blue;
+            Gizmos.DrawWireSphere(this.transform.position, this.basicEnemy.targetRange);
+        }
+
+        void SetupEnemy() {
+            GetComponent<Health>().MaxHealth = this.basicEnemy.maxHealth;
+            this._navmeshAgent.speed = this.basicEnemy.moveSpeed;
+        }
+
+        void GoingBackToStart() {
+            this._navmeshAgent.SetDestination(this._startingPosition);
+            if (Vector3.Distance(this.transform.position, this._startingPosition) < 1f) {
+                this._state = State.Roaming;
                 return;
             }
 
             FindTarget();
         }
 
-        private void ChaseTarget() {
-            if (!this.visibilityCheck.IsVisible(this.target.gameObject)) {
-                this.lookAtTarget.enabled = false;
-                this.navhmesh.isStopped = false;
-                this.attack.DeactivateAttack();
-                this.state = State.GoingBackToStart;
+        void ChaseTarget() {
+            if (!this._visibilityCheck.IsVisible(this._target.gameObject)) {
+                this._lookAtTarget.enabled = false;
+                this._navmeshAgent.isStopped = false;
+                this._attack.DeactivateAttack();
+                this._state = State.GoingBackToStart;
                 return;
             }
 
-            this.navhmesh.SetDestination(this.target.transform.position);
-            if (Vector3.Distance(transform.position, this.target.transform.position) < this.attack.weapon.range) {
-                this.navhmesh.isStopped = true;
-                this.lookAtTarget.enabled = true;
-                if (Vector3.Angle(transform.forward,
-                    (this.target.transform.position - transform.position).normalized) < 50)
-                    this.attack.ActivateAttack(this.target.gameObject);
+            this._navmeshAgent.SetDestination(this._target.transform.position);
+            if (Vector3.Distance(this.transform.position, this._target.transform.position) < this._attack.weapon.range) {
+                this._navmeshAgent.isStopped = true;
+                this._lookAtTarget.enabled = true;
+                if (Vector3.Angle(this.transform.forward,
+                    (this._target.transform.position - this.transform.position).normalized) < 50)
+                    this._attack.ActivateAttack(this._target.gameObject);
             }
             else {
-                this.navhmesh.isStopped = false;
-                this.attack.DeactivateAttack();
+                this._navmeshAgent.isStopped = false;
+                this._attack.DeactivateAttack();
             }
 
-            if (Vector3.Distance(transform.position, this.target.transform.position) > this.stopChaseDistance) {
-                this.lookAtTarget.enabled = false;
-                this.state = State.GoingBackToStart;
+            if (Vector3.Distance(this.transform.position, this._target.transform.position) > this.basicEnemy.stopChaseDistance) {
+                this._lookAtTarget.enabled = false;
+                this._state = State.GoingBackToStart;
             }
         }
 
-        private void RoamToNewPosition() {
-            this.navhmesh.SetDestination(this.roamPosition);
-            if (Vector3.Distance(transform.position, this.roamPosition) < 1f)
-                this.roamPosition = GetRoamingPosition();
+        void RoamToNewPosition() {
+            this._navmeshAgent.SetDestination(this._roamPosition);
+            if (Vector3.Distance(this.transform.position, this._roamPosition) < 1f)
+                this._roamPosition = GetRoamingPosition();
             FindTarget();
         }
 
-        private void OnDrawGizmosSelected() {
-            Gizmos.color = Color.blue;
-            Gizmos.DrawWireSphere(transform.position, this.targetRange);
-        }
-
-        private static Vector3 GetRandomDir() {
+        static Vector3 GetRandomDir() {
             return new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f)).normalized;
         }
 
-        private Vector3 GetRoamingPosition() {
-            return this.startingPosition + GetRandomDir() * Random.Range(3f, 10f);
+        Vector3 GetRoamingPosition() {
+            return this._startingPosition + GetRandomDir() * Random.Range(3f, 10f);
         }
 
-        private void FindTarget() {
-            if (Vector3.Distance(transform.position, this.target.transform.position) < this.targetRange)
-                if (this.visibilityCheck.IsVisible(this.target.gameObject)) {
-                    this.roamPosition = GetRoamingPosition();
-                    this.state = State.ChaseTarget;
+        void FindTarget() {
+            if (Vector3.Distance(this.transform.position, this._target.transform.position) < this.basicEnemy.targetRange)
+                if (this._visibilityCheck.IsVisible(this._target.gameObject)) {
+                    this._roamPosition = GetRoamingPosition();
+                    this._state = State.ChaseTarget;
                 }
+        }
+
+        enum State {
+            Roaming,
+            ChaseTarget,
+            GoingBackToStart
         }
     }
 }

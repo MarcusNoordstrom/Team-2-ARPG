@@ -2,16 +2,26 @@
 using UnityEngine;
 using UnityEngine.AI;
 using Unit;
+using UnityEngine.EventSystems;
 
 namespace Player {
     [RequireComponent(typeof(Health), typeof(Attack), typeof(NavMeshAgent))]
     [RequireComponent(typeof(Rigidbody))]
     public class PlayerController : MonoBehaviour {
         NavMeshAgent _navMeshAgent;
+        [SerializeField] BasicPlayer basicPlayer;
+        Attack _attack;
 
-        void Start() {
+        void Awake() {
+            this._attack = GetComponent<Attack>();
             this._navMeshAgent = GetComponent<NavMeshAgent>();
-            GetComponent<Rigidbody>().isKinematic = true;
+            SetupPlayer();
+            this._attack.ChangeWeapon(this.basicPlayer.mainWeapon);
+        }
+
+        void SetupPlayer() {
+            GetComponent<Health>().MaxHealth = this.basicPlayer.maxHealth;
+            this._navMeshAgent.speed = this.basicPlayer.moveSpeed;
         }
 
         void Update() {
@@ -27,7 +37,6 @@ namespace Player {
                     Movement(hit.point);
                 }
             }
-
 
             ClickedPortal(hit);
         }
