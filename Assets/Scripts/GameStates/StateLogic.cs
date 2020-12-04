@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 /*If we are outside of the namespace ADD:
  Using GameStates*/
 
+//TODO: SHOULD ONLY BE ABLE TO CHANGE STATE IF IT'S THE PLAYER AND NOTHING ELSE!!!!!
+
 namespace GameStates {
     public class StateLogic : MonoBehaviour {
         [SerializeField] private GameObject deathMenu;
