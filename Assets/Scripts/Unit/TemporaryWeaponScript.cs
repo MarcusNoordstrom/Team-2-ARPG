@@ -3,11 +3,11 @@ using UnityEngine;
 
 namespace Unit {
     public class TemporaryWeaponScript : MonoBehaviour {
-        public Weapon weapon;
+        public MeleeWeapon meleeWeapon;
 
         void Update() {
             if (Input.GetKeyDown(KeyCode.J)) {
-                print(this.weapon.baseDamage);
+                print(this.meleeWeapon.baseDamage);
             }
         }
     }

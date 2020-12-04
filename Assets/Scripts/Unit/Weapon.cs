@@ -1,20 +1,10 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Unit {
-    [CreateAssetMenu]
     public class Weapon : ScriptableObject {
-        public WeaponType weaponType;
         public int baseDamage;
         public float attackSpeed;
         public int range;
-        public GameObject weaponPrefab;
-        
-    }
-    
-
-    public enum WeaponType {
-        Melee,
-        Ranged
+        //public GameObject weaponPrefab;
     }
 }

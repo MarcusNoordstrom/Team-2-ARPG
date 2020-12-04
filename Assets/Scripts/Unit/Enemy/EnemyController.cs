@@ -42,6 +42,7 @@ namespace Unit.Enemy {
             this.startingPosition = transform.position;
             this.roamPosition = GetRoamingPosition();
             this.ticks = Random.Range(0, TicksPerUpdate);
+            
         }
 
         private void FixedUpdate() {
@@ -78,19 +79,22 @@ namespace Unit.Enemy {
             if (!this.visibilityCheck.IsVisible(this.target.gameObject)) {
                 this.lookAtTarget.enabled = false;
                 this.navhmesh.isStopped = false;
+                this.attack.DeactivateAttack();
                 this.state = State.GoingBackToStart;
                 return;
             }
 
             this.navhmesh.SetDestination(this.target.transform.position);
-            if (Vector3.Distance(transform.position, this.target.transform.position) < this.attackRange) {
+            if (Vector3.Distance(transform.position, this.target.transform.position) < this.attack.weapon.range) {
                 this.navhmesh.isStopped = true;
                 this.lookAtTarget.enabled = true;
                 if (Vector3.Angle(transform.forward,
                     (this.target.transform.position - transform.position).normalized) < 50)
-                    this.attack.Range(this.target.gameObject);
-            } else {
+                    this.attack.ActivateAttack(this.target.gameObject);
+            }
+            else {
                 this.navhmesh.isStopped = false;
+                this.attack.DeactivateAttack();
             }
 
             if (Vector3.Distance(transform.position, this.target.transform.position) > this.stopChaseDistance) {
