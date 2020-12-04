@@ -3,10 +3,10 @@ using UnityEngine;
 
 namespace Player {
     public class CameraFollow : MonoBehaviour {
-        Mover _player;
+        PlayerController _player;
 
         void Start() {
-            this._player = FindObjectOfType<Mover>();
+            this._player = FindObjectOfType<PlayerController>();
         }
 
         void Update() {

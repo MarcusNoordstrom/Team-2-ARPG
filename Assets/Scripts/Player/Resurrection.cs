@@ -7,7 +7,7 @@ namespace Player {
         public Transform checkPoint;
         
         void Start() {
-            _navMeshAgent = FindObjectOfType<Mover>().GetComponent<NavMeshAgent>();
+            _navMeshAgent = FindObjectOfType<PlayerController>().GetComponent<NavMeshAgent>();
         }
 
         private void Update() {

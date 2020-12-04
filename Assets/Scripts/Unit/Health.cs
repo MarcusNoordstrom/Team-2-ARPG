@@ -1,4 +1,5 @@
 ﻿using System;
+using GameStates;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -14,7 +15,7 @@ namespace Unit{
         [SerializeField] private BoolEvent deathEvent;
         private int health;
         private readonly int maxHealth = 100; //ScriptableObject: setup method or awake?
-        public bool IsDead{ get; private set; }
+        public bool IsDead{ get => this.health <= 0; }
 
         private void Awake(){
             this.health = this.maxHealth;
@@ -24,9 +25,9 @@ namespace Unit{
             var damageUI = Instantiate(this.damageUIPrefab, this.parent.position,
                 this.parent.rotation, this.parent);
             damageUI.SetUp(damage);
-            if (this.health <= 0){
-                IsDead = true;
+            if (this.IsDead){
                 this.deathEvent?.Invoke();
+                StateLogic.CheckState();
             }
 
             this.takingDamageEvent?.Invoke(this.health);

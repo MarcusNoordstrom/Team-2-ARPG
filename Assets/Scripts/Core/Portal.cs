@@ -30,7 +30,7 @@ namespace Core {
         }
 
         void UpdatePlayerPosition(Portal portal) {
-            var player = FindObjectOfType<Mover>().GetComponent<NavMeshAgent>();
+            var player = FindObjectOfType<PlayerController>().GetComponent<NavMeshAgent>();
             player.Warp(portal.transform.GetChild(0).transform.position);
         }
 
@@ -55,10 +55,10 @@ namespace Core {
         }
 
         void OnTriggerStay(Collider other) {
-            if (!Mover.HasClickedOnPortal) return;
+            if (!PlayerController.HasClickedOnPortal) return;
             if ((1 << other.gameObject.layer) != LayerMask.GetMask("Player")) return;
             StartCoroutine(Transition());
-            Mover.HasClickedOnPortal = false;
+            PlayerController.HasClickedOnPortal = false;
         }
     }
 }
