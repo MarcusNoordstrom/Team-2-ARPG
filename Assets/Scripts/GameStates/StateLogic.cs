@@ -64,6 +64,7 @@ namespace GameStates {
         }
         
         private void Dead() {
+            //TODO: CHANGE FROM GAMEOBJECT TO SCENE.ADDITIVE LOAD
             Debug.Log("Entered State: DEAD");
             Mover.enabled = false; //Disables Player Input
             deathMenu.gameObject.SetActive(true); //Enables DeathMenu(UI)

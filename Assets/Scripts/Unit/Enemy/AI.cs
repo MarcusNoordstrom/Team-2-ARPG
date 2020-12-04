@@ -1,130 +1,111 @@
 ﻿using Player;
 using UnityEngine;
 using UnityEngine.AI;
-using Random = UnityEngine.Random;
-using System.Collections;
 
-namespace Unit.Enemy {
-    public class AI : MonoBehaviour {
-        private enum State {
+namespace Unit.Enemy{
+    [RequireComponent(typeof(VisibilityCheck),typeof(LookAtTarget),typeof(Attack))]
+    public class AI : MonoBehaviour{
+        //Rename class to EnemyController?
+        private enum State{
             Roaming,
             ChaseTarget,
-            GoingBackToStart,
+            GoingBackToStart
         }
-
-        private Vector3 startingPosition;
-        private Vector3 roamPosition;
-        private NavMeshAgent pathfindingMovement;
-        private Mover target;
-        private State state;
-        private float targetRange;
-        private int ticks;
-        const int ticksPerUpdate = 15;
-
-
-        private IEnumerator rotateTowardsTarget;
+        private const int TicksPerUpdate = 15;
+        [SerializeField] private State state;
+        [SerializeField] private float targetRange = 10;//Part of the EnemySO
+        [SerializeField] private float stopChaseDistance = 15f;//Part of the EnemySO
+        [SerializeField] private float attackRange = 10f;//Part of weaponSO
+        private Attack attack;
         private float distance;
-        private void Awake() {
-            pathfindingMovement = GetComponent<NavMeshAgent>();
-            state = State.Roaming;
+        private LookAtTarget lookAtTarget;
+        private NavMeshAgent pathfindingMovement;
+        private Vector3 roamPosition;
+        private Vector3 startingPosition;
+        private Mover target;
+        private int ticks;
+        private VisibilityCheck visibilityCheck;
+        private void Awake(){
+            this.pathfindingMovement = GetComponent<NavMeshAgent>();
+            this.state = State.Roaming;
+            this.lookAtTarget = GetComponent<LookAtTarget>();
+            this.attack = GetComponent<Attack>();
+            this.visibilityCheck = GetComponent<VisibilityCheck>();
         }
 
-        private void Start() {
-            target = FindObjectOfType<Mover>();
-            startingPosition = transform.position;
-            roamPosition = GetRoamingPosition();
-            ticks = Random.Range(0, ticksPerUpdate);
+        private void Start(){
+            this.target = FindObjectOfType<Mover>();
+            this.lookAtTarget.Setup(this.target.transform);
+            this.startingPosition = transform.position;
+            this.roamPosition = GetRoamingPosition();
+            this.ticks = Random.Range(0, TicksPerUpdate);
         }
 
-        public static Vector3 GetRandomDir() {
-            return new Vector3(Random.Range(-1f, 1f), 0, UnityEngine.Random.Range(-1f, 1f)).normalized;
-        }
-
-
-        private void FixedUpdate() {
-            ticks++;
-            if (this.ticks < ticksPerUpdate)
+        private void FixedUpdate(){
+            this.ticks++;
+            if (this.ticks < TicksPerUpdate)
                 return;
-            this.ticks -= ticksPerUpdate;
+            this.ticks -= TicksPerUpdate;
 
-            //this.distance = Vector3.Distance(this.transform.position, this.target.transform.position);
-            
-            switch (state) {
-                default:
+            switch (this.state){
                 case State.Roaming:
-
-                    pathfindingMovement.SetDestination(roamPosition);
-                    var reachedPositionDistance = 1f;
-                    if (Vector3.Distance(transform.position, roamPosition) < reachedPositionDistance) {
-                        roamPosition = GetRoamingPosition();
-                    }
-
+                    this.pathfindingMovement.SetDestination(this.roamPosition);
+                    if (Vector3.Distance(transform.position, this.roamPosition) < 1f)
+                        this.roamPosition = GetRoamingPosition();
                     FindTarget();
                     break;
                 case State.ChaseTarget:
-                    if (!GetComponent<VisibilityCheck>().IsVisible(target.gameObject)){
-                        state = State.GoingBackToStart;
+                    if (!this.visibilityCheck.IsVisible(this.target.gameObject)){
+                        this.lookAtTarget.enabled = false;
+                        this.pathfindingMovement.isStopped = false;
+                        this.state = State.GoingBackToStart;
                         break;
                     }
-                        
-                    pathfindingMovement.SetDestination(target.transform.position);
-                    var attackRange = 10f;
-                    if (Vector3.Distance(transform.position, target.transform.position) < attackRange) {
-                        pathfindingMovement.isStopped = true;
-                        if (this.rotateTowardsTarget == null){
-                            rotateTowardsTarget = RotateTowardTarget();
-                        }
-                        StopCoroutine(this.rotateTowardsTarget);
-                        StartCoroutine(this.rotateTowardsTarget);
-                        
-                        GetComponent<Attack>().Range(this.target.gameObject);
+
+                    this.pathfindingMovement.SetDestination(this.target.transform.position);
+                    if (Vector3.Distance(transform.position, this.target.transform.position) < this.attackRange){
+                        this.pathfindingMovement.isStopped = true;
+                        this.lookAtTarget.enabled = true;
+                        if (Vector3.Angle(transform.forward,(this.target.transform.position - transform.position).normalized) < 50) 
+                            this.attack.Range(this.target.gameObject);
                     }
                     else{
-                        pathfindingMovement.isStopped = false;
-                        
-                        StopCoroutine(this.rotateTowardsTarget);
+                        this.pathfindingMovement.isStopped = false;
                     }
 
-                    float stopChaseDistance = 15f;
-                    if (Vector3.Distance(transform.position, target.transform.position) > stopChaseDistance) {
-                        state = State.GoingBackToStart;
+                    if (Vector3.Distance(transform.position, this.target.transform.position) > this.stopChaseDistance){
+                        this.lookAtTarget.enabled = false;
+                        this.state = State.GoingBackToStart;
                     }
-                    
+
                     break;
                 case State.GoingBackToStart:
-                    pathfindingMovement.SetDestination(startingPosition);
-                    reachedPositionDistance = 1f;
-                    if (Vector3.Distance(transform.position, startingPosition) < reachedPositionDistance) {
-                        state = State.Roaming;
+                    this.pathfindingMovement.SetDestination(this.startingPosition);
+                    if (Vector3.Distance(transform.position, this.startingPosition) < 1f){
+                        this.state = State.Roaming;
+                        break;
                     }
 
+                    FindTarget(); 
                     break;
             }
         }
-
-        private IEnumerator RotateTowardTarget(){
-            while (true){
-                yield return new WaitForFixedUpdate();
-            Quaternion lookRotation = Quaternion.LookRotation((target.transform.position - transform.position).normalized);
-            transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, 10f * Time.deltaTime);
-            }
-        }
-
-        private Vector3 GetRoamingPosition() {
-            return startingPosition + GetRandomDir() * Random.Range(3f, 10f);
-        }
-
-        private void FindTarget() {
-            targetRange = 10f;
-            if (Vector3.Distance(transform.position, target.transform.position) < targetRange) {
-                if (GetComponent<VisibilityCheck>().IsVisible(target.gameObject))
-                    state = State.ChaseTarget;
-            }
-        }
-
-        private void OnDrawGizmosSelected() {
+        private void OnDrawGizmosSelected(){
             Gizmos.color = Color.blue;
-            Gizmos.DrawWireSphere(this.transform.position, targetRange);
+            Gizmos.DrawWireSphere(transform.position, this.targetRange);
+        }
+        private static Vector3 GetRandomDir(){
+            return new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f)).normalized;
+        }
+        private Vector3 GetRoamingPosition(){
+            return this.startingPosition + GetRandomDir() * Random.Range(3f, 10f);
+        }
+        private void FindTarget(){
+            if (Vector3.Distance(transform.position, this.target.transform.position) < this.targetRange)
+                if (this.visibilityCheck.IsVisible(this.target.gameObject)){
+                    this.roamPosition = GetRoamingPosition();
+                    this.state = State.ChaseTarget;
+                }
         }
     }
 }

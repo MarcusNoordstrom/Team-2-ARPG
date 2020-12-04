@@ -8,7 +8,7 @@ namespace Unit{
     [Serializable] public class BoolEvent : UnityEvent{ }
 
     public class Health : MonoBehaviour{
-        [SerializeField] private GameObject damageUIPrefab;
+        [SerializeField] private DamageUI damageUIPrefab;
         [SerializeField] private Transform parent;
         [SerializeField] private FloatEvent takingDamageEvent;
         [SerializeField] private BoolEvent deathEvent;
@@ -23,7 +23,7 @@ namespace Unit{
             this.health -= damage;
             var damageUI = Instantiate(this.damageUIPrefab, this.parent.position,
                 this.parent.rotation, this.parent);
-            damageUI.GetComponent<DamageUI>().SetUp(damage);
+            damageUI.SetUp(damage);
             if (this.health <= 0){
                 IsDead = true;
                 this.deathEvent?.Invoke();

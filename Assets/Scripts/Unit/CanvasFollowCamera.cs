@@ -9,7 +9,7 @@ namespace Unit{
             transform.rotation = this.cameraTransform.rotation;
         }
 
-        private void FixedUpdate(){
+        private void LateUpdate(){
             transform.rotation = this.cameraTransform.rotation;
         }
     }
