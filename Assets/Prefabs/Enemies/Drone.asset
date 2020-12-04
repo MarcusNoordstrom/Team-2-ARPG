@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fbf70df75574cf09840fe07482a2883, type: 3}
   m_Name: Drone
   m_EditorClassIdentifier: 
-  maxHealth: 0
-  moveSpeed: 0
-  mainWeapon: {fileID: 0}
-  targetRange: 0
-  stopChaseDistance: 0
+  maxHealth: 100
+  moveSpeed: 5
+  mainWeapon: {fileID: 11400000, guid: 1a45d83e2b78b924da3385b0096894ee, type: 2}
+  targetRange: 10
+  stopChaseDistance: 15

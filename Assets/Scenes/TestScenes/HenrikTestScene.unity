@@ -1358,6 +1358,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f63e2af6429bef146ae73b6fdf7aba11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  basicPlayer: {fileID: 11400000, guid: 2b9d05680b34f1e428d9a8202092acdf, type: 2}
 --- !u!195 &1821554061
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1469,6 +1470,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 252846312419200699, guid: 7d21f5794f1c0fa45922aeb3374df1a5, type: 3}
+      propertyPath: basicEnemy
+      value: 
+      objectReference: {fileID: 11400000, guid: bd728bf38e5fcbb40a10ec74d8617a70, type: 2}
     - target: {fileID: 252846312419200700, guid: 7d21f5794f1c0fa45922aeb3374df1a5, type: 3}
       propertyPath: m_RootOrder
       value: 4
