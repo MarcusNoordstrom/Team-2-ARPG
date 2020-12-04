@@ -18,11 +18,12 @@ namespace Player {
 
         void ShouldMovetoMouse() {
             var hasHit = Physics.Raycast(GetMouseRay(), out var hit);
-            if (Input.GetMouseButton(0)) {
+            if (Input.GetMouseButton(0) && hit.collider != null) {
                 if (hasHit) {
                     Movement(hit.point);
                 }
             }
+            
 
             ClickedPortal(hit);
         }
@@ -36,6 +37,10 @@ namespace Player {
         }
 
         static void ClickedPortal(RaycastHit hit) {
+            if (hit.collider == null) {
+                return;
+            }
+            
             if (Input.GetMouseButtonUp(0) && hit.collider.GetComponent<Portal>() == null)
                 HasClickedOnPortal = false;
             if (Input.GetMouseButtonDown(0) && hit.collider.GetComponent<Portal>() != null)
