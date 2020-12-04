@@ -11,8 +11,8 @@ using UnityEngine.SceneManagement;
 namespace GameStates {
     public class StateLogic : MonoBehaviour {
         [SerializeField] private GameObject deathMenu;
-        private GameObject Player => FindObjectOfType<Mover>().gameObject;
-        private Mover Mover => Player.GetComponent<Mover>();
+        private GameObject Player => FindObjectOfType<PlayerController>().gameObject;
+        private PlayerController PlayerController => Player.GetComponent<PlayerController>();
         private bool IsDead => Player.GetComponent<Health>().IsDead;
 
         public static bool GameIsPaused;
@@ -50,7 +50,7 @@ namespace GameStates {
         private void Alive() {
             Debug.Log("Entered State: ALIVE");
             Time.timeScale = 1f;
-            Mover.enabled = true; //Enables Player Input
+            PlayerController.enabled = true; //Enables Player Input
             
             //Unloads Death Menu OLD
             // if (deathMenu.activeInHierarchy) {
@@ -72,7 +72,7 @@ namespace GameStates {
         private void Dead() {
             //TODO: CHANGE FROM GAMEOBJECT TO SCENE.ADDITIVE LOAD
             Debug.Log("Entered State: DEAD");
-            Mover.enabled = false; //Disables Player Input
+            PlayerController.enabled = false; //Disables Player Input
             // deathMenu.gameObject.SetActive(true); //Enables DeathMenu(UI)
             SceneManager.LoadScene("Death Scene", LoadSceneMode.Additive);
         }

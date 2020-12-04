@@ -1,13 +1,17 @@
 ﻿using Core;
 using UnityEngine;
 using UnityEngine.AI;
+using Unit;
 
 namespace Player {
-    public class Mover : MonoBehaviour {
+    [RequireComponent(typeof(Health), typeof(Attack), typeof(NavMeshAgent))]
+    [RequireComponent(typeof(Rigidbody))]
+    public class PlayerController : MonoBehaviour {
         NavMeshAgent _navMeshAgent;
 
         void Start() {
             this._navMeshAgent = GetComponent<NavMeshAgent>();
+            GetComponent<Rigidbody>().isKinematic = true;
         }
 
         void Update() {
@@ -23,10 +27,11 @@ namespace Player {
                     Movement(hit.point);
                 }
             }
-            
+
 
             ClickedPortal(hit);
         }
+
         void Movement(Vector3 destination) {
             this._navMeshAgent.destination = destination;
         }
@@ -40,7 +45,7 @@ namespace Player {
             if (hit.collider == null) {
                 return;
             }
-            
+
             if (Input.GetMouseButtonUp(0) && hit.collider.GetComponent<Portal>() == null)
                 HasClickedOnPortal = false;
             if (Input.GetMouseButtonDown(0) && hit.collider.GetComponent<Portal>() != null)
