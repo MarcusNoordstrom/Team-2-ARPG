@@ -28,14 +28,14 @@ namespace Unit {
         void Update() {
             if (!this._canAttack) return;
 
-            if (this.CanAttack) {
-                this._attackTimer = Time.time;
-                if (this.weapon is RangeWeapon ranged) {
-                    SpawnBullet();
-                }
-                else {
-                    Melee();
-                }
+            if (!this.CanAttack) return;
+            
+            this._attackTimer = Time.time;
+            if (this.weapon is RangeWeapon) {
+                SpawnBullet();
+            }
+            else {
+                Melee();
             }
         }
 

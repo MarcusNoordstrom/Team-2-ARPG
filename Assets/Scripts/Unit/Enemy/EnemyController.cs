@@ -42,7 +42,6 @@ namespace Unit.Enemy {
             this.startingPosition = transform.position;
             this.roamPosition = GetRoamingPosition();
             this.ticks = Random.Range(0, TicksPerUpdate);
-            
         }
 
         private void FixedUpdate() {
