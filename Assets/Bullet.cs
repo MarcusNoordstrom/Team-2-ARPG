@@ -1,25 +1,25 @@
-﻿using System;
-using System.Security.Cryptography;
-using Unit;
+﻿using Unit;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour{
     [SerializeField] private float speed;
-    [SerializeField]private Rigidbody rigidbody;
-    private GameObject target;
+    [SerializeField] private Rigidbody rb;
     private int damage;
+    private GameObject target;
+
+    private void OnTriggerEnter(Collider other){
+        if (other.gameObject.name == this.target.transform.name){
+            this.target.GetComponent<Health>().TakeDamage(this.damage);
+            Destroy(gameObject);
+        }
+
+        Destroy(gameObject);
+    }
 
     public void Setup(GameObject target, int damage){
         this.target = target;
         this.damage = damage;
-        Destroy(this.gameObject, 5f);
-        this.rigidbody.AddForce(transform.up * this.speed, ForceMode.Impulse);
-    }
-
-    private void OnTriggerEnter(Collider other){
-        if (other.gameObject == this.target){
-            this.target.GetComponent<Health>().TakeDamage(damage);
-            Destroy(this.gameObject);
-        }
+        Destroy(gameObject, 5f);
+        this.rb.AddForce(transform.up * this.speed, ForceMode.Impulse);
     }
 }
