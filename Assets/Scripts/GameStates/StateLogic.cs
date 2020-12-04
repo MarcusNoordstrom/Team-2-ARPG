@@ -50,11 +50,15 @@ namespace GameStates {
             Time.timeScale = 1f;
             Mover.enabled = true; //Enables Player Input
             
-            //Unloads Death Menu
-            if (deathMenu.activeInHierarchy) {
-                Debug.Log("CAME BACK FROM DEATH STATE");
-                deathMenu.gameObject.SetActive(false);
-            }
+            //Unloads Death Menu OLD
+            // if (deathMenu.activeInHierarchy) {
+            //     Debug.Log("CAME BACK FROM DEATH STATE");
+            //     deathMenu.gameObject.SetActive(false);
+            // }
+
+            if (SceneManager.sceneCount > 1) {
+                SceneManager.UnloadSceneAsync("Death Scene");
+            } 
             
             //Unloads Pause Menu
             if (SceneManager.sceneCount < 1) return;
@@ -67,7 +71,8 @@ namespace GameStates {
             //TODO: CHANGE FROM GAMEOBJECT TO SCENE.ADDITIVE LOAD
             Debug.Log("Entered State: DEAD");
             Mover.enabled = false; //Disables Player Input
-            deathMenu.gameObject.SetActive(true); //Enables DeathMenu(UI)
+            // deathMenu.gameObject.SetActive(true); //Enables DeathMenu(UI)
+            SceneManager.LoadScene("Death Scene", LoadSceneMode.Additive);
         }
         
         void Pause() {
