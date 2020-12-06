@@ -57,10 +57,10 @@ namespace Unit {
             }
         }
 
-        void OnDrawGizmosSelected() {
-            Gizmos.color = Color.blue;
-            Gizmos.DrawWireSphere(this.transform.position, this.basicEnemy.targetRange);
-        }
+        // void OnDrawGizmosSelected() {
+        //     Gizmos.color = Color.blue;
+        //     Gizmos.DrawWireSphere(this.transform.position, this.basicEnemy.targetRange);
+        // }
 
         void SetupEnemy() {
             GetComponent<Health>().MaxHealth = this.basicEnemy.maxHealth;
