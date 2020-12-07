@@ -5,12 +5,10 @@ namespace Unit {
     [RequireComponent(typeof(VisibilityCheck), typeof(LookAtTarget))]
     public class EnemyController : BaseUnit {
         const int TicksPerUpdate = 15;
-
         BasicEnemy BasicEnemy => (BasicEnemy)basicUnit;
         LookAtTarget LookAtTarget => GetComponent<LookAtTarget>();
         Vector3 _roamPosition;
         Vector3 StartingPosition => transform.position;
-
         State _state;
         PlayerController _target => FindObjectOfType<PlayerController>();
         int _ticks;
@@ -44,7 +42,6 @@ namespace Unit {
             }
         }
         
-        
         void OnDrawGizmosSelected() {
             Gizmos.color = Color.blue;
             Gizmos.DrawWireSphere(transform.position, BasicEnemy.targetRange);
@@ -56,7 +53,6 @@ namespace Unit {
                 _state = State.Roaming;
                 return;
             }
-
             FindTarget();
         }
 

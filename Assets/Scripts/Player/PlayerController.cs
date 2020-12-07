@@ -39,9 +39,15 @@ namespace Player {
                 HasClickedOnPortal = true;
         }
 
+        public override void OnDeath() {
+            base.OnDeath();
+            BaseNavMeshAgent.isStopped = true;
+        }
+
         public void OnResurrect() {
             gameObject.layer = LayerMask.NameToLayer("Player");
             BaseHealth.CurrentHealth = MaxHealth();
+            BaseNavMeshAgent.isStopped = false;
         }
     }
 }

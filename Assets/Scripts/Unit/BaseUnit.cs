@@ -24,7 +24,7 @@ namespace Unit {
             BaseHealth.CurrentHealth = basicUnit.maxHealth;
         }
 
-        public void OnDeath() {
+        public virtual void OnDeath() {
             gameObject.layer = LayerMask.NameToLayer("Ignore Raycast");
         }
     }

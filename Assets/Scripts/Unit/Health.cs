@@ -34,13 +34,9 @@ namespace Unit {
             var damageUI = Instantiate(damageUIPrefab, canvasParent.position,
                 canvasParent.rotation, canvasParent);
             damageUI.SetUp(damage);
-            if (IsDead) deathEvent?.Invoke();
-
-            //Enters dead state.
             takingDamageEvent?.Invoke(CurrentHealth);
-            //TODO: Change hard coded layer index to -> something not hard coded.
-            if (gameObject.layer != 8 && !IsDead) return;
-            StateLogic.CheckState();
+            
+            if (IsDead) deathEvent?.Invoke();
         }
 
         public void RevivePlayer() {

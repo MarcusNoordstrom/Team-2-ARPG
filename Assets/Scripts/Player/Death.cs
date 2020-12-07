@@ -7,7 +7,7 @@ public class Death : MonoBehaviour {
     void Update() {
         if (Input.GetKeyDown(KeyCode.R)) {
             FindObjectOfType<PlayerController>().GetComponent<Health>().RevivePlayer();
-            StateLogic.CheckState();
+            //StateLogic.CheckState();
         }
     }
 

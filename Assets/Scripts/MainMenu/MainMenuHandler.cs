@@ -9,12 +9,10 @@ namespace MainMenu {
         public GameObject settingsMenu;
         public Text playBtnTxt;
         public Camera mainMenuCamera;
-        StateLogic stateHandler => FindObjectOfType<StateLogic>();
         public AudioListener mainMenuAudioListener => mainMenuCamera.GetComponent<AudioListener>();
 
         void Awake() {
             settingsMenu.SetActive(false);
-
             playBtnTxt.text = SceneManager.sceneCount <= 1 ? "Play" : "Resume";
             if (playBtnTxt.text != "Resume") return;
             Destroy(mainMenuAudioListener);
@@ -32,14 +30,16 @@ namespace MainMenu {
         }
 
         public void Play() {
-            if (playBtnTxt.text == "Resume") StateLogic.GameIsPaused = false;
-            //StateLogic.ChangeState(State.GameStates.Alive);
+            if (playBtnTxt.text == "Resume") {
+                StateLogic.OnPause();
+            }
+            else {
+                SceneManager.LoadScene(1);
+            }
         }
 
-        //TODO: Replace with the real Quit function later
         public void QuitGame() {
             Application.Quit();
-            Debug.Log("Quitting");
         }
     }
 }
