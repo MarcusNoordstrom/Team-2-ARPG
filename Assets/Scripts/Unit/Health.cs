@@ -18,7 +18,10 @@ namespace Unit {
         [SerializeField] FloatEvent takingDamageEvent;
         [SerializeField] BoolEvent deathEvent;
         int _health;
-        public bool IsDead => this._health <= 0;
+        public bool IsDead {
+            get { return this._health <= 0; }
+            set{}
+        }
 
         public int MaxHealth { get; set; }
 
