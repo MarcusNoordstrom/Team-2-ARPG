@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TestScenes/Eric S TestScene.unity
     guid: 97c4e456b396bd24aaac52cb8e1cf3b8
+  - enabled: 1
+    path: Assets/Scenes/Death Scene.unity
+    guid: 3b349b04173d44458ad97e40134336b7
   m_configObjects: {}

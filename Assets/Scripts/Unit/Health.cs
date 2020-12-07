@@ -1,4 +1,5 @@
 ﻿using System;
+using GameStates;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -23,6 +24,9 @@ namespace Unit {
 
 
         void Start() {
+            if (MaxHealth <= 0) {
+                this.MaxHealth = 100;
+            }
             this._health = this.MaxHealth;
         }
 
@@ -32,9 +36,12 @@ namespace Unit {
                 this.parent.rotation, this.parent);
             damageUI.SetUp(damage);
             if (this.IsDead) this.deathEvent?.Invoke();
-            //StateLogic.CheckState();
-
+            
+            //Enters dead state.
             this.takingDamageEvent?.Invoke(this._health);
+            //TODO: Change hard coded layer index to -> something not hard coded.
+            if (this.gameObject.layer != 8 && !this.IsDead) return;
+            StateLogic.CheckState();
         }
     }
 }

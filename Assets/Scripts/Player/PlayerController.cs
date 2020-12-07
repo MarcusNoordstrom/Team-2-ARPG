@@ -1,10 +1,11 @@
-﻿using Core;
+﻿﻿using Core;
 using UnityEngine;
 using UnityEngine.AI;
 using Unit;
 using UnityEngine.EventSystems;
 
 namespace Player {
+    //TODO: Explain how requiredcomponent works with prefabs.
     [RequireComponent(typeof(Health), typeof(Attack), typeof(NavMeshAgent))]
     [RequireComponent(typeof(Rigidbody))]
     public class PlayerController : MonoBehaviour {

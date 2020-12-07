@@ -1,4 +1,6 @@
 ﻿using System;
+using GameStates;
+using Player;
 using UnityEngine;
 
 namespace Unit {
@@ -38,6 +40,8 @@ namespace Unit {
 
         //TODO: method that calls attack method based on current weapon.
         public void ActivateAttack(GameObject target) {
+            //TODO: Maybe fix another way later? (One example would be to disable EnemyController if player is dead for example.)
+            if (StateLogic.GameIsPaused || FindObjectOfType<PlayerController>().GetComponent<Health>().IsDead) return;
             //if(!this.CanAttack) return;
             if (this._canAttack) return;
             this._target = target;
