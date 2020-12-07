@@ -14,37 +14,37 @@ namespace Unit {
 
     public class Health : MonoBehaviour {
         [SerializeField] DamageUI damageUIPrefab;
-        [SerializeField] Transform parent;
+        [SerializeField] Transform canvasParent;
         [SerializeField] FloatEvent takingDamageEvent;
         [SerializeField] BoolEvent deathEvent;
-        int _health;
-        public bool IsDead {
-            get { return this._health <= 0; }
-            set{}
+        [SerializeField] BoolEvent reviveEvent;
+
+        int _currentCurrentHealth;
+        
+        public int CurrentHealth {
+            get => _currentCurrentHealth;
+            set => _currentCurrentHealth =
+                Mathf.Clamp(value, 0, GetComponent<IGetMaxHealth>().MaxHealth());
         }
-
-        public int MaxHealth { get; set; }
-
-
-        void Start() {
-            if (MaxHealth <= 0) {
-                this.MaxHealth = 100;
-            }
-            this._health = this.MaxHealth;
-        }
+        public bool IsDead => this.CurrentHealth <= 0;
 
         public void TakeDamage(int damage) {
-            this._health -= damage;
-            var damageUI = Instantiate(this.damageUIPrefab, this.parent.position,
-                this.parent.rotation, this.parent);
+            this.CurrentHealth -= damage;
+            var damageUI = Instantiate(this.damageUIPrefab, this.canvasParent.position,
+                this.canvasParent.rotation, this.canvasParent);
             damageUI.SetUp(damage);
             if (this.IsDead) this.deathEvent?.Invoke();
             
             //Enters dead state.
-            this.takingDamageEvent?.Invoke(this._health);
+            this.takingDamageEvent?.Invoke(this.CurrentHealth);
             //TODO: Change hard coded layer index to -> something not hard coded.
             if (this.gameObject.layer != 8 && !this.IsDead) return;
             StateLogic.CheckState();
+        }
+
+        public void RevivePlayer() {
+           
+            reviveEvent?.Invoke();
         }
     }
 }

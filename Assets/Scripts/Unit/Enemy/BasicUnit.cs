@@ -2,9 +2,12 @@
 
 namespace Unit {
     public class BasicUnit : ScriptableObject {
-        //Todo add game object for weapon prefab
         public int maxHealth;
         public float moveSpeed;
         public Weapon mainWeapon;
+    }
+    
+    public interface IGetMaxHealth {
+        int MaxHealth();
     }
 }

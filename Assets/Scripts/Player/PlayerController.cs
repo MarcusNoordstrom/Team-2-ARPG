@@ -1,30 +1,12 @@
-﻿﻿using Core;
+﻿using Core;
 using UnityEngine;
 using UnityEngine.AI;
 using Unit;
-using UnityEngine.EventSystems;
 
-namespace Player {
-    //TODO: Explain how requiredcomponent works with prefabs.
+ namespace Player {
     [RequireComponent(typeof(Health), typeof(Attack), typeof(NavMeshAgent))]
     [RequireComponent(typeof(Rigidbody))]
-    public class PlayerController : MonoBehaviour {
-        NavMeshAgent _navMeshAgent;
-        [SerializeField] BasicPlayer basicPlayer;
-        Attack _attack;
-
-        void Awake() {
-            this._attack = GetComponent<Attack>();
-            this._navMeshAgent = GetComponent<NavMeshAgent>();
-            SetupPlayer();
-            this._attack.ChangeWeapon(this.basicPlayer.mainWeapon);
-        }
-
-        void SetupPlayer() {
-            GetComponent<Health>().MaxHealth = this.basicPlayer.maxHealth;
-            this._navMeshAgent.speed = this.basicPlayer.moveSpeed;
-        }
-
+    public class PlayerController : BaseUnit {
         void Update() {
             ShouldMovetoMouse();
         }
@@ -38,12 +20,11 @@ namespace Player {
                     Movement(hit.point);
                 }
             }
-
             ClickedPortal(hit);
         }
 
         void Movement(Vector3 destination) {
-            this._navMeshAgent.destination = destination;
+            BaseNavMeshAgent.destination = destination;
         }
 
         static Ray GetMouseRay() {
@@ -61,5 +42,10 @@ namespace Player {
             if (Input.GetMouseButtonDown(0) && hit.collider.GetComponent<Portal>() != null)
                 HasClickedOnPortal = true;
         }
+        
+        public void OnResurrect() {
+            this.gameObject.layer = LayerMask.NameToLayer("Player");
+            BaseHealth.CurrentHealth = MaxHealth();
+        }
     }
-}
+ }
