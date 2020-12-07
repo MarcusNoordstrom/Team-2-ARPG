@@ -1,25 +1,25 @@
 ﻿using Unit;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour{
-    [SerializeField] private float speed;
-    [SerializeField] private Rigidbody rb;
-    private int damage;
-    private GameObject target;
+public class Bullet : MonoBehaviour {
+    [SerializeField] float speed;
+    [SerializeField] Rigidbody rb;
+    int damage;
+    GameObject target;
 
-    private void OnTriggerEnter(Collider other){
-        if (other.gameObject.name == this.target.transform.name){
-            this.target.GetComponent<Health>().TakeDamage(this.damage);
+    void OnTriggerEnter(Collider other) {
+        if (other.gameObject.name == target.transform.name) {
+            target.GetComponent<Health>().TakeDamage(damage);
             Destroy(gameObject);
         }
 
         Destroy(gameObject);
     }
 
-    public void Setup(GameObject target, int damage){
+    public void Setup(GameObject target, int damage) {
         this.target = target;
         this.damage = damage;
         Destroy(gameObject, 5f);
-        this.rb.AddForce(transform.up * this.speed, ForceMode.Impulse);
+        rb.AddForce(transform.up * speed, ForceMode.Impulse);
     }
 }

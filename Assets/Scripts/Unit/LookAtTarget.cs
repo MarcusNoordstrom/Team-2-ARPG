@@ -1,22 +1,20 @@
 ﻿using UnityEngine;
 
-namespace Unit{
+namespace Unit {
+    public class LookAtTarget : MonoBehaviour {
+        Transform target;
 
-
-    public class LookAtTarget : MonoBehaviour{
-        private Transform target;
-
-        private void Awake(){
-            this.enabled = false;
+        void Awake() {
+            enabled = false;
         }
 
-        public void Setup(Transform target){
-            this.target = target;
-        }
-
-        private void FixedUpdate(){
-            Quaternion lookRotation = Quaternion.LookRotation((this.target.position - transform.position).normalized);
+        void FixedUpdate() {
+            var lookRotation = Quaternion.LookRotation((target.position - transform.position).normalized);
             transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, 10f * Time.deltaTime);
+        }
+
+        public void Setup(Transform target) {
+            this.target = target;
         }
     }
 }

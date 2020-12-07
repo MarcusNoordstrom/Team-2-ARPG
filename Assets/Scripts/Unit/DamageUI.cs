@@ -13,17 +13,17 @@ namespace Unit {
         Vector3 moveUpSpeed;
 
         void FixedUpdate() {
-            this.transform.position += this.moveUpSpeed * Time.deltaTime;
-            this.color.a -= this.alphaFadeSpeed * Time.deltaTime;
-            this.textUI.color = this.color;
+            transform.position += moveUpSpeed * Time.deltaTime;
+            color.a -= alphaFadeSpeed * Time.deltaTime;
+            textUI.color = color;
         }
 
         public void SetUp(int damage) {
-            this.textUI.text = $"-{damage}";
-            Destroy(this.gameObject, this.destroyTime);
-            this.transform.position += this.transform.up * this.yPositionOffset;
-            this.moveUpSpeed = this.transform.up * this.speed;
-            this.color = this.textUI.color;
+            textUI.text = $"-{damage}";
+            Destroy(gameObject, destroyTime);
+            transform.position += transform.up * yPositionOffset;
+            moveUpSpeed = transform.up * speed;
+            color = textUI.color;
         }
     }
 }

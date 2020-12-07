@@ -3,14 +3,14 @@ using UnityEngine.AI;
 
 namespace Player {
     public class Resurrection : MonoBehaviour {
-        NavMeshAgent _navMeshAgent;
         public Transform checkPoint;
-        
+        NavMeshAgent _navMeshAgent;
+
         void Start() {
             _navMeshAgent = FindObjectOfType<PlayerController>().GetComponent<NavMeshAgent>();
         }
 
-        private void Update() {
+        void Update() {
             if (Input.GetKeyDown(KeyCode.K)) {
                 DisableComponent(false);
                 _navMeshAgent.isStopped = true;

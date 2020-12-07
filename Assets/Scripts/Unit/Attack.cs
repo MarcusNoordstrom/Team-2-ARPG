@@ -3,58 +3,54 @@
 namespace Unit {
     public class Attack : MonoBehaviour {
         public Weapon weapon;
+        [SerializeField] Transform bulletSpawnPoint;
 
         float _attackTimer;
-        bool _canAttack;
 
         Bullet _bulletPrefab;
-        [SerializeField] Transform bulletSpawnPoint;
-        GameObject _target;
+        bool _canAttack;
         Health _health;
-        bool CanAttack => Time.time - this._attackTimer > this.weapon.attackSpeed;
+        GameObject _target;
+        bool CanAttack => Time.time - _attackTimer > weapon.attackSpeed;
+
+        void Update() {
+            if (!_canAttack) return;
+
+            if (!CanAttack) return;
+
+            _attackTimer = Time.time;
+            if (weapon is RangeWeapon)
+                SpawnBullet();
+            else
+                Melee();
+        }
 
         public void ChangeWeapon(Weapon weapon) {
             this.weapon = weapon;
-            if (this.weapon is RangeWeapon rangeWeapon) {
-                this._bulletPrefab = rangeWeapon.bulletPrefab;
-            }
-        }
-
-        void Update() {
-            if (!this._canAttack) return;
-
-            if (!this.CanAttack) return;
-
-            this._attackTimer = Time.time;
-            if (this.weapon is RangeWeapon) {
-                SpawnBullet();
-            }
-            else {
-                Melee();
-            }
+            if (this.weapon is RangeWeapon rangeWeapon) _bulletPrefab = rangeWeapon.bulletPrefab;
         }
 
         //TODO: method that calls attack method based on current weapon.
         public void ActivateAttack(GameObject target) {
             //if(!this.CanAttack) return;
-            if (this._canAttack) return;
-            this._target = target;
-            this._health = target.GetComponent<Health>();
-            this._canAttack = true;
+            if (_canAttack) return;
+            _target = target;
+            _health = target.GetComponent<Health>();
+            _canAttack = true;
         }
 
         void SpawnBullet() {
-            var bullet = Instantiate(this._bulletPrefab, this.bulletSpawnPoint.position, this.bulletSpawnPoint.rotation);
-            bullet.Setup(this._target, this.weapon.baseDamage);
+            var bullet = Instantiate(_bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
+            bullet.Setup(_target, weapon.baseDamage);
         }
 
         public void DeactivateAttack() {
-            this._canAttack = false;
+            _canAttack = false;
         }
 
         //TODO: Either use raycast, enable a gameobject or spherecast.
         void Melee() {
-            this._health.TakeDamage(this.weapon.baseDamage);
+            _health.TakeDamage(weapon.baseDamage);
         }
 
         //TODO: Fix attack delay on next attack!

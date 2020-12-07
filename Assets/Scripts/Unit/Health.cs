@@ -20,30 +20,30 @@ namespace Unit {
         [SerializeField] BoolEvent reviveEvent;
 
         int _currentCurrentHealth;
-        
+
         public int CurrentHealth {
             get => _currentCurrentHealth;
             set => _currentCurrentHealth =
                 Mathf.Clamp(value, 0, GetComponent<IGetMaxHealth>().MaxHealth());
         }
-        public bool IsDead => this.CurrentHealth <= 0;
+
+        public bool IsDead => CurrentHealth <= 0;
 
         public void TakeDamage(int damage) {
-            this.CurrentHealth -= damage;
-            var damageUI = Instantiate(this.damageUIPrefab, this.canvasParent.position,
-                this.canvasParent.rotation, this.canvasParent);
+            CurrentHealth -= damage;
+            var damageUI = Instantiate(damageUIPrefab, canvasParent.position,
+                canvasParent.rotation, canvasParent);
             damageUI.SetUp(damage);
-            if (this.IsDead) this.deathEvent?.Invoke();
-            
+            if (IsDead) deathEvent?.Invoke();
+
             //Enters dead state.
-            this.takingDamageEvent?.Invoke(this.CurrentHealth);
+            takingDamageEvent?.Invoke(CurrentHealth);
             //TODO: Change hard coded layer index to -> something not hard coded.
-            if (this.gameObject.layer != 8 && !this.IsDead) return;
+            if (gameObject.layer != 8 && !IsDead) return;
             StateLogic.CheckState();
         }
 
         public void RevivePlayer() {
-           
             reviveEvent?.Invoke();
         }
     }

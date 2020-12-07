@@ -6,7 +6,7 @@ namespace Unit {
         public float moveSpeed;
         public Weapon mainWeapon;
     }
-    
+
     public interface IGetMaxHealth {
         int MaxHealth();
     }

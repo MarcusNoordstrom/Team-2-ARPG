@@ -1,14 +1,11 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Unit {
     public class TemporaryWeaponScript : MonoBehaviour {
         public MeleeWeapon meleeWeapon;
 
         void Update() {
-            if (Input.GetKeyDown(KeyCode.J)) {
-                print(this.meleeWeapon.baseDamage);
-            }
+            if (Input.GetKeyDown(KeyCode.J)) print(meleeWeapon.baseDamage);
         }
     }
 }

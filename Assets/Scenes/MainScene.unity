@@ -481,6 +481,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: bd728bf38e5fcbb40a10ec74d8617a70, type: 2}
     - target: {fileID: 252846312419200699, guid: 7d21f5794f1c0fa45922aeb3374df1a5, type: 3}
+      propertyPath: basicUnit
+      value: 
+      objectReference: {fileID: 11400000, guid: bd728bf38e5fcbb40a10ec74d8617a70, type: 2}
+    - target: {fileID: 252846312419200699, guid: 7d21f5794f1c0fa45922aeb3374df1a5, type: 3}
       propertyPath: basicEnemy
       value: 
       objectReference: {fileID: 11400000, guid: bd728bf38e5fcbb40a10ec74d8617a70, type: 2}
@@ -1097,6 +1101,10 @@ PrefabInstance:
       propertyPath: BasicUnit
       value: 
       objectReference: {fileID: 11400000, guid: 2b9d05680b34f1e428d9a8202092acdf, type: 2}
+    - target: {fileID: 1224948081879810052, guid: 3361596631f6b354baecfffd80324b2d, type: 3}
+      propertyPath: basicUnit
+      value: 
+      objectReference: {fileID: 11400000, guid: 2b9d05680b34f1e428d9a8202092acdf, type: 2}
     - target: {fileID: 7830386539435139129, guid: 3361596631f6b354baecfffd80324b2d, type: 3}
       propertyPath: parent
       value: 
@@ -1131,7 +1139,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7830386539435139129, guid: 3361596631f6b354baecfffd80324b2d, type: 3}
       propertyPath: deathEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ChangeLayerOnDeath
+      value: OnDeath
       objectReference: {fileID: 0}
     - target: {fileID: 7830386539435139129, guid: 3361596631f6b354baecfffd80324b2d, type: 3}
       propertyPath: takingDamageEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -1147,7 +1155,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7830386539435139129, guid: 3361596631f6b354baecfffd80324b2d, type: 3}
       propertyPath: deathEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Player.PlayerController, Assembly-CSharp
+      value: Unit.BaseUnit, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 7830386539435139129, guid: 3361596631f6b354baecfffd80324b2d, type: 3}
       propertyPath: takingDamageEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -1317,7 +1325,19 @@ MonoBehaviour:
         m_CallState: 2
   deathEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1700445491}
+        m_TargetAssemblyTypeName: Unit.BaseUnit, Assembly-CSharp
+        m_MethodName: OnDeath
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   reviveEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -1331,6 +1351,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1aa94267d0e327d4990e20aa2a75d08b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1700445491 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 252846312419200699, guid: 7d21f5794f1c0fa45922aeb3374df1a5, type: 3}
+  m_PrefabInstance: {fileID: 293972196}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1700445486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c4803f9609f1e846ab36492f6e76318, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &1700445496 stripped

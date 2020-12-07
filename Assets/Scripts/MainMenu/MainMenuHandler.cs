@@ -1,5 +1,4 @@
 ﻿using GameStates;
-using Player;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -9,11 +8,11 @@ namespace MainMenu {
         public GameObject mainMenu;
         public GameObject settingsMenu;
         public Text playBtnTxt;
-        StateLogic stateHandler => FindObjectOfType<StateLogic>();
         public Camera mainMenuCamera;
+        StateLogic stateHandler => FindObjectOfType<StateLogic>();
         public AudioListener mainMenuAudioListener => mainMenuCamera.GetComponent<AudioListener>();
-        
-        private void Awake() {
+
+        void Awake() {
             settingsMenu.SetActive(false);
 
             playBtnTxt.text = SceneManager.sceneCount <= 1 ? "Play" : "Resume";
@@ -33,16 +32,10 @@ namespace MainMenu {
         }
 
         public void Play() {
-            if (playBtnTxt.text == "Resume") {
-                StateLogic.GameIsPaused = false;
-                //StateLogic.ChangeState(State.GameStates.Alive);
-            }
-            else {
-                //TODO: LOAD FIRST LEVEL HERE
-                //SceneManager.LoadScene("First Level");
-            }
+            if (playBtnTxt.text == "Resume") StateLogic.GameIsPaused = false;
+            //StateLogic.ChangeState(State.GameStates.Alive);
         }
-        
+
         //TODO: Replace with the real Quit function later
         public void QuitGame() {
             Application.Quit();

@@ -1,18 +1,15 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class QuitMenu : MonoBehaviour {
-    private bool isOpen;
     public GameObject menu;
-    void Update() {
-        if (Input.GetKeyDown(KeyCode.Escape)) {
-            isOpen = !isOpen;
-        }
+    bool isOpen;
 
-        if (isOpen) {
+    void Update() {
+        if (Input.GetKeyDown(KeyCode.Escape)) isOpen = !isOpen;
+
+        if (isOpen)
             menu.gameObject.SetActive(true);
-        }else menu.gameObject.SetActive(false);
+        else menu.gameObject.SetActive(false);
     }
 
     public void QuitApplication() {

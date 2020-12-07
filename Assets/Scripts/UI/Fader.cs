@@ -12,7 +12,7 @@ namespace UI {
 
         public IEnumerator FadeOut() {
             var alpha = 1f;
-        
+
             while (alpha > 0) {
                 alpha -= Time.deltaTime;
                 _canvasGroup.alpha = alpha;
@@ -26,7 +26,7 @@ namespace UI {
             while (alpha < 1) {
                 alpha += Time.deltaTime;
                 _canvasGroup.alpha = alpha;
-                
+
                 yield return null;
             }
         }
@@ -36,6 +36,5 @@ namespace UI {
             _canvasGroup.interactable = false;
             _canvasGroup.blocksRaycasts = false;
         }
-
     }
 }

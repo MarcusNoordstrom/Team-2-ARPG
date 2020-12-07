@@ -7,15 +7,13 @@ public class StateTesting : MonoBehaviour {
         StateLogic.GameIsPaused = true;
         StateLogic.CheckState();
 
-        if (Input.GetKeyDown(KeyCode.D)) {
-            StateLogic.ChangeStateTo(State.GameStates.Dead);
-        } 
+        if (Input.GetKeyDown(KeyCode.D)) StateLogic.ChangeStateTo(State.GameStates.Dead);
 
         // if (Input.anyKeyDown) {
         //     StateLogic.ChangeStateTo(EnumerateStates());
         // }
     }
-    
+
     // private State.GameStates EnumerateStates() {
     //     KeyCode[] allowedIndex = {KeyCode.Alpha0, KeyCode.Alpha1, KeyCode.Alpha2};
     //     State.GameStates[] stateArray = {State.GameStates.Alive, State.GameStates.Dead, State.GameStates.Paused};

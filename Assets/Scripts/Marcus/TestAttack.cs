@@ -1,20 +1,17 @@
-﻿using System;
-using System.Collections;
-using Unit;
+﻿using Unit;
 using UnityEngine;
 
-public class TestAttack : MonoBehaviour
-{
+public class TestAttack : MonoBehaviour {
     public int damage = 10; //Part of weaponSO
-    private Health targetHealth;
     public float timer;
-    private float initTimer;
-    
-    
-    private void Awake() {
+    float initTimer;
+    Health targetHealth;
+
+
+    void Awake() {
         initTimer = timer;
     }
-    
+
     // private IEnumerator Attacking(){
     //     while (true){
     //         yield return new WaitForSeconds(0.1f);
@@ -24,9 +21,9 @@ public class TestAttack : MonoBehaviour
     //         }
     //     }
     // }
-    
+
     //A way to do it without Coroutine
-    private void OnCollisionEnter(Collision other) {
+    void OnCollisionEnter(Collision other) {
         timer--;
         if (!(timer <= 0) || !other.gameObject.CompareTag("Player")) return;
         Debug.Log("B");

@@ -1,16 +1,16 @@
-﻿using UnityEngine;
-using GameStates;
+﻿using GameStates;
 using Player;
 using Unit;
+using UnityEngine;
 
 public class Death : MonoBehaviour {
-    private void Update() {
+    void Update() {
         if (Input.GetKeyDown(KeyCode.R)) {
             FindObjectOfType<PlayerController>().GetComponent<Health>().RevivePlayer();
             StateLogic.CheckState();
         }
     }
-    
+
     // public int health;
     //Rename and refactor according to Health Script later and fix-up.
     // public void Die(int health) {

@@ -2,9 +2,8 @@
 
 namespace Core {
     public class PersistantObjects : MonoBehaviour {
+        static bool _hasBeenInstaniated;
         public GameObject persistantObjects;
-
-        static bool _hasBeenInstaniated = false;
 
         void Start() {
             if (_hasBeenInstaniated) return;
@@ -15,7 +14,7 @@ namespace Core {
         }
 
         void SpawnPersistantObjects() {
-            var persistantObject = Instantiate(this.persistantObjects);
+            var persistantObject = Instantiate(persistantObjects);
             DontDestroyOnLoad(persistantObject);
         }
     }

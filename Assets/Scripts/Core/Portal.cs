@@ -14,11 +14,29 @@ namespace Core {
         public string toolTip;
 
         void OnEnable() {
-            this.toolTipText.text = this.toolTip;
+            toolTipText.text = toolTip;
+        }
+
+        void OnMouseExit() {
+            toolTipText.enabled = false;
+        }
+
+        void OnMouseOver() {
+            toolTipText.enabled = true;
+            var yAxis = GetComponent<BoxCollider>().bounds.size.y;
+            toolTipText.transform.position =
+                new Vector3(transform.position.x, transform.position.y + yAxis, transform.position.z);
+        }
+
+        void OnTriggerStay(Collider other) {
+            if (!PlayerController.HasClickedOnPortal) return;
+            if (1 << other.gameObject.layer != LayerMask.GetMask("Player")) return;
+            StartCoroutine(Transition());
+            PlayerController.HasClickedOnPortal = false;
         }
 
         IEnumerator Transition() {
-            DontDestroyOnLoad(this.gameObject);
+            DontDestroyOnLoad(gameObject);
             var fader = FindObjectOfType<Fader>();
             yield return fader.FadeIn();
             yield return SceneManager.LoadSceneAsync(FindObjectOfType<Portal>().sceneToLoad);
@@ -26,7 +44,7 @@ namespace Core {
             //Todo Game Designers wants a loading screen, how long should the waiting time be? Also needs to stop movement during the wait period
             //yield return new WaitForSeconds(5f);
             yield return fader.FadeOut();
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
 
         void UpdatePlayerPosition(Portal portal) {
@@ -37,28 +55,11 @@ namespace Core {
         Portal GetPortal() {
             foreach (var portal in FindObjectsOfType<Portal>()) {
                 if (portal == this) continue;
-                if (portal.spawnPoint != this.spawnPoint) continue;
+                if (portal.spawnPoint != spawnPoint) continue;
                 return portal;
             }
 
             return null;
-        }
-
-        void OnMouseOver() {
-            this.toolTipText.enabled = true;
-            var yAxis = GetComponent<BoxCollider>().bounds.size.y;
-            this.toolTipText.transform.position = new Vector3(this.transform.position.x, this.transform.position.y + yAxis, this.transform.position.z);
-        }
-
-        void OnMouseExit() {
-            this.toolTipText.enabled = false;
-        }
-
-        void OnTriggerStay(Collider other) {
-            if (!PlayerController.HasClickedOnPortal) return;
-            if ((1 << other.gameObject.layer) != LayerMask.GetMask("Player")) return;
-            StartCoroutine(Transition());
-            PlayerController.HasClickedOnPortal = false;
         }
     }
 }

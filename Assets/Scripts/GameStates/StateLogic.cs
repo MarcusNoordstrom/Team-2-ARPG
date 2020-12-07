@@ -12,36 +12,32 @@ using UnityEngine.SceneManagement;
 
 namespace GameStates {
     public class StateLogic : MonoBehaviour {
-        [SerializeField] private GameObject deathMenu;
-        private GameObject Player => FindObjectOfType<PlayerController>().gameObject;
-        private PlayerController PlayerController => Player.GetComponent<PlayerController>();
-        private bool IsDead => Player.GetComponent<Health>().IsDead;
-
         public static bool GameIsPaused;
+        [SerializeField] GameObject deathMenu;
+        GameObject Player => FindObjectOfType<PlayerController>().gameObject;
+        PlayerController PlayerController => Player.GetComponent<PlayerController>();
+        bool IsDead => Player.GetComponent<Health>().IsDead;
 
         public static void CheckState() {
-            StateLogic logic = FindObjectOfType<StateLogic>();
+            var logic = FindObjectOfType<StateLogic>();
             logic.ChangeStateInternal();
         }
 
         public static void ChangeStateTo(State.GameStates stateToChangeTo) {
             State.CheckState = stateToChangeTo;
         }
-        
-        private void ChangeStateInternal() {
+
+        void ChangeStateInternal() {
             // State.CheckState = IsDead ? State.GameStates.Dead : State.GameStates.Alive;
             // State.CheckState = GameIsPaused ? State.GameStates.Paused : State.GameStates.Alive;
 
-            if (IsDead && State.CheckState != State.GameStates.Dead) {
+            if (IsDead && State.CheckState != State.GameStates.Dead)
                 State.CheckState = State.GameStates.Dead;
-            }
-            else if (!IsDead && GameIsPaused && State.CheckState != State.GameStates.Paused) {
+            else if (!IsDead && GameIsPaused && State.CheckState != State.GameStates.Paused)
                 State.CheckState = State.GameStates.Paused;
-            }
-            else {
+            else
                 State.CheckState = State.GameStates.Alive;
-            }
-            
+
 
             switch (State.CheckState) {
                 case State.GameStates.Alive: {
@@ -59,40 +55,36 @@ namespace GameStates {
             }
         }
 
-        private void Alive() {
+        void Alive() {
             Debug.Log("Entered State: ALIVE");
             Time.timeScale = 1f;
             PlayerController.enabled = true;
-            Player.GetComponent<Health>().enabled = true;//Enables Player Input
-            
+            Player.GetComponent<Health>().enabled = true; //Enables Player Input
+
             //Unloads Death Menu OLD
             // if (deathMenu.activeInHierarchy) {
             //     Debug.Log("CAME BACK FROM DEATH STATE");
             //     deathMenu.gameObject.SetActive(false);
             // }
 
-            if (SceneManager.sceneCount > 1) {
-                SceneManager.UnloadSceneAsync("Death Scene");
-            } 
-            
+            if (SceneManager.sceneCount > 1) SceneManager.UnloadSceneAsync("Death Scene");
+
             //Unloads Pause Menu
-             if (!GameIsPaused) return;
-             Debug.Log("CAME BACK FROM PAUSE STATE");
-             SceneManager.UnloadSceneAsync(0);
-             Time.timeScale = 1f;
+            if (!GameIsPaused) return;
+            Debug.Log("CAME BACK FROM PAUSE STATE");
+            SceneManager.UnloadSceneAsync(0);
+            Time.timeScale = 1f;
         }
-        
-        private void Dead() {
+
+        void Dead() {
             //TODO: Fix so ENEMIES does NOT attack when you are dead.
             Debug.Log("Entered State: DEAD");
             PlayerController.enabled = false; //Disables Player Input
             Player.GetComponent<Health>().enabled = false;
             //TODO: Using BuildIndexCount - 1 does not work? out of range exception, WTF?
             SceneManager.LoadScene(3, LoadSceneMode.Additive);
-            
-            
         }
-        
+
         void Pause() {
             Debug.Log("Entered State: PAUSED");
             if (SceneManager.sceneCount >= 1 && GameIsPaused) {
@@ -102,6 +94,7 @@ namespace GameStates {
                 GameIsPaused = false;
                 CheckState();
             }
+
             Time.timeScale = 1f;
         }
     }
