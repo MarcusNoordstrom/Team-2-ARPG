@@ -46,7 +46,7 @@ namespace Unit {
         }
 
         public void RevivePlayer() {
-            reviveEvent?.Invoke();
+            takingDamageEvent?.Invoke(CurrentHealth);
         }
     }
 }

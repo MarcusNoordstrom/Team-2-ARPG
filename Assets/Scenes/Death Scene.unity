@@ -577,7 +577,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1302700221}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1970850262}
+        m_TargetAssemblyTypeName: GameStates.StateLogic, Assembly-CSharp
+        m_MethodName: OnResurrect
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1302700221
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1128,7 +1140,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1970850260}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d24e9d1b489e17048b547ea7a093f9f7, type: 3}
+  m_Script: {fileID: 11500000, guid: 324551b2bf6765a419e82ff1d5c04797, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1975131114
