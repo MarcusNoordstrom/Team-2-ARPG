@@ -18,6 +18,8 @@ namespace Unit {
         [SerializeField] FloatEvent takingDamageEvent;
         [SerializeField] BoolEvent deathEvent;
         [SerializeField] BoolEvent reviveEvent;
+        [SerializeField] BoolEvent lowHealthEvent;
+        [SerializeField] float lowHealthTrigger;
 
         int _currentCurrentHealth;
 
@@ -35,6 +37,10 @@ namespace Unit {
                 canvasParent.rotation, canvasParent);
             damageUI.SetUp(damage);
             takingDamageEvent?.Invoke(CurrentHealth);
+
+            if (CurrentHealth <= lowHealthTrigger) {
+                lowHealthEvent?.Invoke();
+            }
             
             if (IsDead) deathEvent?.Invoke();
         }
