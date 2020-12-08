@@ -48,6 +48,8 @@ namespace Player {
             gameObject.layer = LayerMask.NameToLayer("Player");
             BaseHealth.CurrentHealth = MaxHealth();
             BaseNavMeshAgent.isStopped = false;
+            BaseHealth.RevivePlayer();
+            GetComponent<AudioSource>().Stop();
         }
     }
 }
