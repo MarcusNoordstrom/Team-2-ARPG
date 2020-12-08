@@ -2,10 +2,13 @@
 
 namespace Unit {
     public class Attack : MonoBehaviour {
+        [HideInInspector]
         public Weapon weapon;
         [SerializeField] Transform bulletSpawnPoint;
 
         float _attackTimer;
+
+        public string animTrigger;
 
         Bullet _bulletPrefab;
         bool _canAttack;
@@ -17,12 +20,14 @@ namespace Unit {
             if (!_canAttack) return;
 
             if (!CanAttack) return;
-
+            
             _attackTimer = Time.time;
             if (weapon is RangeWeapon)
                 SpawnBullet();
             else
                 Melee();
+            if (animTrigger == null || GetComponent<Animator>() == null) return;
+            GetComponent<Animator>().SetTrigger(animTrigger);
         }
 
         public void ChangeWeapon(Weapon weapon) {
