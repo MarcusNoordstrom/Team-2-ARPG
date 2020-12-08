@@ -86,10 +86,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Obstacle_lanturn_animated
       objectReference: {fileID: 0}
+    - target: {fileID: 1784369419945620618, guid: 2daaf9fbafb96f24eab72562a6421f91, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7698865164069301293, guid: 2daaf9fbafb96f24eab72562a6421f91, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 3bc007fc99c73cc45876d002f34cb47c, type: 2}
+      objectReference: {fileID: 2100000, guid: 08da4bee9ee2f594a8159d8d7606a753, type: 2}
     - target: {fileID: 7746791789980568565, guid: 2daaf9fbafb96f24eab72562a6421f91, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
