@@ -26,7 +26,7 @@ namespace Unit {
                 SpawnBullet();
             else
                 Melee();
-            if (animTrigger == null) return;
+            if (animTrigger == null || GetComponent<Animator>() == null) return;
             GetComponent<Animator>().SetTrigger(animTrigger);
         }
 
