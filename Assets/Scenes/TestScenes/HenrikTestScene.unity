@@ -303,7 +303,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: b859d9afc597c42a8ba66aac879e44de, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -399,7 +399,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: b859d9afc597c42a8ba66aac879e44de, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -621,7 +621,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 324551b2bf6765a419e82ff1d5c04797, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deathMenu: {fileID: 492629722}
 --- !u!4 &1076646861
 Transform:
   m_ObjectHideFlags: 0
@@ -951,7 +950,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: b859d9afc597c42a8ba66aac879e44de, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1299,7 +1298,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 36ab64441da4906459e01b6764bb58e4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1358,7 +1357,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f63e2af6429bef146ae73b6fdf7aba11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  basicPlayer: {fileID: 11400000, guid: 2b9d05680b34f1e428d9a8202092acdf, type: 2}
+  basicUnit: {fileID: 0}
 --- !u!195 &1821554061
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1424,7 +1423,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageUIPrefab: {fileID: 6903674934049428664, guid: 02a3ead787d4dd141b0d308794a501b1, type: 3}
-  parent: {fileID: 1091822911}
+  canvasParent: {fileID: 0}
   takingDamageEvent:
     m_PersistentCalls:
       m_Calls:
@@ -1441,6 +1440,9 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   deathEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  reviveEvent:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &1821554066
@@ -1518,6 +1520,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 252846312419200702, guid: 7d21f5794f1c0fa45922aeb3374df1a5, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e9c13d5c05243134e9df9e2b89169787, type: 2}
     - target: {fileID: 8566664389819881827, guid: 7d21f5794f1c0fa45922aeb3374df1a5, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
