@@ -62,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 36ab64441da4906459e01b6764bb58e4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -111,6 +111,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneToLoad: Eric S TestScene
   spawnPoint: 0
+  toolTipText: {fileID: 0}
+  toolTip: 
 --- !u!1 &3246177572260833888
 GameObject:
   m_ObjectHideFlags: 0

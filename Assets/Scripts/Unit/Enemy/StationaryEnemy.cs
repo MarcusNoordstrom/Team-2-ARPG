@@ -33,6 +33,7 @@ public class StationaryEnemy : BaseUnit {
         _ticks -= TicksPerUpdate;
         
         if (_visibilityCheck.IsVisible(_target.gameObject)) {
+            
             _lookAtTarget.enabled = true;
             BaseAttack.ActivateAttack(_target.gameObject);
         }
