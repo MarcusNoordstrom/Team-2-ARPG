@@ -2,10 +2,10 @@
 using UnityEngine.AI;
 
 namespace Unit {
-    [RequireComponent(typeof(NavMeshAgent), typeof(Health), typeof(Attack))]
+    [RequireComponent(typeof(Health), typeof(Attack))]
     public class BaseUnit : MonoBehaviour, IGetMaxHealth {
         [SerializeField] private protected BasicUnit basicUnit;
-        protected NavMeshAgent BaseNavMeshAgent => GetComponent<NavMeshAgent>();
+        protected virtual NavMeshAgent BaseNavMeshAgent => GetComponent<NavMeshAgent>();
         protected Attack BaseAttack => GetComponent<Attack>();
         protected Health BaseHealth => GetComponent<Health>();
 
@@ -17,11 +17,10 @@ namespace Unit {
             return basicUnit.maxHealth;
         }
 
-        void Setup() {
-            GetComponent<NavMeshAgent>().speed = basicUnit.moveSpeed;
-            GetComponent<Health>().CurrentHealth = basicUnit.maxHealth;
-            BaseAttack.ChangeWeapon(basicUnit.mainWeapon);
+        protected  virtual void Setup() {
+            BaseNavMeshAgent.speed = basicUnit.moveSpeed;
             BaseHealth.CurrentHealth = basicUnit.maxHealth;
+            BaseAttack.ChangeWeapon(basicUnit.mainWeapon);
         }
 
         public virtual void OnDeath() {
