@@ -1,4 +1,6 @@
-﻿using Core;
+﻿using System;
+using Core;
+using GameStates;
 using Unit;
 using UnityEngine;
 using UnityEngine.AI;
@@ -44,12 +46,19 @@ namespace Player {
             BaseNavMeshAgent.isStopped = true;
         }
 
-        public void OnResurrect() {
+        public void ResurrectBase() {
             gameObject.layer = LayerMask.NameToLayer("Player");
             BaseHealth.CurrentHealth = MaxHealth();
             BaseNavMeshAgent.isStopped = false;
             BaseHealth.RevivePlayer();
             GetComponent<AudioSource>().Stop();
+        }
+
+        public void OnResurrectAtCheckpoint() {
+            if (Checkpoint.CheckpointTransform == null) {
+                return;
+            }
+            BaseNavMeshAgent.Warp(Checkpoint.CheckpointTransform.position);
         }
     }
 }

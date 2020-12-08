@@ -23,12 +23,6 @@ namespace Player {
             _navMeshAgent.isStopped = false;
         }
 
-        public void ResurrectAtCheckpoint() {
-            _navMeshAgent.Warp(checkPoint.position);
-            DisableComponent(true);
-            _navMeshAgent.isStopped = false;
-        }
-
         void DisableComponent(bool disable) {
             var _canvasgroup = GetComponent<CanvasGroup>();
             if (disable) {

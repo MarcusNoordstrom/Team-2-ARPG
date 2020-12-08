@@ -31,7 +31,13 @@ namespace GameStates {
 
         public static void OnResurrect() {
             SceneManager.UnloadSceneAsync("Death Scene");
-            _playerController.OnResurrect();
+            _playerController.ResurrectBase();
+        }
+        
+        public static void OnResurrectAtCheckpoint() {
+            SceneManager.UnloadSceneAsync("Death Scene");
+            _playerController.ResurrectBase();
+            _playerController.OnResurrectAtCheckpoint();
         }
     }
 }
