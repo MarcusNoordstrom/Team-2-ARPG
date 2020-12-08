@@ -305,7 +305,7 @@ Terrain:
   m_DrawInstanced: 0
   m_DrawTreesAndFoliage: 1
   m_ReflectionProbeUsage: 1
-  m_MaterialTemplate: {fileID: 10652, guid: 0000000000000000f000000000000000, type: 0}
+  m_MaterialTemplate: {fileID: 2100000, guid: 594ea882c5a793440b60ff72d896021e, type: 2}
   m_BakeLightProbesForTrees: 1
   m_PreserveTreePrototypeLayers: 0
   m_DeringLightProbesForTrees: 1
@@ -3949,10 +3949,42 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7112771049357282203, guid: 67ab7250477d7433eb0ef3fb7a87083a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 47f2e34d0f7d8914c8c54993a68b3227, type: 2}
+    - target: {fileID: -2906553709926598893, guid: 67ab7250477d7433eb0ef3fb7a87083a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 47f2e34d0f7d8914c8c54993a68b3227, type: 2}
+    - target: {fileID: -1548385079526528590, guid: 67ab7250477d7433eb0ef3fb7a87083a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 47f2e34d0f7d8914c8c54993a68b3227, type: 2}
     - target: {fileID: 919132149155446097, guid: 67ab7250477d7433eb0ef3fb7a87083a, type: 3}
       propertyPath: m_Name
       value: Turret
       objectReference: {fileID: 0}
+    - target: {fileID: 5524821941798763896, guid: 67ab7250477d7433eb0ef3fb7a87083a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 47f2e34d0f7d8914c8c54993a68b3227, type: 2}
+    - target: {fileID: 7037965981605214059, guid: 67ab7250477d7433eb0ef3fb7a87083a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 47f2e34d0f7d8914c8c54993a68b3227, type: 2}
+    - target: {fileID: 7085871232591161127, guid: 67ab7250477d7433eb0ef3fb7a87083a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 47f2e34d0f7d8914c8c54993a68b3227, type: 2}
+    - target: {fileID: 7348093383187784398, guid: 67ab7250477d7433eb0ef3fb7a87083a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 47f2e34d0f7d8914c8c54993a68b3227, type: 2}
+    - target: {fileID: 7621597275518437571, guid: 67ab7250477d7433eb0ef3fb7a87083a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 47f2e34d0f7d8914c8c54993a68b3227, type: 2}
     - target: {fileID: 9043264698519129883, guid: 67ab7250477d7433eb0ef3fb7a87083a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.0012838097
