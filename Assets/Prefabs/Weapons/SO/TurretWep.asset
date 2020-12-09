@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: TurretWep
   m_EditorClassIdentifier: 
   baseDamage: 10
-  attackSpeed: 2
-  range: 20
+  attackSpeed: 1
+  range: 25
   bulletPrefab: {fileID: 5418528933250074970, guid: 6a766590865850146a795af7da31f83c, type: 3}
