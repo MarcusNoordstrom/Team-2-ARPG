@@ -17,11 +17,11 @@ namespace Unit {
         [SerializeField] Transform canvasParent;
         [SerializeField] FloatEvent takingDamageEvent;
         [SerializeField] BoolEvent deathEvent;
-        [SerializeField] BoolEvent reviveEvent;
         [SerializeField] BoolEvent lowHealthEvent;
         [SerializeField] float lowHealthTrigger;
 
         int _currentCurrentHealth;
+        bool soundTriggered;
 
         public int CurrentHealth {
             get => _currentCurrentHealth;
@@ -30,22 +30,24 @@ namespace Unit {
         }
 
         public bool IsDead => CurrentHealth <= 0;
-
+        
         public void TakeDamage(int damage) {
             CurrentHealth -= damage;
             var damageUI = Instantiate(damageUIPrefab, canvasParent.position,
                 canvasParent.rotation, canvasParent);
             damageUI.SetUp(damage);
             takingDamageEvent?.Invoke(CurrentHealth);
-
-            if (CurrentHealth <= lowHealthTrigger) {
+            
+            if (CurrentHealth <= lowHealthTrigger && !soundTriggered) {
+                soundTriggered = true;
                 lowHealthEvent?.Invoke();
             }
-            
+
             if (IsDead) deathEvent?.Invoke();
         }
 
-        public void RevivePlayer() {
+        public void RevivePlayer() { //TODO Convert to interface
+            soundTriggered = false;
             takingDamageEvent?.Invoke(CurrentHealth);
         }
     }
