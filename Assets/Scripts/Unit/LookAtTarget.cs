@@ -15,7 +15,7 @@ namespace Unit {
 
         void FixedUpdate() {
             var lookRotation = Quaternion.LookRotation((target.position - partToRotate.position).normalized, Vector3.up);
-            this.partToRotate.rotation = Quaternion.Slerp(partToRotate.rotation, lookRotation, 10f * Time.deltaTime);
+            this.partToRotate.rotation = Quaternion.Slerp(partToRotate.rotation, lookRotation, 12f * Time.fixedDeltaTime);
         }
 
         public void Setup(Transform target) {

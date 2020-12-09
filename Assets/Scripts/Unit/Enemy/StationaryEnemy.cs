@@ -1,4 +1,5 @@
 ﻿using System;
+using Microsoft.SqlServer.Server;
 using Player;
 using Unit;
 using UnityEngine;
@@ -10,7 +11,7 @@ public class StationaryEnemy : BaseUnit {
     VisibilityCheck _visibilityCheck;
     int _ticks;
     const int TicksPerUpdate = 15;
-    
+    [SerializeField] private Transform pivot;
     PlayerController _target => FindObjectOfType<PlayerController>();
     
     protected override void Setup() {
@@ -35,6 +36,7 @@ public class StationaryEnemy : BaseUnit {
         if (_visibilityCheck.IsVisible(_target.gameObject)) {
             
             _lookAtTarget.enabled = true;
+            if (Vector3.Angle(this.pivot.forward,(_target.transform.position - this.pivot.position).normalized) < 50)
             BaseAttack.ActivateAttack(_target.gameObject);
         }
         else {

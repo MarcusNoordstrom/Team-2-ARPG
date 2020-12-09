@@ -5,11 +5,10 @@ namespace Unit {
         [HideInInspector]
         public Weapon weapon;
         [SerializeField] Transform bulletSpawnPoint;
-
-        float _attackTimer;
-
         public string animTrigger;
-
+        [SerializeField] private Animator animator;
+        
+        float _attackTimer;
         Bullet _bulletPrefab;
         bool _canAttack;
         Health _health;
@@ -21,13 +20,14 @@ namespace Unit {
 
             if (!CanAttack) return;
             
-            _attackTimer = Time.time;
+            if (animTrigger == null || this.animator == null) return;
+            this.animator.SetTrigger(animTrigger);
+            
             if (weapon is RangeWeapon)
                 SpawnBullet();
             else
                 Melee();
-            if (animTrigger == null || GetComponent<Animator>() == null) return;
-            GetComponent<Animator>().SetTrigger(animTrigger);
+            _attackTimer = Time.time;
         }
 
         public void ChangeWeapon(Weapon weapon) {
