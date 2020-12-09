@@ -36,7 +36,7 @@ namespace Unit {
             var damageUI = Instantiate(damageUIPrefab, canvasParent.position,
                 canvasParent.rotation, canvasParent);
             damageUI.SetUp(damage);
-            takingDamageEvent?.Invoke(CurrentHealth);
+            takingDamageEvent?.Invoke(CurrentHealth * 0.01f);
             
             if (CurrentHealth <= lowHealthTrigger && !soundTriggered) {
                 soundTriggered = true;
