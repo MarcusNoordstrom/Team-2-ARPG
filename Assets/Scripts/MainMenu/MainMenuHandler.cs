@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 namespace MainMenu {
     public class MainMenuHandler : MonoBehaviour {
-        public GameObject mainMenu;
         public Text playBtnTxt;
         public Camera mainMenuCamera;
         public AudioListener mainMenuAudioListener => mainMenuCamera.GetComponent<AudioListener>();
@@ -14,11 +13,9 @@ namespace MainMenu {
             playBtnTxt.text = SceneManager.sceneCount <= 1 ? "Play" : "Resume";
             if (playBtnTxt.text != "Resume") return;
             Destroy(mainMenuAudioListener);
-            Destroy(mainMenuCamera);
-        }
-
-        public void ShowMainMenu() {
-            mainMenu.SetActive(true);
+            if (playBtnTxt.text == "Resume") {
+                mainMenuCamera.enabled = false;
+            }
         }
 
         public void Play() {

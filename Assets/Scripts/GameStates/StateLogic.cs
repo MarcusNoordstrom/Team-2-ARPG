@@ -1,6 +1,4 @@
-﻿using System;
-using Player;
-using Unit;
+﻿using Player;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,7 +6,7 @@ namespace GameStates {
     public class StateLogic : MonoBehaviour {
         static bool _gameIsPaused;
         static PlayerController _playerController;
-        
+
         void Start() {
             _playerController = FindObjectOfType<PlayerController>();
         }
