@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Runtime.CompilerServices;
 using GameStates;
+using UI;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -13,12 +15,15 @@ namespace Unit {
     }
 
     public class Health : MonoBehaviour {
+        [SerializeField] GameObject HealthUI;
         [SerializeField] DamageUI damageUIPrefab;
         [SerializeField] Transform canvasParent;
         [SerializeField] FloatEvent takingDamageEvent;
         [SerializeField] BoolEvent deathEvent;
         [SerializeField] BoolEvent lowHealthEvent;
         [SerializeField] float lowHealthTrigger;
+        
+        public static int CurrentHealthBars;
 
         int _currentCurrentHealth;
         bool soundTriggered;
@@ -29,6 +34,13 @@ namespace Unit {
                 Mathf.Clamp(value, 0, GetComponent<IGetMaxHealth>().MaxHealth());
         }
 
+        void Start() {
+            if (gameObject.layer == LayerMask.NameToLayer("Player")) {
+                CurrentHealthBars = CurrentHealth; 
+                HealthUI.GetComponent<HealthBarUI>().InstantiateHealthTicks();
+            }
+        }
+
         public bool IsDead => CurrentHealth <= 0;
         
         public void TakeDamage(int damage) {
@@ -36,7 +48,11 @@ namespace Unit {
             var damageUI = Instantiate(damageUIPrefab, canvasParent.position,
                 canvasParent.rotation, canvasParent);
             damageUI.SetUp(damage);
-            takingDamageEvent?.Invoke(CurrentHealth * 0.01f);
+            //takingDamageEvent?.Invoke(CurrentHealth * 0.5f);
+            
+            HealthUI.GetComponent<HealthBarUI>().RemoveHealthTick(damage);
+            
+            Debug.Log(CurrentHealth);
             
             if (CurrentHealth <= lowHealthTrigger && !soundTriggered) {
                 soundTriggered = true;
@@ -49,6 +65,7 @@ namespace Unit {
         public void RevivePlayer() { //TODO Convert to interface
             soundTriggered = false;
             takingDamageEvent?.Invoke(CurrentHealth);
+            HealthUI.GetComponent<HealthBarUI>().InstantiateHealthTicks();
         }
     }
 }
