@@ -10,8 +10,14 @@ namespace Player {
     [RequireComponent(typeof(Rigidbody))]
     public class PlayerController : BaseUnit {
         public static bool HasClickedOnPortal { get; set; }
+        Animator _animator => GetComponent<Animator>();
 
         void Update() {
+            
+            if (!BaseNavMeshAgent.hasPath) {
+                PlayIdleAnimation();
+            }
+
             ShouldMovetoMouse();
         }
 
@@ -20,11 +26,13 @@ namespace Player {
             if (Input.GetMouseButton(0) && hit.collider != null)
                 if (hasHit)
                     Movement(hit.point);
+
             ClickedPortal(hit);
         }
 
         void Movement(Vector3 destination) {
             BaseNavMeshAgent.destination = destination;
+            PlayRunningAnimation();
         }
 
         static Ray GetMouseRay() {
@@ -43,7 +51,24 @@ namespace Player {
 
         public override void OnDeath() {
             base.OnDeath();
+            PlayDeathAnimation();
             BaseNavMeshAgent.isStopped = true;
+        }
+
+        void PlayDeathAnimation() {
+            _animator.SetTrigger("Death");
+            _animator.ResetTrigger("Idle");
+            _animator.ResetTrigger("Running");
+        }
+
+        void PlayRunningAnimation() {
+            _animator.SetTrigger("Running");
+            _animator.ResetTrigger("Idle");
+        }
+
+        void PlayIdleAnimation() {
+            _animator.SetTrigger("Idle");
+            _animator.ResetTrigger("Running");
         }
 
         public void ResurrectBase() {
@@ -58,6 +83,7 @@ namespace Player {
             if (Checkpoint.CheckpointTransform == null) {
                 return;
             }
+
             BaseNavMeshAgent.Warp(Checkpoint.CheckpointTransform.position);
         }
     }
