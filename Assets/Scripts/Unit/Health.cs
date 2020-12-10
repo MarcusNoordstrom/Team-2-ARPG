@@ -2,6 +2,7 @@
 using UI;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 namespace Unit {
     [Serializable]
@@ -32,6 +33,8 @@ namespace Unit {
                 Mathf.Clamp(value, 0, GetComponent<IGetMaxHealth>().MaxHealth());
         }
 
+        
+
         void Start() {
             if (gameObject.layer == LayerMask.NameToLayer("Player")) {
                 CurrentHealthBars = CurrentHealth; 
@@ -58,6 +61,10 @@ namespace Unit {
             }
 
             if (IsDead) deathEvent?.Invoke();
+            
+            if (CurrentHealth != GetComponent<IGetMaxHealth>().MaxHealth() && gameObject.layer == LayerMask.NameToLayer("Player")) {
+                HealthBarUI.GetComponent<HorizontalLayoutGroup>().childControlWidth = false;
+            }
         }
 
         public void RevivePlayer() { //TODO Convert to interface

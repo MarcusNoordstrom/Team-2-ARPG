@@ -1,13 +1,13 @@
 ﻿using Unit;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace UI {
     public class HealthBarUI : MonoBehaviour {
         public GameObject healthTickPrefab;
         public GameObject healthStartTickPrefab;
         public GameObject healthEndTickPrefab;
-        
+
+        //TODO: Fix horizontal layout group OR switch back to Grid Layout or FIND OTHER SOLUTION MF
         public void InstantiateHealthTicks() {
             for (int x = 0; x < Health.CurrentHealthBars; x++) {
                 if (x == 0) {
@@ -20,11 +20,6 @@ namespace UI {
                     Instantiate(healthTickPrefab, gameObject.transform);
                 }
             }
-
-            GridLayoutGroup gridLayoutGroup = GetComponent<GridLayoutGroup>();
-            var amountOfTicks = Health.CurrentHealthBars;
-
-            gridLayoutGroup.cellSize = new Vector2(40 - amountOfTicks, 100);
         }
 
         public void RemoveHealthTick(int ticksToRemove) {
