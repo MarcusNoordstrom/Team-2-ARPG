@@ -13,7 +13,7 @@ namespace Unit {
     }
 
     public class Health : MonoBehaviour {
-        [SerializeField] GameObject HealthUI;
+        [SerializeField] GameObject HealthBarUI;
         [SerializeField] DamageUI damageUIPrefab;
         [SerializeField] Transform canvasParent;
         [SerializeField] FloatEvent takingDamageEvent;
@@ -35,7 +35,7 @@ namespace Unit {
         void Start() {
             if (gameObject.layer == LayerMask.NameToLayer("Player")) {
                 CurrentHealthBars = CurrentHealth; 
-                HealthUI.GetComponent<HealthBarUI>().InstantiateHealthTicks();
+                HealthBarUI.GetComponent<HealthBarUI>().InstantiateHealthTicks();
             }
         }
 
@@ -48,7 +48,7 @@ namespace Unit {
             damageUI.SetUp(damage);
             //takingDamageEvent?.Invoke(CurrentHealth * 0.5f);
             
-            HealthUI.GetComponent<HealthBarUI>().RemoveHealthTick(damage);
+            HealthBarUI.GetComponent<HealthBarUI>().RemoveHealthTick(damage);
             
             Debug.Log(CurrentHealth);
             
@@ -63,7 +63,7 @@ namespace Unit {
         public void RevivePlayer() { //TODO Convert to interface
             soundTriggered = false;
             takingDamageEvent?.Invoke(CurrentHealth);
-            HealthUI.GetComponent<HealthBarUI>().InstantiateHealthTicks();
+            HealthBarUI.GetComponent<HealthBarUI>().InstantiateHealthTicks();
         }
     }
 }
