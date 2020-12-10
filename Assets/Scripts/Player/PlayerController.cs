@@ -1,4 +1,5 @@
 ﻿using Core;
+using GameStates;
 using Unit;
 using UnityEngine;
 using UnityEngine.AI;
@@ -12,7 +13,7 @@ namespace Player {
 
         void Update() {
             
-            if (!BaseNavMeshAgent.hasPath) {
+            if (!BaseNavMeshAgent.hasPath && !BaseHealth.IsDead) {
                 PlayIdleAnimation();
             }
 
@@ -30,6 +31,7 @@ namespace Player {
 
         void Movement(Vector3 destination) {
             BaseNavMeshAgent.destination = destination;
+            if (BaseHealth.IsDead) return;
             PlayRunningAnimation();
         }
 
@@ -51,6 +53,7 @@ namespace Player {
             base.OnDeath();
             PlayDeathAnimation();
             BaseNavMeshAgent.isStopped = true;
+            StateLogic.OnDeath();
         }
 
         void PlayDeathAnimation() {
