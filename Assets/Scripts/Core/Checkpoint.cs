@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using UnityEditor.ShaderGraph.Internal;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Checkpoint : MonoBehaviour {
     public static Transform CheckpointTransform;
