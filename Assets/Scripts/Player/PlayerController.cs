@@ -20,9 +20,9 @@ namespace Player {
             ShouldMovetoMouse();
         }
 
-        void ShouldMovetoMouse() {
-            if (Input.GetMouseButton(0) && Physics.Raycast(GetMouseRay(), out var hit, 10000f, ~layerMask)) {
-                print(hit.collider.gameObject.name);
+        void ShouldMovetoMouse(){
+            if (Input.GetMouseButton(0) && Physics.Raycast(GetMouseRay(), out var hit, 10000f, ~layerMask)){
+                //print(hit.collider.gameObject.name);
                 Movement(hit.point);
                 ClickedPortal(hit);
             }
