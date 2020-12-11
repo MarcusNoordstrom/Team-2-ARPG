@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Player
   m_EditorClassIdentifier: 
   maxHealth: 30
-  moveSpeed: 6
+  moveSpeed: 30
   mainWeapon: {fileID: 11400000, guid: 1a45d83e2b78b924da3385b0096894ee, type: 2}
