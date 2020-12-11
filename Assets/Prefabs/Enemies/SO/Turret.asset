@@ -15,5 +15,5 @@ MonoBehaviour:
   maxHealth: 500
   moveSpeed: 0
   mainWeapon: {fileID: 11400000, guid: 8ed3291dee275714ba1341beee8b2771, type: 2}
-  targetRange: 0
+  targetRange: 200
   stopChaseDistance: 0

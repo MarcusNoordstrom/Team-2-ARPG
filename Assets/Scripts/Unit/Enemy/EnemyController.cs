@@ -1,11 +1,12 @@
-﻿﻿using Player;
+﻿using Player;
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace Unit {
     [RequireComponent(typeof(VisibilityCheck), typeof(LookAtTarget))]
     public class EnemyController : BaseUnit {
         const int TicksPerUpdate = 15;
-        BasicEnemy BasicEnemy => (BasicEnemy)basicUnit;
+        BasicEnemy BasicEnemy => (BasicEnemy) basicUnit;
         LookAtTarget LookAtTarget => GetComponent<LookAtTarget>();
         Vector3 _roamPosition;
         Vector3 StartingPosition => transform.position;
@@ -13,7 +14,7 @@ namespace Unit {
         PlayerController _target => FindObjectOfType<PlayerController>();
         int _ticks;
         VisibilityCheck _visibilityCheck;
-        
+
         void Start() {
             _visibilityCheck = GetComponent<VisibilityCheck>();
             _state = State.Roaming;
@@ -41,7 +42,7 @@ namespace Unit {
                     break;
             }
         }
-        
+
         void OnDrawGizmosSelected() {
             Gizmos.color = Color.blue;
             Gizmos.DrawWireSphere(transform.position, BasicEnemy.targetRange);
@@ -53,6 +54,7 @@ namespace Unit {
                 _state = State.Roaming;
                 return;
             }
+
             FindTarget();
         }
 
@@ -86,8 +88,9 @@ namespace Unit {
 
         void RoamToNewPosition() {
             BaseNavMeshAgent.SetDestination(_roamPosition);
-            if (Vector3.Distance(transform.position, _roamPosition) < 1f)
+            if (BaseNavMeshAgent.remainingDistance < 1)
                 _roamPosition = GetRoamingPosition();
+
             FindTarget();
         }
 

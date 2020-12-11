@@ -5,28 +5,17 @@ using UnityEngine.UI;
 
 namespace MainMenu {
     public class MainMenuHandler : MonoBehaviour {
-        public GameObject mainMenu;
-        public GameObject settingsMenu;
         public Text playBtnTxt;
         public Camera mainMenuCamera;
         public AudioListener mainMenuAudioListener => mainMenuCamera.GetComponent<AudioListener>();
 
         void Awake() {
-            settingsMenu.SetActive(false);
             playBtnTxt.text = SceneManager.sceneCount <= 1 ? "Play" : "Resume";
             if (playBtnTxt.text != "Resume") return;
             Destroy(mainMenuAudioListener);
-            Destroy(mainMenuCamera);
-        }
-
-        public void ShowMainMenu() {
-            mainMenu.SetActive(true);
-            settingsMenu.SetActive(false);
-        }
-
-        public void ShowSettingsMenu() {
-            mainMenu.SetActive(false);
-            settingsMenu.SetActive(true);
+            if (playBtnTxt.text == "Resume") {
+                mainMenuCamera.enabled = false;
+            }
         }
 
         public void Play() {
