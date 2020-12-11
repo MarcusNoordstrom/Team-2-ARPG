@@ -9,10 +9,10 @@ namespace Player {
     [RequireComponent(typeof(Rigidbody))]
     public class PlayerController : BaseUnit {
         public static bool HasClickedOnPortal { get; set; }
+        public LayerMask layerMask;
         Animator _animator => GetComponent<Animator>();
 
         void Update() {
-            
             if (!BaseNavMeshAgent.hasPath && !BaseHealth.IsDead) {
                 PlayIdleAnimation();
             }
@@ -21,12 +21,11 @@ namespace Player {
         }
 
         void ShouldMovetoMouse() {
-            var hasHit = Physics.Raycast(GetMouseRay(), out var hit);
-            if (Input.GetMouseButton(0) && hit.collider != null)
-                if (hasHit)
-                    Movement(hit.point);
-
-            ClickedPortal(hit);
+            if (Input.GetMouseButton(0) && Physics.Raycast(GetMouseRay(), out var hit, 10000f, ~layerMask)) {
+                print(hit.collider.gameObject.name);
+                Movement(hit.point);
+                ClickedPortal(hit);
+            }
         }
 
         void Movement(Vector3 destination) {

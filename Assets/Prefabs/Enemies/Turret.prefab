@@ -432,6 +432,7 @@ GameObject:
   - component: {fileID: 1911867861980771089}
   - component: {fileID: 1911867861980771088}
   - component: {fileID: 1911867861980771091}
+  - component: {fileID: 985810488}
   m_Layer: 0
   m_Name: Turret
   m_TagString: Untagged
@@ -542,15 +543,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f3fee75c5f67d94e91039943efe6975, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HealthBarUI: {fileID: 0}
   damageUIPrefab: {fileID: 0}
   canvasParent: {fileID: 0}
   takingDamageEvent:
     m_PersistentCalls:
       m_Calls: []
   deathEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  reviveEvent:
     m_PersistentCalls:
       m_Calls: []
   lowHealthEvent:
@@ -586,6 +585,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   basicUnit: {fileID: 11400000, guid: 5295fec4245272f4fbf6693503645ada, type: 2}
+  pivot: {fileID: 1184873704634856713}
 --- !u!114 &1911867861980771091
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -599,6 +599,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   partToRotate: {fileID: 1184873704634856713}
+--- !u!208 &985810488
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1911867861980771090}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 2.5, y: 1.5, z: 2.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &3385593262155486601
 GameObject:
   m_ObjectHideFlags: 0
@@ -814,6 +830,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2156689816432622575}
+  - component: {fileID: 6089873159766746264}
   m_Layer: 0
   m_Name: Base
   m_TagString: Untagged
@@ -836,6 +853,25 @@ Transform:
   m_Father: {fileID: 1184873704634856713}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -7.604, z: -90}
+--- !u!95 &6089873159766746264
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5623802891666519526}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f75991330c4ce954fa8d6a564baa3617, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &6024532568639714440
 GameObject:
   m_ObjectHideFlags: 0
