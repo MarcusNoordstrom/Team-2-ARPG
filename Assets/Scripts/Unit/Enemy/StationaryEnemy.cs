@@ -32,7 +32,6 @@ public class StationaryEnemy : BaseUnit {
         _ticks -= TicksPerUpdate;
         
         if (_visibilityCheck.IsVisible(_target.gameObject)) {
-            
             _lookAtTarget.enabled = true;
             if (Vector3.Angle(this.pivot.forward,(_target.transform.position - this.pivot.position).normalized) < 50)
             BaseAttack.ActivateAttack(_target.gameObject);

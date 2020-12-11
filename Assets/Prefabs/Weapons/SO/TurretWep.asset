@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b0386c1e5ef4358be8ac21f85f17f95, type: 3}
   m_Name: TurretWep
   m_EditorClassIdentifier: 
-  baseDamage: 10
+  baseDamage: 1
   attackSpeed: 1
   range: 25
   bulletPrefab: {fileID: 5418528933250074970, guid: 6a766590865850146a795af7da31f83c, type: 3}
