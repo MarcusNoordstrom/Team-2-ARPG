@@ -25,7 +25,6 @@ namespace Unit {
 
         public delegate void UpdateHealthUI(int damage);
 
-        //subscribed to in PlayerController.cs
         public static UpdateHealthUI UpdatePlayerHealthUI;
 
         public int CurrentHealth {
@@ -46,12 +45,18 @@ namespace Unit {
         public void TakeDamage(int damage) {
             CurrentHealth -= damage;
 
+            if (IsDead) {
+                deathEvent?.Invoke();
+                GetComponent<Collider>().enabled = false;
+            }
+            
             UpdatePlayerHealthUI(damage);
-            if (IsDead) deathEvent?.Invoke();
+            
         }
 
         public void OnResurrect(bool onCorpse) {
             takingDamageEvent?.Invoke(CurrentHealth);
+            GetComponent<Collider>().enabled = true;
         }
     }
 }

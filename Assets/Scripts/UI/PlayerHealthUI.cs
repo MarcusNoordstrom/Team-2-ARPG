@@ -23,6 +23,8 @@ namespace UI {
 
 
         void PlayerHealthStuff(int damage) {
+            if(LayerMask.GetMask() == LayerMask.NameToLayer("Player")) return;
+            
             UpdateHealthTicks(damage);
             //takingDamageEvent?.Invoke(CurrentHealth * 0.5f);
             if (LowHealth()) {
