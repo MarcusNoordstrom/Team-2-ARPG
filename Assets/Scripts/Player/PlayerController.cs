@@ -14,14 +14,14 @@ namespace Player {
 
         void Update() {
             if (!BaseNavMeshAgent.hasPath && !BaseHealth.IsDead) {
-                PlayIdleAnimation();
+                PlayAnimation("Idle");
             }
 
             ShouldMovetoMouse();
         }
 
         void ShouldMovetoMouse() {
-            if (Input.GetMouseButton(0) && Physics.Raycast(GetMouseRay(), out var hit, 10000f, ~layerMask)) {
+            if (Input.GetMouseButton(0) && Physics.Raycast(GetMouseRay(), out var hit, 10000f, ~layerMask) && !BaseHealth.IsDead) {
                 GetComponent<Action>().StartAction(this);
                 //print(hit.collider.gameObject.name);
                 Movement(hit.point);
@@ -33,7 +33,7 @@ namespace Player {
             BaseNavMeshAgent.isStopped = false;
             BaseNavMeshAgent.destination = destination;
             if (BaseHealth.IsDead) return;
-            PlayRunningAnimation();
+            PlayAnimation("Running");
         }
 
         public static Ray GetMouseRay() {
@@ -52,30 +52,20 @@ namespace Player {
 
         public override void OnDeath() {
             base.OnDeath();
-            PlayDeathAnimation();
+            _animator.ResetTrigger("Idle");
+            _animator.ResetTrigger("Running");
+            PlayAnimation("Death");
             BaseNavMeshAgent.isStopped = true;
             StateLogic.OnDeath();
         }
 
-        void PlayDeathAnimation() {
-            _animator.SetTrigger("Death");
-            _animator.ResetTrigger("Idle");
-            _animator.ResetTrigger("Running");
-        }
-
-        void PlayRunningAnimation() {
-            _animator.SetTrigger("Running");
-            _animator.ResetTrigger("Idle");
-        }
-
-        void PlayIdleAnimation() {
-            _animator.SetTrigger("Idle");
-            _animator.ResetTrigger("Running");
+        void PlayAnimation(string animationToPlay) {
+            _animator.SetTrigger(animationToPlay);
         }
 
         public void ActionToStart() {
             BaseNavMeshAgent.isStopped = true;
-            PlayIdleAnimation();
+            PlayAnimation("Idle");
         }
 
         public void OnResurrect(bool onCorpse) {

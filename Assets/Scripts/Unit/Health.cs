@@ -78,7 +78,6 @@ namespace Unit {
             takingDamageEvent?.Invoke(CurrentHealth);
             HealthBarUI.GetComponent<HorizontalLayoutGroup>().childControlWidth = false;
             HealthBarUI.GetComponent<HealthBarUI>().InstantiateHealthTicks();
-            print("random stuff");
         }
     }
 }
