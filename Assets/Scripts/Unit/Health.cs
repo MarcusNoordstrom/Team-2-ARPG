@@ -15,18 +15,18 @@ namespace Unit {
     }
 
     public class Health : MonoBehaviour, IResurrect {
-        [SerializeField] GameObject HealthBarUI;
-        [SerializeField] DamageUI damageUIPrefab;
-        [SerializeField] Transform canvasParent;
         [SerializeField] FloatEvent takingDamageEvent;
         [SerializeField] BoolEvent deathEvent;
-        [SerializeField] BoolEvent lowHealthEvent;
-        [SerializeField] float lowHealthTrigger;
 
         public static int CurrentHealthBars;
 
         int _currentCurrentHealth;
-        bool soundTriggered;
+
+
+        public delegate void UpdateHealthUI(int damage);
+
+        //subscribed to in PlayerController.cs
+        public static UpdateHealthUI UpdatePlayerHealthUI;
 
         public int CurrentHealth {
             get => _currentCurrentHealth;
@@ -35,10 +35,9 @@ namespace Unit {
         }
 
 
-        void Start() {
+        void Awake() {
             if (gameObject.layer == LayerMask.NameToLayer("Player")) {
                 CurrentHealthBars = CurrentHealth;
-                HealthBarUI.GetComponent<HealthBarUI>().InstantiateHealthTicks();
             }
         }
 
@@ -46,38 +45,13 @@ namespace Unit {
 
         public void TakeDamage(int damage) {
             CurrentHealth -= damage;
-            UpdateHealthTicks(damage);
-            //takingDamageEvent?.Invoke(CurrentHealth * 0.5f);
-            if (LowHealth()) {
-                soundTriggered = true;
-                lowHealthEvent?.Invoke();
-            }
 
+            UpdatePlayerHealthUI(damage);
             if (IsDead) deathEvent?.Invoke();
-            SetupHealthBarUI();
-        }
-
-        void SetupHealthBarUI() {
-            if (CurrentHealth != GetComponent<IGetMaxHealth>().MaxHealth() && gameObject.layer == LayerMask.NameToLayer("Player")) {
-                HealthBarUI.GetComponent<HorizontalLayoutGroup>().childControlWidth = false;
-            }
-        }
-
-        bool LowHealth() {
-            return CurrentHealth <= lowHealthTrigger && !soundTriggered;
-        }
-
-        void UpdateHealthTicks(int damage) {
-            var damageUI = Instantiate(damageUIPrefab, canvasParent.position, canvasParent.rotation, canvasParent);
-            damageUI.SetUp(damage);
-            HealthBarUI.GetComponent<HealthBarUI>().RemoveHealthTick(damage);
         }
 
         public void OnResurrect(bool onCorpse) {
-            soundTriggered = false;
             takingDamageEvent?.Invoke(CurrentHealth);
-            HealthBarUI.GetComponent<HorizontalLayoutGroup>().childControlWidth = false;
-            HealthBarUI.GetComponent<HealthBarUI>().InstantiateHealthTicks();
         }
     }
 }

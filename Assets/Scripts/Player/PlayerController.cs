@@ -1,8 +1,11 @@
-﻿using Core;
+﻿using System;
+using Core;
 using GameStates;
+using UI;
 using Unit;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 namespace Player {
     [RequireComponent(typeof(Health), typeof(Attack), typeof(NavMeshAgent))]
@@ -10,6 +13,8 @@ namespace Player {
     public class PlayerController : BaseUnit, IAction, IResurrect {
         public static bool HasClickedOnPortal { get; set; }
         public LayerMask layerMask;
+
+        
         Animator _animator => GetComponent<Animator>();
 
         void Update() {
@@ -19,6 +24,21 @@ namespace Player {
 
             ShouldMovetoMouse();
         }
+
+        public override void OnDeath() {
+            base.OnDeath();
+            _animator.ResetTrigger("Idle");
+            _animator.ResetTrigger("Running");
+            PlayAnimation("Death");
+            BaseNavMeshAgent.isStopped = true;
+            StateLogic.OnDeath();
+        }
+
+        public void ActionToStart() {
+            BaseNavMeshAgent.isStopped = true;
+            PlayAnimation("Idle");
+        }
+
 
         void ShouldMovetoMouse() {
             if (Input.GetMouseButton(0) && Physics.Raycast(GetMouseRay(), out var hit, 10000f, ~layerMask) && !BaseHealth.IsDead) {
@@ -50,25 +70,15 @@ namespace Player {
                 HasClickedOnPortal = true;
         }
 
-        public override void OnDeath() {
-            base.OnDeath();
-            _animator.ResetTrigger("Idle");
-            _animator.ResetTrigger("Running");
-            PlayAnimation("Death");
-            BaseNavMeshAgent.isStopped = true;
-            StateLogic.OnDeath();
-        }
 
         void PlayAnimation(string animationToPlay) {
             _animator.SetTrigger(animationToPlay);
         }
 
-        public void ActionToStart() {
-            BaseNavMeshAgent.isStopped = true;
-            PlayAnimation("Idle");
-        }
 
         public void OnResurrect(bool onCorpse) {
+
+            
             gameObject.layer = LayerMask.NameToLayer("Player");
             BaseHealth.CurrentHealth = MaxHealth();
             BaseNavMeshAgent.isStopped = false;
