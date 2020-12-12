@@ -90,7 +90,6 @@ namespace Player {
         }
 
         public void ActionToStart() {
-            print("Player Controller");
             BaseNavMeshAgent.isStopped = true;
             PlayIdleAnimation();
         }

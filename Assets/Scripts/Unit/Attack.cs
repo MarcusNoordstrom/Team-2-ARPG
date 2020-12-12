@@ -2,7 +2,6 @@
 
 namespace Unit {
     public class Attack : MonoBehaviour {
-        [HideInInspector]
         public Weapon weapon;
         [SerializeField] Transform bulletSpawnPoint;
         public string animTrigger;
