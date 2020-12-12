@@ -13930,47 +13930,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3223275179621062011, guid: 54f3de6ee35a8d94b936ca47d408f017, type: 3}
   m_PrefabInstance: {fileID: 981661609}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &986855201 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4672876197070964409, guid: 402531f815494244b99bbde25eb5802b, type: 3}
-  m_PrefabInstance: {fileID: 1941832334}
-  m_PrefabAsset: {fileID: 0}
---- !u!82 &986855209 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 5483147893479455262, guid: 402531f815494244b99bbde25eb5802b, type: 3}
-  m_PrefabInstance: {fileID: 1941832334}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &986855213
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 986855201}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 06ed031383774c8d8cab45907ee3998f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthBarUI: {fileID: 1212414574}
-  damageUIPrefab: {fileID: 6903674934049428664, guid: 02a3ead787d4dd141b0d308794a501b1, type: 3}
-  popupCanvasParent: {fileID: 2101688475}
-  lowHealthTrigger: 1
-  lowHealthEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 986855209}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: PlayOneShot
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 8300000, guid: 401dab833849b4a7ba89e13d7cc4b179, type: 3}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1 &987890521 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2516345954517718979, guid: 54f3de6ee35a8d94b936ca47d408f017, type: 3}
@@ -26970,6 +26929,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 986855213, guid: 402531f815494244b99bbde25eb5802b, type: 3}
+      propertyPath: healthBarUI
+      value: 
+      objectReference: {fileID: 1212414574}
     - target: {fileID: 4672876197070964409, guid: 402531f815494244b99bbde25eb5802b, type: 3}
       propertyPath: m_Name
       value: Player FINAL
@@ -27017,42 +26980,6 @@ PrefabInstance:
     - target: {fileID: 5445613396583734275, guid: 402531f815494244b99bbde25eb5802b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5483147893479455251, guid: 402531f815494244b99bbde25eb5802b, type: 3}
-      propertyPath: HealthBarUI
-      value: 
-      objectReference: {fileID: 1212414574}
-    - target: {fileID: 5483147893479455255, guid: 402531f815494244b99bbde25eb5802b, type: 3}
-      propertyPath: HealthBarUI
-      value: 
-      objectReference: {fileID: 1212414574}
-    - target: {fileID: 5483147893479455255, guid: 402531f815494244b99bbde25eb5802b, type: 3}
-      propertyPath: canvasParent
-      value: 
-      objectReference: {fileID: 2101688475}
-    - target: {fileID: 5483147893479455255, guid: 402531f815494244b99bbde25eb5802b, type: 3}
-      propertyPath: damageUIPrefab
-      value: 
-      objectReference: {fileID: 6903674934049428664, guid: 02a3ead787d4dd141b0d308794a501b1, type: 3}
-    - target: {fileID: 5483147893479455255, guid: 402531f815494244b99bbde25eb5802b, type: 3}
-      propertyPath: lowHealthTrigger
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5483147893479455255, guid: 402531f815494244b99bbde25eb5802b, type: 3}
-      propertyPath: lowHealthEvent.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5483147893479455255, guid: 402531f815494244b99bbde25eb5802b, type: 3}
-      propertyPath: lowHealthEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5483147893479455255, guid: 402531f815494244b99bbde25eb5802b, type: 3}
-      propertyPath: lowHealthEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 8300000, guid: 401dab833849b4a7ba89e13d7cc4b179, type: 3}
-    - target: {fileID: 5483147893479455255, guid: 402531f815494244b99bbde25eb5802b, type: 3}
-      propertyPath: lowHealthEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 402531f815494244b99bbde25eb5802b, type: 3}
@@ -28936,11 +28863,6 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: -1.0300001, y: 6.4070005, z: 0.086}
   m_TimeToStationary: 0.5
---- !u!224 &2101688475 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 1045405770, guid: 402531f815494244b99bbde25eb5802b, type: 3}
-  m_PrefabInstance: {fileID: 1941832334}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2106850875
 GameObject:
   m_ObjectHideFlags: 0
