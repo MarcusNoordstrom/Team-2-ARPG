@@ -7,7 +7,7 @@ using UnityEngine.AI;
 namespace Player {
     [RequireComponent(typeof(Health), typeof(Attack), typeof(NavMeshAgent))]
     [RequireComponent(typeof(Rigidbody))]
-    public class PlayerController : BaseUnit {
+    public class PlayerController : BaseUnit, IAction {
         public static bool HasClickedOnPortal { get; set; }
         public LayerMask layerMask;
         Animator _animator => GetComponent<Animator>();
@@ -22,6 +22,7 @@ namespace Player {
 
         void ShouldMovetoMouse(){
             if (Input.GetMouseButton(0) && Physics.Raycast(GetMouseRay(), out var hit, 10000f, ~layerMask)){
+                GetComponent<Action>().StartAction(this);
                 //print(hit.collider.gameObject.name);
                 Movement(hit.point);
                 ClickedPortal(hit);
@@ -29,12 +30,13 @@ namespace Player {
         }
 
         void Movement(Vector3 destination) {
+            BaseNavMeshAgent.isStopped = false;
             BaseNavMeshAgent.destination = destination;
             if (BaseHealth.IsDead) return;
             PlayRunningAnimation();
         }
 
-        static Ray GetMouseRay() {
+        public static Ray GetMouseRay() {
             var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             return ray;
         }
@@ -85,6 +87,12 @@ namespace Player {
             }
 
             BaseNavMeshAgent.Warp(Checkpoint.CheckpointTransform.position);
+        }
+
+        public void ActionToStart() {
+            print("Player Controller");
+            BaseNavMeshAgent.isStopped = true;
+            PlayIdleAnimation();
         }
     }
 }
