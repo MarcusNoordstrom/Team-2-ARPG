@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 5
   moveSpeed: 30
-  mainWeapon: {fileID: 11400000, guid: 1a45d83e2b78b924da3385b0096894ee, type: 2}
+  mainWeapon: {fileID: 11400000, guid: ebc6595652ac21f4d84c9d6a194447e9, type: 2}

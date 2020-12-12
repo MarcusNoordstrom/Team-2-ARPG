@@ -27,15 +27,20 @@ namespace GameStates {
             SceneManager.LoadScene("Death Scene", LoadSceneMode.Additive);
         }
 
+        //assigned to button
         public static void OnResurrect() {
             SceneManager.UnloadSceneAsync("Death Scene");
-            _playerController.ResurrectBase();
+            foreach (var resurrect in _playerController.GetComponents<IResurrect>()) {
+                resurrect.OnResurrect(true);
+            }
         }
         
+        //assigned to button
         public static void OnResurrectAtCheckpoint() {
             SceneManager.UnloadSceneAsync("Death Scene");
-            _playerController.ResurrectBase();
-            _playerController.OnResurrectAtCheckpoint();
+            foreach (var resurrect in _playerController.GetComponents<IResurrect>()) {
+                resurrect.OnResurrect(false);
+            }
         }
     }
 }

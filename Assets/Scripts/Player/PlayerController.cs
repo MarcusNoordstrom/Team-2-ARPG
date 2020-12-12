@@ -7,7 +7,7 @@ using UnityEngine.AI;
 namespace Player {
     [RequireComponent(typeof(Health), typeof(Attack), typeof(NavMeshAgent))]
     [RequireComponent(typeof(Rigidbody))]
-    public class PlayerController : BaseUnit, IAction {
+    public class PlayerController : BaseUnit, IAction, IResurrect {
         public static bool HasClickedOnPortal { get; set; }
         public LayerMask layerMask;
         Animator _animator => GetComponent<Animator>();
@@ -20,8 +20,8 @@ namespace Player {
             ShouldMovetoMouse();
         }
 
-        void ShouldMovetoMouse(){
-            if (Input.GetMouseButton(0) && Physics.Raycast(GetMouseRay(), out var hit, 10000f, ~layerMask)){
+        void ShouldMovetoMouse() {
+            if (Input.GetMouseButton(0) && Physics.Raycast(GetMouseRay(), out var hit, 10000f, ~layerMask)) {
                 GetComponent<Action>().StartAction(this);
                 //print(hit.collider.gameObject.name);
                 Movement(hit.point);
@@ -73,25 +73,19 @@ namespace Player {
             _animator.ResetTrigger("Running");
         }
 
-        public void ResurrectBase() {
-            gameObject.layer = LayerMask.NameToLayer("Player");
-            BaseHealth.CurrentHealth = MaxHealth();
-            BaseNavMeshAgent.isStopped = false;
-            BaseHealth.RevivePlayer();
-            GetComponent<AudioSource>().Stop();
-        }
-
-        public void OnResurrectAtCheckpoint() {
-            if (Checkpoint.CheckpointTransform == null) {
-                return;
-            }
-
-            BaseNavMeshAgent.Warp(Checkpoint.CheckpointTransform.position);
-        }
-
         public void ActionToStart() {
             BaseNavMeshAgent.isStopped = true;
             PlayIdleAnimation();
+        }
+
+        public void OnResurrect(bool onCorpse) {
+            gameObject.layer = LayerMask.NameToLayer("Player");
+            BaseHealth.CurrentHealth = MaxHealth();
+            BaseNavMeshAgent.isStopped = false;
+            GetComponent<AudioSource>().Stop();
+            if (onCorpse || Checkpoint.CheckpointTransform == null) return;
+
+            BaseNavMeshAgent.Warp(Checkpoint.CheckpointTransform.position);
         }
     }
 }
