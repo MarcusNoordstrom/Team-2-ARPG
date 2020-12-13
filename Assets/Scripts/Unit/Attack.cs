@@ -5,8 +5,8 @@ namespace Unit {
         public Weapon weapon;
         [SerializeField] Transform bulletSpawnPoint;
         public string animTrigger;
-        [SerializeField] private Animator animator;
-        
+        [SerializeField] Animator animator;
+
         float _attackTimer;
         Bullet _bulletPrefab;
         bool _canAttack;
@@ -18,15 +18,20 @@ namespace Unit {
             if (!_canAttack) return;
 
             if (!CanAttack) return;
-            
-            if (animTrigger == null || this.animator == null) return;
-            this.animator.SetTrigger(animTrigger);
-            
+
+            if (animTrigger != null || animator != null) {
+                TurretShoot();
+            }
+
             if (weapon is RangeWeapon)
                 SpawnBullet();
             else
                 Melee();
             _attackTimer = Time.time;
+        }
+
+        void TurretShoot() {
+            animator.SetTrigger("Shoot");
         }
 
         public void ChangeWeapon(Weapon weapon) {

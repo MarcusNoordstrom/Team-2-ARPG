@@ -1,6 +1,5 @@
 ﻿using System;
 using GameStates;
-using Player;
 using UnityEngine;
 using UnityEngine.Events;
 

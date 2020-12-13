@@ -12,12 +12,10 @@ namespace UI {
         [SerializeField] float lowHealthTrigger;
         [SerializeField] BoolEvent lowHealthEvent;
 
-        Transform _popupCanvasParent;
         Health _health;
         bool _soundTriggered;
 
         void Start() {
-            _popupCanvasParent = FindObjectOfType<CanvasFollowCamera>().transform;
             _health = GetComponent<Health>();
             Health.CurrentHealthBars = _health.CurrentHealth;
 

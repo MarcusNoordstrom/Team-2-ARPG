@@ -387,7 +387,7 @@ Transform:
   - {fileID: 4145272399415736419}
   m_Father: {fileID: 64509335407568805}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -89.99778, y: 50.142883, z: 0}
 --- !u!1 &1184873704323233409
 GameObject:
   m_ObjectHideFlags: 0
@@ -507,7 +507,7 @@ Transform:
   - {fileID: 2744827930014508955}
   m_Father: {fileID: 459977932850845289}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 1.0460772e-16, y: -180, z: -87.83135}
 --- !u!1 &1911867861980771090
 GameObject:
   m_ObjectHideFlags: 0
@@ -656,6 +656,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2508101212577047407}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: SetTrigger
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: TurretDeath
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1911867861980771089
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -685,6 +697,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   basicUnit: {fileID: 11400000, guid: 5295fec4245272f4fbf6693503645ada, type: 2}
+  animator: {fileID: 2508101212577047407}
   pivot: {fileID: 1184873704634856713}
 --- !u!114 &1911867861980771091
 MonoBehaviour:
@@ -851,7 +864,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2744827930014508955}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -88.26426, y: 90, z: 0}
 --- !u!1 &4878241052790285026
 GameObject:
   m_ObjectHideFlags: 0
@@ -971,7 +984,7 @@ Transform:
   - {fileID: 64509335407568805}
   m_Father: {fileID: 1184873704634856713}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: -7.604, z: -90}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
 --- !u!95 &6089873159766746264
 Animator:
   serializedVersion: 3
@@ -1229,7 +1242,7 @@ Transform:
   - {fileID: 5084852844270628857}
   m_Father: {fileID: 4145272399415736419}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -45.14449}
 --- !u!1001 &1184873705354185357
 PrefabInstance:
   m_ObjectHideFlags: 0

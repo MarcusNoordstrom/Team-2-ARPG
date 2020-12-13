@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: TurretWeapon
   m_EditorClassIdentifier: 
   baseDamage: 1
-  attackSpeed: 5
+  attackSpeed: 2
   range: 19
   bulletPrefab: {fileID: 5418528933250074970, guid: 40b14b8804ac2a74998e77e3d586d264, type: 3}

@@ -14,9 +14,6 @@ namespace Player {
         public static bool HasClickedOnPortal { get; set; }
         public LayerMask layerMask;
 
-        
-        Animator _animator => GetComponent<Animator>();
-
         void Update() {
             if (!BaseNavMeshAgent.hasPath && !BaseHealth.IsDead) {
                 PlayAnimation("Idle");
@@ -27,8 +24,8 @@ namespace Player {
 
         public override void OnDeath() {
             base.OnDeath();
-            _animator.ResetTrigger("Idle");
-            _animator.ResetTrigger("Running");
+            animator.ResetTrigger("Idle");
+            animator.ResetTrigger("Running");
             PlayAnimation("Death");
             BaseNavMeshAgent.isStopped = true;
             StateLogic.OnDeath();
@@ -72,7 +69,7 @@ namespace Player {
 
 
         void PlayAnimation(string animationToPlay) {
-            _animator.SetTrigger(animationToPlay);
+            animator.SetTrigger(animationToPlay);
         }
 
 
