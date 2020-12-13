@@ -8,13 +8,15 @@ public class Bullet : MonoBehaviour {
     GameObject target;
 
     void OnTriggerEnter(Collider other) {
-        if (other.gameObject.layer != LayerMask.GetMask()) {
-            target.GetComponent<Health>().TakeDamage(damage);
+        if (other.gameObject.layer != BulletFiredBy) {
+            other.GetComponent<Health>().TakeDamage(damage);
             Destroy(gameObject);
         }
 
         Destroy(gameObject);
     }
+
+    public LayerMask BulletFiredBy { get; set; }
 
     public void Setup(GameObject target, int damage) {
         this.target = target;

@@ -43,8 +43,9 @@ namespace Unit {
             _canAttack = true;
         }
 
-        void SpawnBullet() {
+        public void SpawnBullet() {
             var bullet = Instantiate(_bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
+            bullet.BulletFiredBy = LayerMask.GetMask();
             bullet.Setup(_target, weapon.baseDamage);
         }
 

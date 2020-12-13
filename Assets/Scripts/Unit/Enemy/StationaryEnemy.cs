@@ -11,13 +11,13 @@ public class StationaryEnemy : BaseUnit {
     const int TicksPerUpdate = 15;
     [SerializeField] private Transform pivot;
     PlayerController _target => FindObjectOfType<PlayerController>();
-    
+
     protected override void Setup() {
         _lookAtTarget = GetComponent<LookAtTarget>();
         BaseHealth.CurrentHealth = basicUnit.maxHealth;
         BaseAttack.ChangeWeapon(basicUnit.mainWeapon);
         _visibilityCheck = GetComponent<VisibilityCheck>();
-        
+
         _ticks = Random.Range(0, TicksPerUpdate);
     }
 
@@ -30,11 +30,11 @@ public class StationaryEnemy : BaseUnit {
         if (_ticks < TicksPerUpdate)
             return;
         _ticks -= TicksPerUpdate;
-        
+
         if (_visibilityCheck.IsVisible(_target.gameObject)) {
             _lookAtTarget.enabled = true;
-            if (Vector3.Angle(this.pivot.forward,(_target.transform.position - this.pivot.position).normalized) < 50)
-            BaseAttack.ActivateAttack(_target.gameObject);
+            if (Vector3.Angle(this.pivot.forward, (_target.transform.position - this.pivot.position).normalized) < 50)
+                BaseAttack.ActivateAttack(_target.gameObject);
         }
         else {
             _lookAtTarget.enabled = false;
