@@ -30,6 +30,9 @@ namespace Unit {
             _attackTimer = Time.time;
         }
 
+        void TurretShooting() {
+        }
+
         public void ChangeWeapon(Weapon weapon) {
             this.weapon = weapon;
             if (this.weapon is RangeWeapon rangeWeapon) _bulletPrefab = rangeWeapon.bulletPrefab;
