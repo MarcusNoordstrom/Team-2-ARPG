@@ -30,7 +30,10 @@ namespace Unit {
             _attackTimer = Time.time;
         }
 
+        //TODO rename the animation event to "EnemyAttacking"?
+        //animation event
         void TurretShooting() {
+            print("Shooting");
         }
 
         public void ChangeWeapon(Weapon weapon) {
