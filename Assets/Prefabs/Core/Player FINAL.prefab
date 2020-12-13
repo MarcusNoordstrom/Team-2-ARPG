@@ -123,7 +123,7 @@ Transform:
   - {fileID: 990461945579805967}
   m_Father: {fileID: 5371715537257408910}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -8.12151, y: 4.4036517, z: 16.404541}
+  m_LocalEulerAnglesHint: {x: -8.121509, y: 4.4036527, z: 16.404541}
 --- !u!1 &64262988526465175
 GameObject:
   m_ObjectHideFlags: 0
@@ -2565,7 +2565,7 @@ Transform:
   - {fileID: 226671314604374428}
   m_Father: {fileID: 2317585598148463856}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 26.418482, y: -29.78894, z: 26.287537}
+  m_LocalEulerAnglesHint: {x: 23.95032, y: -26.274033, z: 27.447086}
 --- !u!1 &2943741907040131434
 GameObject:
   m_ObjectHideFlags: 0
@@ -3975,13 +3975,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4181021156800180445}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 1.37, y: 2.3, z: 2.24}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5445613396583734275}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1 &4231151129328119109
 GameObject:
   m_ObjectHideFlags: 0
@@ -4784,7 +4784,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthBarUI: {fileID: 0}
   damageUIPrefab: {fileID: 6903674934049428664, guid: 02a3ead787d4dd141b0d308794a501b1, type: 3}
-  popupCanvasParent: {fileID: 1045405770}
+  damageUISpawnLocation: {fileID: 1045405770}
   lowHealthTrigger: 1
   lowHealthEvent:
     m_PersistentCalls:
@@ -6799,7 +6799,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 990461945579805967}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -3.0181227, y: 172.34773, z: 77.016716}
+  m_LocalEulerAnglesHint: {x: -3.0181236, y: 172.34773, z: 77.016716}
 --- !u!1 &6975306879606083989
 GameObject:
   m_ObjectHideFlags: 0
@@ -7917,7 +7917,7 @@ Transform:
   - {fileID: 2317585598148463856}
   m_Father: {fileID: 5445613396583734275}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 9.118607, y: 179.66556, z: 26.17347}
+  m_LocalEulerAnglesHint: {x: 9.118605, y: 179.66556, z: 26.173468}
 --- !u!1 &8128675662968394357
 GameObject:
   m_ObjectHideFlags: 0

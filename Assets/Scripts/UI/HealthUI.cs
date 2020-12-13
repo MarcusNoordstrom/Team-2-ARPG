@@ -5,22 +5,24 @@ using UnityEngine;
 using UnityEngine.UI;
 
 namespace UI {
-    public class PlayerHealthUI : MonoBehaviour, IResurrect {
+    public class HealthUI : MonoBehaviour, IResurrect {
         [SerializeField] GameObject healthBarUI;
         [SerializeField] DamageUI damageUIPrefab;
-        [SerializeField] Transform popupCanvasParent;
+        [SerializeField] Transform damageUISpawnLocation;
         [SerializeField] float lowHealthTrigger;
         [SerializeField] BoolEvent lowHealthEvent;
 
+        Transform _popupCanvasParent;
         Health _health;
         bool _soundTriggered;
 
         void Start() {
+            _popupCanvasParent = FindObjectOfType<CanvasFollowCamera>().transform;
             _health = GetComponent<Health>();
             Health.CurrentHealthBars = _health.CurrentHealth;
 
-            healthBarUI.GetComponent<HealthBarUI>().InstantiateHealthTicks();
-            Health.UpdatePlayerHealthUI += PlayerHealthStuff;
+            //healthBarUI.GetComponent<HealthBarUI>().InstantiateHealthTicks();
+            _health.UpdatePlayerHealthUI += PlayerHealthStuff;
         }
 
 
@@ -34,7 +36,7 @@ namespace UI {
                 lowHealthEvent?.Invoke();
             }
 
-            SetupHealthBarUI();
+            //SetupHealthBarUI();
         }
 
 
@@ -49,9 +51,9 @@ namespace UI {
         }
 
         void UpdateHealthTicks(int damage) {
-            var damageUI = Instantiate(damageUIPrefab, popupCanvasParent.position, popupCanvasParent.rotation, popupCanvasParent);
+            var damageUI = Instantiate(damageUIPrefab, damageUISpawnLocation.position, damageUISpawnLocation.rotation, damageUISpawnLocation);
             damageUI.SetUp(damage);
-            healthBarUI.GetComponent<HealthBarUI>().RemoveHealthTick(damage);
+            //healthBarUI.GetComponent<HealthBarUI>().RemoveHealthTick(damage);
         }
 
         public void OnResurrect(bool onCorpse) {

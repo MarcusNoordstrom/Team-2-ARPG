@@ -1,5 +1,6 @@
 ﻿using System;
 using GameStates;
+using Player;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -23,7 +24,7 @@ namespace Unit {
 
         public delegate void UpdateHealthUI(int damage);
 
-        public static UpdateHealthUI UpdatePlayerHealthUI;
+        public UpdateHealthUI UpdatePlayerHealthUI;
 
         public int CurrentHealth {
             get => _currentCurrentHealth;
@@ -36,13 +37,10 @@ namespace Unit {
         public void TakeDamage(int damage) {
             CurrentHealth -= damage;
 
-            if (IsDead) {
-                deathEvent?.Invoke();
-                GetComponent<Collider>().enabled = false;
-            }
-            
+            print($"{gameObject.name} {CurrentHealth}");
+            if (IsDead) deathEvent?.Invoke();
+
             UpdatePlayerHealthUI(damage);
-            
         }
 
         public void OnResurrect(bool onCorpse) {
