@@ -5,7 +5,7 @@ namespace Unit {
     [RequireComponent(typeof(Health), typeof(Attack))]
     public class BaseUnit : MonoBehaviour, IGetMaxHealth {
         [SerializeField] private protected BasicUnit basicUnit;
-        protected virtual NavMeshAgent BaseNavMeshAgent => GetComponent<NavMeshAgent>();
+        protected NavMeshAgent BaseNavMeshAgent => GetComponent<NavMeshAgent>();
         protected Attack BaseAttack => GetComponent<Attack>();
         protected Health BaseHealth => GetComponent<Health>();
 
@@ -24,7 +24,8 @@ namespace Unit {
         }
 
         public virtual void OnDeath() {
-            gameObject.layer = LayerMask.NameToLayer("Ignore Raycast");
+            GetComponent<Collider>().enabled = false;
+            Destroy(gameObject);
         }
     }
 }
