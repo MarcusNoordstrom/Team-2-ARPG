@@ -11922,18 +11922,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 459977932850845289, guid: eba4d556f65ef254b99a02cd08608036, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: -89.99778
+    - target: {fileID: 1063036934, guid: eba4d556f65ef254b99a02cd08608036, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 459977932850845289, guid: eba4d556f65ef254b99a02cd08608036, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 50.142883
-      objectReference: {fileID: 0}
-    - target: {fileID: 1911867861980771088, guid: eba4d556f65ef254b99a02cd08608036, type: 3}
-      propertyPath: animator
-      value: 
-      objectReference: {fileID: 1329899254}
     - target: {fileID: 1911867861980771090, guid: eba4d556f65ef254b99a02cd08608036, type: 3}
       propertyPath: m_Name
       value: Turret
@@ -11981,74 +11973,6 @@ PrefabInstance:
     - target: {fileID: 1911867861980771100, guid: eba4d556f65ef254b99a02cd08608036, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1911867861980771102, guid: eba4d556f65ef254b99a02cd08608036, type: 3}
-      propertyPath: deathEvent.m_PersistentCalls.m_Calls.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1911867861980771102, guid: eba4d556f65ef254b99a02cd08608036, type: 3}
-      propertyPath: deathEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1911867861980771102, guid: eba4d556f65ef254b99a02cd08608036, type: 3}
-      propertyPath: deathEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
-      objectReference: {fileID: 1329899254}
-    - target: {fileID: 1911867861980771102, guid: eba4d556f65ef254b99a02cd08608036, type: 3}
-      propertyPath: deathEvent.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1911867861980771102, guid: eba4d556f65ef254b99a02cd08608036, type: 3}
-      propertyPath: deathEvent.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: SetTrigger
-      objectReference: {fileID: 0}
-    - target: {fileID: 1911867861980771102, guid: eba4d556f65ef254b99a02cd08608036, type: 3}
-      propertyPath: deathEvent.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: UnityEngine.Animator, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 1911867861980771102, guid: eba4d556f65ef254b99a02cd08608036, type: 3}
-      propertyPath: deathEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_StringArgument
-      value: TurretDeath
-      objectReference: {fileID: 0}
-    - target: {fileID: 1911867861980771102, guid: eba4d556f65ef254b99a02cd08608036, type: 3}
-      propertyPath: deathEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 2156689816432622575, guid: eba4d556f65ef254b99a02cd08608036, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2744827930014508955, guid: eba4d556f65ef254b99a02cd08608036, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2744827930014508955, guid: eba4d556f65ef254b99a02cd08608036, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2744827930014508955, guid: eba4d556f65ef254b99a02cd08608036, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: -45.14449
-      objectReference: {fileID: 0}
-    - target: {fileID: 4145272399415736419, guid: eba4d556f65ef254b99a02cd08608036, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 1.0460772e-16
-      objectReference: {fileID: 0}
-    - target: {fileID: 4145272399415736419, guid: eba4d556f65ef254b99a02cd08608036, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: -180
-      objectReference: {fileID: 0}
-    - target: {fileID: 4145272399415736419, guid: eba4d556f65ef254b99a02cd08608036, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: -87.83135
-      objectReference: {fileID: 0}
-    - target: {fileID: 5084852844270628857, guid: eba4d556f65ef254b99a02cd08608036, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: -88.26426
-      objectReference: {fileID: 0}
-    - target: {fileID: 5084852844270628857, guid: eba4d556f65ef254b99a02cd08608036, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 90
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eba4d556f65ef254b99a02cd08608036, type: 3}
@@ -18572,11 +18496,6 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 4057174040665868529, guid: 12781426b40d5114389083090f53a676, type: 3}
   m_PrefabInstance: {fileID: 1329518482}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &1329899254 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 2508101212577047407, guid: eba4d556f65ef254b99a02cd08608036, type: 3}
-  m_PrefabInstance: {fileID: 861276170}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1331145264
 PrefabInstance:
@@ -27013,6 +26932,11 @@ PrefabInstance:
       objectReference: {fileID: 600639475}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 402531f815494244b99bbde25eb5802b, type: 3}
+--- !u!20 &1947640559 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 1754044126, guid: 8e27702437038cd44bf3e8c4135e0f2d, type: 3}
+  m_PrefabInstance: {fileID: 3904762632977322584}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1951472226
 GameObject:
   m_ObjectHideFlags: 0
@@ -29411,6 +29335,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerCamera
       objectReference: {fileID: 0}
+    - target: {fileID: 3904762633646238036, guid: 8e27702437038cd44bf3e8c4135e0f2d, type: 3}
+      propertyPath: uiCamera
+      value: 
+      objectReference: {fileID: 1947640559}
     - target: {fileID: 3904762633646238037, guid: 8e27702437038cd44bf3e8c4135e0f2d, type: 3}
       propertyPath: m_RootOrder
       value: 4

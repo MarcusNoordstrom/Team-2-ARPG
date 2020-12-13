@@ -4626,11 +4626,4 @@ AnimationClip:
     script: {fileID: 0}
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events:
-  - time: 0
-    functionName: TurretShoot
-    data: 
-    objectReferenceParameter: {fileID: 919132149155446097, guid: bb26947e087328148a4c761807e88942, type: 3}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
+  m_Events: []

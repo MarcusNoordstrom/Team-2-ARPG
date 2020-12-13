@@ -36,7 +36,6 @@ namespace Unit {
         public void TakeDamage(int damage) {
             CurrentHealth -= damage;
 
-            print($"{gameObject.name} {CurrentHealth}");
             if (IsDead) deathEvent?.Invoke();
 
             UpdatePlayerHealthUI(damage);

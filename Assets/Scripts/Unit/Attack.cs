@@ -20,7 +20,7 @@ namespace Unit {
             if (!CanAttack) return;
 
             if (animTrigger != null || animator != null) {
-                TurretShoot();
+                animator.SetTrigger("Shoot");
             }
 
             if (weapon is RangeWeapon)
@@ -28,10 +28,6 @@ namespace Unit {
             else
                 Melee();
             _attackTimer = Time.time;
-        }
-
-        void TurretShoot() {
-            animator.SetTrigger("Shoot");
         }
 
         public void ChangeWeapon(Weapon weapon) {

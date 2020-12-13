@@ -26,6 +26,7 @@ namespace Unit {
 
         public virtual void OnDeath() {
             GetComponent<Collider>().enabled = false;
+            GetComponent<NavMeshObstacle>().enabled = false;
             foreach (var script in GetComponents<MonoBehaviour>()) {
                 script.enabled = false;
             }

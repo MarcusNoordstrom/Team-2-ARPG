@@ -4,29 +4,27 @@ using UnityEngine;
 
 namespace Player {
     public class PlayerAttackController : MonoBehaviour, IAction {
-        //TODO rotate player towards enemy
-        Vector3 _target;
+        GameObject _target;
 
         void Update() {
-            if (Physics.Raycast(PlayerController.GetMouseRay(), out var hit) ) {
-                if (hit.collider.GetComponent<StationaryEnemy>() != null || (Input.GetKey(KeyCode.LeftShift) && Input.GetMouseButton(0))) {
-                    _target = hit.collider.transform.position;
-                    GetComponent<Action>().StartAction(this);
-                    if (Input.GetMouseButtonUp(0)) {
-                        transform.LookAt(_target);
-                    }
-                }
-            }
+            if (!Physics.Raycast(PlayerController.GetMouseRay(), out var hit)) return;
+            if (hit.collider.GetComponent<StationaryEnemy>() == null) return;
+
+            GetComponent<Action>().StartAction(this);
+
+            if (!Input.GetMouseButtonUp(0)) return;
+            _target = hit.collider.gameObject;
+            transform.LookAt(_target.transform.position);
         }
 
         //animation event
         void Shoot() {
-            //transform.LookAt(_target);
             GetComponent<Attack>().SpawnBullet();
         }
 
         //animation event
         void ShootFinish() {
+            if(_target.GetComponent<Health>().IsDead) return;
             GetComponent<Animator>().SetTrigger("RangedAttack");
         }
 
