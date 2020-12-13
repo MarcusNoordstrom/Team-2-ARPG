@@ -17,14 +17,16 @@ namespace UI {
 
         void Start() {
             _health = GetComponent<Health>();
+            Health.CurrentHealthBars = _health.CurrentHealth;
+
             healthBarUI.GetComponent<HealthBarUI>().InstantiateHealthTicks();
             Health.UpdatePlayerHealthUI += PlayerHealthStuff;
         }
 
 
         void PlayerHealthStuff(int damage) {
-            if(LayerMask.GetMask() == LayerMask.NameToLayer("Player")) return;
-            
+            if (LayerMask.GetMask() == LayerMask.NameToLayer("Player")) return;
+
             UpdateHealthTicks(damage);
             //takingDamageEvent?.Invoke(CurrentHealth * 0.5f);
             if (LowHealth()) {

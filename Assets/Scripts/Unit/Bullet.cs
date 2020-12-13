@@ -8,7 +8,7 @@ public class Bullet : MonoBehaviour {
     GameObject target;
 
     void OnTriggerEnter(Collider other) {
-        if (other.gameObject.name == target.transform.name) {
+        if (other.gameObject.layer != LayerMask.GetMask()) {
             target.GetComponent<Health>().TakeDamage(damage);
             Destroy(gameObject);
         }

@@ -1,9 +1,7 @@
 ﻿using System;
 using GameStates;
-using UI;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.UI;
 
 namespace Unit {
     [Serializable]
@@ -31,13 +29,6 @@ namespace Unit {
             get => _currentCurrentHealth;
             set => _currentCurrentHealth =
                 Mathf.Clamp(value, 0, GetComponent<IGetMaxHealth>().MaxHealth());
-        }
-
-
-        void Awake() {
-            if (gameObject.layer == LayerMask.NameToLayer("Player")) {
-                CurrentHealthBars = CurrentHealth;
-            }
         }
 
         public bool IsDead => CurrentHealth <= 0;
