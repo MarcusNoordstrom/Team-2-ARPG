@@ -5,6 +5,7 @@ namespace Player {
         IAction _currentAction;
 
         public void StartAction(IAction action) {
+            print(_currentAction);
             if(_currentAction == action) return;
             _currentAction?.ActionToStart();
             _currentAction = action;
