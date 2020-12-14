@@ -2,6 +2,7 @@
 using GameStates;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 namespace Unit {
     [Serializable]
@@ -34,7 +35,9 @@ namespace Unit {
         public void TakeDamage(int damage) {
             CurrentHealth -= damage;
 
-            if (IsDead) deathEvent?.Invoke();
+            if (IsDead && SceneManager.sceneCount == 1) {
+                deathEvent?.Invoke();
+            }
 
             UpdatePlayerHealthUI(damage);
         }
