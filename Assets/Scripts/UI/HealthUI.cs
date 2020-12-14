@@ -16,7 +16,7 @@ namespace UI {
         public Image lowHealthUI;
         public float interval = 1f;
         public float duration = 0.5f;
-        private bool isFlashing = false;
+        private bool isFlashing;
 
         Health _health;
         bool _soundTriggered;
@@ -26,7 +26,6 @@ namespace UI {
             _health = GetComponent<Health>();
 
             //healthBarUI.GetComponent<HealthBarUI>().InstantiateHealthTicks();
-            _health.UpdatePlayerHealthUI += PlayerHealthStuff;
         }
         
 

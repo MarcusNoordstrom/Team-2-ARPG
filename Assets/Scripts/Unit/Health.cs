@@ -15,14 +15,11 @@ namespace Unit {
     }
 
     public class Health : MonoBehaviour, IResurrect {
-        [SerializeField] FloatEvent takingDamageEvent;
+        //[SerializeField] FloatEvent takingDamageEvent;
         //[SerializeField] BoolEvent deathEvent;
         [SerializeField] private UnitSfxIdEvent unitSfxIdEvent2D;
         [SerializeField] private UnitSfxIdEvent unitSfxIdEvent;
         int _currentCurrentHealth;
-
-
-        public delegate void UpdateHealthUI(int damage);
 
         public int CurrentHealth {
             get => _currentCurrentHealth;
@@ -51,10 +48,11 @@ namespace Unit {
                         unitSfxIdEvent?.Invoke(id = UnitSfxId.TakingDamage);//Enemies
                 }
             }
+            print(CurrentHealth);
         }
 
         public void OnResurrect(bool onCorpse) {
-            takingDamageEvent?.Invoke(CurrentHealth);
+            //takingDamageEvent?.Invoke(CurrentHealth);
             GetComponent<Collider>().enabled = true;
         }
     }
