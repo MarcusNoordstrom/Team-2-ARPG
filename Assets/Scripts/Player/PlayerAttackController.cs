@@ -1,13 +1,13 @@
 ﻿using System;
 using Unit;
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace Player {
     public class PlayerAttackController : MonoBehaviour, IAction {
         
         GameObject _target;
 
-        //TODO action should not start unless you click on target
         //TODO add a shift + left click to attack from current position towards where mouse is?
         void Update() {
             if (!Physics.Raycast(PlayerController.GetMouseRay(), out var hit)) return;
@@ -16,18 +16,21 @@ namespace Player {
             GetComponent<Action>().StartAction(this);
 
             if (!Input.GetMouseButtonUp(0)) return;
+            GetComponent<Animator>().SetTrigger("RangedAttack");
             _target = hit.collider.gameObject;
             transform.LookAt(_target.transform.position);
         }
 
         //animation event
         void Shoot() {
+            if(_target == null || _target.GetComponent<Health>().IsDead) return;
             GetComponent<Attack>().SpawnBullet();
+            //TODO play muzzle effect when shooting
         }
 
         //animation event
         void ShootFinish() {
-            if(_target.GetComponent<Health>().IsDead) return;
+            if(_target == null || _target.GetComponent<Health>().IsDead) return;
             GetComponent<Animator>().SetTrigger("RangedAttack");
         }
 
@@ -37,7 +40,7 @@ namespace Player {
         }
 
         public void ActionToStart() {
-            GetComponent<Animator>().SetTrigger("RangedAttack");
+            _target = null;
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.VFX;
 
 namespace Unit {
     public class Attack : MonoBehaviour {
@@ -12,6 +13,7 @@ namespace Unit {
         bool _canAttack;
         Health _health;
         GameObject _target;
+        public VisualEffect visualEffect;
         bool CanAttack => Time.time - _attackTimer > weapon.attackSpeed;
 
         void Update() {
@@ -33,6 +35,7 @@ namespace Unit {
         //TODO rename the animation event to "EnemyAttacking"?
         //animation event
         void TurretShooting() {
+            visualEffect.Play();
             print("Shooting");
         }
 
