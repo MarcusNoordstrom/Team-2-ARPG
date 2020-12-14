@@ -24002,6 +24002,11 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6188982726118685039, guid: c582648285e4aeb42afa1729034f303d, type: 3}
   m_PrefabInstance: {fileID: 1812477187}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1817868629 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8457951132343509548, guid: 2702fd97c77aa8741bc3c2f1b24479c5, type: 3}
+  m_PrefabInstance: {fileID: 355305648}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1818223570
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26067,7 +26072,7 @@ PrefabInstance:
     - target: {fileID: 986855213, guid: 402531f815494244b99bbde25eb5802b, type: 3}
       propertyPath: healthBarUI
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1817868629}
     - target: {fileID: 226671314604374428, guid: 402531f815494244b99bbde25eb5802b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: -3.0181236

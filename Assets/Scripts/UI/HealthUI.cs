@@ -33,7 +33,9 @@ namespace UI {
         void PlayerHealthStuff(int damage) {
             if (LayerMask.GetMask() == LayerMask.NameToLayer("Player")) return;
             
-            //takingDamageEvent?.Invoke(CurrentHealth * 0.5f);
+            healthBarUI.GetComponent<Slider>().value = _health.CurrentHealth * 10f;
+            
+            // takingDamageEvent?.Invoke(CurrentHealth * 0.5f);
             if (LowHealth()) {
                 _soundTriggered = true;
                 lowHealthEvent?.Invoke();
@@ -52,20 +54,13 @@ namespace UI {
             //SetupHealthBarUI();
         }
 
-
-        void SetupHealthBarUI() {
-            if (_health.CurrentHealth != GetComponent<IGetMaxHealth>().MaxHealth() && gameObject.layer == LayerMask.NameToLayer("Player")) {
-                healthBarUI.GetComponent<HorizontalLayoutGroup>().childControlWidth = false;
-            }
-        }
-
         bool LowHealth() {
             return _health.CurrentHealth <= lowHealthTrigger && !_soundTriggered;
         }
 
         public void OnResurrect(bool onCorpse) {
             _soundTriggered = false;
-            healthBarUI.GetComponent<HorizontalLayoutGroup>().childControlWidth = false;
+            healthBarUI.GetComponent<Slider>().value = _health.CurrentHealth * 10f;
         }
 
         void Flashing() {
