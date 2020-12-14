@@ -8,7 +8,6 @@ namespace Player {
     public class PlayerController : BaseUnit, IAction, IResurrect {
         public LayerMask layerMask;
 
-        RaycastHit hit;
 
         protected override bool EligibleToAttack => true;
 
@@ -40,7 +39,7 @@ namespace Player {
                 }
             }
 
-            if (Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyUp(KeyCode.Mouse0)) {
+            if (Input.GetKeyDown(KeyCode.Mouse0) ||Input.GetKeyUp(KeyCode.Mouse0)) {
                 var hits = Physics.RaycastAll(PlayerHelper.GetMouseRay());
                 foreach (var raycastHit in hits) {
                     var target = raycastHit.transform.GetComponent<Health>();
@@ -67,12 +66,12 @@ namespace Player {
         public void ActionToStart() {
             BaseNavMeshAgent.ResetPath();
             BaseNavMeshAgent.isStopped = false;
-            target = null;
+            CombatTarget = null;
             PlayAnimation("Idle");
         }
 
         void ShouldMovetoMouse() {
-            if (Input.GetMouseButton(0) && Physics.Raycast(PlayerHelper.GetMouseRay(), out hit, 10000f, ~layerMask) && !BaseHealth.IsDead) {
+            if (Input.GetMouseButton(0) && Physics.Raycast(PlayerHelper.GetMouseRay(), out var hit, 10000f, ~layerMask) && !BaseHealth.IsDead) {
                 GetComponent<Action>().StartAction(this);
                 //print(hit.collider.gameObject.name);
                 Movement(hit.point);

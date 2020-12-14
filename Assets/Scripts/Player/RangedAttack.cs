@@ -13,9 +13,6 @@ namespace Player {
             _baseUnit = GetComponent<BaseUnit>();
         }
 
-        void Update() {
-        }
-
         //animation event
         void RangedAttackEvent() {
             if (_baseUnit.target == null || _baseUnit.target.GetComponent<Health>().IsDead) return;
@@ -32,9 +29,8 @@ namespace Player {
                     GetComponent<IAction>().ActionToStart();
                     return;
                 }
-                
             }
-            
+
             GetComponent<Animator>().SetTrigger(animationTrigger);
         }
 
@@ -45,14 +41,10 @@ namespace Player {
             if (GetComponent<NavMeshAgent>() != null) {
                 GetComponent<NavMeshAgent>().isStopped = true;
             }
+
             GetComponent<Animator>().SetTrigger(animationTrigger);
-            try {
-                transform.LookAt(_baseUnit.target.transform.position);
-            }
-            catch (Exception e) {
-                // ignored
-            }
-            print("starting ranged attack");
+            transform.LookAt(_baseUnit.target.transform);
+            print(_baseUnit.target);
         }
     }
 }

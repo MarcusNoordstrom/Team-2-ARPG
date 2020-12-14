@@ -9,7 +9,6 @@ namespace Player {
             _currentAction?.ActionToStart();
             _currentAction = action;
             _currentAction.ActionToStart();
-            print(_currentAction);
         }
     }
 }

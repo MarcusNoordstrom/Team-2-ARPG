@@ -5,24 +5,23 @@ using UnityEngine.AI;
 
 namespace Player {
     public class MeleeAttack : MonoBehaviour, IAction {
-        BaseUnit attackSource;
+        BaseUnit _baseUnit;
 
         //print($"{PlayerController.PlayerTarget} {_navMeshAgent.isStopped}");
 
         NavMeshAgent _navMeshAgent => GetComponent<NavMeshAgent>();
 
         void Awake() {
-            attackSource = GetComponent<BaseUnit>();
+            _baseUnit = GetComponent<BaseUnit>();
         }
 
         void Update() {
-
-            if (attackSource.target == null) return;
+            if (_baseUnit.target == null) return;
             GetComponent<Action>().StartAction(this);
             MoveToTargetPosition();
             if (IsInMeleeRange()) {
                 _navMeshAgent.isStopped = true;
-                var targetPoint = attackSource.target.transform.position;
+                var targetPoint = _baseUnit.target.transform.position;
                 targetPoint.y = transform.position.y;
                 transform.LookAt(targetPoint);
                 //TODO start attacking with melee weapon
@@ -30,7 +29,7 @@ namespace Player {
         }
 
         void MoveToTargetPosition() {
-            _navMeshAgent.SetDestination(attackSource.target.transform.position);
+            _navMeshAgent.SetDestination(_baseUnit.target.transform.position);
         }
 
         public void ActionToStart() {
@@ -38,7 +37,7 @@ namespace Player {
         }
 
         bool IsInMeleeRange() {
-            return Vector3.Distance(transform.position, attackSource.target.transform.position) < attackSource.baseEquippedWeapon.weapon.range;
+            return Vector3.Distance(transform.position, _baseUnit.target.transform.position) < _baseUnit.baseEquippedWeapon.weapon.range;
         }
     }
 }

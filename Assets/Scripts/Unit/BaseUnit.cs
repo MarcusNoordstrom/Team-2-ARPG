@@ -5,22 +5,19 @@ using UnityEngine.AI;
 namespace Unit {
     [RequireComponent(typeof(Health))]
     public class BaseUnit : MonoBehaviour, IGetMaxHealth, IAction {
-        [Header("Animation related")] [SerializeField]
-        string animatorAttackTrigger;
-
+        [Header("Animation related")]
         [SerializeField] protected Animator animator;
 
         [Header("Unit related")] [SerializeField]
         protected BasicUnit basicUnit;
         public GameObject bulletSpawnPoint;
-        
         public GameObject target;
         public EquippedWeapon baseEquippedWeapon;
         protected NavMeshAgent BaseNavMeshAgent => GetComponent<NavMeshAgent>();
         protected Health BaseHealth => GetComponent<Health>();
         protected virtual bool EligibleToAttack { get; set; }
 
-        protected float _attackTimer;
+        float _attackTimer;
 
         void Awake() {
             Setup();
@@ -53,7 +50,7 @@ namespace Unit {
         }
 
         protected virtual GameObject CombatTarget {
-            get => this.target = FindObjectOfType<PlayerController>().gameObject;
+            get => target = FindObjectOfType<PlayerController>().gameObject;
             set => target = value;
         } 
 
