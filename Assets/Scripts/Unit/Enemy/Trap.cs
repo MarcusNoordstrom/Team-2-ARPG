@@ -3,21 +3,20 @@ using UnityEngine;
 
 namespace Unit {
     public class Trap : MonoBehaviour{
-        [SerializeField] private int damage = 10; //Part of weaponSO
-        [SerializeField] private float speed = 2f; //Part of weaponSO
-        //[SerializeField]public float range = 10;//Part of weaponSO
+        [SerializeField] private int damage = 10;
+        [SerializeField] private float speed = 2f;
         private IEnumerator attacking;
         private Health targetHealth;
         private float timer;
 
         private void Awake(){
-            this.timer = -this.speed;
+            timer = -speed;
         }
 
         private void OnTriggerEnter(Collider other){
             if (other.gameObject.layer != LayerMask.NameToLayer("Player"))
                 return;
-            this.targetHealth = other.gameObject.GetComponent<Health>();
+            targetHealth = other.gameObject.GetComponent<Health>();
             if (this.attacking != null)
                 StopCoroutine(this.attacking);
             this.attacking = Attacking();
@@ -33,12 +32,13 @@ namespace Unit {
         
         //TODO: Change TakeDamage to startAttack that can deal dmg ex bullet or range of melee weapon.
         private IEnumerator Attacking(){
-            while (true){
+            while (targetHealth.CurrentHealth > 0){
                 yield return new WaitForSeconds(0.5f); //Check what works best between 0.1f and 1f!
                 if (!(Time.time - this.timer > this.speed)) continue;
                 this.targetHealth.TakeDamage(this.damage); //Temp!
                 this.timer = Time.time;
             }
+            yield break;
         }
     }
 }

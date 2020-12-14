@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: DeathSfx
   m_EditorClassIdentifier: 
   id: 5
-  audioClip: {fileID: 8300000, guid: 275eb49b3d3aa6f46b8ac13694cc64d0, type: 3}
+  audioClip: {fileID: 8300000, guid: ae1d92f559ffe9743816d5d41f004c52, type: 3}
