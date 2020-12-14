@@ -36,7 +36,6 @@ namespace Unit {
         //animation event
         void TurretShooting() {
             visualEffect.Play();
-            print("Shooting");
         }
 
         public void ChangeWeapon(Weapon weapon) {

@@ -5,7 +5,7 @@ namespace Unit {
         public int baseDamage;
         public float attackSpeed;
 
-        [Range(2, 50)] public int range = 2;
+        [Range(2, 50)] public int range = 4;
         //public GameObject weaponPrefab;
     }
 }

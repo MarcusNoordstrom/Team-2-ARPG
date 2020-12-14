@@ -14,6 +14,9 @@ namespace Player {
         public static bool HasClickedOnPortal { get; set; }
         public LayerMask layerMask;
 
+        public static GameObject PlayerTarget { get; set; }
+        
+        public static bool HasTarget => PlayerController.PlayerTarget != null;
         void Update() {
             if (!BaseNavMeshAgent.hasPath && !BaseHealth.IsDead) {
                 PlayAnimation("Idle");
@@ -32,14 +35,13 @@ namespace Player {
         }
 
         public void ActionToStart() {
-            BaseNavMeshAgent.isStopped = true;
             PlayAnimation("Idle");
         }
-
-
+        
         void ShouldMovetoMouse() {
             if (Input.GetMouseButton(0) && Physics.Raycast(GetMouseRay(), out var hit, 10000f, ~layerMask) && !BaseHealth.IsDead) {
                 GetComponent<Action>().StartAction(this);
+                PlayerTarget = null;
                 //print(hit.collider.gameObject.name);
                 Movement(hit.point);
                 ClickedPortal(hit);
@@ -72,11 +74,8 @@ namespace Player {
             animator.SetTrigger(animationToPlay);
         }
 
-        
 
         public void OnResurrect(bool onCorpse) {
-
-            
             gameObject.layer = LayerMask.NameToLayer("Player");
             BaseHealth.CurrentHealth = MaxHealth();
             BaseNavMeshAgent.isStopped = false;
