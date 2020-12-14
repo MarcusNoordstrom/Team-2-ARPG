@@ -16,8 +16,6 @@ namespace Unit {
         [SerializeField] FloatEvent takingDamageEvent;
         [SerializeField] BoolEvent deathEvent;
 
-        public static int CurrentHealthBars;
-
         int _currentCurrentHealth;
 
 

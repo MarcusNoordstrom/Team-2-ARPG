@@ -1,4 +1,5 @@
 ﻿using GameStates;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -29,6 +30,7 @@ namespace MainMenu {
 
         public void QuitGame() {
             Application.Quit();
+            EditorApplication.isPlaying = false;
         }
     }
 }
