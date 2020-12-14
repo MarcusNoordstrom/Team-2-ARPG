@@ -11,9 +11,8 @@ namespace UI {
         [SerializeField] Transform damageUISpawnLocation;
         [SerializeField] float lowHealthTrigger;
         [SerializeField] BoolEvent lowHealthEvent;
-        [SerializeField] float alphaFadeSpeed = 0.05f;
+        [SerializeField] float alphaFadeSpeed = 0.1f;
         public Image lowHealthUI;
-        private Color color;
 
         Health _health;
         bool _soundTriggered;
@@ -34,8 +33,8 @@ namespace UI {
             if (LowHealth()) {
                 _soundTriggered = true;
                 lowHealthEvent?.Invoke();
-                lowHealthUI.color = color;
-                color.a -= alphaFadeSpeed * Time.deltaTime;
+                lowHealthUI.color = new Color(255, 255, 255, alphaFadeSpeed += Time.deltaTime);
+                Debug.Log("Color");
             }
 
             //SetupHealthBarUI();
