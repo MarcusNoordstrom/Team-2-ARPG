@@ -21,7 +21,6 @@ namespace UI {
 
         void Start() {
             _health = GetComponent<Health>();
-            Health.CurrentHealthBars = _health.CurrentHealth;
 
             //healthBarUI.GetComponent<HealthBarUI>().InstantiateHealthTicks();
             _health.UpdatePlayerHealthUI += PlayerHealthStuff;
@@ -56,7 +55,6 @@ namespace UI {
         public void OnResurrect(bool onCorpse) {
             _soundTriggered = false;
             healthBarUI.GetComponent<HorizontalLayoutGroup>().childControlWidth = false;
-            healthBarUI.GetComponent<HealthBarUI>().InstantiateHealthTicks();
         }
     }
 }
