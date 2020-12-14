@@ -19,8 +19,8 @@ namespace Unit {
         bool isPatrolling;
         int x = 0;
         float timer = 0f;
-        private float y = 1;
-        private bool WaitTimer  => Time.time - timer>= y;
+        private float y = 3;
+        private bool WaitTimer => Time.time - y > timer;
 
         void Start() {
             Patrol();
@@ -33,12 +33,13 @@ namespace Unit {
         void FixedUpdate() {
             if (ReachedPosition()) {
                 if (WaitTimer) {
-                    timer = Time.time;
+                    print(timer);
                     x++;
                     if (x == waypoints.Length) {
                         x = 0;
                     }
                     Patrol();
+                    timer = Time.time;
                 }
             }
 
@@ -49,10 +50,10 @@ namespace Unit {
 
             switch (_state) {
                 case State.Patrolling:
-                    FindTarget();
-                    if (ReachedPosition())
-
-                        Patrol();
+                    // FindTarget();
+                    // if (ReachedPosition())
+                    //
+                    //     Patrol();
                     break;
                 case State.ChaseTarget:
                     ChaseTarget();
@@ -100,7 +101,8 @@ namespace Unit {
                 if (Vector3.Angle(transform.forward,
                     (_target.transform.position - transform.position).normalized) < 50)
                     BaseAttack.ActivateAttack(_target.gameObject);
-            } else {
+            }
+            else {
                 BaseNavMeshAgent.isStopped = false;
                 BaseAttack.DeactivateAttack();
             }
