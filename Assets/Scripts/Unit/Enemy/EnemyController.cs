@@ -1,4 +1,5 @@
-﻿using Player;
+﻿using System.Collections;
+using Player;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -14,24 +15,45 @@ namespace Unit {
         PlayerController _target => FindObjectOfType<PlayerController>();
         int _ticks;
         VisibilityCheck _visibilityCheck;
+        public Transform[] waypoints;
+        bool isPatrolling;
+        int x = 0;
+        float timer = 0f;
+        private float waitAtWaypoint = 3;
+        private bool WaitTimer => Time.time - waitAtWaypoint > timer;
 
         void Start() {
+            Patrol();
             _visibilityCheck = GetComponent<VisibilityCheck>();
-            _state = State.Roaming;
+            _state = State.Patrolling;
             LookAtTarget.Setup(_target.transform);
-            _roamPosition = GetRoamingPosition();
             _ticks = Random.Range(0, TicksPerUpdate);
         }
 
         void FixedUpdate() {
+            if (ReachedPosition()) {
+                if (WaitTimer) {
+                    print(timer);
+                    x++;
+                    if (x == waypoints.Length) {
+                        x = 0;
+                    }
+
+                    isPatrolling = true;
+                    timer = Time.time;
+                }
+            }
+
             _ticks++;
             if (_ticks < TicksPerUpdate)
                 return;
             _ticks -= TicksPerUpdate;
 
             switch (_state) {
-                case State.Roaming:
-                    RoamToNewPosition();
+                case State.Patrolling:
+                    FindTarget();
+                    if (isPatrolling)
+                        Patrol();
                     break;
                 case State.ChaseTarget:
                     ChaseTarget();
@@ -43,6 +65,11 @@ namespace Unit {
             }
         }
 
+        private bool ReachedPosition() {
+            return waypoints[x].position.z == transform.position.z &&
+                   waypoints[x].position.x == transform.position.x;
+        }
+
         void OnDrawGizmosSelected() {
             Gizmos.color = Color.blue;
             Gizmos.DrawWireSphere(transform.position, BasicEnemy.targetRange);
@@ -51,7 +78,7 @@ namespace Unit {
         void GoingBackToStart() {
             BaseNavMeshAgent.SetDestination(StartingPosition);
             if (Vector3.Distance(transform.position, StartingPosition) < 1f) {
-                _state = State.Roaming;
+                _state = State.Patrolling;
                 return;
             }
 
@@ -86,32 +113,23 @@ namespace Unit {
             }
         }
 
-        void RoamToNewPosition() {
-            BaseNavMeshAgent.SetDestination(_roamPosition);
-            if (BaseNavMeshAgent.remainingDistance < 1)
-                _roamPosition = GetRoamingPosition();
+        void Patrol() {
+            isPatrolling = false;
+            BaseNavMeshAgent.SetDestination(waypoints[x].position);
 
             FindTarget();
         }
 
-        static Vector3 GetRandomDir() {
-            return new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f)).normalized;
-        }
-
-        Vector3 GetRoamingPosition() {
-            return StartingPosition + GetRandomDir() * Random.Range(3f, 10f);
-        }
 
         void FindTarget() {
             if (Vector3.Distance(transform.position, _target.transform.position) < BasicEnemy.targetRange)
                 if (_visibilityCheck.IsVisible(_target.gameObject)) {
-                    _roamPosition = GetRoamingPosition();
                     _state = State.ChaseTarget;
                 }
         }
 
         enum State {
-            Roaming,
+            Patrolling,
             ChaseTarget,
             GoingBackToStart
         }
