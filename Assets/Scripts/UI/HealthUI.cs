@@ -20,12 +20,9 @@ namespace UI {
         private bool isFlashing = false;
         Health _health;
         bool _soundTriggered;
-        
 
         void Start() {
             _health = GetComponent<Health>();
-
-            //healthBarUI.GetComponent<HealthBarUI>().InstantiateHealthTicks();
             _health.UpdatePlayerHealthUI += PlayerHealthStuff;
         }
         
@@ -33,7 +30,8 @@ namespace UI {
         void PlayerHealthStuff(int damage) {
             if (LayerMask.GetMask() == LayerMask.NameToLayer("Player")) return;
             
-            healthBarUI.GetComponent<Slider>().value = _health.CurrentHealth * 10f;
+            var sliderValue = (float)_health.CurrentHealth / GetComponent<IGetMaxHealth>().MaxHealth() * 100;
+            healthBarUI.GetComponent<Slider>().value = Mathf.RoundToInt(sliderValue);
             
             // takingDamageEvent?.Invoke(CurrentHealth * 0.5f);
             if (LowHealth()) {
@@ -60,7 +58,7 @@ namespace UI {
 
         public void OnResurrect(bool onCorpse) {
             _soundTriggered = false;
-            healthBarUI.GetComponent<Slider>().value = _health.CurrentHealth * 10f;
+            healthBarUI.GetComponent<Slider>().value = _health.CurrentHealth * 0.1f;
         }
 
         void Flashing() {
