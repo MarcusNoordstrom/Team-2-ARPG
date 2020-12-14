@@ -23,6 +23,7 @@ namespace Player {
         }
 
         public override void OnDeath() {
+            GetComponent<Collider>().enabled = false;
             animator.ResetTrigger("Idle");
             animator.ResetTrigger("Running");
             PlayAnimation("Death");
