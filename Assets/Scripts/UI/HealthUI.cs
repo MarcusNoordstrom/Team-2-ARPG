@@ -26,8 +26,7 @@ namespace UI {
 
         void PlayerHealthStuff(int damage) {
             if (LayerMask.GetMask() == LayerMask.NameToLayer("Player")) return;
-
-            UpdateHealthTicks(damage);
+            
             //takingDamageEvent?.Invoke(CurrentHealth * 0.5f);
             if (LowHealth()) {
                 _soundTriggered = true;
@@ -46,12 +45,6 @@ namespace UI {
 
         bool LowHealth() {
             return _health.CurrentHealth <= lowHealthTrigger && !_soundTriggered;
-        }
-
-        void UpdateHealthTicks(int damage) {
-            var damageUI = Instantiate(damageUIPrefab, damageUISpawnLocation.position, damageUISpawnLocation.rotation, damageUISpawnLocation);
-            damageUI.SetUp(damage);
-            //healthBarUI.GetComponent<HealthBarUI>().RemoveHealthTick(damage);
         }
 
         public void OnResurrect(bool onCorpse) {
