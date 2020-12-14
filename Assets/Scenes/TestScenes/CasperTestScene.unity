@@ -21143,8 +21143,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 592065013}
     - target: {fileID: 986855213, guid: 402531f815494244b99bbde25eb5802b, type: 3}
+      propertyPath: alphaFadeSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 986855213, guid: 402531f815494244b99bbde25eb5802b, type: 3}
       propertyPath: lowHealthTrigger
-      value: 5
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4672876197070964409, guid: 402531f815494244b99bbde25eb5802b, type: 3}
       propertyPath: m_Name

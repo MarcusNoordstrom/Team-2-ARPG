@@ -15,7 +15,7 @@ namespace UI {
         
         public Image lowHealthUI;
         public float interval = 1f;
-        public float startDelay = 0.5f;
+        public float duration = 0.5f;
         private bool isFlashing = false;
 
         Health _health;
@@ -37,7 +37,7 @@ namespace UI {
             if (LowHealth()) {
                 _soundTriggered = true;
                 lowHealthEvent?.Invoke();
-                lowHealthUI.color = new Color(255, 255, 255, 1);
+                lowHealthUI.color = new Color(255, 255, 255, alphaFadeSpeed += Time.deltaTime);
                 Flashing();
                 Debug.Log("Color");
             }
@@ -66,7 +66,7 @@ namespace UI {
                 return;
             if (lowHealthUI != null) {
                 isFlashing = true;
-                InvokeRepeating("ToggleState", startDelay, interval);
+                InvokeRepeating("ToggleState", duration, interval);
             }
         }
 
