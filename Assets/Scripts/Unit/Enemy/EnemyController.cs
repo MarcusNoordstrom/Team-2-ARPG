@@ -1,7 +1,10 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using Player;
 using UnityEngine;
 using UnityEngine.AI;
+using Random = UnityEngine.Random;
 
 namespace Unit {
     [RequireComponent(typeof(VisibilityCheck), typeof(LookAtTarget))]
@@ -15,14 +18,21 @@ namespace Unit {
         PlayerController _target => FindObjectOfType<PlayerController>();
         int _ticks;
         VisibilityCheck _visibilityCheck;
-        public Transform[] waypoints;
+
+        public GameObject wayPointObject;
+
+        List<Transform> waypoints = new List<Transform>();
         bool isPatrolling;
         int x = 0;
         float timer = 0f;
-        private float waitAtWaypoint = 3;
+        private float waitAtWaypoint = 5;
         private bool WaitTimer => Time.time - waitAtWaypoint > timer;
 
         void Start() {
+            foreach (Transform child in wayPointObject.GetComponentInChildren<Transform>()) {
+                if(child.gameObject == wayPointObject) continue;
+                waypoints.Add(child); 
+            }
             Patrol();
             _visibilityCheck = GetComponent<VisibilityCheck>();
             _state = State.Patrolling;
@@ -33,9 +43,8 @@ namespace Unit {
         void FixedUpdate() {
             if (ReachedPosition()) {
                 if (WaitTimer) {
-                    print(timer);
                     x++;
-                    if (x == waypoints.Length) {
+                    if (x == waypoints.Count) {
                         x = 0;
                     }
 
@@ -75,10 +84,31 @@ namespace Unit {
             Gizmos.DrawWireSphere(transform.position, BasicEnemy.targetRange);
         }
 
+        void OnDrawGizmos() {
+            var children = wayPointObject.GetComponentsInChildren<Transform>();
+            
+            for (var i = 0; i < children.Length; i++) {
+                if(i == 0 ) continue;
+                Gizmos.color = Color.red;
+                
+                Gizmos.DrawSphere(children[i].transform.position, .3f);
+                
+                if (i < children.Length - 1) {
+                    Gizmos.DrawLine(children[i].transform.position, children[i + 1].transform.position);
+                    
+                    continue;
+                }
+                
+                Gizmos.DrawLine(children[i].transform.position, children[1].transform.position);
+                    
+            }
+        }
+
         void GoingBackToStart() {
             BaseNavMeshAgent.SetDestination(StartingPosition);
             if (Vector3.Distance(transform.position, StartingPosition) < 1f) {
                 _state = State.Patrolling;
+                isPatrolling = true;
                 return;
             }
 
