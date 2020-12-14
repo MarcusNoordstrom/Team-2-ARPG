@@ -12,12 +12,12 @@ namespace UI {
         [SerializeField] float lowHealthTrigger;
         [SerializeField] BoolEvent lowHealthEvent;
         [SerializeField] float alphaFadeSpeed = 1f;
-        
+
+        public Health health;
         public Image lowHealthUI;
         public float interval = 1f;
         public float duration = 0.5f;
         private bool isFlashing = false;
-
         Health _health;
         bool _soundTriggered;
         
@@ -38,9 +38,16 @@ namespace UI {
                 _soundTriggered = true;
                 lowHealthEvent?.Invoke();
                 lowHealthUI.color = new Color(255, 255, 255, alphaFadeSpeed += Time.deltaTime);
-                Flashing();
-                Debug.Log("Color");
             }
+
+            if (_health.CurrentHealth != Mathf.Clamp(_health.CurrentHealth, 1, 8)) {
+                StopFlashing();
+            }
+            else {
+                Flashing();
+            }
+            
+
 
             //SetupHealthBarUI();
         }
@@ -61,13 +68,19 @@ namespace UI {
             healthBarUI.GetComponent<HorizontalLayoutGroup>().childControlWidth = false;
         }
 
-        public void Flashing() {
+        void Flashing() {
             if (isFlashing)
                 return;
             if (lowHealthUI != null) {
                 isFlashing = true;
                 InvokeRepeating("ToggleState", duration, interval);
-            }
+            } 
+        }
+
+        void StopFlashing() {
+            CancelInvoke("ToggleState");
+            lowHealthUI.enabled = false;
+            isFlashing = false;
         }
 
         public void ToggleState() {
