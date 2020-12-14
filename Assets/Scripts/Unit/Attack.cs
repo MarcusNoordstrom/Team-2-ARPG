@@ -9,13 +9,12 @@ namespace Unit {
         [SerializeField] Animator animator;
 
         float _attackTimer;
-        Bullet _bulletPrefab;
         bool _canAttack;
-        Health _health;
         GameObject _target;
         public VisualEffect visualEffect;
         bool CanAttack => Time.time - _attackTimer > weapon.attackSpeed;
-
+        Health _health;
+        
         void Update() {
             if (!_canAttack) return;
 
@@ -24,11 +23,8 @@ namespace Unit {
             if (animTrigger != null || animator != null) {
                 animator.SetTrigger("Shoot");
             }
-
-            if (weapon is RangeWeapon)
-                SpawnBullet();
-            else
-                Melee();
+            weapon.Attack(this.transform, _target);
+            
             _attackTimer = Time.time;
         }
 
@@ -40,7 +36,6 @@ namespace Unit {
 
         public void ChangeWeapon(Weapon weapon) {
             this.weapon = weapon;
-            if (this.weapon is RangeWeapon rangeWeapon) _bulletPrefab = rangeWeapon.bulletPrefab;
         }
 
         //TODO: method that calls attack method based on current weapon.
@@ -52,19 +47,8 @@ namespace Unit {
             _canAttack = true;
         }
 
-        public void SpawnBullet() {
-            var bullet = Instantiate(_bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
-            bullet.BulletFiredBy = LayerMask.GetMask();
-            bullet.Setup(_target, weapon.baseDamage);
-        }
-
         public void DeactivateAttack() {
             _canAttack = false;
-        }
-
-        //TODO: Either use raycast, enable a gameobject or spherecast.
-        void Melee() {
-            _health.TakeDamage(weapon.baseDamage);
         }
 
         //TODO: Fix attack delay on next attack!
