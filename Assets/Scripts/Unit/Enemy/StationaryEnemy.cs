@@ -1,29 +1,31 @@
 ﻿using System;
 using Player;
 using UnityEngine;
+using Action = Player.Action;
 using Random = UnityEngine.Random;
 
 namespace Unit {
     [RequireComponent(typeof(VisibilityCheck))]
     public class StationaryEnemy : BaseUnit {
+        [Header("Stationary Enemy Specific")] [SerializeField]
+        Transform pivot;
+
         LookAtTarget _lookAtTarget;
         VisibilityCheck _visibilityCheck;
         int _ticks;
         const int TicksPerUpdate = 15;
-        [SerializeField] Transform pivot;
-        PlayerController _target => FindObjectOfType<PlayerController>();
 
         protected override void Setup() {
             _lookAtTarget = GetComponent<LookAtTarget>();
             BaseHealth.CurrentHealth = basicUnit.maxHealth;
-            baseEquippedWeapon.ChangeWeapon(basicUnit.mainWeapon);
+            baseEquippedWeapon.ChangeWeapon(basicUnit.rangedWeapon);
             _visibilityCheck = GetComponent<VisibilityCheck>();
 
             _ticks = Random.Range(0, TicksPerUpdate);
         }
 
         void Start() {
-            _lookAtTarget.Setup(_target.transform);
+            _lookAtTarget.Setup(CombatTarget.transform);
         }
 
         void FixedUpdate() {
@@ -32,11 +34,12 @@ namespace Unit {
                 return;
             _ticks -= TicksPerUpdate;
 
-            if (_visibilityCheck.IsVisible(_target.gameObject)) {
+            if (_visibilityCheck.IsVisible(CombatTarget.gameObject)) {
                 _lookAtTarget.enabled = true;
-                if (Vector3.Angle(pivot.forward, (_target.transform.position - pivot.position).normalized) < 50)
+                EligibleToAttack = true;
+
+                if (Vector3.Angle(pivot.forward, (CombatTarget.transform.position - pivot.position).normalized) < 50)
                     return;
-                    //BaseAttack.ActivateAttack(_target.gameObject);
             }
             else {
                 _lookAtTarget.enabled = false;

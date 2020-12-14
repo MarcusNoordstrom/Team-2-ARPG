@@ -8,49 +8,48 @@ using Random = UnityEngine.Random;
 
 namespace Unit {
     [RequireComponent(typeof(VisibilityCheck), typeof(LookAtTarget))]
-    public class EnemyController : BaseUnit {
+    public class EnemyController : BaseUnit, IAction {
+        [SerializeField] float waitAtWaypoint = 5;
         const int TicksPerUpdate = 15;
         BasicEnemy BasicEnemy => (BasicEnemy) basicUnit;
         LookAtTarget LookAtTarget => GetComponent<LookAtTarget>();
-        Vector3 _roamPosition;
         Vector3 StartingPosition => transform.position;
         State _state;
-        PlayerController _target => FindObjectOfType<PlayerController>();
         int _ticks;
         VisibilityCheck _visibilityCheck;
 
         public GameObject wayPointObject;
 
-        List<Transform> waypoints = new List<Transform>();
-        bool isPatrolling;
-        int x = 0;
-        float timer = 0f;
-        private float waitAtWaypoint = 5;
-        private bool WaitTimer => Time.time - waitAtWaypoint > timer;
+        readonly List<Transform> _waypoints = new List<Transform>();
+        bool _isPatrolling;
+        int _x;
+        float _timer;
+
+        bool WaitTimer => Time.time - waitAtWaypoint > _timer;
 
         void Start() {
             foreach (Transform child in wayPointObject.GetComponentInChildren<Transform>()) {
                 if (child.gameObject == wayPointObject) continue;
-                waypoints.Add(child);
+                _waypoints.Add(child);
             }
 
             Patrol();
             _visibilityCheck = GetComponent<VisibilityCheck>();
             _state = State.Patrolling;
-            LookAtTarget.Setup(_target.transform);
+            LookAtTarget.Setup(CombatTarget.transform);
             _ticks = Random.Range(0, TicksPerUpdate);
         }
 
         void FixedUpdate() {
             if (ReachedPosition()) {
                 if (WaitTimer) {
-                    x++;
-                    if (x == waypoints.Count) {
-                        x = 0;
+                    _x++;
+                    if (_x == _waypoints.Count) {
+                        _x = 0;
                     }
 
-                    isPatrolling = true;
-                    timer = Time.time;
+                    _isPatrolling = true;
+                    _timer = Time.time;
                 }
             }
 
@@ -62,7 +61,7 @@ namespace Unit {
             switch (_state) {
                 case State.Patrolling:
                     FindTarget();
-                    if (isPatrolling)
+                    if (_isPatrolling)
                         Patrol();
                     break;
                 case State.ChaseTarget:
@@ -76,8 +75,8 @@ namespace Unit {
         }
 
         bool ReachedPosition() {
-            return waypoints[x].position.z == transform.position.z &&
-                   waypoints[x].position.x == transform.position.x;
+            return _waypoints[_x].position.z == transform.position.z &&
+                   _waypoints[_x].position.x == transform.position.x;
         }
 
         void OnDrawGizmosSelected() {
@@ -108,7 +107,7 @@ namespace Unit {
             BaseNavMeshAgent.SetDestination(StartingPosition);
             if (Vector3.Distance(transform.position, StartingPosition) < 1f) {
                 _state = State.Patrolling;
-                isPatrolling = true;
+                _isPatrolling = true;
                 return;
             }
 
@@ -116,7 +115,7 @@ namespace Unit {
         }
 
         void ChaseTarget() {
-            if (!_visibilityCheck.IsVisible(_target.gameObject)) {
+            if (!_visibilityCheck.IsVisible(CombatTarget.gameObject)) {
                 LookAtTarget.enabled = false;
                 BaseNavMeshAgent.isStopped = false;
                 DeactivateAttack();
@@ -124,12 +123,12 @@ namespace Unit {
                 return;
             }
 
-            BaseNavMeshAgent.SetDestination(_target.transform.position);
-            if (Vector3.Distance(transform.position, _target.transform.position) < baseEquippedWeapon.weapon.range) {
+            BaseNavMeshAgent.SetDestination(CombatTarget.transform.position);
+            if (Vector3.Distance(transform.position, CombatTarget.transform.position) < baseEquippedWeapon.weapon.range) {
                 BaseNavMeshAgent.isStopped = true;
                 LookAtTarget.enabled = true;
                 if (Vector3.Angle(transform.forward,
-                    (_target.transform.position - transform.position).normalized) < 50)
+                    (CombatTarget.transform.position - transform.position).normalized) < 50)
                     return;
                 //BaseAttack.ActivateAttack(_target.gameObject);
             }
@@ -138,23 +137,23 @@ namespace Unit {
                 DeactivateAttack();
             }
 
-            if (Vector3.Distance(transform.position, _target.transform.position) > BasicEnemy.stopChaseDistance) {
+            if (Vector3.Distance(transform.position, CombatTarget.transform.position) > BasicEnemy.stopChaseDistance) {
                 LookAtTarget.enabled = false;
                 _state = State.GoingBackToStart;
             }
         }
 
         void Patrol() {
-            isPatrolling = false;
-            BaseNavMeshAgent.SetDestination(waypoints[x].position);
+            _isPatrolling = false;
+            BaseNavMeshAgent.SetDestination(_waypoints[_x].position);
 
             FindTarget();
         }
 
 
         void FindTarget() {
-            if (Vector3.Distance(transform.position, _target.transform.position) < BasicEnemy.targetRange)
-                if (_visibilityCheck.IsVisible(_target.gameObject)) {
+            if (Vector3.Distance(transform.position, CombatTarget.transform.position) < BasicEnemy.targetRange)
+                if (_visibilityCheck.IsVisible(CombatTarget.gameObject)) {
                     _state = State.ChaseTarget;
                 }
         }
@@ -163,6 +162,10 @@ namespace Unit {
             Patrolling,
             ChaseTarget,
             GoingBackToStart
+        }
+
+        public void ActionToStart() {
+            //TODO should return to his position here
         }
     }
 }

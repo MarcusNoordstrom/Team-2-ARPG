@@ -22,14 +22,18 @@ namespace Player {
             ShouldMovetoMouse();
         }
 
+        protected override GameObject CombatTarget {
+            get => target;
+            set => target = value;
+        }
+
         bool InteractWithCombat() {
-            if (Input.GetKeyDown(KeyCode.Mouse1) || Input.GetKeyUp(KeyCode.Mouse1)) {
+            if (Input.GetKeyDown(KeyCode.Mouse1) ||Input.GetKeyUp(KeyCode.Mouse1)) {
                 var hits = Physics.RaycastAll(PlayerHelper.GetMouseRay());
                 foreach (var raycastHit in hits) {
                     var target = raycastHit.transform.GetComponent<Health>();
-                    print(target);
                     if (target == null) continue;
-                    this.target = target.gameObject;
+                    CombatTarget = target.gameObject;
                     baseEquippedWeapon.ChangeWeapon(basicUnit.meleeWeapon);
                     GetComponent<Action>().StartAction(GetComponent<MeleeAttack>());
                     return true;
@@ -41,8 +45,8 @@ namespace Player {
                 foreach (var raycastHit in hits) {
                     var target = raycastHit.transform.GetComponent<Health>();
                     if (target == null) continue;
-                    this.target = target.gameObject;
-                    baseEquippedWeapon.ChangeWeapon(basicUnit.mainWeapon);
+                    CombatTarget = target.gameObject;
+                    baseEquippedWeapon.ChangeWeapon(basicUnit.rangedWeapon);
                     GetComponent<Action>().StartAction(GetComponent<RangedAttack>());
                     return true;
                 }
@@ -77,7 +81,7 @@ namespace Player {
         }
 
         void Movement(Vector3 destination) {
-            BaseNavMeshAgent.isStopped = false;
+            //BaseNavMeshAgent.isStopped = false;
             BaseNavMeshAgent.destination = destination;
             if (BaseHealth.IsDead) return;
             PlayAnimation("Running");

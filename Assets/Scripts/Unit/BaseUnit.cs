@@ -1,9 +1,10 @@
-﻿using UnityEngine;
+﻿using Player;
+using UnityEngine;
 using UnityEngine.AI;
 
 namespace Unit {
     [RequireComponent(typeof(Health))]
-    public class BaseUnit : MonoBehaviour, IGetMaxHealth {
+    public class BaseUnit : MonoBehaviour, IGetMaxHealth, IAction {
         [Header("Animation related")] [SerializeField]
         string animatorAttackTrigger;
 
@@ -19,7 +20,7 @@ namespace Unit {
         protected Health BaseHealth => GetComponent<Health>();
         protected virtual bool EligibleToAttack { get; set; }
 
-        float _attackTimer;
+        protected float _attackTimer;
 
         void Awake() {
             Setup();
@@ -32,20 +33,29 @@ namespace Unit {
 
             if (!CanAttack) return;
 
-            if (animator != null || animator != null) {
-                animator.SetTrigger(animatorAttackTrigger);
-            }
-
+            CheckWeaponType();
+            
             baseEquippedWeapon.weapon.Attack(transform, target);
 
+            //TODO move  "_attackTimer = Time.time;" to StartAction? If so it means the "cooldown" will start once the animation is complete
             _attackTimer = Time.time;
+            
+            GetComponent<Action>().StartAction(this);
         }
 
-        protected virtual void CombatTarget(GameObject target) {
-            if (target.GetComponent<Health>() == null) return;
-            
-            this.target = target;
+        void CheckWeaponType() {
+            if (basicUnit.rangedWeapon != null) {
+                GetComponent<Action>().StartAction(GetComponent<RangedAttack>());
+            }
+            else {
+                GetComponent<Action>().StartAction(GetComponent<MeleeAttack>());
+            }
         }
+
+        protected virtual GameObject CombatTarget {
+            get => this.target = FindObjectOfType<PlayerController>().gameObject;
+            set => target = value;
+        } 
 
         protected void DeactivateAttack() {
             EligibleToAttack = false;
@@ -58,7 +68,7 @@ namespace Unit {
         protected virtual void Setup() {
             BaseNavMeshAgent.speed = basicUnit.moveSpeed;
             BaseHealth.CurrentHealth = basicUnit.maxHealth;
-            baseEquippedWeapon.ChangeWeapon(basicUnit.mainWeapon);
+            baseEquippedWeapon.ChangeWeapon(basicUnit.rangedWeapon);
         }
 
         public virtual void OnDeath() {
@@ -68,6 +78,10 @@ namespace Unit {
             foreach (var script in GetComponents<MonoBehaviour>()) {
                 script.enabled = false;
             }
+        }
+
+        public void ActionToStart() {
+            //TODO something here?
         }
     }
 }

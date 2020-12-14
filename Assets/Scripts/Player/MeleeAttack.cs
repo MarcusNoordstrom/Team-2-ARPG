@@ -7,7 +7,6 @@ namespace Player {
     public class MeleeAttack : MonoBehaviour, IAction {
         BaseUnit attackSource;
 
-        EquippedWeapon EquippedWeapon => GetComponent<EquippedWeapon>();
         //print($"{PlayerController.PlayerTarget} {_navMeshAgent.isStopped}");
 
         NavMeshAgent _navMeshAgent => GetComponent<NavMeshAgent>();
