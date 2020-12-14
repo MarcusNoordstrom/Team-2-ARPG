@@ -23,7 +23,6 @@ namespace Player {
         }
 
         public override void OnDeath() {
-            base.OnDeath();
             animator.ResetTrigger("Idle");
             animator.ResetTrigger("Running");
             PlayAnimation("Death");
@@ -72,6 +71,7 @@ namespace Player {
             animator.SetTrigger(animationToPlay);
         }
 
+        
 
         public void OnResurrect(bool onCorpse) {
 
