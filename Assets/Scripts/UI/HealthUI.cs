@@ -33,7 +33,7 @@ namespace UI {
         void PlayerHealthStuff(int damage) {
             if (LayerMask.GetMask() == LayerMask.NameToLayer("Player")) return;
             
-            healthBarUI.GetComponent<Slider>().value = _health.CurrentHealth * 10f;
+//            healthBarUI.GetComponent<Slider>().value = _health.CurrentHealth * 10f;
             
             // takingDamageEvent?.Invoke(CurrentHealth * 0.5f);
             if (LowHealth()) {
