@@ -1,6 +1,7 @@
 ﻿using System;
 using GameStates;
 using Player;
+using UI;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
@@ -20,6 +21,9 @@ namespace Unit {
         [SerializeField] private UnitSfxIdEvent unitSfxIdEvent2D;
         [SerializeField] private UnitSfxIdEvent unitSfxIdEvent;
         int _currentCurrentHealth;
+        
+        //TODO: Update healthbar UI thru TakeDamage
+        // public FloatEvent UpdateHealthUI;
 
         public int CurrentHealth {
             get => _currentCurrentHealth;
@@ -27,6 +31,11 @@ namespace Unit {
                 Mathf.Clamp(value, 0, GetComponent<IGetMaxHealth>().MaxHealth());
         }
 
+        public int CalculateHealthBarValue() {
+            var sliderValue = (float)CurrentHealth / GetComponent<IGetMaxHealth>().MaxHealth() * 100;
+            return Mathf.RoundToInt(sliderValue);
+        }
+        
         public bool IsDead => CurrentHealth <= 0;
 
         public void TakeDamage(int damage) {
