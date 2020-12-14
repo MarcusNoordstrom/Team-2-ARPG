@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1045405773}
   - component: {fileID: 1045405772}
   - component: {fileID: 1045405771}
-  m_Layer: 5
+  m_Layer: 2
   m_Name: Popup canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -102,7 +102,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2317585598148463856}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: joint2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -133,7 +133,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8663347820071489713}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:Main_Character:group4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -165,7 +165,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1315507387371134122}
   - component: {fileID: 5802920490497272284}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:Main_Character:pSphere1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -251,7 +251,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7317057535972739269}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:Main_Character:pasted__pasted__group6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -281,7 +281,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8590895361590683515}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:Main_Character:pasted__group1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -312,7 +312,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7221727340610414495}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:Main_Character:group21
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -344,7 +344,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8370922943570315484}
   - component: {fileID: 2928005573784145311}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:Main_Character:pasted__pCylinder6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -431,7 +431,7 @@ GameObject:
   m_Component:
   - component: {fileID: 342265081641013870}
   - component: {fileID: 8747965728241612961}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:Main_Character:pCylinder16
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -518,7 +518,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6587944972556392045}
   - component: {fileID: 1042224278059481580}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:Main_Character:pCube6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -604,7 +604,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2350587725611119296}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:Main_Character:pasted__pasted__pasted__pasted__group16
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -635,7 +635,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3311162919150668981}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:Main_Character:group27
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -666,7 +666,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 14029436397892142}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:Main_Character:group12_pasted__group9_pasted__pasted__pCylinder5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -698,7 +698,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2315180771402414683}
   - component: {fileID: 7989145123053889002}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:Main_Character:pCylinder22
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -784,7 +784,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7308288001311687866}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:Main_Character:pasted__pasted__group25
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -816,7 +816,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9041595196170331584}
   - component: {fileID: 2544835578286966969}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:pCylinder20
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -902,7 +902,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6318135894553667843}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:Main_Character:pasted__pasted__group16
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -934,7 +934,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8820928156296105065}
   - component: {fileID: 5841952236885665240}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:Main_Character:pCylinder1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1021,7 +1021,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2951332405189404458}
   - component: {fileID: 5715601245935316794}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:Main_Character:pasted__pCylinder6 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1107,7 +1107,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 194220606691781253}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:Main_Character:group18
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1139,7 +1139,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3304520808918858146}
   - component: {fileID: 6678552112883797935}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:pCylinder28
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1225,7 +1225,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2566023782909424713}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:Main_Character:pasted__group21
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1256,7 +1256,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2892126998538429462}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:Main_Character:group6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1286,7 +1286,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6048241318594553595}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:Main_Character:pasted__pasted__pasted__pasted__pasted__group16
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1317,7 +1317,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5904493469377466816}
   - component: {fileID: 2633657909399439961}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:Main_Character:pasted__pasted__pCylinder7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1403,7 +1403,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1192577760637211430}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:Main_Character:pasted__pasted__pasted__pasted__pasted__group21
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1435,7 +1435,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7639638144019327560}
   - component: {fileID: 7776113330775493099}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:Main_Character:pasted__pasted__pasted__pasted__pCylinder7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1522,7 +1522,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1690229674407117852}
   - component: {fileID: 3232369330996382333}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:pCube1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1609,7 +1609,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2428967723818425459}
   - component: {fileID: 3039819598384989332}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:Main_Character:pCube9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1695,7 +1695,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6892830276870201341}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:Main_Character:group26
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1727,7 +1727,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6576791326983771314}
   - component: {fileID: 7826994194013476597}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:Main_Character:pCube5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1814,7 +1814,7 @@ GameObject:
   m_Component:
   - component: {fileID: 477773952360463247}
   - component: {fileID: 4968787817104145332}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:Main_Character:pCylinder2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1900,7 +1900,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8053980476143587573}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:Main_Character:pasted__pasted__pasted__group22
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1932,7 +1932,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4910659248144797262}
   - component: {fileID: 2579095634687979848}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:pCylinder29
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2018,7 +2018,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2638174234265733058}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:Main_Character:group16
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2049,7 +2049,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 286939473507178408}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:Main_Character:pasted__pasted__pasted__pasted__group23
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2080,7 +2080,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2452101011891999340}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:Main_Character:transform7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2111,7 +2111,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8743655878380873070}
   - component: {fileID: 5307732946135322912}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:Main_Character:pSphere5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2197,7 +2197,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2731905935159526964}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:Main_Character:group23
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2228,7 +2228,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8102392480712314609}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:Main_Character:pasted__pasted__group23
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2259,7 +2259,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7969813382277999523}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:group1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2364,7 +2364,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7017762081278314373}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:Main_Character:pasted__pasted__pasted__group20
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2395,7 +2395,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1558330390429881871}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:Main_Character:group20
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2427,7 +2427,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2776173465527945523}
   - component: {fileID: 8729958421646486410}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:Main_Character:pCube13
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2513,7 +2513,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4836956822616702278}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:Main_Character:group1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2544,7 +2544,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 990461945579805967}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: joint3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2575,7 +2575,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4441866547441437504}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:Main_Character:group28
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2606,7 +2606,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8662441169393371318}
   - component: {fileID: 4409302022038599957}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:Main_Character:pasted__pCylinder7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2692,7 +2692,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 425411883373439017}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:Main_Character:group17
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2724,7 +2724,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1169189285855563497}
   - component: {fileID: 6032540443287102388}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:Main_Character:pasted__pCylinder1 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2810,7 +2810,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6449132536042430725}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:Main_Character:pasted__pasted__pasted__pasted__group21
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2842,7 +2842,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2918404417456937418}
   - component: {fileID: 5188801360989565838}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:Main_Character:pasted__pasted__pasted__pasted__pSphere1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2929,7 +2929,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5587858894509980162}
   - component: {fileID: 2053876115876066975}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:Main_Character:pasted__pCylinder1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3015,7 +3015,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 669600155377816784}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:Main_Character:pasted__pasted__group24
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3048,7 +3048,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7955049320926398148}
   - component: {fileID: 4775530145676689687}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:Main_Character:pasted__pCube4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3134,7 +3134,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6354657513053299088}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:Main_Character:pasted__group13
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3166,7 +3166,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4156016425344174358}
   - component: {fileID: 2225618743697304172}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:Main_Character:pasted__pCylinder3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3252,7 +3252,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4838654393553380372}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:Main_Character:pasted__group20
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3283,7 +3283,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6257753948514315977}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:Main_Character:group2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3315,7 +3315,7 @@ GameObject:
   m_Component:
   - component: {fileID: 367805390310969446}
   - component: {fileID: 3430782052988080191}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:Main_Character:pCube4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3402,7 +3402,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4267459955581690935}
   - component: {fileID: 8148122406629377736}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:Main_Character:pasted__pasted__pasted__pSphere1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3488,7 +3488,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3721553259514175619}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:Main_Character:pasted__pasted__pasted__pasted__pasted__group20
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3520,7 +3520,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3563778912822589199}
   - component: {fileID: 8376294923764994250}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:Main_Character:pSphere2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3607,7 +3607,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4621746609137728522}
   - component: {fileID: 3366136732943082334}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:Main_Character:pasted__pasted__pCylinder6
     1
   m_TagString: Untagged
@@ -3694,7 +3694,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7302172033364199905}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:Main_Character:pasted__pasted__group13
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3726,7 +3726,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4812589248454750491}
   - component: {fileID: 6891921428786328993}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:pCylinder9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3812,7 +3812,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8016160905331070170}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:Main_Character:group30
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3843,7 +3843,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7263452302606990520}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:Main_Character:pasted__group22
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3875,7 +3875,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5027622072930599270}
   - component: {fileID: 2260091190438681371}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:pCylinder26
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3961,7 +3961,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8541537147247354646}
-  m_Layer: 8
+  m_Layer: 2
   m_Name: BulletsSpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3992,7 +3992,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7606131990126903650}
   - component: {fileID: 7583506196904338584}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:Main_Character:pasted__pasted__pasted__pasted__pasted__pCylinder7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4079,7 +4079,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1320608534211691599}
   - component: {fileID: 1194537438107368236}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:Main_Character:pCube10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4166,7 +4166,7 @@ GameObject:
   m_Component:
   - component: {fileID: 87961553612426454}
   - component: {fileID: 3212472265136336819}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:Main_Character:pasted__pSphere1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4253,7 +4253,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6763905856466308979}
   - component: {fileID: 1503304927469914067}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:Main_Character:pTorus1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4339,7 +4339,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7834721125089217176}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:Main_Character:pasted__group18
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4371,7 +4371,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5499704975973010852}
   - component: {fileID: 3032383165810068439}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:pCylinder25
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4468,7 +4468,7 @@ GameObject:
   - component: {fileID: 852555074}
   - component: {fileID: 852555075}
   - component: {fileID: 986855213}
-  m_Layer: 8
+  m_Layer: 2
   m_Name: Player FINAL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4651,6 +4651,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   basicUnit: {fileID: 11400000, guid: 2b9d05680b34f1e428d9a8202092acdf, type: 2}
+  animator: {fileID: 5483147893479455254}
   layerMask:
     serializedVersion: 2
     m_Bits: 256
@@ -4664,10 +4665,10 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
-  m_Acceleration: 50000
+  m_Speed: 10
+  m_Acceleration: 300
   avoidancePriority: 50
-  m_AngularSpeed: 50000
+  m_AngularSpeed: 300
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
@@ -4692,6 +4693,7 @@ MonoBehaviour:
   bulletSpawnPoint: {fileID: 8541537147247354646}
   animTrigger: 
   animator: {fileID: 0}
+  visualEffect: {fileID: 0}
 --- !u!114 &5483147893479455251
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4801,6 +4803,11 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  alphaFadeSpeed: 1
+  health: {fileID: 0}
+  lowHealthUI: {fileID: 0}
+  interval: 1
+  duration: 0.5
 --- !u!1 &4764225821289464187
 GameObject:
   m_ObjectHideFlags: 0
@@ -4811,7 +4818,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3176740501285312551}
   - component: {fileID: 7449302727491992678}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:pSphere6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4897,7 +4904,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4216651394055476812}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:Main_Character:pasted__pasted__group21
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4928,7 +4935,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3034890511203311819}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:Main_Character:pasted__group16
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4960,7 +4967,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7100904047397127831}
   - component: {fileID: 846616034602758897}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:Main_Character:pCylinder7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5047,7 +5054,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2382074544156068333}
   - component: {fileID: 3982893546286516662}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:pCylinder32
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5133,7 +5140,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6637657254764511723}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:Main_Character:pasted__pasted__pasted__pasted__group22
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5165,7 +5172,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1866574070792917262}
   - component: {fileID: 6412663032597464104}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:pCylinder8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5252,7 +5259,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5133783035970202968}
   - component: {fileID: 1403683925584097427}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:Main_Character:pasted__pasted__pSphere1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5338,7 +5345,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7550836710590166547}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:Main_Character:group15
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5369,7 +5376,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7291380762206882398}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:Main_Character:pasted__group7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5400,7 +5407,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5377732598733791345}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:Main_Character:pasted__group26
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5431,7 +5438,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2756526803846020170}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:Main_Character:group7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5463,7 +5470,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7034456160462776123}
   - component: {fileID: 8822586267268566195}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:Main_Character:pCube12
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5549,7 +5556,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3598720318732820341}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:Main_Character:group3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5581,7 +5588,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9158463693084855544}
   - component: {fileID: 1805996146892600310}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:Main_Character:pasted__pasted__pasted__pCylinder7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5667,7 +5674,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7864410243808395313}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:Main_Character:pasted__pasted__pasted__group21
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5699,7 +5706,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1835422948941453294}
   - component: {fileID: 3246450420517156642}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:Main_Character:pCylinder6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5785,7 +5792,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2695873697352046031}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:Main_Character:pasted__group23
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5817,7 +5824,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4709745223411539553}
   - component: {fileID: 7616200202824766159}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:Main_Character:pSphere6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5904,7 +5911,7 @@ GameObject:
   m_Component:
   - component: {fileID: 335808933906153955}
   - component: {fileID: 6267803958682478604}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:Main_Character:pasted__pSphere1 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5991,7 +5998,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2690468832012974023}
   - component: {fileID: 875904672215910158}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:pCylinder30
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6077,7 +6084,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6977759503333529038}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:Main_Character:group5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6109,7 +6116,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7326296945809617365}
   - component: {fileID: 7772067066133711548}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:Main_Character:pCylinder9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6196,7 +6203,7 @@ GameObject:
   m_Component:
   - component: {fileID: 651730617753479002}
   - component: {fileID: 8087190005647994960}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:pCylinder21
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6282,7 +6289,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 584957657101957821}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:Main_Character:group8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6314,7 +6321,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2402389387787939039}
   - component: {fileID: 2716755056024243896}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:pCylinder22
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6401,7 +6408,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6971173389615579464}
   - component: {fileID: 1926470174217037872}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:pCylinder27
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6488,7 +6495,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2980235606032522411}
   - component: {fileID: 6829794683121001279}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:Main_Character:pCylinder3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6575,7 +6582,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6279008248663009291}
   - component: {fileID: 1470401823495229564}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:Main_Character:pasted__pCylinder8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6662,7 +6669,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5986940644727938440}
   - component: {fileID: 3923739385571463268}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:Main_Character:pasted__pasted__pasted__pCylinder6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6748,7 +6755,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5397463017180810120}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:Main_Character:group22
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6779,7 +6786,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 226671314604374428}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: joint4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6809,7 +6816,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8529063453466310610}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:Main_Character:pasted__pasted__pasted__pasted__pasted__pasted__group16
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6840,7 +6847,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5868536236415826043}
   - component: {fileID: 6889471683576294650}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:Main_Character:pCube11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6926,7 +6933,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5174621443831222580}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:Main_Character:pasted__pasted__pasted__group23
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6958,7 +6965,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7993205895407397999}
   - component: {fileID: 5199717000661752109}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:Main_Character:pasted__pasted__pasted__pasted__pasted__pasted__pSphere1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7044,7 +7051,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2615170727266758395}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:Main_Character:group24
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7077,7 +7084,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8818227817603213749}
   - component: {fileID: 4291162107103823952}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:pCylinder17
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7164,7 +7171,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1232288235672448208}
   - component: {fileID: 4496329425249230699}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:pCylinder23
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7250,7 +7257,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 28610570553456787}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:Main_Character:pasted__pasted__pasted__group16
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7281,7 +7288,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 694756345861601872}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:Main_Character:group13
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7313,7 +7320,7 @@ GameObject:
   m_Component:
   - component: {fileID: 677373319494427740}
   - component: {fileID: 1372758228726269113}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:pCylinder24
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7399,7 +7406,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 558047825388567179}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:Main_Character:group29
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7431,7 +7438,7 @@ GameObject:
   m_Component:
   - component: {fileID: 369304457884712485}
   - component: {fileID: 1405152627781506386}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:Main_Character:pSphere3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7518,7 +7525,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4758951968655420850}
   - component: {fileID: 1609178087156114051}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:Main_Character:pasted__pasted__pCylinder1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7604,7 +7611,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 893676745482310982}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:Main_Character:pasted__pasted__group22
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7636,7 +7643,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5220786452538037589}
   - component: {fileID: 4129553618193893145}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:Main_Character:pCube8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7723,7 +7730,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8036074856583192945}
   - component: {fileID: 3475373924539238801}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:Main_Character:pCylinder17
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7810,7 +7817,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3121548629893480494}
   - component: {fileID: 1668767507047337012}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:Main_Character:pCube7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7896,7 +7903,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5371715537257408910}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: joint5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7927,7 +7934,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4062374144624102487}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:Main_Character:pasted__group24
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7959,7 +7966,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8656743401788759902}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:Main_Character:pasted__group25
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7990,7 +7997,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1707817192728963476}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:Main_Character:pasted__pasted__pasted__group24
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8023,7 +8030,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3298969850486683850}
   - component: {fileID: 6296331916169862399}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:Main_Character:pCylinder19
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8109,7 +8116,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3804526954812083504}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:Main_Character:group14
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8140,7 +8147,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7742276957568221754}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:Main_Character:pasted__group29
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8171,7 +8178,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6587000169353120371}
   - component: {fileID: 847944410787760608}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:Main_Character:pCube15
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8257,7 +8264,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7403925052277874962}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:Main_Character:pasted__pasted__group20
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8288,7 +8295,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8263139450289874464}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:Main_Character:pasted__group14
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8319,7 +8326,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3910414392490688518}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:Main_Character:pasted__group6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8349,7 +8356,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4402497145947830886}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:Main_Character:group25
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8381,7 +8388,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3341305097976069323}
   - component: {fileID: 6100926845302146280}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:pCylinder19
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8468,7 +8475,7 @@ GameObject:
   m_Component:
   - component: {fileID: 686980915045709804}
   - component: {fileID: 1148061535362034188}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:Main_Character:pasted__pasted__pCylinder6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8554,7 +8561,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7452793657050920542}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:Main_Character:group19
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8586,7 +8593,7 @@ GameObject:
   m_Component:
   - component: {fileID: 299260442496274814}
   - component: {fileID: 3398484624303573005}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:Main_Character:pCylinder8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8672,7 +8679,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7938629626410469651}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:Main_Character:pasted__pasted__pasted__pasted__group20
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8704,7 +8711,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4399150268261644409}
   - component: {fileID: 7583115917611809218}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:Main_Character:pasted__pasted__pasted__pasted__pasted__pSphere1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8791,7 +8798,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2772633575979386990}
   - component: {fileID: 465499065658136419}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:pTorus1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8878,7 +8885,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4730461727202990080}
   - component: {fileID: 3896458869888214189}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainCharacterModelv2_uvmaped:pCylinder31
   m_TagString: Untagged
   m_Icon: {fileID: 0}
