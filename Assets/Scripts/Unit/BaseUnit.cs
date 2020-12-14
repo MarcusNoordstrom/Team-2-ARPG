@@ -9,6 +9,8 @@ namespace Unit {
         protected NavMeshAgent BaseNavMeshAgent => GetComponent<NavMeshAgent>();
         protected Attack BaseAttack => GetComponent<Attack>();
         protected Health BaseHealth => GetComponent<Health>();
+        
+        public GameObject target;
 
         void Awake() {
             Setup();
