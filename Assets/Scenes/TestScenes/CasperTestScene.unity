@@ -6809,6 +6809,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1329899256, guid: eba4d556f65ef254b99a02cd08608036, type: 3}
+      propertyPath: lowHealthUI
+      value: 
+      objectReference: {fileID: 592065013}
     - target: {fileID: 1911867861980771090, guid: eba4d556f65ef254b99a02cd08608036, type: 3}
       propertyPath: m_Name
       value: Turret
@@ -21132,7 +21136,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 986855213, guid: 402531f815494244b99bbde25eb5802b, type: 3}
       propertyPath: startDelay
-      value: 0.5
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 986855213, guid: 402531f815494244b99bbde25eb5802b, type: 3}
       propertyPath: healthBarUI
