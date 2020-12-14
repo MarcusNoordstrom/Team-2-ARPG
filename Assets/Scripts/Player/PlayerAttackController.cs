@@ -23,13 +23,8 @@ namespace Player {
 
         //animation event
         void Shoot() {
-<<<<<<< Updated upstream
-            if (_target == null || _target.GetComponent<Health>().IsDead) return;
-            GetComponent<Attack>().SpawnBullet();
-=======
             if(_target == null || _target.GetComponent<Health>().IsDead) return;
             // GetComponent<Attack>().SpawnBullet();
->>>>>>> Stashed changes
             //TODO play muzzle effect when shooting
         }
 

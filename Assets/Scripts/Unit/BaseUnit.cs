@@ -7,13 +7,25 @@ namespace Unit {
         [SerializeField] protected BasicUnit basicUnit;
         [SerializeField] protected Animator animator;
         protected NavMeshAgent BaseNavMeshAgent => GetComponent<NavMeshAgent>();
-        protected Attack BaseAttack => GetComponent<Attack>();
+        public Attack BaseAttack;
         protected Health BaseHealth => GetComponent<Health>();
-        
         public GameObject target;
 
         void Awake() {
             Setup();
+        }
+        
+        void Update() {
+            if (!BaseAttack._canAttack) return;
+
+            if (!BaseAttack.CanAttack) return;
+
+            if (BaseAttack.animTrigger != null || animator != null) {
+                animator.SetTrigger("Shoot");
+            }
+            BaseAttack.weapon.Attack(this.transform, BaseAttack._target);
+            
+            BaseAttack._attackTimer = Time.time;
         }
 
         public int MaxHealth() {

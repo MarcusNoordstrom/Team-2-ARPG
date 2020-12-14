@@ -1,32 +1,20 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.VFX;
 
 namespace Unit {
-    public class Attack : MonoBehaviour {
+    [Serializable]public class Attack {
         public Weapon weapon;
         [SerializeField] Transform bulletSpawnPoint;
-        public string animTrigger;
+        [HideInInspector]public string animTrigger;
         [SerializeField] Animator animator;
 
-        float _attackTimer;
-        bool _canAttack;
-        GameObject _target;
+        [HideInInspector]public float _attackTimer;
+        [HideInInspector]public bool _canAttack;
+        [HideInInspector]public GameObject _target;
         public VisualEffect visualEffect;
-        bool CanAttack => Time.time - _attackTimer > weapon.attackSpeed;
+        public bool CanAttack => Time.time - _attackTimer > weapon.attackSpeed;
         Health _health;
-        
-        void Update() {
-            if (!_canAttack) return;
-
-            if (!CanAttack) return;
-
-            if (animTrigger != null || animator != null) {
-                animator.SetTrigger("Shoot");
-            }
-            weapon.Attack(this.transform, _target);
-            
-            _attackTimer = Time.time;
-        }
 
         //TODO rename the animation event to "EnemyAttacking"?
         //animation event
