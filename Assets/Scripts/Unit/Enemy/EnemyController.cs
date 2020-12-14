@@ -19,8 +19,8 @@ namespace Unit {
         bool isPatrolling;
         int x = 0;
         float timer = 0f;
-        private float y = 3;
-        private bool WaitTimer => Time.time - y > timer;
+        private float waitAtWaypoint = 3;
+        private bool WaitTimer => Time.time - waitAtWaypoint > timer;
 
         void Start() {
             Patrol();
@@ -38,7 +38,8 @@ namespace Unit {
                     if (x == waypoints.Length) {
                         x = 0;
                     }
-                    Patrol();
+
+                    isPatrolling = true;
                     timer = Time.time;
                 }
             }
@@ -50,10 +51,9 @@ namespace Unit {
 
             switch (_state) {
                 case State.Patrolling:
-                    // FindTarget();
-                    // if (ReachedPosition())
-                    //
-                    //     Patrol();
+                    FindTarget();
+                    if (isPatrolling)
+                        Patrol();
                     break;
                 case State.ChaseTarget:
                     ChaseTarget();
@@ -114,6 +114,7 @@ namespace Unit {
         }
 
         void Patrol() {
+            isPatrolling = false;
             BaseNavMeshAgent.SetDestination(waypoints[x].position);
 
             FindTarget();
