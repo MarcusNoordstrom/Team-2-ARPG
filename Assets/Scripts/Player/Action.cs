@@ -8,6 +8,7 @@ namespace Player {
             if(_currentAction == action) return;
             _currentAction?.ActionToStart();
             _currentAction = action;
+            print(_currentAction);
         }
     }
 }

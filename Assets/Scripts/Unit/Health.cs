@@ -39,7 +39,7 @@ namespace Unit {
         public bool IsDead => CurrentHealth <= 0;
 
         public void TakeDamage(int damage) {
-            CurrentHealth -= damage;
+            //CurrentHealth -= damage;
             UnitSfxId id;
             if (IsDead && SceneManager.sceneCount == 1) {
                 if(gameObject.layer == LayerMask.NameToLayer("Player"))
@@ -57,7 +57,7 @@ namespace Unit {
                         unitSfxIdEvent?.Invoke(id = UnitSfxId.TakingDamage);//Enemies
                 }
             }
-            print(CurrentHealth);
+//            print(CurrentHealth);
         }
 
         public void OnResurrect(bool onCorpse) {

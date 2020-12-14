@@ -16,7 +16,7 @@ namespace Unit {
         protected override void Setup() {
             _lookAtTarget = GetComponent<LookAtTarget>();
             BaseHealth.CurrentHealth = basicUnit.maxHealth;
-            BaseAttack.ChangeWeapon(basicUnit.mainWeapon);
+            baseEquippedWeapon.ChangeWeapon(basicUnit.mainWeapon);
             _visibilityCheck = GetComponent<VisibilityCheck>();
 
             _ticks = Random.Range(0, TicksPerUpdate);
@@ -35,11 +35,12 @@ namespace Unit {
             if (_visibilityCheck.IsVisible(_target.gameObject)) {
                 _lookAtTarget.enabled = true;
                 if (Vector3.Angle(pivot.forward, (_target.transform.position - pivot.position).normalized) < 50)
-                    BaseAttack.ActivateAttack(_target.gameObject);
+                    return;
+                    //BaseAttack.ActivateAttack(_target.gameObject);
             }
             else {
                 _lookAtTarget.enabled = false;
-                BaseAttack.DeactivateAttack();
+                DeactivateAttack();
             }
         }
     }

@@ -4,29 +4,24 @@ using UnityEngine;
 using UnityEngine.AI;
 
 namespace Player {
-    public class MeleeAttackTemporary : MonoBehaviour {
+    public class MeleeAttack : MonoBehaviour, IAction {
         BaseUnit attackSource;
 
-        Attack _attack => GetComponent<Attack>();
+        EquippedWeapon EquippedWeapon => GetComponent<EquippedWeapon>();
         //print($"{PlayerController.PlayerTarget} {_navMeshAgent.isStopped}");
 
         NavMeshAgent _navMeshAgent => GetComponent<NavMeshAgent>();
 
         void Awake() {
-            this.attackSource = GetComponent<BaseUnit>();
+            attackSource = GetComponent<BaseUnit>();
         }
 
         void Update() {
-            //TODO: Moveto PlayerController
-            if (Physics.Raycast(PlayerController.GetMouseRay(), out var hit)) {
-                if (hit.collider.GetComponent<StationaryEnemy>() != null && Input.GetKeyUp(KeyCode.Mouse1)) {
-                    PlayerController.PlayerTarget = hit.collider.gameObject;
-                }
-            }
 
-            if (this.attackSource.target == null) return;
+            if (attackSource.target == null) return;
+            GetComponent<Action>().StartAction(this);
             MoveToTargetPosition();
-            if (InMeleeRange()) {
+            if (IsInMeleeRange()) {
                 _navMeshAgent.isStopped = true;
                 var targetPoint = attackSource.target.transform.position;
                 targetPoint.y = transform.position.y;
@@ -35,12 +30,16 @@ namespace Player {
             }
         }
 
-        bool InMeleeRange() {
-            return Vector3.Distance(transform.position, attackSource.target.transform.position) < _attack.weapon.range;
-        }
-
         void MoveToTargetPosition() {
             _navMeshAgent.SetDestination(attackSource.target.transform.position);
+        }
+
+        public void ActionToStart() {
+            _navMeshAgent.isStopped = false;
+        }
+
+        bool IsInMeleeRange() {
+            return Vector3.Distance(transform.position, attackSource.target.transform.position) < attackSource.baseEquippedWeapon.weapon.range;
         }
     }
 }

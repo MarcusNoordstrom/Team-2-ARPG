@@ -433,7 +433,6 @@ GameObject:
   - component: {fileID: 1329899256}
   - component: {fileID: 1329899257}
   - component: {fileID: 1329899258}
-  - component: {fileID: 1329899259}
   - component: {fileID: 1329899260}
   - component: {fileID: 1329899261}
   m_Layer: 11
@@ -534,6 +533,10 @@ MonoBehaviour:
   lowHealthEvent:
     m_PersistentCalls:
       m_Calls: []
+  alphaFadeSpeed: 1
+  lowHealthUI: {fileID: 0}
+  interval: 1
+  duration: 0.5
 --- !u!114 &1329899257
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -559,25 +562,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b07e155f76d08b478cdb07b0ebb1305, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animatorAttackTrigger: 
   basicUnit: {fileID: 11400000, guid: 5295fec4245272f4fbf6693503645ada, type: 2}
   animator: {fileID: 2508101212577047407}
+  BaseAttack:
+    weapon: {fileID: 0}
+    _attackTimer: 0
+  target: {fileID: 0}
   pivot: {fileID: 1184873704634856713}
---- !u!114 &1329899259
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1184873704634856712}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c2d7a3e98be38b41b5285ea8f275ba7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weapon: {fileID: 0}
-  bulletSpawnPoint: {fileID: 1184873704323233410}
-  animTrigger: Shoot
-  animator: {fileID: 2508101212577047407}
 --- !u!114 &1329899260
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -590,36 +582,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f3fee75c5f67d94e91039943efe6975, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  takingDamageEvent:
+  unitSfxIdEvent2D:
     m_PersistentCalls:
       m_Calls: []
-  deathEvent:
+  unitSfxIdEvent:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1329899258}
-        m_TargetAssemblyTypeName: Unit.BaseUnit, Assembly-CSharp
-        m_MethodName: OnDeath
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 2508101212577047407}
-        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
-        m_MethodName: SetTrigger
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: TurretDeath
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1329899261
 MonoBehaviour:
   m_ObjectHideFlags: 0

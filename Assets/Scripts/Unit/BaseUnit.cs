@@ -2,30 +2,53 @@
 using UnityEngine.AI;
 
 namespace Unit {
-    [RequireComponent(typeof(Health), typeof(Attack))]
+    [RequireComponent(typeof(Health))]
     public class BaseUnit : MonoBehaviour, IGetMaxHealth {
-        [SerializeField] protected BasicUnit basicUnit;
+        [Header("Animation related")] [SerializeField]
+        string animatorAttackTrigger;
+
         [SerializeField] protected Animator animator;
-        protected NavMeshAgent BaseNavMeshAgent => GetComponent<NavMeshAgent>();
-        public Attack BaseAttack;
-        protected Health BaseHealth => GetComponent<Health>();
+
+        [Header("Unit related")] [SerializeField]
+        protected BasicUnit basicUnit;
+        public GameObject bulletSpawnPoint;
+        
         public GameObject target;
+        public EquippedWeapon baseEquippedWeapon;
+        protected NavMeshAgent BaseNavMeshAgent => GetComponent<NavMeshAgent>();
+        protected Health BaseHealth => GetComponent<Health>();
+        protected virtual bool EligibleToAttack { get; set; }
+
+        float _attackTimer;
 
         void Awake() {
             Setup();
         }
-        
-        void Update() {
-            if (!BaseAttack._canAttack) return;
 
-            if (!BaseAttack.CanAttack) return;
+        bool CanAttack => Time.time - _attackTimer > baseEquippedWeapon.weapon.attackSpeed;
 
-            if (BaseAttack.animTrigger != null || animator != null) {
-                animator.SetTrigger("Shoot");
+        protected virtual void Update() {
+            if (!EligibleToAttack) return;
+
+            if (!CanAttack) return;
+
+            if (animator != null || animator != null) {
+                animator.SetTrigger(animatorAttackTrigger);
             }
-            BaseAttack.weapon.Attack(this.transform, BaseAttack._target);
+
+            baseEquippedWeapon.weapon.Attack(transform, target);
+
+            _attackTimer = Time.time;
+        }
+
+        protected virtual void CombatTarget(GameObject target) {
+            if (target.GetComponent<Health>() == null) return;
             
-            BaseAttack._attackTimer = Time.time;
+            this.target = target;
+        }
+
+        protected void DeactivateAttack() {
+            EligibleToAttack = false;
         }
 
         public int MaxHealth() {
@@ -35,13 +58,13 @@ namespace Unit {
         protected virtual void Setup() {
             BaseNavMeshAgent.speed = basicUnit.moveSpeed;
             BaseHealth.CurrentHealth = basicUnit.maxHealth;
-            BaseAttack.ChangeWeapon(basicUnit.mainWeapon);
+            baseEquippedWeapon.ChangeWeapon(basicUnit.mainWeapon);
         }
 
         public virtual void OnDeath() {
             GetComponent<Collider>().enabled = false;
             GetComponent<NavMeshObstacle>().enabled = false;
-            
+
             foreach (var script in GetComponents<MonoBehaviour>()) {
                 script.enabled = false;
             }

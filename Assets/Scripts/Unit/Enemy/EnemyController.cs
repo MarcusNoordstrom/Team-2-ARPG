@@ -30,9 +30,10 @@ namespace Unit {
 
         void Start() {
             foreach (Transform child in wayPointObject.GetComponentInChildren<Transform>()) {
-                if(child.gameObject == wayPointObject) continue;
-                waypoints.Add(child); 
+                if (child.gameObject == wayPointObject) continue;
+                waypoints.Add(child);
             }
+
             Patrol();
             _visibilityCheck = GetComponent<VisibilityCheck>();
             _state = State.Patrolling;
@@ -74,7 +75,7 @@ namespace Unit {
             }
         }
 
-        private bool ReachedPosition() {
+        bool ReachedPosition() {
             return waypoints[x].position.z == transform.position.z &&
                    waypoints[x].position.x == transform.position.x;
         }
@@ -86,21 +87,20 @@ namespace Unit {
 
         void OnDrawGizmos() {
             var children = wayPointObject.GetComponentsInChildren<Transform>();
-            
+
             for (var i = 0; i < children.Length; i++) {
-                if(i == 0 ) continue;
+                if (i == 0) continue;
                 Gizmos.color = Color.red;
-                
+
                 Gizmos.DrawSphere(children[i].transform.position, .3f);
-                
+
                 if (i < children.Length - 1) {
                     Gizmos.DrawLine(children[i].transform.position, children[i + 1].transform.position);
-                    
+
                     continue;
                 }
-                
+
                 Gizmos.DrawLine(children[i].transform.position, children[1].transform.position);
-                    
             }
         }
 
@@ -119,22 +119,23 @@ namespace Unit {
             if (!_visibilityCheck.IsVisible(_target.gameObject)) {
                 LookAtTarget.enabled = false;
                 BaseNavMeshAgent.isStopped = false;
-                BaseAttack.DeactivateAttack();
+                DeactivateAttack();
                 _state = State.GoingBackToStart;
                 return;
             }
 
             BaseNavMeshAgent.SetDestination(_target.transform.position);
-            if (Vector3.Distance(transform.position, _target.transform.position) < BaseAttack.weapon.range) {
+            if (Vector3.Distance(transform.position, _target.transform.position) < baseEquippedWeapon.weapon.range) {
                 BaseNavMeshAgent.isStopped = true;
                 LookAtTarget.enabled = true;
                 if (Vector3.Angle(transform.forward,
                     (_target.transform.position - transform.position).normalized) < 50)
-                    BaseAttack.ActivateAttack(_target.gameObject);
+                    return;
+                //BaseAttack.ActivateAttack(_target.gameObject);
             }
             else {
                 BaseNavMeshAgent.isStopped = false;
-                BaseAttack.DeactivateAttack();
+                DeactivateAttack();
             }
 
             if (Vector3.Distance(transform.position, _target.transform.position) > BasicEnemy.stopChaseDistance) {

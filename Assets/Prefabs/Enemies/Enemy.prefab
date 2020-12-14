@@ -156,7 +156,6 @@ GameObject:
   - component: {fileID: 252846312419200672}
   - component: {fileID: 252846312419200699}
   - component: {fileID: 1700445487}
-  - component: {fileID: 1700445488}
   - component: {fileID: 1700445489}
   - component: {fileID: 1700445490}
   m_Layer: 0
@@ -281,7 +280,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c4803f9609f1e846ab36492f6e76318, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animatorAttackTrigger: 
   basicUnit: {fileID: 11400000, guid: bd728bf38e5fcbb40a10ec74d8617a70, type: 2}
+  animator: {fileID: 0}
+  BaseAttack:
+    weapon: {fileID: 0}
+    _attackTimer: 0
+  target: {fileID: 0}
+  wayPointObject: {fileID: 0}
 --- !u!114 &1700445487
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -294,22 +300,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fd566afefe6621419ac097583688f0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1700445488
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 252846312419200673}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c2d7a3e98be38b41b5285ea8f275ba7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weapon: {fileID: 11400000, guid: 1a45d83e2b78b924da3385b0096894ee, type: 2}
-  bulletSpawnPoint: {fileID: 0}
-  animTrigger: 
-  animator: {fileID: 0}
 --- !u!114 &1700445489
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -322,42 +312,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f3fee75c5f67d94e91039943efe6975, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageUIPrefab: {fileID: 6903674934049428664, guid: 02a3ead787d4dd141b0d308794a501b1, type: 3}
-  canvasParent: {fileID: 8618186808491008187}
-  takingDamageEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UnityEngine.UI.Slider, UnityEngine.UI
-        m_MethodName: SetValueWithoutNotify
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  deathEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 252846312419200699}
-        m_TargetAssemblyTypeName: Unit.BaseUnit, Assembly-CSharp
-        m_MethodName: OnDeath
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  lowHealthEvent:
+  unitSfxIdEvent2D:
     m_PersistentCalls:
       m_Calls: []
-  lowHealthTrigger: 0
+  unitSfxIdEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1700445490
 MonoBehaviour:
   m_ObjectHideFlags: 0

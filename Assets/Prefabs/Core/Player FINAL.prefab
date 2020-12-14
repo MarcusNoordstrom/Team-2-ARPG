@@ -4463,7 +4463,6 @@ GameObject:
   - component: {fileID: 5483147893479455254}
   - component: {fileID: 5483147893479455255}
   - component: {fileID: 5483147893479455253}
-  - component: {fileID: 5483147893479455250}
   - component: {fileID: 5483147893479455251}
   - component: {fileID: 852555074}
   - component: {fileID: 852555075}
@@ -4650,8 +4649,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f63e2af6429bef146ae73b6fdf7aba11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animatorAttackTrigger: 
   basicUnit: {fileID: 11400000, guid: 2b9d05680b34f1e428d9a8202092acdf, type: 2}
   animator: {fileID: 5483147893479455254}
+  BaseAttack:
+    weapon: {fileID: 0}
+    _attackTimer: 0
+  target: {fileID: 0}
   layerMask:
     serializedVersion: 2
     m_Bits: 256
@@ -4677,23 +4681,6 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &5483147893479455250
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4672876197070964409}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c2d7a3e98be38b41b5285ea8f275ba7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weapon: {fileID: 0}
-  bulletSpawnPoint: {fileID: 8541537147247354646}
-  animTrigger: 
-  animator: {fileID: 0}
-  visualEffect: {fileID: 0}
 --- !u!114 &5483147893479455251
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4706,48 +4693,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f3fee75c5f67d94e91039943efe6975, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  takingDamageEvent:
+  unitSfxIdEvent2D:
     m_PersistentCalls:
       m_Calls: []
-  deathEvent:
+  unitSfxIdEvent:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5483147893479455255}
-        m_TargetAssemblyTypeName: Player.PlayerController, Assembly-CSharp
-        m_MethodName: OnDeath
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 2025598462, guid: 3361596631f6b354baecfffd80324b2d, type: 3}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: PlayOneShot
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 8300000, guid: 275eb49b3d3aa6f46b8ac13694cc64d0, type: 3}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 2025598462, guid: 3361596631f6b354baecfffd80324b2d, type: 3}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: set_volume
-        m_Mode: 4
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0.5
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &852555074
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4804,7 +4755,6 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   alphaFadeSpeed: 1
-  health: {fileID: 0}
   lowHealthUI: {fileID: 0}
   interval: 1
   duration: 0.5
