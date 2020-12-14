@@ -11,9 +11,12 @@ namespace UI {
         [SerializeField] Transform damageUISpawnLocation;
         [SerializeField] float lowHealthTrigger;
         [SerializeField] BoolEvent lowHealthEvent;
-        [SerializeField] float alphaFadeSpeed = 0.05f;
+        [SerializeField] float alphaFadeSpeed = 1f;
+        
         public Image lowHealthUI;
-        private Color color;
+        public float interval = 1f;
+        public float startDelay = 0.5f;
+        private bool isFlashing = false;
 
         Health _health;
         bool _soundTriggered;
@@ -25,7 +28,7 @@ namespace UI {
             //healthBarUI.GetComponent<HealthBarUI>().InstantiateHealthTicks();
             _health.UpdatePlayerHealthUI += PlayerHealthStuff;
         }
-
+        
 
         void PlayerHealthStuff(int damage) {
             if (LayerMask.GetMask() == LayerMask.NameToLayer("Player")) return;
@@ -34,8 +37,9 @@ namespace UI {
             if (LowHealth()) {
                 _soundTriggered = true;
                 lowHealthEvent?.Invoke();
-                lowHealthUI.color = color;
-                color.a -= alphaFadeSpeed * Time.deltaTime;
+                lowHealthUI.color = new Color(255, 255, 255, 1);
+                Flashing();
+                Debug.Log("Color");
             }
 
             //SetupHealthBarUI();
@@ -55,6 +59,19 @@ namespace UI {
         public void OnResurrect(bool onCorpse) {
             _soundTriggered = false;
             healthBarUI.GetComponent<HorizontalLayoutGroup>().childControlWidth = false;
+        }
+
+        public void Flashing() {
+            if (isFlashing)
+                return;
+            if (lowHealthUI != null) {
+                isFlashing = true;
+                InvokeRepeating("ToggleState", startDelay, interval);
+            }
+        }
+
+        public void ToggleState() {
+            lowHealthUI.enabled = !lowHealthUI.enabled;
         }
     }
 }
