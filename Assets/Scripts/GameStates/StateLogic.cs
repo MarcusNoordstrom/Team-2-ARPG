@@ -1,4 +1,5 @@
 ﻿using Player;
+using Unit;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -25,12 +26,14 @@ namespace GameStates {
 
         public static void OnDeath() {
             SceneManager.LoadScene("Death Scene", LoadSceneMode.Additive);
+            Time.timeScale = 0f;
         }
 
         //assigned to button
         public static void OnResurrect() {
             SceneManager.UnloadSceneAsync("Death Scene");
             foreach (var resurrect in _playerController.GetComponents<IResurrect>()) {
+                Time.timeScale = 1f;
                 resurrect.OnResurrect(true);
             }
         }
