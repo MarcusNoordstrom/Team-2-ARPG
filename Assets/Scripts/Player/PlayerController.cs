@@ -21,26 +21,26 @@ namespace Player {
             ShouldMovetoMouse();
         }
 
-       bool InteractWithCombat() {
-            if (Input.GetKeyDown(KeyCode.Mouse1) ||Input.GetKeyUp(KeyCode.Mouse1)) {
+        bool InteractWithCombat() {
+            if (Input.GetKeyUp(KeyCode.Mouse1)) {
                 var hits = Physics.RaycastAll(PlayerHelper.GetMouseRay());
                 foreach (var raycastHit in hits) {
                     var target = raycastHit.transform.GetComponent<Health>();
                     if (target == null) continue;
                     CombatTarget = target.gameObject;
-                    baseEquippedWeapon.ChangeWeapon(basicUnit.meleeWeapon);
+                    equipped.ChangeWeapon(basicUnit.meleeWeapon);
                     GetComponent<Action>().StartAction(GetComponent<MeleeAttack>());
                     return true;
                 }
             }
 
-            if (Input.GetKey(KeyCode.E)) {
+            if (Input.GetKeyUp(KeyCode.Mouse0)) {
                 var hits = Physics.RaycastAll(PlayerHelper.GetMouseRay());
                 foreach (var raycastHit in hits) {
                     var target = raycastHit.transform.GetComponent<Health>();
                     if (target == null) continue;
                     CombatTarget = target.gameObject;
-                    baseEquippedWeapon.ChangeWeapon(basicUnit.rangedWeapon);
+                    equipped.ChangeWeapon(basicUnit.rangedWeapon);
                     GetComponent<Action>().StartAction(GetComponent<RangedAttack>());
                     return true;
                 }

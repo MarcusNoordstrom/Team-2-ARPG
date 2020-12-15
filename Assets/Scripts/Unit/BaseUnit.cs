@@ -1,29 +1,34 @@
 ﻿using Player;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Events;
+using UnityEngine.Serialization;
 
 namespace Unit {
     [RequireComponent(typeof(Health))]
     public class BaseUnit : MonoBehaviour, IGetMaxHealth, IAction {
-        [Header("Animation related")]
-        [SerializeField] protected Animator animator;
+        [Header("Animation related")] [SerializeField]
+        protected Animator animator;
 
         [Header("Unit related")] [SerializeField]
         protected BasicUnit basicUnit;
+
         public GameObject bulletSpawnPoint;
-        GameObject target;
-        public EquippedWeapon baseEquippedWeapon;
+        [SerializeField] GameObject target;
+        [FormerlySerializedAs("baseEquippedWeapon")] public EquippedWeapon equipped;
         protected NavMeshAgent BaseNavMeshAgent => GetComponent<NavMeshAgent>();
         protected Health BaseHealth => GetComponent<Health>();
         protected virtual bool EligibleToAttack { get; set; }
 
-        float _attackTimer;
+        public float _attackTimer;
+
 
         void Awake() {
+            BaseHealth.DeadStuff += OnDeath;
             Setup();
         }
 
-        bool CanAttack => Time.time - _attackTimer > baseEquippedWeapon.weapon.attackSpeed;
+        public bool CanAttack => Time.time - _attackTimer > equipped.weapon.attackSpeed;
 
         protected virtual void Update() {
             if (!EligibleToAttack) return;
@@ -31,12 +36,12 @@ namespace Unit {
             if (!CanAttack) return;
 
             CheckWeaponType();
-            
-            baseEquippedWeapon.weapon.Attack(transform, target);
+
+            equipped.weapon.Attack(transform, target);
 
             //TODO move  "_attackTimer = Time.time;" to StartAction? If so it means the "cooldown" will start once the animation is complete
             _attackTimer = Time.time;
-            
+
             GetComponent<Action>().StartAction(this);
         }
 
@@ -52,7 +57,7 @@ namespace Unit {
         public virtual GameObject CombatTarget {
             get => target;
             protected set => target = value;
-        } 
+        }
 
         protected void DeactivateAttack() {
             EligibleToAttack = false;
@@ -65,12 +70,14 @@ namespace Unit {
         protected virtual void Setup() {
             BaseNavMeshAgent.speed = basicUnit.moveSpeed;
             BaseHealth.CurrentHealth = basicUnit.maxHealth;
-            baseEquippedWeapon.ChangeWeapon(basicUnit.rangedWeapon);
+            equipped.ChangeWeapon(basicUnit.rangedWeapon);
         }
 
         public virtual void OnDeath() {
+            print(BaseHealth.CurrentHealth);
             GetComponent<Collider>().enabled = false;
             GetComponent<NavMeshObstacle>().enabled = false;
+            animator.SetTrigger("TurretDeath");
 
             foreach (var script in GetComponents<MonoBehaviour>()) {
                 script.enabled = false;
