@@ -10,7 +10,6 @@ public class PlayerHealth : Health, IResurrect {
     UnitSfxId id;
     bool _isFlashing;
     Color _fadeColor = new Color(255, 255, 255, 0);
-
     bool LowHealth => CurrentHealth == MaxHealth / 5;
     
     protected override void OnPlaySound() {
