@@ -29,10 +29,10 @@ namespace Core {
         }
 
         void OnTriggerStay(Collider other) {
-            if (!PlayerController.HasClickedOnPortal) return;
+            if (!PlayerHelper.HasClickedOnPortal) return;
             if (1 << other.gameObject.layer != LayerMask.GetMask("Player")) return;
             StartCoroutine(Transition());
-            PlayerController.HasClickedOnPortal = false;
+            PlayerHelper.HasClickedOnPortal = false;
         }
 
         IEnumerator Transition() {

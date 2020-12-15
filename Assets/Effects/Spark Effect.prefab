@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7552152237242508176}
   - component: {fileID: 8925444505199830989}
   m_Layer: 0
-  m_Name: Particals Impact
+  m_Name: Spark Effect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
