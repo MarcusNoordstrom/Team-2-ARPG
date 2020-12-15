@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 
 namespace Player {
-    [RequireComponent(typeof(Health), typeof(NavMeshAgent), typeof(Rigidbody))]
+    [RequireComponent(typeof(PlayerHealth), typeof(NavMeshAgent), typeof(Rigidbody))]
     public class PlayerController : BaseUnit, IAction, IResurrect {
         public LayerMask layerMask;
 
@@ -21,12 +21,7 @@ namespace Player {
             ShouldMovetoMouse();
         }
 
-        protected override GameObject CombatTarget {
-            get => target;
-            set => target = value;
-        }
-
-        bool InteractWithCombat() {
+       bool InteractWithCombat() {
             if (Input.GetKeyDown(KeyCode.Mouse1) ||Input.GetKeyUp(KeyCode.Mouse1)) {
                 var hits = Physics.RaycastAll(PlayerHelper.GetMouseRay());
                 foreach (var raycastHit in hits) {
@@ -39,7 +34,7 @@ namespace Player {
                 }
             }
 
-            if (Input.GetKeyDown(KeyCode.Mouse0) ||Input.GetKeyUp(KeyCode.Mouse0)) {
+            if (Input.GetKey(KeyCode.E)) {
                 var hits = Physics.RaycastAll(PlayerHelper.GetMouseRay());
                 foreach (var raycastHit in hits) {
                     var target = raycastHit.transform.GetComponent<Health>();
@@ -64,6 +59,7 @@ namespace Player {
         }
 
         public void ActionToStart() {
+            print("PlayerController");
             BaseNavMeshAgent.ResetPath();
             BaseNavMeshAgent.isStopped = false;
             CombatTarget = null;
@@ -92,7 +88,7 @@ namespace Player {
 
 
         public void OnResurrect(bool onCorpse) {
-            gameObject.layer = LayerMask.NameToLayer("Player");
+            GetComponent<Collider>().enabled = true;
             BaseHealth.CurrentHealth = MaxHealth();
             BaseNavMeshAgent.isStopped = false;
             GetComponent<AudioSource>().Stop();
