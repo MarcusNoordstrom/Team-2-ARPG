@@ -1,14 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.SceneManagment;
+﻿using UnityEngine;
 
 public class LoadingScreen1 : MonoBehaviour
 {
     public static LoadingScreen1 instance;
 
-    SerializeField]
+    [SerializeField]
     public GameObject loading_Bar_Holder;   
 
     private 
@@ -22,7 +18,7 @@ public class LoadingScreen1 : MonoBehaviour
             Destroy(gameObject);
         } else {
             instance = this;
-            DontDestroyOnLoad(gameobject);
+            DontDestroyOnLoad(gameObject);
         }
 
     }
