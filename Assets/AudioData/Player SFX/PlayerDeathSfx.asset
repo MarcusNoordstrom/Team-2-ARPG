@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fa2217249912df6449090ec8999b9ccd, type: 3}
-  m_Name: DeathSfx
+  m_Name: PlayerDeathSfx
   m_EditorClassIdentifier: 
   id: 5
-  audioClip: {fileID: 8300000, guid: ae1d92f559ffe9743816d5d41f004c52, type: 3}
+  audioClip: {fileID: 8300000, guid: 33884a9f50a9f488db7d07bd82275fa5, type: 3}
