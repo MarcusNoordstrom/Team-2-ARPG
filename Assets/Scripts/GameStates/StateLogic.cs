@@ -1,5 +1,6 @@
-﻿using Player;
-using Unit;
+﻿using System.Collections;
+using Player;
+using UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -32,18 +33,13 @@ namespace GameStates {
         //assigned to button
         public static void OnResurrect() {
             SceneManager.UnloadSceneAsync("Death Scene");
-            foreach (var resurrect in _playerController.GetComponents<IResurrect>()) {
-                Time.timeScale = 1f;
-                resurrect.OnResurrect(true);
-            }
+            _playerController.CallOnResurrect(true);
         }
-        
+
         //assigned to button
         public static void OnResurrectAtCheckpoint() {
             SceneManager.UnloadSceneAsync("Death Scene");
-            foreach (var resurrect in _playerController.GetComponents<IResurrect>()) {
-                resurrect.OnResurrect(false);
-            }
+            _playerController.CallOnResurrect(false);
         }
     }
 }

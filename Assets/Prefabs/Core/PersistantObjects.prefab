@@ -51,6 +51,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2302739903603715872}
     m_Modifications:
+    - target: {fileID: 5138308359787693313, guid: a0fa8231f2a9db44899c45e22edbc064, type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5138308359787693317, guid: a0fa8231f2a9db44899c45e22edbc064, type: 3}
       propertyPath: m_Name
       value: Fader

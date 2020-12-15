@@ -36,7 +36,7 @@ namespace Unit {
 
             CheckWeaponType();
 
-            equipped.weapon.Attack(transform, target);
+            //equipped.weapon.Attack(transform, target);
 
             //TODO move  "_attackTimer = Time.time;" to StartAction? If so it means the "cooldown" will start once the animation is complete
             _attackTimer = Time.time;
@@ -84,7 +84,6 @@ namespace Unit {
         }
 
         public void ActionToStart() {
-            print("Base unit");
             //TODO something here?
         }
     }

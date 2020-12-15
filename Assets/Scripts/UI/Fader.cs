@@ -10,7 +10,7 @@ namespace UI {
             CanvasEnabler();
         }
 
-        public IEnumerator FadeOut() {
+        public static IEnumerator FadeOut() {
             var alpha = 1f;
 
             while (alpha > 0) {
@@ -20,7 +20,7 @@ namespace UI {
             }
         }
 
-        public IEnumerator FadeIn() {
+        public static IEnumerator FadeIn() {
             var alpha = 0f;
 
             while (alpha < 1) {

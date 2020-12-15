@@ -15,7 +15,6 @@ namespace Player {
 
         //animation event
         void RangedAttackEvent() {
-            print(_baseUnit.CombatTarget.GetComponent<Health>().IsDead);
             if (_baseUnit.CombatTarget == null || _baseUnit.CombatTarget.GetComponent<Health>().IsDead) return;
             _baseUnit.equipped.weapon.Attack(_baseUnit.bulletSpawnPoint.transform, _baseUnit.CombatTarget);
             //TODO play muzzle effect when shooting
@@ -46,7 +45,6 @@ namespace Player {
             GetComponent<Animator>().SetTrigger(animationTrigger);
 
             transform.LookAt(_baseUnit.CombatTarget.transform);
-            print(_baseUnit.CombatTarget);
         }
     }
 }

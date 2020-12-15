@@ -1,4 +1,6 @@
-﻿using GameStates;
+﻿using System.Collections;
+using GameStates;
+using UI;
 using Unit;
 using UnityEngine;
 using UnityEngine.AI;
@@ -11,7 +13,11 @@ namespace Player {
 
         protected override bool EligibleToAttack => true;
 
+        bool ignoreRaycast;
+
         protected override void Update() {
+            if (ignoreRaycast) return;
+            
             if (!BaseNavMeshAgent.hasPath && !BaseHealth.IsDead) {
                 PlayAnimation("Idle");
             }
@@ -55,11 +61,14 @@ namespace Player {
             animator.ResetTrigger("Running");
             PlayAnimation("Death");
             BaseNavMeshAgent.isStopped = true;
+            Invoke("OnPlayerDeath", 1);
+        }
+
+        void OnPlayerDeath() {
             StateLogic.OnDeath();
         }
 
         public void ActionToStart() {
-            print("PlayerController");
             BaseNavMeshAgent.ResetPath();
             BaseNavMeshAgent.isStopped = false;
             CombatTarget = null;
@@ -87,14 +96,36 @@ namespace Player {
         }
 
 
+        public void CallOnResurrect(bool onCorpse) {
+            StartCoroutine(DeathFade(onCorpse));
+        }
+
         public void OnResurrect(bool onCorpse) {
+            GetComponent<AudioSource>().Stop();
+            if (!onCorpse && Checkpoint.CheckpointTransform != null) {
+                BaseNavMeshAgent.Warp(Checkpoint.CheckpointTransform.position);
+            }
+        }
+
+        IEnumerator DeathFade(bool onCorpse) {
+            Time.timeScale = 1f;
+            ignoreRaycast = true;
+            yield return Fader.FadeIn();
+
+            foreach (var resurrect in GetComponents<IResurrect>()) {
+                resurrect.OnResurrect(onCorpse);
+            }
+
+            yield return new WaitForSecondsRealtime(1f);
+            yield return Fader.FadeOut();
+            ignoreRaycast = false;
+            AfterResurrection();
+        }
+
+        void AfterResurrection() {
+            BaseNavMeshAgent.isStopped = false;
             GetComponent<Collider>().enabled = true;
             BaseHealth.CurrentHealth = MaxHealth();
-            BaseNavMeshAgent.isStopped = false;
-            GetComponent<AudioSource>().Stop();
-            if (onCorpse || Checkpoint.CheckpointTransform == null) return;
-
-            BaseNavMeshAgent.Warp(Checkpoint.CheckpointTransform.position);
         }
     }
 }
