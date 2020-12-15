@@ -92,7 +92,7 @@ namespace Player {
 
 
         public void OnResurrect(bool onCorpse) {
-            gameObject.layer = LayerMask.NameToLayer("Player");
+            GetComponent<Collider>().enabled = true;
             BaseHealth.CurrentHealth = MaxHealth();
             BaseNavMeshAgent.isStopped = false;
             GetComponent<AudioSource>().Stop();

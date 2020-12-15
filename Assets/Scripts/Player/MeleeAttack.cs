@@ -20,6 +20,8 @@ namespace Player {
             GetComponent<Action>().StartAction(this);
             MoveToTargetPosition();
             if (IsInMeleeRange()) {
+                GetComponent<Animator>().SetTrigger("PlayerMeleeAttack");
+                //TODO Trigger animation here
                 _navMeshAgent.isStopped = true;
                 var targetPoint = _baseUnit.target.transform.position;
                 targetPoint.y = transform.position.y;
@@ -28,12 +30,21 @@ namespace Player {
             }
         }
 
+        void Hit() {
+            //TODO implement deal damage here
+        }
+
+        void MeleeAttackFinish() {
+            //TODO repeat animation if player
+        }
+
         void MoveToTargetPosition() {
             _navMeshAgent.SetDestination(_baseUnit.target.transform.position);
         }
 
         public void ActionToStart() {
             _navMeshAgent.isStopped = false;
+            
         }
 
         bool IsInMeleeRange() {
