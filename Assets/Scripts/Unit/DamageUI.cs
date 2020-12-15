@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Runtime.CompilerServices;
+using GameStates;
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace Unit {
@@ -16,6 +19,12 @@ namespace Unit {
             transform.position += moveUpSpeed * Time.deltaTime;
             color.a -= alphaFadeSpeed * Time.deltaTime;
             textUI.color = color;
+        }
+
+        void LateUpdate() {
+            if (Time.timeScale == 0) {
+                Destroy(gameObject);
+            }
         }
 
         public void SetUp(int damage) {

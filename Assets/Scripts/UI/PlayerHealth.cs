@@ -35,12 +35,15 @@ public class PlayerHealth : Health, IResurrect {
 
     public override void TakeDamage(int damage) {
         base.TakeDamage(damage);
+        if (IsDead) {
+            StopAllCoroutines();
+            _fadeColor.a = 0;
+            lowHealthUI.color = _fadeColor;
+            StateLogic.OnDeath();
+        }
         if (!LowHealth) return;
         Flashing();
         _isFlashing = !IsDead;
-        if (IsDead) {
-            StopCoroutine(ToggleState());
-        }
     }
 
     IEnumerator ToggleState() {
