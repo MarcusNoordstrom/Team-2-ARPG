@@ -2,7 +2,6 @@
 using UnityEngine.AI;
 
 namespace Unit {
-    [RequireComponent(typeof(Health), typeof(Attack))]
     public class BaseUnit : MonoBehaviour, IGetMaxHealth {
         [SerializeField] protected BasicUnit basicUnit;
         [SerializeField] protected Animator animator;

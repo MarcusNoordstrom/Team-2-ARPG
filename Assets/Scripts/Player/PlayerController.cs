@@ -8,7 +8,7 @@ using UnityEngine.AI;
 using UnityEngine.UI;
 
 namespace Player {
-    [RequireComponent(typeof(Health), typeof(Attack), typeof(NavMeshAgent))]
+    [RequireComponent(typeof(PlayerHealth), typeof(NavMeshAgent))]
     [RequireComponent(typeof(Rigidbody))]
     public class PlayerController : BaseUnit, IAction, IResurrect {
         public static bool HasClickedOnPortal { get; set; }
@@ -21,7 +21,6 @@ namespace Player {
             if (!BaseNavMeshAgent.hasPath && !BaseHealth.IsDead) {
                 PlayAnimation("Idle");
             }
-
             ShouldMovetoMouse();
         }
 
@@ -69,11 +68,9 @@ namespace Player {
                 HasClickedOnPortal = true;
         }
 
-
         void PlayAnimation(string animationToPlay) {
             animator.SetTrigger(animationToPlay);
         }
-
 
         public void OnResurrect(bool onCorpse) {
             gameObject.layer = LayerMask.NameToLayer("Player");

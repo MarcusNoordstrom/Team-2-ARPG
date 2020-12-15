@@ -4461,13 +4461,12 @@ GameObject:
   - component: {fileID: 5483147893479455249}
   - component: {fileID: 5483147893479455262}
   - component: {fileID: 5483147893479455254}
-  - component: {fileID: 5483147893479455255}
   - component: {fileID: 5483147893479455253}
-  - component: {fileID: 5483147893479455250}
-  - component: {fileID: 5483147893479455251}
   - component: {fileID: 852555074}
   - component: {fileID: 852555075}
   - component: {fileID: 986855213}
+  - component: {fileID: 8141328805871313234}
+  - component: {fileID: 4104154139058838508}
   m_Layer: 2
   m_Name: Player FINAL
   m_TagString: Untagged
@@ -4638,23 +4637,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &5483147893479455255
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4672876197070964409}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f63e2af6429bef146ae73b6fdf7aba11, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  basicUnit: {fileID: 11400000, guid: 2b9d05680b34f1e428d9a8202092acdf, type: 2}
-  animator: {fileID: 5483147893479455254}
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 256
 --- !u!195 &5483147893479455253
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -4677,77 +4659,6 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &5483147893479455250
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4672876197070964409}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c2d7a3e98be38b41b5285ea8f275ba7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weapon: {fileID: 0}
-  bulletSpawnPoint: {fileID: 8541537147247354646}
-  animTrigger: 
-  animator: {fileID: 0}
-  visualEffect: {fileID: 0}
---- !u!114 &5483147893479455251
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4672876197070964409}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f3fee75c5f67d94e91039943efe6975, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  takingDamageEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  deathEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5483147893479455255}
-        m_TargetAssemblyTypeName: Player.PlayerController, Assembly-CSharp
-        m_MethodName: OnDeath
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 2025598462, guid: 3361596631f6b354baecfffd80324b2d, type: 3}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: PlayOneShot
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 8300000, guid: 275eb49b3d3aa6f46b8ac13694cc64d0, type: 3}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 2025598462, guid: 3361596631f6b354baecfffd80324b2d, type: 3}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: set_volume
-        m_Mode: 4
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0.5
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &852555074
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4804,10 +4715,56 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   alphaFadeSpeed: 1
-  health: {fileID: 0}
   lowHealthUI: {fileID: 0}
   interval: 1
   duration: 0.5
+--- !u!114 &8141328805871313234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4672876197070964409}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a88fe9a75238f847a9b16c0007ba268, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthBar: {fileID: 0}
+  popupPrefab: {fileID: 0}
+  unitSfxIdEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  unitSfxIdEvent2D:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &4104154139058838508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4672876197070964409}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f63e2af6429bef146ae73b6fdf7aba11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  basicUnit: {fileID: 11400000, guid: 2b9d05680b34f1e428d9a8202092acdf, type: 2}
+  animator: {fileID: 5483147893479455254}
+  BaseAttack:
+    weapon: {fileID: 0}
+    bulletSpawnPoint: {fileID: 0}
+    animTrigger: 
+    animator: {fileID: 0}
+    _attackTimer: 0
+    _canAttack: 0
+    _target: {fileID: 0}
+    visualEffect: {fileID: 0}
+  target: {fileID: 0}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!1 &4764225821289464187
 GameObject:
   m_ObjectHideFlags: 0
