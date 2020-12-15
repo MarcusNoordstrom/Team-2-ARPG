@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 
 namespace Player {
-    [RequireComponent(typeof(Health), typeof(NavMeshAgent), typeof(Rigidbody))]
+    [RequireComponent(typeof(PlayerHealth), typeof(NavMeshAgent), typeof(Rigidbody))]
     public class PlayerController : BaseUnit, IAction, IResurrect {
         public LayerMask layerMask;
 
