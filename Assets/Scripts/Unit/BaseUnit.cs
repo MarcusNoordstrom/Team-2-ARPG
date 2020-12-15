@@ -3,7 +3,6 @@ using UnityEngine;
 using UnityEngine.AI;
 
 namespace Unit {
-    [RequireComponent(typeof(Health))]
     public class BaseUnit : MonoBehaviour, IGetMaxHealth, IAction {
         [Header("Animation related")]
         [SerializeField] protected Animator animator;
@@ -11,7 +10,7 @@ namespace Unit {
         [Header("Unit related")] [SerializeField]
         protected BasicUnit basicUnit;
         public GameObject bulletSpawnPoint;
-        public GameObject target;
+        GameObject target;
         public EquippedWeapon baseEquippedWeapon;
         protected NavMeshAgent BaseNavMeshAgent => GetComponent<NavMeshAgent>();
         protected Health BaseHealth => GetComponent<Health>();
@@ -49,9 +48,9 @@ namespace Unit {
             }
         }
 
-        protected virtual GameObject CombatTarget {
-            get => target = FindObjectOfType<PlayerController>().gameObject;
-            set => target = value;
+        public virtual GameObject CombatTarget {
+            get => target;
+            protected set => target = value;
         } 
 
         protected void DeactivateAttack() {
@@ -78,6 +77,7 @@ namespace Unit {
         }
 
         public void ActionToStart() {
+            print("Base unit");
             //TODO something here?
         }
     }
