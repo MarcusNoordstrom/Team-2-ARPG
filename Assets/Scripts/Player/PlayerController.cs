@@ -1,28 +1,52 @@
-﻿using System;
-using Core;
-using GameStates;
-using UI;
+﻿using GameStates;
 using Unit;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.UI;
 
 namespace Player {
-    [RequireComponent(typeof(Health), typeof(Attack), typeof(NavMeshAgent))]
-    [RequireComponent(typeof(Rigidbody))]
+    [RequireComponent(typeof(PlayerHealth), typeof(NavMeshAgent), typeof(Rigidbody))]
     public class PlayerController : BaseUnit, IAction, IResurrect {
-        public static bool HasClickedOnPortal { get; set; }
         public LayerMask layerMask;
 
-        public static GameObject PlayerTarget { get; set; }
-        
-        public static bool HasTarget => PlayerController.PlayerTarget != null;
-        void Update() {
+
+        protected override bool EligibleToAttack => true;
+
+        protected override void Update() {
             if (!BaseNavMeshAgent.hasPath && !BaseHealth.IsDead) {
                 PlayAnimation("Idle");
             }
 
+            if (InteractWithCombat()) return;
+
             ShouldMovetoMouse();
+        }
+
+       bool InteractWithCombat() {
+            if (Input.GetKeyDown(KeyCode.Mouse1) ||Input.GetKeyUp(KeyCode.Mouse1)) {
+                var hits = Physics.RaycastAll(PlayerHelper.GetMouseRay());
+                foreach (var raycastHit in hits) {
+                    var target = raycastHit.transform.GetComponent<Health>();
+                    if (target == null) continue;
+                    CombatTarget = target.gameObject;
+                    baseEquippedWeapon.ChangeWeapon(basicUnit.meleeWeapon);
+                    GetComponent<Action>().StartAction(GetComponent<MeleeAttack>());
+                    return true;
+                }
+            }
+
+            if (Input.GetKey(KeyCode.E)) {
+                var hits = Physics.RaycastAll(PlayerHelper.GetMouseRay());
+                foreach (var raycastHit in hits) {
+                    var target = raycastHit.transform.GetComponent<Health>();
+                    if (target == null) continue;
+                    CombatTarget = target.gameObject;
+                    baseEquippedWeapon.ChangeWeapon(basicUnit.rangedWeapon);
+                    GetComponent<Action>().StartAction(GetComponent<RangedAttack>());
+                    return true;
+                }
+            }
+
+            return false;
         }
 
         public override void OnDeath() {
@@ -35,40 +59,28 @@ namespace Player {
         }
 
         public void ActionToStart() {
+            print("PlayerController");
+            BaseNavMeshAgent.ResetPath();
+            BaseNavMeshAgent.isStopped = false;
+            CombatTarget = null;
             PlayAnimation("Idle");
         }
-        
+
         void ShouldMovetoMouse() {
-            if (Input.GetMouseButton(0) && Physics.Raycast(GetMouseRay(), out var hit, 10000f, ~layerMask) && !BaseHealth.IsDead) {
+            if (Input.GetMouseButton(0) && Physics.Raycast(PlayerHelper.GetMouseRay(), out var hit, 10000f, ~layerMask) && !BaseHealth.IsDead) {
                 GetComponent<Action>().StartAction(this);
-                PlayerTarget = null;
                 //print(hit.collider.gameObject.name);
                 Movement(hit.point);
-                ClickedPortal(hit);
+                PlayerHelper.ClickedPortal(hit);
             }
         }
 
         void Movement(Vector3 destination) {
-            BaseNavMeshAgent.isStopped = false;
+            //BaseNavMeshAgent.isStopped = false;
             BaseNavMeshAgent.destination = destination;
             if (BaseHealth.IsDead) return;
             PlayAnimation("Running");
         }
-
-        public static Ray GetMouseRay() {
-            var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            return ray;
-        }
-
-        static void ClickedPortal(RaycastHit hit) {
-            if (hit.collider == null) return;
-
-            if (Input.GetMouseButtonUp(0) && hit.collider.GetComponent<Portal>() == null)
-                HasClickedOnPortal = false;
-            if (Input.GetMouseButtonDown(0) && hit.collider.GetComponent<Portal>() != null)
-                HasClickedOnPortal = true;
-        }
-
 
         void PlayAnimation(string animationToPlay) {
             animator.SetTrigger(animationToPlay);
@@ -76,7 +88,7 @@ namespace Player {
 
 
         public void OnResurrect(bool onCorpse) {
-            gameObject.layer = LayerMask.NameToLayer("Player");
+            GetComponent<Collider>().enabled = true;
             BaseHealth.CurrentHealth = MaxHealth();
             BaseNavMeshAgent.isStopped = false;
             GetComponent<AudioSource>().Stop();

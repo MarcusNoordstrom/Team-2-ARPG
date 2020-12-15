@@ -6,8 +6,8 @@ namespace Player {
 
         public void StartAction(IAction action) {
             if(_currentAction == action) return;
-            _currentAction?.ActionToStart();
             _currentAction = action;
+            _currentAction.ActionToStart();
         }
     }
 }
