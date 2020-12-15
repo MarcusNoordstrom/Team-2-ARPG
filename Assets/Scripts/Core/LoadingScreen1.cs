@@ -8,8 +8,8 @@ public class LoadingScreen1 : MonoBehaviour
 {
     public static LoadingScreen1 instance;
 
-    [SerializedField]
-    private gameObject loading_Bar_Holder;
+    SerializeField]
+    public GameObject loading_Bar_Holder;   
 
     private 
 
@@ -19,7 +19,7 @@ public class LoadingScreen1 : MonoBehaviour
     }
     void MakeSingleton() {
         if(instance != null) {
-            Destro(gameObject);
+            Destroy(gameObject);
         } else {
             instance = this;
             DontDestroyOnLoad(gameobject);
