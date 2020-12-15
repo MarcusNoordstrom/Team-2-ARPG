@@ -20,6 +20,7 @@ namespace Player {
             GetComponent<Action>().StartAction(this);
             MoveToTargetPosition();
             if (IsInMeleeRange()) {
+                GetComponent<Animator>().SetTrigger("PlayerMeleeAttack");
                 //TODO Trigger animation here
                 _navMeshAgent.isStopped = true;
                 var targetPoint = _baseUnit.target.transform.position;
@@ -43,6 +44,7 @@ namespace Player {
 
         public void ActionToStart() {
             _navMeshAgent.isStopped = false;
+            
         }
 
         bool IsInMeleeRange() {
