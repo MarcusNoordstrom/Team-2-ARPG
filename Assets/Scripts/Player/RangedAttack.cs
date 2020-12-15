@@ -15,9 +15,9 @@ namespace Player {
 
         //animation event
         void RangedAttackEvent() {
+            print(_baseUnit.CombatTarget.GetComponent<Health>().IsDead);
             if (_baseUnit.CombatTarget == null || _baseUnit.CombatTarget.GetComponent<Health>().IsDead) return;
-            GetComponent<NavMeshAgent>().isStopped = true;
-            _baseUnit.baseEquippedWeapon.weapon.Attack(_baseUnit.bulletSpawnPoint.transform, _baseUnit.CombatTarget);
+            _baseUnit.equipped.weapon.Attack(_baseUnit.bulletSpawnPoint.transform, _baseUnit.CombatTarget);
             //TODO play muzzle effect when shooting
         }
 
@@ -25,14 +25,13 @@ namespace Player {
         void RangedAttackFinishEvent() {
             if (_baseUnit.CombatTarget == null || _baseUnit.CombatTarget.GetComponent<Health>().IsDead) return;
 
-            if (_baseUnit.CombatTarget.layer == LayerMask.NameToLayer("Player")) {
-                if (GetComponent<IAction>() != this) {
-                    GetComponent<IAction>().ActionToStart();
-                    return;
-                }
-            }
+             if (_baseUnit.CombatTarget.layer == LayerMask.NameToLayer("Player")) {
+                 if (GetComponent<IAction>() != this) {
+                     GetComponent<IAction>().ActionToStart();
+                     return;
+                 }
+             }
 
-            
             GetComponent<Animator>().SetTrigger(animationTrigger);
         }
 

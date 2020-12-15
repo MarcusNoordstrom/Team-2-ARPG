@@ -18,13 +18,14 @@ namespace Unit {
         protected override void Setup() {
             _lookAtTarget = GetComponent<LookAtTarget>();
             BaseHealth.CurrentHealth = basicUnit.maxHealth;
-            baseEquippedWeapon.ChangeWeapon(basicUnit.rangedWeapon);
+            equipped.ChangeWeapon(basicUnit.rangedWeapon);
             _visibilityCheck = GetComponent<VisibilityCheck>();
 
             _ticks = Random.Range(0, TicksPerUpdate);
         }
 
         void Start() {
+            CombatTarget = FindObjectOfType<PlayerController>().gameObject;
             _lookAtTarget.Setup(CombatTarget.transform);
         }
 
