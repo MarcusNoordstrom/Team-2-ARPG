@@ -7,7 +7,6 @@ public class LoadingScreen1 : MonoBehaviour
     [SerializeField]
     public GameObject loading_Bar_Holder;   
 
-    private 
 
     // Start is called before the first frame update
     void Start() { 
