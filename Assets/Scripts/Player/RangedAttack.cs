@@ -15,22 +15,24 @@ namespace Player {
 
         //animation event
         void RangedAttackEvent() {
-            if (_baseUnit.target == null || _baseUnit.target.GetComponent<Health>().IsDead) return;
-            _baseUnit.baseEquippedWeapon.weapon.Attack(_baseUnit.bulletSpawnPoint.transform, _baseUnit.target);
+            if (_baseUnit.CombatTarget == null || _baseUnit.CombatTarget.GetComponent<Health>().IsDead) return;
+            GetComponent<NavMeshAgent>().isStopped = true;
+            _baseUnit.baseEquippedWeapon.weapon.Attack(_baseUnit.bulletSpawnPoint.transform, _baseUnit.CombatTarget);
             //TODO play muzzle effect when shooting
         }
 
         //animation event
         void RangedAttackFinishEvent() {
-            if (_baseUnit.target == null || _baseUnit.target.GetComponent<Health>().IsDead) return;
+            if (_baseUnit.CombatTarget == null || _baseUnit.CombatTarget.GetComponent<Health>().IsDead) return;
 
-            if (_baseUnit.target.layer == LayerMask.NameToLayer("Player")) {
+            if (_baseUnit.CombatTarget.layer == LayerMask.NameToLayer("Player")) {
                 if (GetComponent<IAction>() != this) {
                     GetComponent<IAction>().ActionToStart();
                     return;
                 }
             }
 
+            
             GetComponent<Animator>().SetTrigger(animationTrigger);
         }
 
@@ -43,8 +45,9 @@ namespace Player {
             }
 
             GetComponent<Animator>().SetTrigger(animationTrigger);
-            transform.LookAt(_baseUnit.target.transform);
-            print(_baseUnit.target);
+
+            transform.LookAt(_baseUnit.CombatTarget.transform);
+            print(_baseUnit.CombatTarget);
         }
     }
 }
