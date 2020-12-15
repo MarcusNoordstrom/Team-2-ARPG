@@ -16,14 +16,15 @@ namespace Player {
         }
 
         void Update() {
-            if (_baseUnit.target == null) return;
+            if (_baseUnit.CombatTarget == null) return;
             GetComponent<Action>().StartAction(this);
             MoveToTargetPosition();
             if (IsInMeleeRange()) {
+                //TODO add cd on attack
                 GetComponent<Animator>().SetTrigger("PlayerMeleeAttack");
                 //TODO Trigger animation here
                 _navMeshAgent.isStopped = true;
-                var targetPoint = _baseUnit.target.transform.position;
+                var targetPoint = _baseUnit.CombatTarget.transform.position;
                 targetPoint.y = transform.position.y;
                 transform.LookAt(targetPoint);
                 //TODO start attacking with melee weapon
@@ -39,7 +40,7 @@ namespace Player {
         }
 
         void MoveToTargetPosition() {
-            _navMeshAgent.SetDestination(_baseUnit.target.transform.position);
+            _navMeshAgent.SetDestination(_baseUnit.CombatTarget.transform.position);
         }
 
         public void ActionToStart() {
@@ -48,7 +49,7 @@ namespace Player {
         }
 
         bool IsInMeleeRange() {
-            return Vector3.Distance(transform.position, _baseUnit.target.transform.position) < _baseUnit.baseEquippedWeapon.weapon.range;
+            return Vector3.Distance(transform.position, _baseUnit.CombatTarget.transform.position) < _baseUnit.baseEquippedWeapon.weapon.range;
         }
     }
 }
