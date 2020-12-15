@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 namespace Unit {
@@ -11,9 +12,11 @@ namespace Unit {
         [SerializeField] DamageUI popupPrefab;
         protected int MaxHealth => GetComponent<IGetMaxHealth>().MaxHealth();
 
+        public UnityAction DeadStuff;
+
         void Start() {
-            healthBar.maxValue = MaxHealth;
-            healthBar.value = MaxHealth;
+            // healthBar.maxValue = MaxHealth;
+            // healthBar.value = MaxHealth;
         }
 
         void Update() {
@@ -38,15 +41,16 @@ namespace Unit {
         }
 
         void SpawnPopup(int damage) {
-            var popup = Instantiate(popupPrefab, popupCanvas);
-            popup.SetUp(damage);
+            // var popup = Instantiate(popupPrefab, popupCanvas);
+            // popup.SetUp(damage);
         }
-        
+
         public virtual void TakeDamage(int damage) {
-            SpawnPopup(damage);
+//            SpawnPopup(damage);
             CurrentHealth -= damage;
-            healthBar.value = CurrentHealth;
-            OnPlaySound();
+            if (IsDead) DeadStuff();
+//            healthBar.value = CurrentHealth;
+//            OnPlaySound();
         }
     }
 }

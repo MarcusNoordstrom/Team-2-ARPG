@@ -28,6 +28,7 @@ namespace Unit {
         bool WaitTimer => Time.time - waitAtWaypoint > _timer;
 
         void Start() {
+            CombatTarget = FindObjectOfType<PlayerController>().gameObject;
             foreach (Transform child in wayPointObject.GetComponentInChildren<Transform>()) {
                 if (child.gameObject == wayPointObject) continue;
                 _waypoints.Add(child);
@@ -124,7 +125,7 @@ namespace Unit {
             }
 
             BaseNavMeshAgent.SetDestination(CombatTarget.transform.position);
-            if (Vector3.Distance(transform.position, CombatTarget.transform.position) < baseEquippedWeapon.weapon.range) {
+            if (Vector3.Distance(transform.position, CombatTarget.transform.position) < equipped.weapon.range) {
                 BaseNavMeshAgent.isStopped = true;
                 LookAtTarget.enabled = true;
                 if (Vector3.Angle(transform.forward,
