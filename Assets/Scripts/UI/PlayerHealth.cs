@@ -1,18 +1,15 @@
-﻿using GameStates;
+﻿using System.Collections;
+using GameStates;
 using Unit;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerHealth : Health, IResurrect {
+    [SerializeField] Image lowHealthUI;
+    [SerializeField] float alphaFadeSpeed = 0.1f;
     UnitSfxId id;
     bool _isFlashing;
-    bool _soundTriggered;
-    [SerializeField] float duration = 0.5f;
-    [SerializeField] float interval = 1f;
-    [SerializeField] Image lowHealthUI;
-    [SerializeField] float lowHealthTrigger;
-    [SerializeField] float alphaFadeSpeed = 1f;
-    
+    Color _fadeColor = new Color(255, 255, 255, 0);
     bool LowHealth => CurrentHealth == MaxHealth / 5;
     
     protected override void OnPlaySound() {
@@ -31,20 +28,29 @@ public class PlayerHealth : Health, IResurrect {
             return;
         if (lowHealthUI != null) {
             _isFlashing = true;
-            InvokeRepeating("ToggleState", duration, interval);
+            StartCoroutine(ToggleState());
         }
     }
 
     public override void TakeDamage(int damage) {
         base.TakeDamage(damage);
+        if (IsDead) {
+            StopAllCoroutines();
+            _fadeColor.a = 0;
+            lowHealthUI.color = _fadeColor;
+            StateLogic.OnDeath();
+        }
         if (!LowHealth) return;
-        lowHealthUI.color = new Color(255, 255, 255, alphaFadeSpeed += Time.deltaTime);
         Flashing();
         _isFlashing = !IsDead;
     }
 
-    void ToggleState() {
-        lowHealthUI.enabled = !lowHealthUI.enabled;
+    IEnumerator ToggleState() {
+        while (true) {
+            _fadeColor.a = Mathf.PingPong(Time.time * alphaFadeSpeed, 1);
+            lowHealthUI.color = _fadeColor;
+            yield return new WaitForFixedUpdate();
+        }
     }
     
     public void OnResurrect(bool onCorpse) {

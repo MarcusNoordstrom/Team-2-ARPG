@@ -6,25 +6,22 @@ namespace Unit{
     public class SfxController : MonoBehaviour{
         [SerializeField] UnitSfxClip[] sfxClips;
         [SerializeField] Dictionary<UnitSfxId, AudioClip> sfxClipsDictionary = new Dictionary<UnitSfxId, AudioClip>();
-        AudioSource audioSource;
+        [SerializeField]AudioSource audioSource2D, audioSource3D;
 
         void Awake(){
-            audioSource = GetComponent<AudioSource>();
             foreach (var sfxClip in sfxClips){
                 sfxClipsDictionary.Add(sfxClip.id, sfxClip.audioClip);
             }
         }
         public void OnPlay(UnitSfxId id){
-            PlayAudioClip(sfxClipsDictionary[id], 1);
+            audioSource3D.Stop();
+            audioSource3D.clip = sfxClipsDictionary[id];
+            audioSource3D.Play();
         }
         public void OnPlay2D(UnitSfxId id){
-            PlayAudioClip(sfxClipsDictionary[id], 0);
-        }
-        private void PlayAudioClip(AudioClip audioClip, float spatialBlend){
-            audioSource.Stop();
-            audioSource.spatialBlend = spatialBlend;
-            audioSource.clip = audioClip;
-            audioSource.Play();
+            audioSource2D.Stop();
+            audioSource2D.clip = sfxClipsDictionary[id];
+            audioSource2D.Play();
         }
     }
 }

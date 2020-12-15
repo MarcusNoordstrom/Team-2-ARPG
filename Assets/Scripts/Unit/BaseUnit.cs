@@ -5,7 +5,6 @@ using UnityEngine.Events;
 using UnityEngine.Serialization;
 
 namespace Unit {
-    [RequireComponent(typeof(Health))]
     public class BaseUnit : MonoBehaviour, IGetMaxHealth, IAction {
         [Header("Animation related")] [SerializeField]
         protected Animator animator;

@@ -18,6 +18,12 @@ namespace Unit {
             textUI.color = color;
         }
 
+        void LateUpdate() {
+            if (Time.timeScale == 0) {
+                Destroy(gameObject);
+            }
+        }
+
         public void SetUp(int damage) {
             textUI.text = $"-{damage}";
             Destroy(gameObject, destroyTime);
