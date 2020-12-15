@@ -20,12 +20,21 @@ namespace Player {
             GetComponent<Action>().StartAction(this);
             MoveToTargetPosition();
             if (IsInMeleeRange()) {
+                //TODO Trigger animation here
                 _navMeshAgent.isStopped = true;
                 var targetPoint = _baseUnit.target.transform.position;
                 targetPoint.y = transform.position.y;
                 transform.LookAt(targetPoint);
                 //TODO start attacking with melee weapon
             }
+        }
+
+        void Hit() {
+            //TODO implement deal damage here
+        }
+
+        void MeleeAttackFinish() {
+            //TODO repeat animation if player
         }
 
         void MoveToTargetPosition() {
