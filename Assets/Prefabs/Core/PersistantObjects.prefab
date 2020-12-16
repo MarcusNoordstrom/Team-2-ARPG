@@ -571,8 +571,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 5032421662635161477}
-  OnPlay: {fileID: 4916664487170898645, guid: adb7a3b3685a5aa45a2d95de94b0b885, type: 2}
-  OnPause: {fileID: 2728922776671324133, guid: adb7a3b3685a5aa45a2d95de94b0b885, type: 2}
+  OnPlay: {fileID: 0}
+  OnPause: {fileID: 0}
 --- !u!114 &7613222901896705988
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1184,6 +1184,14 @@ PrefabInstance:
     - target: {fileID: 6344344535356792051, guid: c1b4d6b783b6fe444abb75e7f7a7646b, type: 3}
       propertyPath: m_Name
       value: LoadingScreen
+      objectReference: {fileID: 0}
+    - target: {fileID: 7174587697442434461, guid: c1b4d6b783b6fe444abb75e7f7a7646b, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 158.74197
+      objectReference: {fileID: 0}
+    - target: {fileID: 7174587697442434461, guid: c1b4d6b783b6fe444abb75e7f7a7646b, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -68.4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c1b4d6b783b6fe444abb75e7f7a7646b, type: 3}
