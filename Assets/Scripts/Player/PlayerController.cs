@@ -32,7 +32,7 @@ namespace Player {
                 var hits = Physics.RaycastAll(PlayerHelper.GetMouseRay());
                 foreach (var raycastHit in hits) {
                     var target = raycastHit.transform.GetComponent<Health>();
-                    if (target == null) continue;
+                    if (target == null || target.GetComponent<PlayerController>() != null) continue;
                     CombatTarget = target.gameObject;
                     equipped.ChangeWeapon(basicUnit.meleeWeapon);
                     GetComponent<Action>().StartAction(GetComponent<MeleeAttack>());
@@ -44,7 +44,7 @@ namespace Player {
                 var hits = Physics.RaycastAll(PlayerHelper.GetMouseRay());
                 foreach (var raycastHit in hits) {
                     var target = raycastHit.transform.GetComponent<Health>();
-                    if (target == null) continue;
+                    if (target == null || target.GetComponent<PlayerController>() != null) continue;
                     CombatTarget = target.gameObject;
                     equipped.ChangeWeapon(basicUnit.rangedWeapon);
                     GetComponent<Action>().StartAction(GetComponent<RangedAttack>());
@@ -70,6 +70,7 @@ namespace Player {
         }
 
         public void ActionToStart() {
+            PlayerHelper.UsingRangedAttack = false;
             BaseNavMeshAgent.ResetPath();
             BaseNavMeshAgent.isStopped = false;
             CombatTarget = null;
