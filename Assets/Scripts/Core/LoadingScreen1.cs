@@ -16,14 +16,15 @@ public class LoadingScreen1 : MonoBehaviour
     private float progress_Value = 1.1f;
     private float progress_Multiplier_1 = 0.5f;
     private float progress_Multiplier_2 = 0.07f;
+    public float Load_level_time = 2f;
     void Awake()
     {
         MakeSingleton();
     }
 
     // Start is called before the first frame update
-    void Start() { 
-        
+    void Start() {
+        StartCoroutine(LoadingSomeLevel());
       
     }
     void Update() {
@@ -45,7 +46,7 @@ public class LoadingScreen1 : MonoBehaviour
         progress_Value = 0f;
 
         //Time.timeScale = 0f;
-        //To be added 
+         
         SceneManager.LoadScene(levelname);
       
     }
@@ -55,10 +56,22 @@ public class LoadingScreen1 : MonoBehaviour
         if (progress_Value < 1f) {
 
             progress_Value += progress_Multiplier_1 *progress_Multiplier_2;
-           // loading_Bar_Progress.fillAmount = progress_Value; //I'm supposed to be able to write fillAmount to make the progress bar fill up but fillAmount isn't working on my end. Think someone else can get it to work?
+            loading_Bar_Progress.GetComponent<Image>().fillAmount = progress_Value;
 
+            if(progress_Value < 1f) {
 
-        }
+                progress_Value = 1.1f;
 
+                loading_Bar_Progress.GetComponent<Image>().fillAmount = 0f;
+
+                loading_Bar_Holder.SetActive(false);
+
+                //Time.timeScale = 1f;
+            }
+        } // if progress < 1
     }
-}
+    IEnumerator LoadingSomeLevel(){
+        yield return new WaitForSeconds(Load_level_time);
+        Loadlevel("LavaLevel");
+    }
+} //class
