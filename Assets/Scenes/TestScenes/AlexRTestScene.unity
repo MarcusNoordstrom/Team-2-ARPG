@@ -392,6 +392,25 @@ Transform:
   m_Father: {fileID: 441582781}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &21380964 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6188982726118685075, guid: c582648285e4aeb42afa1729034f303d, type: 3}
+  m_PrefabInstance: {fileID: 2101544081}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &21380969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 21380964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 131a034c589bc884db0af60dff5f20a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rangeAttackImage: {fileID: 1999233071}
+  meleeAttackImage: {fileID: 1728947083}
 --- !u!1001 &21469288
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -33435,6 +33454,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3223275179621062011, guid: 54f3de6ee35a8d94b936ca47d408f017, type: 3}
   m_PrefabInstance: {fileID: 1231065147}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1728947083 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 906238395, guid: c582648285e4aeb42afa1729034f303d, type: 3}
+  m_PrefabInstance: {fileID: 2101544081}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1732540176
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -38344,6 +38374,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5463938235119253337, guid: 8057ab0477696994ca33cdd815029c6c, type: 3}
   m_PrefabInstance: {fileID: 1996305174}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1999233071 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1645814405, guid: c582648285e4aeb42afa1729034f303d, type: 3}
+  m_PrefabInstance: {fileID: 2101544081}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2004450555
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -40380,6 +40421,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 906238394, guid: c582648285e4aeb42afa1729034f303d, type: 3}
+      propertyPath: m_Interactable
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1645814405, guid: c582648285e4aeb42afa1729034f303d, type: 3}
+      propertyPath: m_FillAmount
+      value: 0.952
+      objectReference: {fileID: 0}
     - target: {fileID: 6188982726118685039, guid: c582648285e4aeb42afa1729034f303d, type: 3}
       propertyPath: m_Pivot.x
       value: 0

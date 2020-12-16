@@ -51,7 +51,6 @@ namespace Unit {
                 }
 
                 if (WaitTimer) {
-                    print(_timer);
                     _x++;
                     if (_x == _waypoints.Count) {
                         _x = 0;

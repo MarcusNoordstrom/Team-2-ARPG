@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Gun
   m_EditorClassIdentifier: 
   baseDamage: 10
-  attackSpeed: 0
+  attackSpeed: 5
   range: 2
   bulletPrefab: {fileID: 5418528933250074970, guid: 40b14b8804ac2a74998e77e3d586d264, type: 3}
