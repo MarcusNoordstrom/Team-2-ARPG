@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: LightSaber
   m_EditorClassIdentifier: 
   baseDamage: 15
-  attackSpeed: 10
+  attackSpeed: 5
   range: 4

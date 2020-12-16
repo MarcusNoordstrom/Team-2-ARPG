@@ -26,19 +26,13 @@ namespace UI {
         }
 
         void Update() {
-            if (Input.GetKeyDown(KeyCode.L)) {
-                meleeStartFilling = true;
-            }
-
-            if (Input.GetKeyDown(KeyCode.K)) {
-                rangeStartFilling = true;
-            }
 
             if (rangeStartFilling) {
                 RangedCoolDown(_unit.basicUnit.rangedWeapon.attackSpeed);
             }
 
             if (meleeStartFilling) {
+                print("start filling");
                 MeleeCoolDown(_unit.basicUnit.meleeWeapon.attackSpeed);
             }
         }

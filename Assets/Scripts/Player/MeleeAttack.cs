@@ -1,4 +1,5 @@
 ﻿using System;
+using UI;
 using Unit;
 using UnityEngine;
 using UnityEngine.AI;
@@ -7,42 +8,49 @@ namespace Player {
     public class MeleeAttack : MonoBehaviour, IAction {
         BaseUnit _baseUnit;
 
-        //print($"{PlayerController.PlayerTarget} {_navMeshAgent.isStopped}");
-
         NavMeshAgent _navMeshAgent => GetComponent<NavMeshAgent>();
-        private SfxController sfxController => GetComponent<SfxController>();
+        SfxController sfxController => GetComponent<SfxController>();
 
         bool _hasAttack;
 
         void Awake() {
             _baseUnit = GetComponent<BaseUnit>();
-            
+            _baseUnit._attackTimer = -_baseUnit.equipped.weapon.attackSpeed;
         }
 
         void Update() {
             if (_baseUnit.CombatTarget == null) return;
             MoveToTargetPosition();
-            if (IsInMeleeRange() && _hasAttack && _baseUnit.CanAttack) {
-                _hasAttack = false;
-                GetComponent<Animator>().SetTrigger("PlayerMeleeAttack");
-                _baseUnit._attackTimer = Time.time;
+            if (IsInMeleeRange()) {
+                LookAtTarget();
                 _navMeshAgent.isStopped = true;
-                var targetPoint = _baseUnit.CombatTarget.transform.position;
-                targetPoint.y = transform.position.y;
-                transform.LookAt(targetPoint);
+                if (_hasAttack && _baseUnit.CanAttack) {
+                    _hasAttack = false;
+                    GetComponent<Animator>().SetTrigger("PlayerMeleeAttack");
+                    _baseUnit._attackTimer = Time.time;
+                    StartFillingCd();
+                }
             }
         }
 
+        void LookAtTarget() {
+            var targetPoint = _baseUnit.CombatTarget.transform.position;
+            targetPoint.y = transform.position.y;
+            transform.LookAt(targetPoint);
+        }
+
         void Hit() {
-            if(_baseUnit.CombatTarget == null) return;
+            if (_baseUnit.CombatTarget == null) return;
             _baseUnit.equipped.weapon.Attack(transform, _baseUnit.CombatTarget);
             sfxController.OnPlay(UnitSfxId.Melee);
-            //TODO implement deal damage here
         }
 
         void MeleeAttackFinish() {
-            //TODO repeat animation if player
             _hasAttack = true;
+
+            if (_baseUnit.GetComponent<PlayerController>() != null) {
+                ButtonCoolDown.meleeStartFilling = true;
+            }
         }
 
         void MoveToTargetPosition() {
@@ -50,9 +58,14 @@ namespace Player {
         }
 
         public void ActionToStart() {
-            _baseUnit._attackTimer = -_baseUnit.equipped.weapon.attackSpeed;
-            _navMeshAgent.isStopped = false;
             _hasAttack = true;
+        }
+
+        void StartFillingCd() {
+            if (_baseUnit.GetComponent<PlayerController>() != null) {
+                FindObjectOfType<ButtonCoolDown>().meleeAttackImage.fillAmount = 0;
+                ButtonCoolDown.meleeStartFilling = true;
+            }
         }
 
         bool IsInMeleeRange() {
