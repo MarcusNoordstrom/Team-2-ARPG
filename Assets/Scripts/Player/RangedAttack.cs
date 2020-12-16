@@ -6,25 +6,27 @@ using UnityEngine.AI;
 namespace Player {
     public class RangedAttack : MonoBehaviour, IAction {
         [SerializeField] string animationTrigger;
-        BaseUnit _baseUnit;
+        Animator _animator;
+        BaseUnit _unit;
 
 
         void Awake() {
-            _baseUnit = GetComponent<BaseUnit>();
+            _unit = GetComponent<BaseUnit>();
+            _animator = GetComponent<Animator>();
         }
 
         //animation event
         void RangedAttackEvent() {
-            if (_baseUnit.CombatTarget == null || _baseUnit.CombatTarget.GetComponent<Health>().IsDead) return;
-            _baseUnit.equipped.weapon.Attack(_baseUnit.bulletSpawnPoint.transform, _baseUnit.CombatTarget);
+            if (_unit.CombatTarget == null || _unit.CombatTarget.GetComponent<Health>().IsDead) return;
+            _unit.equipped.weapon.Attack(_unit.bulletSpawnPoint.transform, _unit.CombatTarget);
             //TODO play muzzle effect when shooting
         }
 
         //animation event
         void RangedAttackFinishEvent() {
-            if (_baseUnit.CombatTarget == null || _baseUnit.CombatTarget.GetComponent<Health>().IsDead) return;
+            if (_unit.CombatTarget == null || _unit.CombatTarget.GetComponent<Health>().IsDead) return;
 
-             if (_baseUnit.CombatTarget.layer == LayerMask.NameToLayer("Player")) {
+             if (_unit.CombatTarget.layer == LayerMask.NameToLayer("Player")) {
                  if (GetComponent<IAction>() != this) {
                      GetComponent<IAction>().ActionToStart();
                      return;
@@ -34,17 +36,15 @@ namespace Player {
             GetComponent<Animator>().SetTrigger(animationTrigger);
         }
 
-        //TODO check if in melee range when using melee attack
-
-
         public void ActionToStart() {
+            _animator.ResetTrigger("Idle");
             if (GetComponent<NavMeshAgent>() != null) {
                 GetComponent<NavMeshAgent>().isStopped = true;
             }
 
-            GetComponent<Animator>().SetTrigger(animationTrigger);
+            _animator.SetTrigger(animationTrigger);
 
-            transform.LookAt(_baseUnit.CombatTarget.transform);
+            transform.LookAt(_unit.CombatTarget.transform);
         }
     }
 }

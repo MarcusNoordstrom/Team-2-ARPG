@@ -17,4 +17,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Death Scene.unity
     guid: 3b349b04173d44458ad97e40134336b7
+  - enabled: 1
+    path: Assets/Scenes/FINAL LEVEL 1.unity
+    guid: 581bd8841d2c14dd9b2d3d6b59c61f1b
+  - enabled: 1
+    path: Assets/Scenes/TestScenes/AlexRTestScene.unity
+    guid: d40cb62cd13b49547af7d70dca0337d8
   m_configObjects: {}

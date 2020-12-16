@@ -32,6 +32,7 @@ namespace Player {
         }
 
         void Hit() {
+            if(_baseUnit.CombatTarget == null) return;
             _baseUnit.equipped.weapon.Attack(transform, _baseUnit.CombatTarget);
             //TODO implement deal damage here
         }
