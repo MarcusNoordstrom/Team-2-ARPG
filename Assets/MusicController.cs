@@ -1,34 +1,43 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using GameStates;
+﻿using System.Collections;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
-public class MusicController : MonoBehaviour, IResurrect{
-    AudioSource audioSource => GetComponent<AudioSource>();
+public class MusicController : MonoBehaviour{
+    public AudioSource gameplayMusicSource, pauseMusicSource;
     [SerializeField] float fadeSpeed;
     float startVolume;
-    private void Start(){
-        startVolume = audioSource.volume;
-        audioSource.Play();
+    public static MusicController _musicController;
+    
+    void Start(){ 
+        startVolume = gameplayMusicSource.volume;
+        _musicController = this;
     }
 
    public void OnDeath(){
        StartCoroutine("AudioFade");
    }
 
-   IEnumerator AudioFade(){
-       while (audioSource.volume > 0){
-           audioSource.volume -= fadeSpeed * Time.deltaTime;
-           yield return new WaitForFixedUpdate();
-       }
-       audioSource.Stop();
+   public void OnPause() {
+       gameplayMusicSource.Pause();
+       pauseMusicSource.Play();
    }
 
-    public void OnResurrect(bool onCorpse){
+   public void OnUnpause() {
+       pauseMusicSource.Pause();
+       gameplayMusicSource.Play();
+   }
+   
+   IEnumerator AudioFade(){
+       while (gameplayMusicSource.volume > 0){
+           gameplayMusicSource.volume -= fadeSpeed * Time.deltaTime;
+           yield return new WaitForFixedUpdate();
+       }
+       gameplayMusicSource.Stop();
+   }
+
+    public void OnResurrect(){
         StopCoroutine("AudioFade");
-        audioSource.volume = startVolume;
-        audioSource.Play();
-        
+        gameplayMusicSource.volume = startVolume;
+        gameplayMusicSource.Play();
     }
 }

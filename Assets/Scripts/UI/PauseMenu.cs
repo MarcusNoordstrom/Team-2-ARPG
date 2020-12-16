@@ -14,10 +14,12 @@ public class PauseMenu : MonoBehaviour {
     }
 
     public void ShowPauseMenu() {
-        pauseMenu.SetActive(true);   
+        pauseMenu.SetActive(true);
+        MusicController._musicController.OnPause();
     }
 
     public void HidePauseMenu() {
         pauseMenu.SetActive(false);
+        MusicController._musicController.OnUnpause();
     }
 }
