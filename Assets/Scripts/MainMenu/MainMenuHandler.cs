@@ -6,10 +6,6 @@ using UnityEngine.UI;
 
 namespace MainMenu {
     public class MainMenuHandler : MonoBehaviour {
-        public Text playBtnTxt;
-        public Camera mainMenuCamera;
-        public AudioListener mainMenuAudioListener => mainMenuCamera.GetComponent<AudioListener>();
-
         public void ResumeGame() {
             StateLogic.OnPause();
         }
