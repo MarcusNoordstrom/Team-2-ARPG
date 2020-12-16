@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using Unit;
 using UnityEngine;
 using UnityEngine.AI;
@@ -18,7 +19,6 @@ namespace Player {
         void RangedAttackEvent() {
             if (_unit.CombatTarget == null || _unit.CombatTarget.GetComponent<Health>().IsDead) return;
             _unit.equipped.weapon.Attack(_unit.bulletSpawnPoint.transform, _unit.CombatTarget);
-            print("Ranged attack event");
             sfxController.OnPlay(UnitSfxId.Shoot);
             //TODO play muzzle effect when shooting
         }
@@ -35,8 +35,9 @@ namespace Player {
              }
 
             GetComponent<Animator>().SetTrigger(animationTrigger);
+            transform.LookAt(_unit.CombatTarget.transform);
         }
-
+        
         public void ActionToStart() {
             _animator.ResetTrigger("Idle");
             if (GetComponent<NavMeshAgent>() != null) {

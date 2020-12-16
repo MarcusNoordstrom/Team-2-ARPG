@@ -22,17 +22,14 @@ namespace Player {
             if (_baseUnit.CombatTarget == null) return;
             MoveToTargetPosition();
             if (IsInMeleeRange()) {
-                _navMeshAgent.isStopped = true;
                 LookAtTarget();
+                _navMeshAgent.isStopped = true;
                 if (_hasAttack && _baseUnit.CanAttack) {
                     _hasAttack = false;
                     GetComponent<Animator>().SetTrigger("PlayerMeleeAttack");
                     _baseUnit._attackTimer = Time.time;
                     StartFillingCd();
                 }
-            }
-            else {
-                _navMeshAgent.isStopped = false;
             }
         }
 
