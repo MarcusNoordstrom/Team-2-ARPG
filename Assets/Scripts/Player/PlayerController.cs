@@ -13,11 +13,11 @@ namespace Player {
 
         protected override bool EligibleToAttack => true;
 
-        bool _ignoreRaycast;
+        public static bool _ignoreRaycast;
 
         protected override void Update() {
             if (_ignoreRaycast) return;
-            
+
             if (!BaseNavMeshAgent.hasPath && !BaseHealth.IsDead) {
                 PlayAnimation("Idle");
             }
@@ -65,6 +65,7 @@ namespace Player {
         }
 
         void OnPlayerDeath() {
+            _ignoreRaycast = true;
             StateLogic.OnDeath();
         }
 
@@ -110,13 +111,13 @@ namespace Player {
 
         IEnumerator DeathFade(bool onCorpse) {
             Time.timeScale = 1f;
-            _ignoreRaycast = true;
             yield return Fader.FadeIn();
 
             foreach (var resurrect in GetComponents<IResurrect>()) {
                 resurrect.OnResurrect(onCorpse);
             }
 
+            animator.SetTrigger("Idle");
             yield return new WaitForSecondsRealtime(1f);
             yield return Fader.FadeOut();
             _ignoreRaycast = false;

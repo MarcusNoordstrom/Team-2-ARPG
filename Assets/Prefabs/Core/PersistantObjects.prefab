@@ -146,8 +146,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5c51a6c56f1613408ec0cb04f7d34bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playBtnTxt: {fileID: 3301983637165949444}
-  mainMenuCamera: {fileID: 0}
 --- !u!223 &133986127521094403
 Canvas:
   m_ObjectHideFlags: 0
@@ -523,6 +521,7 @@ GameObject:
   - component: {fileID: 2302739903603715872}
   - component: {fileID: -253288905175137644}
   - component: {fileID: -3025829632620116054}
+  - component: {fileID: 7613222901896705988}
   m_Layer: 0
   m_Name: PersistantObjects
   m_TagString: Untagged
@@ -571,6 +570,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 5032421662635161477}
+--- !u!114 &7613222901896705988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4263326620392149271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aacc4b6cdb3f8384fa9d9049d3a2c76b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  greenCursor: {fileID: 2800000, guid: 04fffc7fcbcb0ae4b876900a32bafec3, type: 3}
+  redCursor: {fileID: 2800000, guid: caa80ae8017286d4399d102b0d24b1a1, type: 3}
+  blueCursor: {fileID: 2800000, guid: f765b65fe13c2d1469321519ccfba0cc, type: 3}
 --- !u!1 &5032421662635161477
 GameObject:
   m_ObjectHideFlags: 0
