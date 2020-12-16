@@ -10,11 +10,13 @@ namespace Player {
         //print($"{PlayerController.PlayerTarget} {_navMeshAgent.isStopped}");
 
         NavMeshAgent _navMeshAgent => GetComponent<NavMeshAgent>();
+        private SfxController sfxController => GetComponent<SfxController>();
 
         bool _hasAttack;
 
         void Awake() {
             _baseUnit = GetComponent<BaseUnit>();
+            
         }
 
         void Update() {
@@ -34,6 +36,7 @@ namespace Player {
         void Hit() {
             if(_baseUnit.CombatTarget == null) return;
             _baseUnit.equipped.weapon.Attack(transform, _baseUnit.CombatTarget);
+            sfxController.OnPlay(UnitSfxId.Melee);
             //TODO implement deal damage here
         }
 

@@ -14,9 +14,7 @@ namespace Unit{
             }
         }
         public void OnPlay(UnitSfxId id){
-            audioSource3D.Stop();
-            audioSource3D.clip = sfxClipsDictionary[id];
-            audioSource3D.Play();
+            audioSource3D.PlayOneShot(sfxClipsDictionary[id]);
         }
         public void OnPlay2D(UnitSfxId id){
             audioSource2D.Stop();
