@@ -1,5 +1,19 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!136 &8580373557220180944
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4654503529611095523}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.02
+  m_Height: 0.11
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.05, z: 0}
 --- !u!95 &6105638339095161900
 Animator:
   serializedVersion: 3
@@ -19,20 +33,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!136 &8580373557220180944
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4654503529611095523}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.02
-  m_Height: 0.11
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.05, z: 0}
 --- !u!1001 &402208299
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -40,6 +40,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 265151228404947938}
     m_Modifications:
+    - target: {fileID: 1240652481607543699, guid: 02da9e1b68cc6b64b98b937719a37e54, type: 3}
+      propertyPath: m_PropertySheet.m_Vector4f.m_Array.Array.data[0].m_Value.x
+      value: 1.3041189
+      objectReference: {fileID: 0}
+    - target: {fileID: 1240652481607543699, guid: 02da9e1b68cc6b64b98b937719a37e54, type: 3}
+      propertyPath: m_PropertySheet.m_Vector4f.m_Array.Array.data[0].m_Value.y
+      value: 0.5189164
+      objectReference: {fileID: 0}
+    - target: {fileID: 1240652481607543699, guid: 02da9e1b68cc6b64b98b937719a37e54, type: 3}
+      propertyPath: m_PropertySheet.m_Vector4f.m_Array.Array.data[0].m_Value.z
+      value: 0.08876202
+      objectReference: {fileID: 0}
     - target: {fileID: 1240652481607543700, guid: 02da9e1b68cc6b64b98b937719a37e54, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -167,7 +179,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 2daaf9fbafb96f24eab72562a6421f91, type: 3}
       propertyPath: m_Name
-      value: Obstacle_lanturn_animated
+      value: Obstacle_lanturn_Newest
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 2daaf9fbafb96f24eab72562a6421f91, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -178,8 +190,16 @@ PrefabInstance:
       value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 5762204258927479632, guid: 2daaf9fbafb96f24eab72562a6421f91, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 1.0605002e-14
+      objectReference: {fileID: 0}
+    - target: {fileID: 5762204258927479632, guid: 2daaf9fbafb96f24eab72562a6421f91, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -26.546503
+      value: 20.332947
+      objectReference: {fileID: 0}
+    - target: {fileID: 5762204258927479632, guid: 2daaf9fbafb96f24eab72562a6421f91, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 5.782521e-15
       objectReference: {fileID: 0}
     - target: {fileID: 7698865164069301293, guid: 2daaf9fbafb96f24eab72562a6421f91, type: 3}
       propertyPath: m_Materials.Array.data[0]
