@@ -14,7 +14,10 @@ namespace Unit {
 
         public GameObject bulletSpawnPoint;
         [SerializeField] GameObject target;
-        [FormerlySerializedAs("baseEquippedWeapon")] public EquippedWeapon equipped;
+
+        [FormerlySerializedAs("baseEquippedWeapon")]
+        public EquippedWeapon equipped;
+
         protected NavMeshAgent BaseNavMeshAgent => GetComponent<NavMeshAgent>();
         protected Health BaseHealth => GetComponent<Health>();
         protected virtual bool EligibleToAttack { get; set; }
@@ -75,8 +78,9 @@ namespace Unit {
         public virtual void OnDeath() {
             print(BaseHealth.CurrentHealth);
             GetComponent<Collider>().enabled = false;
-            GetComponent<NavMeshObstacle>().enabled = false;
-            animator.SetTrigger("TurretDeath");
+            if (GetComponent<NavMeshObstacle>() != null) GetComponent<NavMeshObstacle>().enabled = false;
+
+            animator.SetTrigger("EnemyDeath");
 
             foreach (var script in GetComponents<MonoBehaviour>()) {
                 script.enabled = false;

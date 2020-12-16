@@ -24,8 +24,9 @@ namespace Unit {
         bool _isPatrolling;
         int _x;
         float _timer;
+        bool _shouldIdle;
 
-        bool WaitTimer => Time.time - waitAtWaypoint > _timer;
+        bool WaitTimer => Time.time - _timer > waitAtWaypoint;
 
         void Start() {
             CombatTarget = FindObjectOfType<PlayerController>().gameObject;
@@ -42,16 +43,22 @@ namespace Unit {
         }
 
         void FixedUpdate() {
-            print($"{ReachedPosition()} {_waypoints[_x].position.x} {transform.position.x}");
             if (ReachedPosition()) {
+                if (!_shouldIdle) {
+                    _timer = Time.time;
+                    animator.SetTrigger("DroneIdle");
+                    _shouldIdle = true;
+                }
+
                 if (WaitTimer) {
+                    print(_timer);
                     _x++;
                     if (_x == _waypoints.Count) {
                         _x = 0;
                     }
 
+                    _shouldIdle = false;
                     _isPatrolling = true;
-                    _timer = Time.time;
                 }
             }
 
@@ -84,6 +91,8 @@ namespace Unit {
         void OnDrawGizmosSelected() {
             Gizmos.color = Color.blue;
             Gizmos.DrawWireSphere(transform.position, BasicEnemy.targetRange);
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(transform.position, BasicEnemy.stopChaseDistance);
         }
 
         void OnDrawGizmos() {
@@ -117,7 +126,7 @@ namespace Unit {
         }
 
         void ChaseTarget() {
-            if (!_visibilityCheck.IsVisible(CombatTarget.gameObject, BasicEnemy.targetRange)) {
+            if (!_visibilityCheck.IsVisible(CombatTarget.gameObject, 200)) {
                 LookAtTarget.enabled = false;
                 BaseNavMeshAgent.isStopped = false;
                 DeactivateAttack();
@@ -131,7 +140,7 @@ namespace Unit {
                 LookAtTarget.enabled = true;
                 if (Vector3.Angle(transform.forward,
                     (CombatTarget.transform.position - transform.position).normalized) < 50)
-                    return;
+                    EligibleToAttack = true;
                 //BaseAttack.ActivateAttack(_target.gameObject);
             }
             else {
@@ -148,7 +157,10 @@ namespace Unit {
         void Patrol() {
             _isPatrolling = false;
             BaseNavMeshAgent.SetDestination(_waypoints[_x].position);
+            animator.SetTrigger("DroneR");
 
+            // animator.ResetTrigger("DroneIdle");
+            // animator.SetTrigger("DroneRunning");
             FindTarget();
         }
 
