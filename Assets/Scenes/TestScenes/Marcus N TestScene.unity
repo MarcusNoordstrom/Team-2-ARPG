@@ -12248,6 +12248,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBar: {fileID: 1385177187}
+  popupCanvas: {fileID: 0}
   popupPrefab: {fileID: 6903674934049428664, guid: 02a3ead787d4dd141b0d308794a501b1, type: 3}
   lowHealthUI: {fileID: 553427213}
   alphaFadeSpeed: 0.7
@@ -13752,9 +13753,41 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3515241698676976716, guid: b4c2d9d4a5a6faf4b8c92a4d3d793590, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3515241698676976716, guid: b4c2d9d4a5a6faf4b8c92a4d3d793590, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3515241698676976716, guid: b4c2d9d4a5a6faf4b8c92a4d3d793590, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3515241698676976716, guid: b4c2d9d4a5a6faf4b8c92a4d3d793590, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4263326620392149271, guid: b4c2d9d4a5a6faf4b8c92a4d3d793590, type: 3}
       propertyPath: m_Name
       value: PersistantObjects
+      objectReference: {fileID: 0}
+    - target: {fileID: 6011084301599024662, guid: b4c2d9d4a5a6faf4b8c92a4d3d793590, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6011084301599024662, guid: b4c2d9d4a5a6faf4b8c92a4d3d793590, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6011084301599024662, guid: b4c2d9d4a5a6faf4b8c92a4d3d793590, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6011084301599024662, guid: b4c2d9d4a5a6faf4b8c92a4d3d793590, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b4c2d9d4a5a6faf4b8c92a4d3d793590, type: 3}
@@ -24353,9 +24386,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 963367065382759600, guid: c582648285e4aeb42afa1729034f303d, type: 3}
+    - target: {fileID: 2038799793, guid: c582648285e4aeb42afa1729034f303d, type: 3}
       propertyPath: m_RootOrder
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 963367065382759600, guid: c582648285e4aeb42afa1729034f303d, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2093608570680945290, guid: c582648285e4aeb42afa1729034f303d, type: 3}
       propertyPath: m_Name
@@ -24456,6 +24493,14 @@ PrefabInstance:
     - target: {fileID: 6188982726118685075, guid: c582648285e4aeb42afa1729034f303d, type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 8457951133556883057, guid: c582648285e4aeb42afa1729034f303d, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8457951133556883057, guid: c582648285e4aeb42afa1729034f303d, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c582648285e4aeb42afa1729034f303d, type: 3}

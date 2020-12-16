@@ -1,8 +1,6 @@
 ﻿using GameStates;
 using UnityEditor;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 namespace MainMenu {
     public class MainMenuHandler : MonoBehaviour {
@@ -11,7 +9,7 @@ namespace MainMenu {
         }
 
         public void Play() {
-            SceneManager.LoadScene(1);
+            FindObjectOfType<LoadingScreenScript>().StartLoadingScreen("FINAL LEVEL 1");
         }
 
         public void QuitGame() {
