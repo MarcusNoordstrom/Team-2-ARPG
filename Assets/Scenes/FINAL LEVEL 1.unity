@@ -31749,6 +31749,34 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1754044124, guid: 8e27702437038cd44bf3e8c4135e0f2d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 12.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1754044124, guid: 8e27702437038cd44bf3e8c4135e0f2d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -12.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1754044124, guid: 8e27702437038cd44bf3e8c4135e0f2d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.92387956
+      objectReference: {fileID: 0}
+    - target: {fileID: 1754044124, guid: 8e27702437038cd44bf3e8c4135e0f2d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.38268343
+      objectReference: {fileID: 0}
+    - target: {fileID: 1754044124, guid: 8e27702437038cd44bf3e8c4135e0f2d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1754044124, guid: 8e27702437038cd44bf3e8c4135e0f2d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1754044124, guid: 8e27702437038cd44bf3e8c4135e0f2d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 45
+      objectReference: {fileID: 0}
     - target: {fileID: 3904762633646238035, guid: 8e27702437038cd44bf3e8c4135e0f2d, type: 3}
       propertyPath: m_Name
       value: PlayerCamera
