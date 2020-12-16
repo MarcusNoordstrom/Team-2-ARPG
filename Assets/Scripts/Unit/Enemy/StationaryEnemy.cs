@@ -15,6 +15,7 @@ namespace Unit {
         int _ticks;
         const int TicksPerUpdate = 15;
 
+        BasicEnemy _basicEnemy => (BasicEnemy) basicUnit; 
         protected override void Setup() {
             _lookAtTarget = GetComponent<LookAtTarget>();
             BaseHealth.CurrentHealth = basicUnit.maxHealth;
@@ -35,7 +36,7 @@ namespace Unit {
                 return;
             _ticks -= TicksPerUpdate;
 
-            if (_visibilityCheck.IsVisible(CombatTarget.gameObject)) {
+            if (_visibilityCheck.IsVisible(CombatTarget.gameObject, _basicEnemy.targetRange)) {
                 _lookAtTarget.enabled = true;
                 EligibleToAttack = true;
 

@@ -42,6 +42,7 @@ namespace Unit {
         }
 
         void FixedUpdate() {
+            print($"{ReachedPosition()} {_waypoints[_x].position.x} {transform.position.x}");
             if (ReachedPosition()) {
                 if (WaitTimer) {
                     _x++;
@@ -116,7 +117,7 @@ namespace Unit {
         }
 
         void ChaseTarget() {
-            if (!_visibilityCheck.IsVisible(CombatTarget.gameObject)) {
+            if (!_visibilityCheck.IsVisible(CombatTarget.gameObject, BasicEnemy.targetRange)) {
                 LookAtTarget.enabled = false;
                 BaseNavMeshAgent.isStopped = false;
                 DeactivateAttack();
@@ -154,7 +155,7 @@ namespace Unit {
 
         void FindTarget() {
             if (Vector3.Distance(transform.position, CombatTarget.transform.position) < BasicEnemy.targetRange)
-                if (_visibilityCheck.IsVisible(CombatTarget.gameObject)) {
+                if (_visibilityCheck.IsVisible(CombatTarget.gameObject, BasicEnemy.targetRange)) {
                     _state = State.ChaseTarget;
                 }
         }

@@ -10,7 +10,7 @@ namespace Unit {
         protected Animator animator;
 
         [Header("Unit related")] [SerializeField]
-        protected BasicUnit basicUnit;
+        public BasicUnit basicUnit;
 
         public GameObject bulletSpawnPoint;
         [SerializeField] GameObject target;
