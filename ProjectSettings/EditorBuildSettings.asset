@@ -9,12 +9,15 @@ EditorBuildSettings:
     path: Assets/Scenes/Main Menu.unity
     guid: 54b4002dfe3b5ae4bb412f4536730566
   - enabled: 1
-    path: Assets/Scenes/LevelDesign.unity
-    guid: e6e23a5e245f80b4c8e2f49232dd3e26
-  - enabled: 1
-    path: Assets/Scenes/LevelDesign 1.unity
-    guid: 2bd94c3f29f7ed14badcbc5f61348ee6
+    path: Assets/Scenes/FINAL LEVEL 1.unity
+    guid: 581bd8841d2c14dd9b2d3d6b59c61f1b
   - enabled: 1
     path: Assets/Scenes/Death Scene.unity
     guid: 3b349b04173d44458ad97e40134336b7
+  - enabled: 1
+    path: Assets/Scenes/FINAL LEVEL 1.unity
+    guid: 581bd8841d2c14dd9b2d3d6b59c61f1b
+  - enabled: 1
+    path: Assets/Scenes/TestScenes/AlexRTestScene.unity
+    guid: d40cb62cd13b49547af7d70dca0337d8
   m_configObjects: {}
