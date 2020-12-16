@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fa2217249912df6449090ec8999b9ccd, type: 3}
-  m_Name: EnemyMeleeSfx
+  m_Name: PlayerHoverSfx
   m_EditorClassIdentifier: 
-  id: 3
-  audioClip: {fileID: 8300000, guid: 479a4d4d57c224b4897b77ceb1c2c602, type: 3}
+  id: 0
+  audioClip: {fileID: 8300000, guid: f3b369057e7204311bebe5f2bf83c134, type: 3}

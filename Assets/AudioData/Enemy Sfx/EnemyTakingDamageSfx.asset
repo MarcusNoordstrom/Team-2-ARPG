@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: EnemyTakingDamageSfx
   m_EditorClassIdentifier: 
   id: 2
-  audioClip: {fileID: 8300000, guid: a711dd2db557f4b6a8ce6af5f562d328, type: 3}
+  audioClip: {fileID: 8300000, guid: a786f1a1832fa4fd1b2c8384d815867f, type: 3}

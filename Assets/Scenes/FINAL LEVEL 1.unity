@@ -24218,6 +24218,18 @@ PrefabInstance:
       propertyPath: lowHealthUI
       value: 
       objectReference: {fileID: 994134980}
+    - target: {fileID: 1995358423, guid: 76dc4bdf3e3f5f342a9c28578789b4db, type: 3}
+      propertyPath: alphaFadeSpeed
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 345175386859441133, guid: 76dc4bdf3e3f5f342a9c28578789b4db, type: 3}
+      propertyPath: m_Volume
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 345175386859441133, guid: 76dc4bdf3e3f5f342a9c28578789b4db, type: 3}
+      propertyPath: MinDistance
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2622262488583720728, guid: 76dc4bdf3e3f5f342a9c28578789b4db, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 37.656223
@@ -24253,6 +24265,10 @@ PrefabInstance:
     - target: {fileID: 3127912080551044324, guid: 76dc4bdf3e3f5f342a9c28578789b4db, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 32.173546
+      objectReference: {fileID: 0}
+    - target: {fileID: 5168935947531831536, guid: 76dc4bdf3e3f5f342a9c28578789b4db, type: 3}
+      propertyPath: m_Volume
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 6572207485916385764, guid: 76dc4bdf3e3f5f342a9c28578789b4db, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -27322,6 +27338,50 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 269341744, guid: eba4d556f65ef254b99a02cd08608036, type: 3}
+      propertyPath: sfxClips.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 269341744, guid: eba4d556f65ef254b99a02cd08608036, type: 3}
+      propertyPath: sfxClips.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 09772e10b8fe4864caf53be188505907, type: 2}
+    - target: {fileID: 269341744, guid: eba4d556f65ef254b99a02cd08608036, type: 3}
+      propertyPath: sfxClips.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: db6643b99c02cd84d8391b93ed1f3684, type: 2}
+    - target: {fileID: 269341744, guid: eba4d556f65ef254b99a02cd08608036, type: 3}
+      propertyPath: sfxClips.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: e4f157c83e67df64d8ed37a163119b80, type: 2}
+    - target: {fileID: 269341744, guid: eba4d556f65ef254b99a02cd08608036, type: 3}
+      propertyPath: sfxClips.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: eb8998d5141305241af3383842a8542c, type: 2}
+    - target: {fileID: 269341745, guid: eba4d556f65ef254b99a02cd08608036, type: 3}
+      propertyPath: m_Volume
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 269341745, guid: eba4d556f65ef254b99a02cd08608036, type: 3}
+      propertyPath: MaxDistance
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 269341745, guid: eba4d556f65ef254b99a02cd08608036, type: 3}
+      propertyPath: MinDistance
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 269341745, guid: eba4d556f65ef254b99a02cd08608036, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 269341745, guid: eba4d556f65ef254b99a02cd08608036, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 3186399792460434095, guid: adb7a3b3685a5aa45a2d95de94b0b885, type: 2}
+    - target: {fileID: 269341745, guid: eba4d556f65ef254b99a02cd08608036, type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1911867861980771090, guid: eba4d556f65ef254b99a02cd08608036, type: 3}
       propertyPath: m_Name
       value: Turret
