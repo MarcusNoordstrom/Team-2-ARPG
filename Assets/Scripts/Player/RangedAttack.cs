@@ -18,7 +18,7 @@ namespace Player {
         void RangedAttackEvent() {
             if (_unit.CombatTarget == null || _unit.CombatTarget.GetComponent<Health>().IsDead) return;
             _unit.equipped.weapon.Attack(_unit.bulletSpawnPoint.transform, _unit.CombatTarget);
-            
+            print("Ranged attack event");
             sfxController.OnPlay(UnitSfxId.Shoot);
             //TODO play muzzle effect when shooting
         }
@@ -44,7 +44,6 @@ namespace Player {
             }
 
             _animator.SetTrigger(animationTrigger);
-
             transform.LookAt(_unit.CombatTarget.transform);
         }
     }
