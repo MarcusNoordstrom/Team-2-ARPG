@@ -714,12 +714,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sfxClips:
-  - {fileID: 11400000, guid: 80490496cacf8ef4ebdcd227f5c9a02f, type: 2}
-  - {fileID: 11400000, guid: 070710fdec7b6784a95dd6e706c413bb, type: 2}
-  - {fileID: 11400000, guid: f3b9238fa96da0346a9001c48ff97c4c, type: 2}
-  - {fileID: 11400000, guid: 5a6909aa00640c846a27edea848deb5e, type: 2}
-  - {fileID: 11400000, guid: 4992e6c390ad3f44b817aed8946ccceb, type: 2}
-  - {fileID: 11400000, guid: 1dcd2e5b48410f74ab85d46054c3c918, type: 2}
+  - {fileID: 11400000, guid: 09772e10b8fe4864caf53be188505907, type: 2}
+  - {fileID: 11400000, guid: db6643b99c02cd84d8391b93ed1f3684, type: 2}
+  - {fileID: 11400000, guid: e4f157c83e67df64d8ed37a163119b80, type: 2}
+  - {fileID: 11400000, guid: eb8998d5141305241af3383842a8542c, type: 2}
   audioSource2D: {fileID: 0}
   audioSource3D: {fileID: 269341745}
 --- !u!1 &1864405361232075617
