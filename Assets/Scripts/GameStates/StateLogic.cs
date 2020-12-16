@@ -16,7 +16,7 @@ namespace GameStates {
         public static void OnPause() {
             _gameIsPaused = !_gameIsPaused;
             if (_gameIsPaused) {
-                SceneManager.LoadScene("Main Menu", LoadSceneMode.Additive);
+                //TODO: Add 
                 Time.timeScale = 0f;
             }
             else {
