@@ -11,12 +11,13 @@ GameObject:
   - component: {fileID: 4208543884136792143}
   - component: {fileID: 392985603727474976}
   - component: {fileID: 742303850545676887}
+  - component: {fileID: 649712659357988708}
   m_Layer: 0
   m_Name: pCube16
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4208543884136792143
 Transform:
@@ -81,6 +82,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &649712659357988708
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7182149619867794549}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.011057522, y: 0.010467521, z: 0.004434128}
+  m_Center: {x: 0.0050450866, y: 0.0047687786, z: -0.00080259825}
 --- !u!1 &9062191392212916180
 GameObject:
   m_ObjectHideFlags: 0
@@ -95,7 +109,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &8541234620761656686
 Transform:
@@ -104,9 +118,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9062191392212916180}
-  m_LocalRotation: {x: 0.54927987, y: -0, z: 0.83563846, w: 0}
+  m_LocalRotation: {x: 0.54927826, y: -0, z: 0.83563954, w: 0}
   m_LocalPosition: {x: 111.84389, y: 8.675082, z: 253.43826}
-  m_LocalScale: {x: 1000.0001, y: 1000, z: 1000.0001}
+  m_LocalScale: {x: 200.00002, y: 200, z: 200.00003}
   m_Children:
   - {fileID: 4208543884136792143}
   m_Father: {fileID: 0}
