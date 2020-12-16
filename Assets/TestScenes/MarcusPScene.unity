@@ -220,7 +220,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &520837977
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -704,8 +704,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1809943878}
   - component: {fileID: 1809943877}
-  m_Layer: 0
-  m_Name: GameObject
+  m_Layer: 5
+  m_Name: Loading Screen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -723,6 +723,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36ee96f44394ae94e80400317e566089, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  loading_Bar_Holder: {fileID: 520837976}
+  loading_Bar_Progress: {fileID: 1083506996}
 --- !u!4 &1809943878
 Transform:
   m_ObjectHideFlags: 0
