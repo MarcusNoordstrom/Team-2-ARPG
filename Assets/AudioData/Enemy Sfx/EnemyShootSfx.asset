@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa2217249912df6449090ec8999b9ccd, type: 3}
   m_Name: EnemyShootSfx
   m_EditorClassIdentifier: 
-  id: 0
-  audioClip: {fileID: 0}
+  id: 1
+  audioClip: {fileID: 8300000, guid: 4eb21c038a6904d40a8f9ce8b4593ada, type: 3}
