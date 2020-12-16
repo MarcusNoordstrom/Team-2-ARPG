@@ -1,8 +1,10 @@
 ﻿using GameStates;
 using UnityEngine;
+using UnityEngine.Audio;
 public class PauseMenu : MonoBehaviour {
     public GameObject pauseMenu;
-
+    [SerializeField] AudioMixerSnapshot OnPlay;
+    [SerializeField] AudioMixerSnapshot OnPause;
     void Start() {
         HidePauseMenu();
     }
@@ -10,16 +12,17 @@ public class PauseMenu : MonoBehaviour {
     void Update() {
         if (Input.GetKeyDown(KeyCode.Escape)) {
             StateLogic.OnPause();
+            
         }
     }
 
     public void ShowPauseMenu() {
         pauseMenu.SetActive(true);
-        MusicController._musicController.OnPause();
+        OnPause.TransitionTo(0f);
     }
 
     public void HidePauseMenu() {
         pauseMenu.SetActive(false);
-        MusicController._musicController.OnUnpause();
+        OnPlay.TransitionTo(0f);
     }
 }
