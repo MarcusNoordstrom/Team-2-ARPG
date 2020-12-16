@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fa2217249912df6449090ec8999b9ccd, type: 3}
-  m_Name: TakingDamageSfx
+  m_Name: EnemyDeathSfx
   m_EditorClassIdentifier: 
-  id: 2
-  audioClip: {fileID: 8300000, guid: a711dd2db557f4b6a8ce6af5f562d328, type: 3}
+  id: 5
+  audioClip: {fileID: 8300000, guid: 419ca6f90adb24e25a6f594347c1ae7b, type: 3}

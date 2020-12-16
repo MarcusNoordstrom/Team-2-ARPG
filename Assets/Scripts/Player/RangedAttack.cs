@@ -8,8 +8,7 @@ namespace Player {
         [SerializeField] string animationTrigger;
         Animator _animator;
         BaseUnit _unit;
-
-
+        private SfxController sfxController => GetComponent<SfxController>();
         void Awake() {
             _unit = GetComponent<BaseUnit>();
             _animator = GetComponent<Animator>();
@@ -19,6 +18,8 @@ namespace Player {
         void RangedAttackEvent() {
             if (_unit.CombatTarget == null || _unit.CombatTarget.GetComponent<Health>().IsDead) return;
             _unit.equipped.weapon.Attack(_unit.bulletSpawnPoint.transform, _unit.CombatTarget);
+            
+            sfxController.OnPlay(UnitSfxId.Shoot);
             //TODO play muzzle effect when shooting
         }
 
