@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
-using System.Collections;
+using UnityEngine.UI; //this is supposed to bring forth the fill.amount
 using System.Collections.Generic;
+using System.Collections;
 public class LoadingScreen1 : MonoBehaviour
 {
     public static LoadingScreen1 instance;
@@ -24,6 +24,11 @@ public class LoadingScreen1 : MonoBehaviour
     // Start is called before the first frame update
     void Start() { 
         
+      
+    }
+    void Update() {
+        ShowloadingScreen();
+
     }
     void MakeSingleton() {
         if(instance != null) {
@@ -45,12 +50,13 @@ public class LoadingScreen1 : MonoBehaviour
       
     }
     
-    void ShowLoadingScene() {
+    void ShowloadingScreen() {
 
         if (progress_Value < 1f) {
 
             progress_Value += progress_Multiplier_1 *progress_Multiplier_2;
-            //loading_Bar_Progress. = loading_Bar_Progress;
+           // loading_Bar_Progress.fillAmount = progress_Value; //I'm supposed to be able to write fill.amount to make the progress
+
         }
 
     }
