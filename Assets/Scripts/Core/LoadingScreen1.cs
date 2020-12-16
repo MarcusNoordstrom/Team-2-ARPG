@@ -55,7 +55,8 @@ public class LoadingScreen1 : MonoBehaviour
         if (progress_Value < 1f) {
 
             progress_Value += progress_Multiplier_1 *progress_Multiplier_2;
-           // loading_Bar_Progress.fillAmount = progress_Value; //I'm supposed to be able to write fill.amount to make the progress
+           // loading_Bar_Progress.fillAmount = progress_Value; //I'm supposed to be able to write fillAmount to make the progress bar fill up but fillAmount isn't working on my end. Think someone else can get it to work?
+
 
         }
 
