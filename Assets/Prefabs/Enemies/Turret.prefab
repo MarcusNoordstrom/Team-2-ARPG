@@ -144,7 +144,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -6403234783768445078, guid: bb26947e087328148a4c761807e88942, type: 3}
+  - {fileID: 2100000, guid: c62bbdbdcb7a9cd4f94a8c58e61ddf0d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -232,7 +232,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -6403234783768445078, guid: bb26947e087328148a4c761807e88942, type: 3}
+  - {fileID: 2100000, guid: c62bbdbdcb7a9cd4f94a8c58e61ddf0d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -320,7 +320,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -6403234783768445078, guid: bb26947e087328148a4c761807e88942, type: 3}
+  - {fileID: 2100000, guid: c62bbdbdcb7a9cd4f94a8c58e61ddf0d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -836,7 +836,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -6403234783768445078, guid: bb26947e087328148a4c761807e88942, type: 3}
+  - {fileID: 2100000, guid: c62bbdbdcb7a9cd4f94a8c58e61ddf0d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -954,7 +954,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -6403234783768445078, guid: bb26947e087328148a4c761807e88942, type: 3}
+  - {fileID: 2100000, guid: c62bbdbdcb7a9cd4f94a8c58e61ddf0d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1093,7 +1093,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -6403234783768445078, guid: bb26947e087328148a4c761807e88942, type: 3}
+  - {fileID: 2100000, guid: c62bbdbdcb7a9cd4f94a8c58e61ddf0d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1181,7 +1181,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -6403234783768445078, guid: bb26947e087328148a4c761807e88942, type: 3}
+  - {fileID: 2100000, guid: c62bbdbdcb7a9cd4f94a8c58e61ddf0d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1576,6 +1576,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: b6e20fb14c7510749a6f94740c510fe8, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c62bbdbdcb7a9cd4f94a8c58e61ddf0d, type: 2}
     - target: {fileID: 919132149155446097, guid: b6e20fb14c7510749a6f94740c510fe8, type: 3}
       propertyPath: m_Name
       value: TurretOnlyBase
