@@ -14,19 +14,16 @@ namespace Core {
         public string toolTip;
 
         void OnEnable() {
-            //toolTipText.text = toolTip;
+            toolTipText.text = toolTip;
         }
 
         void OnMouseExit() {
-            //toolTipText.enabled = false;
+            toolTipText.enabled = false;
         }
 
-        // void OnMouseOver() {
-        //     toolTipText.enabled = true;
-        //     var yAxis = GetComponent<BoxCollider>().bounds.size.y;
-        //     toolTipText.transform.position =
-        //         new Vector3(transform.position.x, transform.position.y + yAxis, transform.position.z);
-        // }
+        void OnMouseOver() {
+            toolTipText.enabled = true;
+        }
 
         void OnTriggerStay(Collider other) {
             if (!PlayerHelper.HasClickedOnPortal) return;
