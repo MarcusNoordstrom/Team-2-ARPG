@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8648200148841682904}
-  - component: {fileID: 8648200148841682905}
+  - component: {fileID: 301631493}
   m_Layer: 0
   m_Name: Spawn Location
   m_TagString: Untagged
@@ -25,13 +25,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8648200148841682911}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.2, y: 0.07, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8648200150060840173}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &8648200148841682905
+--- !u!65 &301631493
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -39,11 +39,11 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8648200148841682911}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.1062228, y: 0.19148162, z: 0.14325118}
+  m_Center: {x: -0.11150739, y: 0.03438243, z: -0.20143333}
 --- !u!1 &8648200150060840208
 GameObject:
   m_ObjectHideFlags: 0
@@ -53,8 +53,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8648200150060840173}
-  - component: {fileID: 8648200150060840209}
-  - component: {fileID: 8648200150060840210}
+  - component: {fileID: 301631494}
+  - component: {fileID: 5232881252135240622}
   m_Layer: 0
   m_Name: Portal
   m_TagString: Untagged
@@ -71,13 +71,26 @@ Transform:
   m_GameObject: {fileID: 8648200150060840208}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -45.26, y: 0.5, z: 0}
-  m_LocalScale: {x: 0.9999987, y: 1, z: 12.229675}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8648200148841682904}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8648200150060840209
+--- !u!65 &301631494
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8648200150060840208}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.16519774, y: 0.22566703, z: 0.17518611}
+  m_Center: {x: -0.0958078, y: 0.050011538, z: 0.016813945}
+--- !u!114 &5232881252135240622
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -89,20 +102,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b7bc7c7f19b8b348addb4bf78bb810d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneToLoad: Alex R Test scene
-  spawnPoint: 1
+  sceneToLoad: 
+  spawnPoint: 0
   toolTipText: {fileID: 0}
-  toolTip: hello world
---- !u!65 &8648200150060840210
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8648200150060840208}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 2.2311087, y: 1, z: 1.1308184}
-  m_Center: {x: -0.09699071, y: 0, z: 0.045925744}
+  toolTip: Level 2
