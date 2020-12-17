@@ -18,13 +18,6 @@ namespace Unit {
             healthBar.maxValue = MaxHealth;
             healthBar.value = MaxHealth;
         }
-
-        void Update() {
-            if (Input.GetKeyDown(KeyCode.A)) {
-                TakeDamage(20);
-            }
-        }
-
         public int CurrentHealth {
             get => _currentCurrentHealth;
             set => _currentCurrentHealth =

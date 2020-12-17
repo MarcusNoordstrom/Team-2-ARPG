@@ -37,7 +37,6 @@ namespace UI {
                 StartCoroutine(ToggleState());
             }
         }
-
         public override void TakeDamage(int damage) {
             base.TakeDamage(damage);
             if (IsDead) {
