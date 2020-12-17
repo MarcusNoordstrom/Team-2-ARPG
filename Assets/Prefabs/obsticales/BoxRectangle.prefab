@@ -73,7 +73,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5196243961754045399, guid: 8b940f4f74e918043bb06d054f29e47e, type: 3}
       propertyPath: m_Name
-      value: BoxContainer
+      value: BoxRectangle
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3163232119453066751, guid: 8b940f4f74e918043bb06d054f29e47e, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 8b940f4f74e918043bb06d054f29e47e, type: 3}
