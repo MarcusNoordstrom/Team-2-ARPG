@@ -11,7 +11,7 @@ namespace Player {
         [SerializeField] Transform bulletSpawnPointRotation;
         Animator _animator;
         BaseUnit _unit;
-        SfxController sfxController => GetComponent<SfxController>();
+        private SfxController sfxController => GetComponent<SfxController>();
 
         void Awake() {
             _unit = GetComponent<BaseUnit>();
@@ -20,8 +20,12 @@ namespace Player {
 
         void Update() {
             if (PlayerHelper.UsingRangedAttack && GetComponent<PlayerController>() != null && !_unit.CombatTarget.GetComponent<Health>().IsDead) {
-                if (!_unit.CanAttack || _unit.GetComponent<Health>().IsDead) return;
-                StartCoroutine(WaitBeforeCd());
+                if (!_unit.CanAttack) return;
+                _animator.SetTrigger(animationTrigger);
+                transform.LookAt(_unit.CombatTarget.transform);
+                _unit._attackTimer = Time.time;
+                ButtonCoolDown.rangeStartFilling = true;
+                FindObjectOfType<ButtonCoolDown>().rangeAttackImage.fillAmount = 0;
             }
         }
 
@@ -29,20 +33,10 @@ namespace Player {
         void RangedAttackEvent() {
             if (_unit.CombatTarget == null || _unit.CombatTarget.GetComponent<Health>().IsDead) return;
 
-
             _unit.equipped.weapon.Attack(_unit.bulletSpawnPoint.transform, _unit.CombatTarget);
             sfxController.OnPlay(UnitSfxId.Shoot);
 
             //TODO play muzzle effect when shooting
-        }
-
-        IEnumerator WaitBeforeCd() {
-            yield return new WaitForSeconds(.11f);
-            _animator.SetTrigger(animationTrigger);
-            transform.LookAt(_unit.CombatTarget.transform);
-            _unit._attackTimer = Time.time;
-            ButtonCoolDown.rangeStartFilling = true;
-            FindObjectOfType<ButtonCoolDown>().rangeAttackImage.fillAmount = 0;
         }
 
         //animation event
@@ -69,20 +63,18 @@ namespace Player {
 
             if (GetComponent<PlayerController>() != null) {
                 PlayerHelper.UsingRangedAttack = true;
-                _unit._attackTimer = Time.time;
-            }
-            else {
-                _animator.SetTrigger(animationTrigger);
             }
 
+            _animator.SetTrigger(animationTrigger);
             transform.LookAt(_unit.CombatTarget.transform);
 
             var targetPoint = _unit.CombatTarget.transform.position;
             targetPoint.x = _unit.CombatTarget.transform.position.x;
             targetPoint.y = _unit.CombatTarget.transform.position.y + 1;
             targetPoint.z = _unit.CombatTarget.transform.position.z;
-
+            
             bulletSpawnPointRotation.transform.LookAt(targetPoint);
+            
         }
     }
 }
