@@ -14,6 +14,7 @@ namespace Core {
         public string toolTip;
 
         void OnEnable() {
+            toolTipText.enabled = false;
             toolTipText.text = toolTip;
         }
 
@@ -26,7 +27,6 @@ namespace Core {
         }
 
         void OnTriggerStay(Collider other) {
-            print(PlayerHelper.HasClickedOnPortal);
             if (!PlayerHelper.HasClickedOnPortal) return;
             if (1 << other.gameObject.layer != LayerMask.GetMask("Player")) return;
             StartCoroutine(Transition());
@@ -35,12 +35,10 @@ namespace Core {
 
         IEnumerator Transition() {
             DontDestroyOnLoad(gameObject);
-            var fader = FindObjectOfType<Fader>();
             yield return Fader.FadeIn();
-            yield return SceneManager.LoadSceneAsync(FindObjectOfType<Portal>().sceneToLoad);
+            yield return SceneManager.LoadSceneAsync(sceneToLoad);
             UpdatePlayerPosition(GetPortal());
             //Todo Game Designers wants a loading screen, how long should the waiting time be? Also needs to stop movement during the wait period
-            //yield return new WaitForSeconds(5f);
             yield return Fader.FadeOut();
             Destroy(gameObject);
         }
@@ -54,6 +52,7 @@ namespace Core {
             foreach (var portal in FindObjectsOfType<Portal>()) {
                 if (portal == this) continue;
                 if (portal.spawnPoint != spawnPoint) continue;
+                print(portal);
                 return portal;
             }
 

@@ -593,6 +593,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animationTrigger: Shoot
+  bulletSpawnPointRotation: {fileID: 1184873704323233410}
 --- !u!114 &133116682
 MonoBehaviour:
   m_ObjectHideFlags: 0
