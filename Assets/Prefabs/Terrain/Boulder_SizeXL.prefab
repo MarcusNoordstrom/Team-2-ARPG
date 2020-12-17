@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 7599778423038317807}
   - component: {fileID: 1666096019513734193}
   - component: {fileID: 5408911778102086705}
-  - component: {fileID: 7076566520761974197}
+  - component: {fileID: 1668013638543872202}
   m_Layer: 0
   m_Name: bolder2
   m_TagString: Untagged
@@ -113,8 +113,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &7076566520761974197
-BoxCollider:
+--- !u!64 &1668013638543872202
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -123,6 +123,7 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 6.17, y: 4.7495527, z: 5.45}
-  m_Center: {x: -0.098653555, y: 2.3015208, z: 0.014369726}
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 1919251076089587649, guid: 5621b6c658a05ae4a9ad36796774bc22, type: 3}
