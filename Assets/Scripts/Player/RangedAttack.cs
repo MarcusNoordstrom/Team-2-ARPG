@@ -21,6 +21,8 @@ namespace Player {
         void Update() {
             if (PlayerHelper.UsingRangedAttack && GetComponent<PlayerController>() != null && !_unit.CombatTarget.GetComponent<Health>().IsDead) {
                 if (!_unit.CanAttack || _unit.GetComponent<Health>().IsDead) return;
+                _animator.ResetTrigger("Idle");
+                _animator.ResetTrigger("Running");
                 _animator.SetTrigger(animationTrigger);
                 transform.LookAt(_unit.CombatTarget.transform);
                 _unit._attackTimer = Time.time;
@@ -49,9 +51,6 @@ namespace Player {
                     GetComponent<IAction>().ActionToStart();
                 }
             }
-
-            //GetComponent<Animator>().SetTrigger(animationTrigger);
-            //ztransform.LookAt(_unit.CombatTarget.transform);
         }
 
 
@@ -63,7 +62,7 @@ namespace Player {
 
             if (GetComponent<PlayerController>() != null) {
                 PlayerHelper.UsingRangedAttack = true;
-                _unit._attackTimer = Time.time;
+                _unit._attackTimer = Time.time - _unit._attackTimer / 2;
             }
             else {
                 _animator.SetTrigger(animationTrigger);
