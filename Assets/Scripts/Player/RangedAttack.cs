@@ -21,7 +21,8 @@ namespace Player {
         }
 
         void Update() {
-            if (PlayerHelper.UsingRangedAttack && GetComponent<PlayerController>() != null && !_unit.CombatTarget.GetComponent<Health>().IsDead) {
+            if (PlayerHelper.UsingRangedAttack && GetComponent<PlayerController>() != null &&
+                !_unit.CombatTarget.GetComponent<Health>().IsDead) {
                 if (!_unit.CanAttack || _unit.GetComponent<Health>().IsDead) return;
                 _animator.ResetTrigger("Idle");
                 _animator.ResetTrigger("Running");
@@ -66,9 +67,8 @@ namespace Player {
 
             if (GetComponent<PlayerController>() != null) {
                 PlayerHelper.UsingRangedAttack = true;
-                _unit._attackTimer = Time.time - _unit._attackTimer / 2;
-            }
-            else {
+                if (_unit.CanAttack) _unit._attackTimer = Time.time - _unit._attackTimer / 2;
+            } else {
                 _animator.SetTrigger(animationTrigger);
             }
 

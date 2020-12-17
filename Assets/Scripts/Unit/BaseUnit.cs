@@ -63,6 +63,7 @@ namespace Unit {
         }
 
         protected void DeactivateAttack() {
+            
             EligibleToAttack = false;
         }
 

@@ -120,7 +120,7 @@ namespace Unit {
         }
 
         void GoingBackToStart() {
-            DeactivateAttack();
+            animator.SetTrigger("DroneR");
             BaseNavMeshAgent.SetDestination(StartingPosition);
             _isPatrolling = true;
             _state = State.Patrolling;
@@ -136,7 +136,7 @@ namespace Unit {
                 return;
             }
 
-            BaseNavMeshAgent.SetDestination(CombatTarget.transform.position);
+            if(!patrollingUnit)BaseNavMeshAgent.SetDestination(CombatTarget.transform.position);
             if (Vector3.Distance(transform.position, CombatTarget.transform.position) < equipped.weapon.range) {
                 BaseNavMeshAgent.isStopped = true;
                 LookAtTarget.enabled = true;
@@ -168,7 +168,6 @@ namespace Unit {
 
 
         void FindTarget() {
-            print("IF statement" +(Vector3.Distance(transform.position, CombatTarget.transform.position) < BasicEnemy.targetRange));
             if (Vector3.Distance(transform.position, CombatTarget.transform.position) < BasicEnemy.targetRange) {
                 if (_visibilityCheck.IsVisible(CombatTarget.gameObject, BasicEnemy.targetRange)) {
                     _state = State.ChaseTarget;
