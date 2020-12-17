@@ -6770,6 +6770,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animationTrigger: RangedAttack
+  bulletSpawnPointRotation: {fileID: 645303507087626857}
 --- !u!114 &2358517322376594676
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7077,6 +7078,12 @@ MonoBehaviour:
   popupPrefab: {fileID: 6903674934049428664, guid: 02a3ead787d4dd141b0d308794a501b1, type: 3}
   lowHealthUI: {fileID: 0}
   alphaFadeSpeed: 0.1
+  deathEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  resurrectEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1995358424
 MonoBehaviour:
   m_ObjectHideFlags: 0
