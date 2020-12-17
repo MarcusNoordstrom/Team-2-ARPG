@@ -26,6 +26,7 @@ namespace Core {
         }
 
         void OnTriggerStay(Collider other) {
+            print(PlayerHelper.HasClickedOnPortal);
             if (!PlayerHelper.HasClickedOnPortal) return;
             if (1 << other.gameObject.layer != LayerMask.GetMask("Player")) return;
             StartCoroutine(Transition());
