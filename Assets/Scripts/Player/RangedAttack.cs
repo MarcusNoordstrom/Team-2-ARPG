@@ -17,7 +17,7 @@ namespace Player {
         }
 
         void Update() {
-            if (PlayerHelper.UsingRangedAttack && GetComponent<PlayerController>() != null) {
+            if (PlayerHelper.UsingRangedAttack && GetComponent<PlayerController>() != null && !_unit.CombatTarget.GetComponent<Health>().IsDead) {
                 if (!_unit.CanAttack) return;
                 _animator.SetTrigger(animationTrigger);
                 transform.LookAt(_unit.CombatTarget.transform);
