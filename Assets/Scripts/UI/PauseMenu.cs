@@ -22,7 +22,7 @@ public class PauseMenu : MonoBehaviour {
     }
 
     public void HidePauseMenu() {
-        OnPlay.TransitionTo(0f);
+        OnPlay.TransitionTo(0.5f);
         pauseMenu.SetActive(false);
     }
 }
