@@ -13,7 +13,7 @@ namespace Unit {
         const int TicksPerUpdate = 15;
         BasicEnemy BasicEnemy => (BasicEnemy) basicUnit;
         LookAtTarget LookAtTarget => GetComponent<LookAtTarget>();
-        Vector3 StartingPosition => transform.position;
+        private Vector3 StartingPosition;
         State _state;
         int _ticks;
         VisibilityCheck _visibilityCheck;
@@ -25,6 +25,7 @@ namespace Unit {
         int _x;
         float _timer;
         bool _shouldIdle;
+        public bool patrollingUnit;
 
         bool WaitTimer => Time.time - _timer > waitAtWaypoint;
 
@@ -33,6 +34,7 @@ namespace Unit {
             foreach (Transform child in wayPointObject.GetComponentInChildren<Transform>()) {
                 if (child.gameObject == wayPointObject) continue;
                 _waypoints.Add(child);
+                StartingPosition = _waypoints[0].position;
             }
 
             Patrol();
@@ -69,8 +71,11 @@ namespace Unit {
             switch (_state) {
                 case State.Patrolling:
                     FindTarget();
-                    if (_isPatrolling)
-                        Patrol();
+                    if (patrollingUnit) {
+                        if (_isPatrolling)
+                            Patrol();
+                    }
+
                     break;
                 case State.ChaseTarget:
                     ChaseTarget();
@@ -83,6 +88,7 @@ namespace Unit {
         }
 
         bool ReachedPosition() {
+           // Debug.Log($"{ReachedPosition()} wayx:{ _waypoints[_x].position.x} player x: {transform.position.x}");
             return _waypoints[_x].position.z == transform.position.z &&
                    _waypoints[_x].position.x == transform.position.x;
         }
@@ -114,13 +120,10 @@ namespace Unit {
         }
 
         void GoingBackToStart() {
+            DeactivateAttack();
             BaseNavMeshAgent.SetDestination(StartingPosition);
-            if (Vector3.Distance(transform.position, StartingPosition) < 1f) {
-                _state = State.Patrolling;
-                _isPatrolling = true;
-                return;
-            }
-
+            _isPatrolling = true;
+            _state = State.Patrolling;
             FindTarget();
         }
 
@@ -165,10 +168,14 @@ namespace Unit {
 
 
         void FindTarget() {
-            if (Vector3.Distance(transform.position, CombatTarget.transform.position) < BasicEnemy.targetRange)
+            print("IF statement" +(Vector3.Distance(transform.position, CombatTarget.transform.position) < BasicEnemy.targetRange));
+            if (Vector3.Distance(transform.position, CombatTarget.transform.position) < BasicEnemy.targetRange) {
                 if (_visibilityCheck.IsVisible(CombatTarget.gameObject, BasicEnemy.targetRange)) {
                     _state = State.ChaseTarget;
                 }
+            }else DeactivateAttack();
+
+            print("Eligible"+EligibleToAttack);
         }
 
         enum State {

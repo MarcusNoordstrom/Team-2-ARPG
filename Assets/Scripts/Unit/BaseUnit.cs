@@ -34,6 +34,7 @@ namespace Unit {
 
         protected virtual void Update() {
             if (!EligibleToAttack) return;
+            print("Whatever");
 
             if (!CanAttack) return;
 
