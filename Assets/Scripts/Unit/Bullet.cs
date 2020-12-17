@@ -22,6 +22,6 @@ public class Bullet : MonoBehaviour {
         this.target = target;
         this.damage = damage;
         Destroy(gameObject, 5f);
-        rb.AddForce(transform.up * speed, ForceMode.Impulse);
+        rb.AddForce(transform.forward * speed, ForceMode.Impulse);
     }
 }

@@ -31,7 +31,7 @@ public class LoadingScreenScript : MonoBehaviour
         StartCoroutine(Load(sceneName));
     }
 
-    IEnumerator Load(string sceneName) {
+    public IEnumerator Load(string sceneName) {
         
         SceneManager.LoadScene(sceneName);
         gameObject.transform.GetChild(0).gameObject.SetActive(true);
