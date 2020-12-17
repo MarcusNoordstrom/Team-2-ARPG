@@ -1,5 +1,4 @@
-﻿using System;
-using UI;
+﻿using UI;
 using Unit;
 using UnityEngine;
 using UnityEngine.AI;
@@ -15,11 +14,11 @@ namespace Player {
 
         void Awake() {
             _baseUnit = GetComponent<BaseUnit>();
-            _baseUnit._attackTimer = -_baseUnit.equipped.weapon.attackSpeed;
         }
 
         void Update() {
-            if (_baseUnit.CombatTarget == null) return;
+            if (_baseUnit.CombatTarget == null || PlayerHelper.UsingRangedAttack) return;
+            print($"{_baseUnit.CombatTarget} {_baseUnit.CombatTarget.transform.position}");
             MoveToTargetPosition();
             if (IsInMeleeRange()) {
                 LookAtTarget();
@@ -59,6 +58,12 @@ namespace Player {
 
         public void ActionToStart() {
             _hasAttack = true;
+            if (GetComponent<PlayerController>() != null) {
+                PlayerHelper.UsingRangedAttack = false;
+                _navMeshAgent.isStopped = false;
+            }
+            _baseUnit._attackTimer = -_baseUnit.equipped.weapon.attackSpeed;
+
         }
 
         void StartFillingCd() {

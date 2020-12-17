@@ -21,8 +21,8 @@ namespace UI {
 
         void Start() {
             _unit = FindObjectOfType<PlayerController>().GetComponent<BaseUnit>();
-            rangeAttackImage.fillAmount = 0;
-            meleeAttackImage.fillAmount = 0;
+            rangeAttackImage.fillAmount = 1;
+            meleeAttackImage.fillAmount = 1;
         }
 
         void Update() {
@@ -32,7 +32,6 @@ namespace UI {
             }
 
             if (meleeStartFilling) {
-                print("start filling");
                 MeleeCoolDown(_unit.basicUnit.meleeWeapon.attackSpeed);
             }
         }

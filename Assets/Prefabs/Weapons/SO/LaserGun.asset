@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: LaserGun
   m_EditorClassIdentifier: 
   baseDamage: 50
-  attackSpeed: 3
+  attackSpeed: 2
   range: 10
   bulletPrefab: {fileID: 5418528933250074970, guid: 6a766590865850146a795af7da31f83c, type: 3}

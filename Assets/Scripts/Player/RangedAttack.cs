@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using UI;
 using Unit;
 using UnityEngine;
 using UnityEngine.AI;
@@ -15,11 +16,23 @@ namespace Player {
             _animator = GetComponent<Animator>();
         }
 
+        void Update() {
+            if (PlayerHelper.UsingRangedAttack && GetComponent<PlayerController>() != null) {
+                if (!_unit.CanAttack) return;
+                _animator.SetTrigger(animationTrigger);
+                transform.LookAt(_unit.CombatTarget.transform);
+                _unit._attackTimer = Time.time;
+                ButtonCoolDown.rangeStartFilling = true;
+                FindObjectOfType<ButtonCoolDown>().rangeAttackImage.fillAmount = 0;
+            }
+        }
+
         //animation event
         void RangedAttackEvent() {
             if (_unit.CombatTarget == null || _unit.CombatTarget.GetComponent<Health>().IsDead) return;
             _unit.equipped.weapon.Attack(_unit.bulletSpawnPoint.transform, _unit.CombatTarget);
             sfxController.OnPlay(UnitSfxId.Shoot);
+
             //TODO play muzzle effect when shooting
         }
 
@@ -30,12 +43,11 @@ namespace Player {
              if (_unit.CombatTarget.layer == LayerMask.NameToLayer("Player")) {
                  if (GetComponent<IAction>() != this) {
                      GetComponent<IAction>().ActionToStart();
-                     return;
                  }
              }
 
-            GetComponent<Animator>().SetTrigger(animationTrigger);
-            transform.LookAt(_unit.CombatTarget.transform);
+            //GetComponent<Animator>().SetTrigger(animationTrigger);
+            //ztransform.LookAt(_unit.CombatTarget.transform);
         }
         
         public void ActionToStart() {
@@ -44,6 +56,10 @@ namespace Player {
                 GetComponent<NavMeshAgent>().isStopped = true;
             }
 
+            if (GetComponent<PlayerController>() != null) {
+                PlayerHelper.UsingRangedAttack = true;
+            }
+            
             _animator.SetTrigger(animationTrigger);
             transform.LookAt(_unit.CombatTarget.transform);
         }
