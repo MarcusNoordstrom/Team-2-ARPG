@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fbf70df75574cf09840fe07482a2883, type: 3}
   m_Name: Drone
   m_EditorClassIdentifier: 
-  maxHealth: 100
-  moveSpeed: 5
+  maxHealth: 30
+  moveSpeed: 15
   rangedWeapon: {fileID: 11400000, guid: 302bb59c0fc25144b862d50083110149, type: 2}
   meleeWeapon: {fileID: 0}
-  targetRange: 15
+  targetRange: 25
   stopChaseDistance: 40
