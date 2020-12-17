@@ -6804,7 +6804,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 7354137088708411218}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 1.5
   m_Speed: 3.5
   m_Acceleration: 50000
   avoidancePriority: 50
@@ -6977,7 +6977,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 3186399792460434095, guid: adb7a3b3685a5aa45a2d95de94b0b885, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.8
   m_Pitch: 1
   Loop: 0
   Mute: 0
