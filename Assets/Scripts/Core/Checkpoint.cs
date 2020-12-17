@@ -1,16 +1,22 @@
-﻿using UnityEngine;
+﻿using UI;
+using UnityEngine;
 
 public class Checkpoint : MonoBehaviour {
     public static Transform CheckpointTransform;
     [SerializeField] Transform spawnPoint;
+    [SerializeField] private VoidEvent CheckPointEvent;
+    bool IsActive;
     // Material thisMat;
     // [SerializeField] float dissolveSpeed;
     // bool isEnabled;
     // bool a;
     
     void OnTriggerEnter(Collider other) {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Player")) {
+        if (other.gameObject.layer == LayerMask.NameToLayer("Player")){
+            if (IsActive) return;
             CheckpointTransform = spawnPoint;
+            CheckPointEvent?.Invoke();
+            IsActive = true;
         }
     }
 
