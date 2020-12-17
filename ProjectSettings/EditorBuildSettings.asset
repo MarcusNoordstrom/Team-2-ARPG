@@ -11,4 +11,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/LEVEL 2 TRY.unity
     guid: db9abba122b474132aa53e3e471ade93
+  - enabled: 1
+    path: Assets/Scenes/Death Scene.unity
+    guid: 3b349b04173d44458ad97e40134336b7
+  - enabled: 1
+    path: Assets/Scenes/PauseMenu.unity
+    guid: 19d1bef377dd3554b91f45d6d99cf817
+  - enabled: 1
+    path: Assets/Scenes/Main Menu.unity
+    guid: 54b4002dfe3b5ae4bb412f4536730566
   m_configObjects: {}

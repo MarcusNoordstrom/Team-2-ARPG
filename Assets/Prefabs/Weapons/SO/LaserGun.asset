@@ -15,4 +15,4 @@ MonoBehaviour:
   baseDamage: 50
   attackSpeed: 2
   range: 10
-  bulletPrefab: {fileID: 5418528933250074970, guid: 6a766590865850146a795af7da31f83c, type: 3}
+  bulletPrefab: {fileID: 7648417142706558322, guid: 40b14b8804ac2a74998e77e3d586d264, type: 3}
