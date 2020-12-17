@@ -11,7 +11,7 @@ namespace Player {
         [SerializeField] Transform bulletSpawnPointRotation;
         Animator _animator;
         BaseUnit _unit;
-        private SfxController sfxController => GetComponent<SfxController>();
+        SfxController sfxController => GetComponent<SfxController>();
 
         void Awake() {
             _unit = GetComponent<BaseUnit>();
@@ -20,7 +20,7 @@ namespace Player {
 
         void Update() {
             if (PlayerHelper.UsingRangedAttack && GetComponent<PlayerController>() != null && !_unit.CombatTarget.GetComponent<Health>().IsDead) {
-                if (!_unit.CanAttack) return;
+                if (!_unit.CanAttack || _unit.GetComponent<Health>().IsDead) return;
                 _animator.SetTrigger(animationTrigger);
                 transform.LookAt(_unit.CombatTarget.transform);
                 _unit._attackTimer = Time.time;
@@ -63,18 +63,21 @@ namespace Player {
 
             if (GetComponent<PlayerController>() != null) {
                 PlayerHelper.UsingRangedAttack = true;
+                _unit._attackTimer = Time.time;
+            }
+            else {
+                _animator.SetTrigger(animationTrigger);
             }
 
-            _animator.SetTrigger(animationTrigger);
+
             transform.LookAt(_unit.CombatTarget.transform);
 
             var targetPoint = _unit.CombatTarget.transform.position;
             targetPoint.x = _unit.CombatTarget.transform.position.x;
             targetPoint.y = _unit.CombatTarget.transform.position.y + 1;
             targetPoint.z = _unit.CombatTarget.transform.position.z;
-            
+
             bulletSpawnPointRotation.transform.LookAt(targetPoint);
-            
         }
     }
 }
