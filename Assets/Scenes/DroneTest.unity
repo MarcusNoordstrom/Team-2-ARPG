@@ -7796,6 +7796,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcf2147ff86cfd946a0129646c1bcc19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  muzzleEffectSpawnLocation: {fileID: 0}
+  muzzleEffect: {fileID: 0}
   animationTrigger: EnemyAttacking
   bulletSpawnPointRotation: {fileID: 339469227}
 --- !u!1001 &296869245
@@ -43643,6 +43645,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Patrolling
       objectReference: {fileID: 0}
+    - target: {fileID: 669069577549028791, guid: 5904e6e533097cc419994c6c91a506d2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5758288211505635447, guid: 5904e6e533097cc419994c6c91a506d2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5.35
@@ -45767,7 +45773,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7448421538409660090, guid: 342c59b23e6899948a5cac5cf7f58e29, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7448421538409660090, guid: 342c59b23e6899948a5cac5cf7f58e29, type: 3}
       propertyPath: m_LocalScale.x

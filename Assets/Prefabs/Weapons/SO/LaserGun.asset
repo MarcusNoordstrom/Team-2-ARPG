@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseDamage: 20
   attackSpeed: 2
-  range: 10
+  range: 15
   bulletPrefab: {fileID: 7648417142706558322, guid: 40b14b8804ac2a74998e77e3d586d264, type: 3}

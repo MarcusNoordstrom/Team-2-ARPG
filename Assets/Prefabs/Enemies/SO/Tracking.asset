@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   moveSpeed: 5
-  rangedWeapon: {fileID: 11400000, guid: 1a45d83e2b78b924da3385b0096894ee, type: 2}
+  rangedWeapon: {fileID: 11400000, guid: da05cb23d82a52044b252f74592a4287, type: 2}
   meleeWeapon: {fileID: 0}
   targetRange: 15
   stopChaseDistance: 15.1
