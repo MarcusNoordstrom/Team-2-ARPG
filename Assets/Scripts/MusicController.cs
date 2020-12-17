@@ -19,7 +19,7 @@ public class MusicController : MonoBehaviour{
        StartCoroutine("AudioFade");
    }
    IEnumerator AudioFade(){
-       while (audioSource.volume > 0){
+       while (audioSource.volume > -80){
            audioSource.volume -= fadeSpeed * Time.deltaTime;
            yield return new WaitForFixedUpdate();
        }
