@@ -571,8 +571,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 5032421662635161477}
-  OnPlay: {fileID: 0}
-  OnPause: {fileID: 0}
+  OnPlay: {fileID: 4916664487170898645, guid: adb7a3b3685a5aa45a2d95de94b0b885, type: 2}
+  OnPause: {fileID: 2728922776671324133, guid: adb7a3b3685a5aa45a2d95de94b0b885, type: 2}
 --- !u!114 &7613222901896705988
 MonoBehaviour:
   m_ObjectHideFlags: 0
