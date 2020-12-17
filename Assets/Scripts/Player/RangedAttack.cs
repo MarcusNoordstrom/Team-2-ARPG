@@ -21,17 +21,17 @@ namespace Player {
         }
 
         void Update() {
-            if (PlayerHelper.UsingRangedAttack && GetComponent<PlayerController>() != null &&
-                !_unit.CombatTarget.GetComponent<Health>().IsDead) {
-                if (!_unit.CanAttack || _unit.GetComponent<Health>().IsDead) return;
-                _animator.ResetTrigger("Idle");
-                _animator.ResetTrigger("Running");
-                _animator.SetTrigger(animationTrigger);
-                transform.LookAt(_unit.CombatTarget.transform);
-                _unit._attackTimer = Time.time;
-                ButtonCoolDown.rangeStartFilling = true;
-                FindObjectOfType<ButtonCoolDown>().rangeAttackImage.fillAmount = 0;
-            }
+            // if (PlayerHelper.UsingRangedAttack && GetComponent<PlayerController>() != null &&
+            //     !_unit.CombatTarget.GetComponent<Health>().IsDead) {
+            //     if (!_unit.CanAttack || _unit.GetComponent<Health>().IsDead) return;
+            //     _animator.ResetTrigger("Idle");
+            //     _animator.ResetTrigger("Running");
+            //     _animator.SetTrigger(animationTrigger);
+            //     transform.LookAt(_unit.CombatTarget.transform);
+            //     _unit._attackTimer = Time.time;
+            //     ButtonCoolDown.rangeStartFilling = true;
+            //     FindObjectOfType<ButtonCoolDown>().rangeAttackImage.fillAmount = 0;
+            // }
         }
 
         //animation event
@@ -49,13 +49,23 @@ namespace Player {
         //animation event
         void RangedAttackFinishEvent() {
             if (_unit.CombatTarget == null || _unit.CombatTarget.GetComponent<Health>().IsDead) return;
+            if (_unit.CombatTarget == GetComponent<PlayerController>().gameObject) return;
 
-
-            if (_unit.CombatTarget.layer == LayerMask.NameToLayer("Player")) {
+            if (_unit.CombatTarget.layer != LayerMask.NameToLayer("Player")) {
                 if (GetComponent<IAction>() != this) {
                     GetComponent<IAction>().ActionToStart();
                 }
             }
+
+            _animator.SetTrigger(animationTrigger);
+            transform.LookAt(_unit.CombatTarget.transform);
+
+            var targetPoint = _unit.CombatTarget.transform.position;
+            targetPoint.x = _unit.CombatTarget.transform.position.x;
+            targetPoint.y = _unit.CombatTarget.transform.position.y + 1;
+            targetPoint.z = _unit.CombatTarget.transform.position.z;
+
+            bulletSpawnPointRotation.transform.LookAt(targetPoint);
         }
 
 
@@ -67,10 +77,8 @@ namespace Player {
 
             if (GetComponent<PlayerController>() != null) {
                 PlayerHelper.UsingRangedAttack = true;
-                if (_unit.CanAttack) _unit._attackTimer = Time.time - _unit._attackTimer / 2;
-            } else {
-                _animator.SetTrigger(animationTrigger);
             }
+            _animator.SetTrigger(animationTrigger);
 
 
             transform.LookAt(_unit.CombatTarget.transform);
