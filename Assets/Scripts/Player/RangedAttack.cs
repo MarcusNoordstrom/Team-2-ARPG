@@ -7,6 +7,8 @@ using UnityEngine.AI;
 
 namespace Player {
     public class RangedAttack : MonoBehaviour, IAction {
+        [SerializeField] GameObject muzzleEffectSpawnLocation;
+        [SerializeField] GameObject muzzleEffect;
         [SerializeField] string animationTrigger;
         [SerializeField] Transform bulletSpawnPointRotation;
         Animator _animator;
@@ -38,7 +40,9 @@ namespace Player {
             _unit.equipped.weapon.Attack(_unit.bulletSpawnPoint.transform, _unit.CombatTarget);
             sfxController.OnPlay(UnitSfxId.Shoot);
 
-            //TODO play muzzle effect when shooting
+            if (muzzleEffect != null || muzzleEffectSpawnLocation != null) {
+                Instantiate(muzzleEffect, muzzleEffectSpawnLocation.transform.position, Quaternion.identity);
+            }
         }
 
         //animation event
