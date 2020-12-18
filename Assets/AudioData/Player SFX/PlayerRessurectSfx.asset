@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: PlayerRessurectSfx
   m_EditorClassIdentifier: 
   id: 6
-  audioClip: {fileID: 8300000, guid: 972ba63100049154a9f2e71585a92f9f, type: 3}
+  audioClip: {fileID: 8300000, guid: ece00bdf1a9bb2c47ad6d55338b5c4e5, type: 3}

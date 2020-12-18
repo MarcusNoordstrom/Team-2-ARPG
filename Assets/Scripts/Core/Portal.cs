@@ -12,6 +12,7 @@ namespace Core {
         public SpawnPoint spawnPoint;
         public Text toolTipText;
         public string toolTip;
+        [SerializeField] VoidEvent startTeleportEvent;
 
         void OnEnable() {
             toolTipText.enabled = false;
@@ -34,6 +35,7 @@ namespace Core {
         }
 
         IEnumerator Transition() {
+            startTeleportEvent?.Invoke();
             DontDestroyOnLoad(gameObject);
             yield return Fader.FadeIn();
             yield return SceneManager.LoadSceneAsync(sceneToLoad);
