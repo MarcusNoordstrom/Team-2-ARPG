@@ -9347,7 +9347,7 @@ GameObject:
   - component: {fileID: 2087616438152856506}
   - component: {fileID: 6572207485916385764}
   m_Layer: 0
-  m_Name: TurretShootEffect
+  m_Name: ShootEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11582,8 +11582,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcf2147ff86cfd946a0129646c1bcc19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  muzzleEffectSpawnLocation: {fileID: 0}
-  muzzleEffect: {fileID: 0}
+  muzzleEffectSpawnLocation: {fileID: 5361313612550256761}
+  muzzleEffect: {fileID: 6961923878455336911, guid: 04eae3650f8035c458a2ea5fd630baa6, type: 3}
   animationTrigger: RangedAttack
   bulletSpawnPointRotation: {fileID: 645303507087626857}
 --- !u!114 &2358517322376594676
@@ -11892,13 +11892,37 @@ MonoBehaviour:
   popupCanvas: {fileID: 317983835361486205}
   popupPrefab: {fileID: 6903674934049428664, guid: 02a3ead787d4dd141b0d308794a501b1, type: 3}
   lowHealthUI: {fileID: 0}
-  alphaFadeSpeed: 0.1
+  alphaFadeSpeed: 0.8
   deathEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: MusicController, Assembly-CSharp
+        m_MethodName: OnDeath
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   resurrectEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: MusicController, Assembly-CSharp
+        m_MethodName: OnResurrect
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1995358424
 MonoBehaviour:
   m_ObjectHideFlags: 0
