@@ -20,20 +20,6 @@ namespace Player {
             _animator = GetComponent<Animator>();
         }
 
-        void Update() {
-            // if (PlayerHelper.UsingRangedAttack && GetComponent<PlayerController>() != null &&
-            //     !_unit.CombatTarget.GetComponent<Health>().IsDead) {
-            //     if (!_unit.CanAttack || _unit.GetComponent<Health>().IsDead) return;
-            //     _animator.ResetTrigger("Idle");
-            //     _animator.ResetTrigger("Running");
-            //     _animator.SetTrigger(animationTrigger);
-            //     transform.LookAt(_unit.CombatTarget.transform);
-            //     _unit._attackTimer = Time.time;
-            //     ButtonCoolDown.rangeStartFilling = true;
-            //     FindObjectOfType<ButtonCoolDown>().rangeAttackImage.fillAmount = 0;
-            // }
-        }
-
         //animation event
         void RangedAttackEvent() {
             if (_unit.CombatTarget == null || _unit.CombatTarget.GetComponent<Health>().IsDead) return;
@@ -42,7 +28,8 @@ namespace Player {
             sfxController.OnPlay(UnitSfxId.Shoot);
 
             if (muzzleEffect != null || muzzleEffectSpawnLocation != null) {
-                Instantiate(muzzleEffect, muzzleEffectSpawnLocation.transform.position, Quaternion.identity);
+                var effect = Instantiate(muzzleEffect, muzzleEffectSpawnLocation.transform.position, transform.rotation);
+                Destroy(effect, 1f);
             }
         }
 
