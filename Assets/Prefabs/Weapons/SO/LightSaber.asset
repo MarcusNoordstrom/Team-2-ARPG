@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5f6d76df27c56d428e6f7af351b05da, type: 3}
   m_Name: LightSaber
   m_EditorClassIdentifier: 
-  baseDamage: 15
+  baseDamage: 30
   attackSpeed: 2
   range: 5
