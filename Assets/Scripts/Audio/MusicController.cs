@@ -8,11 +8,13 @@ namespace Audio{
         AudioSource audioSource;
         [SerializeField]AudioMixer audioMixer;
         [SerializeField] float fadeSpeed;
+        [SerializeField] float startDelay = 0;
         float startVolume;
 
         void Start(){
             audioSource = GetComponent<AudioSource>();
             startVolume = audioSource.volume;
+            audioSource.PlayDelayed(startDelay);
         }
 
         public void OnDeath(){
