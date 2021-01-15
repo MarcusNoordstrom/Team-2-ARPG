@@ -9,12 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3fbf70df75574cf09840fe07482a2883, type: 3}
-  m_Name: Tracking
+  m_Script: {fileID: 11500000, guid: fa2217249912df6449090ec8999b9ccd, type: 3}
+  m_Name: DeathSfx
   m_EditorClassIdentifier: 
-  maxHealth: 100
-  moveSpeed: 10
-  rangedWeapon: {fileID: 11400000, guid: da05cb23d82a52044b252f74592a4287, type: 2}
-  meleeWeapon: {fileID: 0}
-  targetRange: 15
-  stopChaseDistance: 15.1
+  id: 5
+  audioClip: {fileID: 8300000, guid: 275eb49b3d3aa6f46b8ac13694cc64d0, type: 3}
